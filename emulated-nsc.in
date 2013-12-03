@@ -1,0 +1,8 @@
+default ns3::DropTailQueue::Mode "QUEUE_MODE_PACKETS"
+default ns3::DropTailQueue::MaxPackets "100"
+default ns3::DropTailQueue::MaxBytes "999999"
+
+
+default ns3::UdpSocket::RcvBufSize "131072"
+
+

@@ -1,0 +1,28 @@
+# Basic glob expressions
+syntax: glob
+
+# scons temporary files
+.sconsign
+.sconsign.dblite
+config.log
+
+# this file!
+.hgignore
+
+# compiled python files
+*.pyc
+
+# vim swap files
+*.swp
+*.swo
+
+# Regular expressions
+syntax: regexp
+
+# other scons files
+^\.sconf_temp/
+
+# special case the linux 'asm' symlinks: we don't store these in mercurial,
+# they are created by the build system
+^linux-2\.6\.18/include/asm
+^linux-2\.6\.26/include/asm
