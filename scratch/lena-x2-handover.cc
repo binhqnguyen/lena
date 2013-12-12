@@ -275,10 +275,7 @@ main (int argc, char *argv[])
   InternetStackHelper internet;
     internet.SetTcp("ns3::NscTcpL4Protocol", "Library", StringValue("liblinux2.6.26.so"));
     internet.Install (remoteHost);
-    Config::Set ("/NodeList/*/$ns3::Ns3NscStack<linux2.6.26>/net.ipv4.tcp_sack", StringValue (SACK));
-    Config::Set ("/NodeList/*/$ns3::Ns3NscStack<linux2.6.26>/net.ipv4.tcp_timestamps", StringValue (TIME_STAMP));
-    Config::Set ("/NodeList/*/$ns3::Ns3NscStack<linux2.6.26>/net.ipv4.tcp_window_scaling", StringValue (WINDOW_SCALING));
-    Config::Set ("/NodeList/*/$ns3::Ns3NscStack<linux2.6.26>/net.ipv4.tcp_congestion_control", StringValue (TCP_VERSION))
+   //Config::Set ("/NodeList/*/$ns3::Ns3NscStack<linux2.6.26>/net.ipv4.tcp_rmem", StringValue ("4096 87380 8338608"));
 ;
 
   // Create the Internet
@@ -324,6 +321,15 @@ main (int argc, char *argv[])
   internet.Install (ueNodes);
   Ipv4InterfaceContainer ueIpIfaces;
   ueIpIfaces = epcHelper->AssignUeIpv4Address (NetDeviceContainer (ueLteDevs));
+  Config::Set ("/NodeList/*/$ns3::Ns3NscStack<linux2.6.26>/net.ipv4.tcp_sack", StringValue (SACK));
+    Config::Set ("/NodeList/*/$ns3::Ns3NscStack<linux2.6.26>/net.ipv4.tcp_timestamps", StringValue (TIME_STAMP));
+    Config::Set ("/NodeList/*/$ns3::Ns3NscStack<linux2.6.26>/net.ipv4.tcp_window_scaling", StringValue (WINDOW_SCALING));
+    Config::Set ("/NodeList/*/$ns3::Ns3NscStack<linux2.6.26>/net.ipv4.tcp_congestion_control", StringValue (TCP_VERSION));
+    //Config::Set ("/NodeList/*/$ns3::Ns3NscStack<linux2.6.26>/net.core.wmem_max", StringValue ("8338608"));
+    //Config::Set ("/NodeList/*/$ns3::Ns3NscStack<linux2.6.26>/net.core.rmem_max", StringValue ("8338608"));
+    Config::Set ("/NodeList/*/$ns3::Ns3NscStack<linux2.6.26>/net.ipv4.tcp_rmem", StringValue ("4096 8000000 8338608"));
+    //Config::Set ("/NodeList/*/$ns3::Ns3NscStack<linux2.6.26>/net.ipv4.tcp_wmem", StringValue ("4096 5000000 8338608"));
+   
   // Assign IP address to UEs, and install applications
   for (uint32_t u = 0; u < ueNodes.GetN (); ++u)
     {
@@ -445,8 +451,8 @@ main (int argc, char *argv[])
   // X2-based Handover
   if (isAutoHo == 1){
 	*debugger_wp->GetStream ()<< "Auto Handover..., ServingCellHandoverThreshold = 30, NeighbourCellHandoverOffset = 1\n" ;
-	Config::SetDefault("ns3::LteEnbRrc::ServingCellHandoverThreshold",UintegerValue (30));
-	Config::SetDefault("ns3::LteEnbRrc::NeighbourCellHandoverOffset",UintegerValue (1));
+	Config::SetDefault("ns3::A2A4RsrqHandoverAlgorithm::ServingCellThreshold",UintegerValue (30));
+	Config::SetDefault("ns3::A2A4RsrqHandoverAlgorithm::NeighbourCellOffset",UintegerValue (1));
   }
   else{
 	  *debugger_wp->GetStream () << "Manual Handover at 20,50,80 second\n" ;
@@ -484,7 +490,7 @@ main (int argc, char *argv[])
   Config::Connect ("/NodeList/*/DeviceList/*/LteUeRrc/HandoverEndOk",
                    MakeCallback (&NotifyHandoverEndOkUe));
 
-/*=============schedule to get TCP throughput============*/
+ /*=============schedule to get TCP throughput============*/
   Time t = Seconds(0.0);
   Simulator::ScheduleWithContext (0 ,Seconds (0.0), &getTcpPut);
 
