@@ -84,6 +84,8 @@ private:
     std::vector < RetxBuffer > m_retxBuffer;       // Retransmission buffer
 
     uint32_t m_txonBufferSize;
+    //Binh: Add max Tx buffersize
+    uint32_t m_maxTxBufferSize;
     uint32_t m_retxBufferSize;
     uint32_t m_txedBufferSize;
 

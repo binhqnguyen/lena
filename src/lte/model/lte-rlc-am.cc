@@ -39,6 +39,7 @@ LteRlcAm::LteRlcAm ()
 
   // Buffers
   m_txonBufferSize = 0;
+  m_maxTxBufferSize = 1024;	//Binh: added maxTxBufferSize
   m_retxBuffer.resize (1024);
   m_retxBufferSize = 0;
   m_txedBuffer.resize (1024);
@@ -101,7 +102,11 @@ LteRlcAm::GetTypeId (void)
                    BooleanValue (false),
                    MakeBooleanAccessor (&LteRlcAm::m_txOpportunityForRetxAlwaysBigEnough),
                    MakeBooleanChecker ())
-
+    .AddAttribute ("MaxTxBufferSize",
+                   "Maximum Size of the Transmission Buffer (in Bytes)",
+                   UintegerValue (1024),
+                   MakeUintegerAccessor (&LteRlcAm::m_maxTxBufferSize),
+                   MakeUintegerChecker<uint32_t> ())
     ;
   return tid;
 }
@@ -137,23 +142,32 @@ void
 LteRlcAm::DoTransmitPdcpPdu (Ptr<Packet> p)
 {
   NS_LOG_FUNCTION (this << m_rnti << (uint32_t) m_lcid << p->GetSize ());
+  
+  if (m_txonBufferSize + p->GetSize() < m_maxTxBufferSize){
+	  /** Store arrival time */
+	  Time now = Simulator::Now ();
+	  RlcTag timeTag (now);
+	  p->AddPacketTag (timeTag);
 
-  /** Store arrival time */
-  Time now = Simulator::Now ();
-  RlcTag timeTag (now);
-  p->AddPacketTag (timeTag);
+	  /** Store PDCP PDU */
 
-  /** Store PDCP PDU */
+	  LteRlcSduStatusTag tag;
+	  tag.SetStatus (LteRlcSduStatusTag::FULL_SDU);
+	  p->AddPacketTag (tag);
 
-  LteRlcSduStatusTag tag;
-  tag.SetStatus (LteRlcSduStatusTag::FULL_SDU);
-  p->AddPacketTag (tag);
-
-  NS_LOG_LOGIC ("Txon Buffer: New packet added");
-  m_txonBuffer.push_back (p);
-  m_txonBufferSize += p->GetSize ();
-  NS_LOG_LOGIC ("NumOfBuffers = " << m_txonBuffer.size() );
-  NS_LOG_LOGIC ("txonBufferSize = " << m_txonBufferSize);
+	  NS_LOG_LOGIC ("Txon Buffer: New packet added");
+	  m_txonBuffer.push_back (p);
+	  m_txonBufferSize += p->GetSize ();
+	  NS_LOG_LOGIC ("NumOfBuffers = " << m_txonBuffer.size() );
+	  NS_LOG_LOGIC ("txonBufferSize = " << m_txonBufferSize);
+  }
+	else {
+			//Discard SDU when Txbuffer is full.
+	    NS_LOG_LOGIC ("TxBuffer is full. RLC SDU discarded");
+      NS_LOG_LOGIC ("MaxTxBufferSize = " << m_maxTxBufferSize);
+      NS_LOG_LOGIC ("txBufferSize    = " << m_txonBufferSize);
+      NS_LOG_LOGIC ("packet size     = " << p->GetSize ());
+	}
 
   /** Report Buffer Status */
   DoReportBufferStatus ();
