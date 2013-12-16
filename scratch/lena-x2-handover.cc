@@ -75,14 +75,15 @@ double moving_speed = 3; //UE moving speed in km/h (3km/h for pedestrian, 60km/h
 static uint32_t isTcp=1;
 uint32_t packetSize = 900;
 double samplingInterval = 0.005;    /*getTcp() function invoke for each x second*/
-uint16_t PUT_SAMPLING_INTERVAL = 25; /*sample a TCP throughput for each x pkts*/
+uint16_t PUT_SAMPLING_INTERVAL = 40; /*sample a TCP throughput for each x pkts*/
 double t = 0.0;
 Ptr<ns3::FlowMonitor> monitor;
 FlowMonitorHelper flowHelper;
 Ptr<ns3::Ipv4FlowClassifier> classifier;
 std::map <FlowId, FlowMonitor::FlowStats> stats;
 std::string dataRate = "150Mb/s";
-LogLevel logLevel = (LogLevel) (LOG_LEVEL_ALL | LOG_PREFIX_TIME | LOG_PREFIX_NODE | LOG_PREFIX_FUNC);
+//LogLevel logLevel = (LogLevel) (LOG_LEVEL_ALL | LOG_PREFIX_TIME | LOG_PREFIX_NODE | LOG_PREFIX_FUNC);
+LogLevel logLevel = (LogLevel) (LOG_PREFIX_TIME | LOG_PREFIX_NODE| LOG_PREFIX_FUNC | LOG_LEVEL_DEBUG);
 uint32_t isAutoHo = 0;
 double speed = 20; //20m/s
 
@@ -110,6 +111,8 @@ uint16_t numberOfEnbs = 2;
 uint16_t numBearersPerUe = 1;
 double distance = 500.0;
 
+/********DEBUGGING mode********/
+uint32_t isDebug = 0;
 
 /********* Ascii output files name *********/
 static std::string DIR = "/var/tmp/ln_result/radio/";
@@ -249,7 +252,6 @@ NS_LOG_COMPONENT_DEFINE ("EpcX2HandoverExample");
 int
 main (int argc, char *argv[])
 {
-  EnableLogComponents();
   // change some default attributes so that they are reasonable for
   // this scenario, but do this before processing command line
   // arguments, so that the user is allowed to override these settings 
@@ -260,6 +262,7 @@ main (int argc, char *argv[])
   // Command line arguments
   CommandlineParameters(argc, argv);
   init_wrappers();
+  EnableLogComponents();
   
   Ptr<LteHelper> lteHelper = CreateObject<LteHelper> ();
   Ptr<PointToPointEpcHelper>  epcHelper = CreateObject<PointToPointEpcHelper> ();
@@ -386,7 +389,7 @@ main (int argc, char *argv[])
 		clientApps.Add(onOffHelper.Install(remoteHost));
         }
         else{
-		PUT_SAMPLING_INTERVAL = PUT_SAMPLING_INTERVAL*4;
+		PUT_SAMPLING_INTERVAL = PUT_SAMPLING_INTERVAL*20;
 		PacketSinkHelper sink("ns3::UdpSocketFactory", InetSocketAddress(Ipv4Address::GetAny(), dlPort));
 		serverApps.Add(sink.Install(ueNodes.Get(u)));
 
@@ -456,9 +459,9 @@ main (int argc, char *argv[])
   }
   else{
 	  *debugger_wp->GetStream () << "Manual Handover at 20,50,80 second\n" ;
+	  lteHelper->HandoverRequest (Seconds (1.00), ueLteDevs.Get (0), enbLteDevs.Get (0), enbLteDevs.Get (1));
+	  lteHelper->HandoverRequest (Seconds (10.00), ueLteDevs.Get (0), enbLteDevs.Get (1), enbLteDevs.Get (0));
 	  lteHelper->HandoverRequest (Seconds (20.00), ueLteDevs.Get (0), enbLteDevs.Get (0), enbLteDevs.Get (1));
-	  lteHelper->HandoverRequest (Seconds (50.00), ueLteDevs.Get (0), enbLteDevs.Get (1), enbLteDevs.Get (0));
-	  lteHelper->HandoverRequest (Seconds (80.00), ueLteDevs.Get (0), enbLteDevs.Get (0), enbLteDevs.Get (1));
   }
     monitor = flowHelper.Install(ueNodes);
     monitor = flowHelper.Install(remoteHost);
@@ -635,20 +638,25 @@ void ConfigStoreInput(std::string in_f){
 }
 
 void EnableLogComponents(){
-
-  // LogComponentEnable ("LteHelper", logLevel);
-  // LogComponentEnable ("EpcHelper", logLevel);
-  LogComponentEnable ("EpcEnbApplication", logLevel);
-  LogComponentEnable ("EpcX2", logLevel);
-  LogComponentEnable ("EpcSgwPgwApplication", logLevel);
-  LogComponentEnable ("LteRlcUm", logLevel);
-  LogComponentEnable ("LteRlcAm", logLevel);
-  LogComponentEnable ("NscTcpSocketImpl",LOG_LEVEL_DEBUG);
-
-  LogComponentEnable ("LteEnbRrc", logLevel);
-  LogComponentEnable ("LteEnbNetDevice", logLevel);
-  LogComponentEnable ("LteUeRrc", logLevel);
-  // LogComponentEnable ("LteUeNetDevice", logLevel);
+	if (isTcp==1){
+		if (isDebug==0){
+			LogLevel logLevel = (LogLevel) (LOG_LEVEL_ALL | LOG_PREFIX_TIME | LOG_PREFIX_NODE | LOG_PREFIX_FUNC);
+			//LogComponentEnable ("LteHelper", logLevel);
+  		//LogComponentEnable ("EpcHelper", logLevel);
+  		LogComponentEnable ("EpcEnbApplication", logLevel);
+  		LogComponentEnable ("EpcX2", logLevel);
+  		LogComponentEnable ("EpcSgwPgwApplication", logLevel);
+  		LogComponentEnable ("NscTcpSocketImpl",LOG_LEVEL_DEBUG);
+  		LogComponentEnable ("LteEnbNetDevice", logLevel);
+  		LogComponentEnable ("LteUeRrc", logLevel);
+  		LogComponentEnable ("LteUeNetDevice", logLevel);
+		}
+  	LogComponentEnable ("LteRlcUm", logLevel);
+  	LogComponentEnable ("LteRlcAm", logLevel);
+  	LogComponentEnable ("LteEnbRrc", logLevel);
+  	LogComponentEnable ("LtePdcp", logLevel);
+  	LogComponentEnable ("EpcX2", logLevel);
+ }
 }
 void SetDefaultConfigs(){
   Config::SetDefault ("ns3::UdpClient::Interval", TimeValue (MicroSeconds(10000)));
@@ -688,6 +696,7 @@ void CommandlineParameters(int argc, char* argv[]){
     cmd.AddValue("TIME_STAMP", "TCP TIME_STAMP", TIME_STAMP);
     cmd.AddValue("WINDOW_SCALING", "TCP WINDOW_SCALING", WINDOW_SCALING);
     cmd.AddValue("isAutoHo", "Whether doing auto handover", isAutoHo);
+    cmd.AddValue("isDebug", "Whether in debug mode (turn on/off log)", isDebug);
 
   cmd.Parse(argc, argv);
 }
@@ -772,16 +781,19 @@ void InstallFading(Ptr<LteHelper> lteHelper){
 
 void EnablePositionTracking(NetDeviceContainer enbLteDevs, NodeContainer ueNodes){
     NetDeviceContainer::Iterator enbLteDevIt = enbLteDevs.Begin ();
-    Vector enbPosition = (*enbLteDevIt)->GetNode ()->GetObject<MobilityModel> ()->GetPosition ();
-    Ptr<MobilityModel> ue_mobility_model = ueNodes.Get(0)->GetObject<MobilityModel>();
-    double x = ue_mobility_model->GetPosition().x;
-    double y = ue_mobility_model->GetPosition().y;
-    *debugger_wp->GetStream() << "eNB(x,y)= " << enbPosition.x << ", " << enbPosition.y << std::endl;
-    *debugger_wp->GetStream() << "UE (x,y)= " << x << ", " << y << " d= " << sqrt(x*x+y*y) << std::endl;
-
-    ue_mobility_model->TraceConnectWithoutContext("CourseChange", MakeBoundCallback(&CourseChange, ue_positions_wp));
-    //Tracking.
-    Simulator::Schedule(Seconds(1), &pos_tracking, position_tracking_wp, ue_mobility_model);
+    for (NetDeviceContainer::Iterator enbLteDevIt = enbLteDevs.Begin(); enbLteDevIt != enbLteDevs.End(); enbLteDevIt++){
+    	Vector enbPosition = (*enbLteDevIt)->GetNode ()->GetObject<MobilityModel> ()->GetPosition ();
+    	*debugger_wp->GetStream() << "eNB(x,y)= " << enbPosition.x << ", " << enbPosition.y << std::endl;
+		}
+		for (uint16_t i = 0; i < ueNodes.GetN(); i++ ){
+			Ptr<MobilityModel> ue_mobility_model = ueNodes.Get(i)->GetObject<MobilityModel>();
+    	double x = ue_mobility_model->GetPosition().x;
+    	double y = ue_mobility_model->GetPosition().y;
+    	*debugger_wp->GetStream() << "UE (x,y)= " << x << ", " << y << " d= " << sqrt(x*x+y*y) << std::endl;
+    	ue_mobility_model->TraceConnectWithoutContext("CourseChange", MakeBoundCallback(&CourseChange, ue_positions_wp));
+			//Tracking.
+    	Simulator::Schedule(Seconds(1), &pos_tracking, position_tracking_wp, ue_mobility_model);
+		}
 }
 
 

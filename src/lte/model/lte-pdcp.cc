@@ -194,7 +194,7 @@ LtePdcp::DoTransmitPdcpSdu (Ptr<Packet> p)
   params.rnti = m_rnti;
   params.lcid = m_lcid;
   params.pdcpPdu = p;
-
+	//NS_LOG_DEBUG(this << "PDCP PDU size = " << p->GetSize());
   m_rlcSapProvider->TransmitPdcpPdu (params);
 }
 

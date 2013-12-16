@@ -57,6 +57,7 @@ public:
   static TypeId GetTypeId (void);
   virtual void DoDispose ();
 
+	//virtual std::vector < Ptr<Packet> > GetTxBuffer();
   /**
    *
    *
@@ -99,6 +100,7 @@ public:
    */
   LteMacSapUser* GetLteMacSapUser ();
 
+	
 
 
   /// \todo MRE What is the sense to duplicate all the interfaces here???

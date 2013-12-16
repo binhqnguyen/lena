@@ -52,7 +52,8 @@ public:
   virtual void DoNotifyTxOpportunity (uint32_t bytes, uint8_t layer, uint8_t harqId);
   virtual void DoNotifyHarqDeliveryFailure ();
   virtual void DoReceivePdu (Ptr<Packet> p);
-
+  std::vector < Ptr<Packet> > GetTxBuffer();
+	uint32_t GetTxBufferSize();
 private:
   /**
    * This method will schedule a timeout at WaitReplyTimeout interval

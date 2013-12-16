@@ -82,7 +82,7 @@ std::ofstream tcpThroughput;
 Ptr<ns3::FlowMonitor> monitor;
 FlowMonitorHelper flowHelper;
 double samplingInterval = 0.005;    /*getTcp() function invoke for each x second*/
-uint16_t PUT_SAMPLING_INTERVAL = 200; /*sample a TCP throughput for each x pkts*/
+uint16_t PUT_SAMPLING_INTERVAL = 50; /*sample a TCP throughput for each x pkts*/
 double t = 0.0;
 uint16_t isTcp = 1;
 //topology
@@ -211,6 +211,7 @@ pos_tracking (Ptr<OutputStreamWrapper> position_tracking_wp, Ptr<const MobilityM
 }
 
 void log_component_enable(){
+	if (isTcp==1){
 	//*************Enable logs********************/
     //To enable all components inside the LTE module.
 //      lteHelper->EnableLogComponents();
@@ -235,13 +236,13 @@ void log_component_enable(){
     //   LogComponentEnable ("LteEnbMac", level);
 //       LogComponentEnable ("LtePdcp", level);
 //       LogComponentEnable ("LtePhy", level);
+	}
 }
 
 int
 main (int argc, char *argv[])
 {
 
-    log_component_enable();
    
     // Command line arguments
     CommandLine cmd;
@@ -284,6 +285,7 @@ main (int argc, char *argv[])
    
     init_wrappers();
 
+    log_component_enable();
     //************lteHeper, epcHelper**************//
     Ptr<LteHelper> lteHelper = CreateObject<LteHelper> ();
     Ptr<PointToPointEpcHelper>  epcHelper = CreateObject<PointToPointEpcHelper> ();
@@ -494,7 +496,7 @@ main (int argc, char *argv[])
 					clientApps.Add(onOffHelper.Install(remoteHost));
         }
         else{
-					PUT_SAMPLING_INTERVAL = PUT_SAMPLING_INTERVAL*6;
+					PUT_SAMPLING_INTERVAL = PUT_SAMPLING_INTERVAL*20;
 					/*********UDP Application********/
 					//Create a packet sink to receive packet on remoteHost
 					PacketSinkHelper sink("ns3::UdpSocketFactory", InetSocketAddress(Ipv4Address::GetAny(), dlPort));

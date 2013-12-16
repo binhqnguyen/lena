@@ -1540,3 +1540,63 @@ Lost ratio 0
 Average delay received +41.03490807183740631557
 Mean received bitrate +102.10118288590535891418
 Mean transmitted bitrate +102.0969842685650171173
+=========Experiment=========
+TCP: 1
+Distance from eNB: 1000
+Mobility: Pedestrian = -1, Fading = 0, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 7
+Rx Packets 3
+Lost packets 0
+Lost ratio 0
+Average delay received +33.07012818758611174163
+Mean received bitrate +107.09223372036854344275
+Mean transmitted bitrate +128.17732257507474268152
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 2
+Rx Packets 2
+Lost packets 0
+Lost ratio 0
+Average delay received +41.17149107861844453207
+Mean received bitrate +9.10761053270943137018
+Mean transmitted bitrate +9.10760600709663840143
+=========Experiment=========
+TCP: 1
+Distance from eNB: 1000
+Mobility: Pedestrian = -1, Fading = 0, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 1464
+Rx Packets 1296
+Lost packets 0
+Lost ratio 0
+Average delay received +64.066140599043854297
+Mean received bitrate +10335.14737891539107290827
+Mean transmitted bitrate +11414.10272551702595823726
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 721
+Rx Packets 702
+Lost packets 0
+Lost ratio 0
+Average delay received +35.09800865833103740241
+Mean received bitrate +217.0434990429991108839
+Mean transmitted bitrate +215.0385618796762609006
+=========Experiment=========
+TCP: 1
+Distance from eNB: 1000
+Mobility: Pedestrian = -1, Fading = 0, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 94
+Rx Packets 81
+Lost packets 0
+Lost ratio 0
+Average delay received +38.14921384080931945323
+Mean received bitrate +1978.14923653467356512927
+Mean transmitted bitrate +2336.02939999517977659399
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 49
+Rx Packets 37
+Lost packets 0
+Lost ratio 0
+Average delay received +38.10190768653584518133
+Mean received bitrate +30.0654551143236188902
+Mean transmitted bitrate +33.01118284377858234172

@@ -252,7 +252,6 @@ NS_LOG_COMPONENT_DEFINE ("EpcX2HandoverExample");
 int
 main (int argc, char *argv[])
 {
-  EnableLogComponents();
   // change some default attributes so that they are reasonable for
   // this scenario, but do this before processing command line
   // arguments, so that the user is allowed to override these settings 
@@ -263,6 +262,7 @@ main (int argc, char *argv[])
   // Command line arguments
   CommandlineParameters(argc, argv);
   init_wrappers();
+  EnableLogComponents();
   
   Ptr<LteHelper> lteHelper = CreateObject<LteHelper> ();
   Ptr<PointToPointEpcHelper> epcHelper = CreateObject<PointToPointEpcHelper> ();
@@ -399,7 +399,7 @@ main (int argc, char *argv[])
 		clientApps.Add(onOffHelper.Install(remoteHost));
         }
         else{
-		PUT_SAMPLING_INTERVAL = PUT_SAMPLING_INTERVAL*7;
+		PUT_SAMPLING_INTERVAL = PUT_SAMPLING_INTERVAL*20;
 		PacketSinkHelper sink("ns3::UdpSocketFactory", InetSocketAddress(Ipv4Address::GetAny(), dlPort));
 		serverApps.Add(sink.Install(ueNodes.Get(u)));
 

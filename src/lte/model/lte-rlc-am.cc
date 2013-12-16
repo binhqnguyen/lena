@@ -39,7 +39,7 @@ LteRlcAm::LteRlcAm ()
 
   // Buffers
   m_txonBufferSize = 0;
-  m_maxTxBufferSize = 1024;	//Binh: added maxTxBufferSize
+  m_maxTxBufferSize = 10*1024;	//Binh: added maxTxBufferSize. In Bytes. Default 10KB.
   m_retxBuffer.resize (1024);
   m_retxBufferSize = 0;
   m_txedBuffer.resize (1024);
@@ -160,6 +160,8 @@ LteRlcAm::DoTransmitPdcpPdu (Ptr<Packet> p)
 	  m_txonBufferSize += p->GetSize ();
 	  NS_LOG_LOGIC ("NumOfBuffers = " << m_txonBuffer.size() );
 	  NS_LOG_LOGIC ("txonBufferSize = " << m_txonBufferSize);
+	  NS_LOG_DEBUG ("txonBufferSize = " << m_txonBufferSize);
+    NS_LOG_DEBUG ("packet size     = " << p->GetSize ());
   }
 	else {
 			//Discard SDU when Txbuffer is full.
@@ -167,6 +169,7 @@ LteRlcAm::DoTransmitPdcpPdu (Ptr<Packet> p)
       NS_LOG_LOGIC ("MaxTxBufferSize = " << m_maxTxBufferSize);
       NS_LOG_LOGIC ("txBufferSize    = " << m_txonBufferSize);
       NS_LOG_LOGIC ("packet size     = " << p->GetSize ());
+	  	NS_LOG_DEBUG ("TxBuffer is full. txonBufferSize = " << m_txonBufferSize);
 	}
 
   /** Report Buffer Status */
@@ -637,6 +640,18 @@ void
 LteRlcAm::DoNotifyHarqDeliveryFailure ()
 {
   NS_LOG_FUNCTION (this);
+}
+
+std::vector < Ptr<Packet> > 
+LteRlcAm::GetTxBuffer ()
+{	
+	return m_txonBuffer;
+}
+
+uint32_t 
+LteRlcAm::GetTxBufferSize()
+{
+	return m_txonBufferSize;
 }
 
 void

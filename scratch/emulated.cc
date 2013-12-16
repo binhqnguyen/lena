@@ -199,19 +199,7 @@ getTcpPut();
 
 int main (int argc, char *argv[])
 {
-     LogLevel level = (LogLevel) (LOG_LEVEL_ALL | LOG_PREFIX_TIME | LOG_PREFIX_NODE | LOG_PREFIX_FUNC);
-  // Users may find it convenient to turn on explicit debugging
-  // for selected modules; the below lines suggest how to do this
-  //  LogComponentEnable("TcpL4Protocol", LOG_LEVEL_ALL);
-  //  LogComponentEnable("TcpSocketImpl", LOG_LEVEL_ALL);
-  //  LogComponentEnable("PacketSink", LOG_LEVEL_ALL);
-  //  LogComponentEnable("TcpLargeTransfer", LOG_LEVEL_ALL);
-     // LogComponentEnable("TcpNewReno",level);
-     // LogComponentEnable("TcpReno",level);
-  LogComponentEnable("TcpTahoe",level);
-  LogComponentEnable("RttEstimator",level);
-  LogComponentEnable("TcpSocketBase",level);
-  
+ 
     CommandLine cmd;
     cmd.AddValue("sim_time", "Total duration of the simulation [s])", sim_time);
     cmd.AddValue("packet_size", "Size of each packet", packet_size);
@@ -231,8 +219,20 @@ int main (int argc, char *argv[])
     
 
   cmd.Parse (argc, argv);
-
-
+  LogLevel level = (LogLevel) (LOG_LEVEL_ALL | LOG_PREFIX_TIME | LOG_PREFIX_NODE | LOG_PREFIX_FUNC);
+	if (is_tcp==1){
+  // Users may find it convenient to turn on explicit debugging
+  // for selected modules; the below lines suggest how to do this
+  //  LogComponentEnable("TcpL4Protocol", LOG_LEVEL_ALL);
+  //  LogComponentEnable("TcpSocketImpl", LOG_LEVEL_ALL);
+  //  LogComponentEnable("PacketSink", LOG_LEVEL_ALL);
+  //  LogComponentEnable("TcpLargeTransfer", LOG_LEVEL_ALL);
+     // LogComponentEnable("TcpNewReno",level);
+     // LogComponentEnable("TcpReno",level);
+  LogComponentEnable("TcpTahoe",level);
+  LogComponentEnable("RttEstimator",level);
+  LogComponentEnable("TcpSocketBase",level);
+ }
    /* create files for wrappers */
     cwnd_wp = asciiTraceHelper.CreateFileStream(cwnd);
     rto_wp = asciiTraceHelper.CreateFileStream(rto);

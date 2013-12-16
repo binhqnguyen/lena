@@ -414,7 +414,9 @@ private:
   EventId m_connectionRejectedTimeout;
   EventId m_handoverJoiningTimeout;
   EventId m_handoverLeavingTimeout;
-
+	std::vector < Ptr<Packet> > m_x2forwardingBuffer;
+	uint32_t m_x2forwardingBufferSize;
+	uint32_t m_maxx2forwardingBufferSize;
 };
 
 
