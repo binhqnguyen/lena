@@ -1,0 +1,1720 @@
+Waf: Entering directory `/var/tmp/lena/build'
+Waf: Leaving directory `/var/tmp/lena/build'
+'build' finished successfully (1.501s)
+0.018s -1 LteEnbRrc:GetNewSrsConfigurationIndex(): 0x1559f40 SRS p 40 set 0
+0.018s -1 LteEnbRrc:AddUe(): 0x1559f40 New UE RNTI 1 cellId 1 srs CI 37
+0.028s 4 LteRlcAm:DoTransmitPdcpPdu(): txonBufferSize = 4
+0.028s 4 LteRlcAm:DoTransmitPdcpPdu(): packet size     = 4
+0.0399286s 2 LteRlcAm:DoTransmitPdcpPdu(): txonBufferSize = 42
+0.0399286s 2 LteRlcAm:DoTransmitPdcpPdu(): packet size     = 42
+0.044s 4 LteRlcAm:DoTransmitPdcpPdu(): txonBufferSize = 3
+0.044s 4 LteRlcAm:DoTransmitPdcpPdu(): packet size     = 3
+0.200001s -1 LteRlcAm:DoTransmitPdcpPdu(): txonBufferSize = 10
+0.200001s -1 LteRlcAm:DoTransmitPdcpPdu(): packet size     = 10
+0.533419s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.533419s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+0.533419s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 54
+0.537s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.537s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+0.537s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 54
+0.608929s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.608929s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+0.608929s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 42
+0.608938s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.608938s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 2
+0.608938s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 984
+0.60895s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.60895s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 3
+0.60895s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 2486
+0.614s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.614s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+0.614s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 42
+0.617s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.617s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 2
+0.617s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 84
+0.680001s -1 LteRlcAm:DoTransmitPdcpPdu(): txonBufferSize = 10
+0.680001s -1 LteRlcAm:DoTransmitPdcpPdu(): packet size     = 10
+0.685942s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.685942s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+0.685942s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 1502
+0.685954s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.685954s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 2
+0.685954s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 3004
+0.685966s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.685966s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 3
+0.685966s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 4506
+0.685978s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.685978s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 4
+0.685978s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 6008
+0.692s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.692s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+0.692s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 42
+0.696s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.696s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 2
+0.696s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 84
+0.7s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.7s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+0.7s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 42
+0.703s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.703s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 2
+0.703s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 84
+0.763942s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.763942s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+0.763942s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 1502
+0.763954s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.763954s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 2
+0.763954s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 3004
+0.763966s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.763966s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 3
+0.763966s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 4506
+0.763978s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.763978s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 4
+0.763978s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 6008
+0.767942s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.767942s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 4
+0.767942s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 5836
+0.767954s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.767954s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 5
+0.767954s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 7338
+0.767966s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.767966s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 6
+0.767966s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 8840
+0.767978s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.767978s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 7
+0.767978s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 10342
+0.77s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.77s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+0.77s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 42
+0.774s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.774s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 2
+0.774s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 84
+0.777s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.777s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 3
+0.777s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 126
+0.781s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.781s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+0.781s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 42
+0.784s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.784s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+0.784s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 42
+0.788s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.788s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+0.788s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 42
+0.792s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.792s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+0.792s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 42
+0.795s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.795s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 2
+0.795s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 84
+0.841942s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.841942s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+0.841942s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 1502
+0.841954s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.841954s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 2
+0.841954s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 3004
+0.841966s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.841966s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 3
+0.841966s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 4506
+0.841978s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.841978s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 4
+0.841978s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 6008
+0.84199s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.84199s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 5
+0.84199s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 7510
+0.842002s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.842002s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 6
+0.842002s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 8593
+0.845942s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.845942s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 6
+0.845942s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 8840
+0.845954s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.845954s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 7
+0.845954s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 10342
+0.848s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.848s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+0.848s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 42
+0.848942s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.848942s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 8
+0.848942s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 10587
+0.848954s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.848954s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 9
+0.848954s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 12089
+0.852s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.852s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 2
+0.852s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 84
+0.852942s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.852942s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 8
+0.852942s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 11919
+0.852954s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.852954s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 9
+0.852954s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 13421
+0.855s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.855s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 3
+0.855s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 126
+0.859s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.859s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+0.859s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 42
+0.859942s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.859942s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 8
+0.859942s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 11994
+0.859954s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.859954s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 9
+0.859954s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 13496
+0.859966s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.859966s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 10
+0.859966s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 14998
+0.859978s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.859978s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 11
+0.859978s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 16500
+0.862s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.862s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+0.862s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 42
+0.866s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.866s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+0.866s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 42
+0.87s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.87s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+0.87s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 42
+0.873s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.873s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 2
+0.873s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 84
+0.877s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.877s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+0.877s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 42
+0.88s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.88s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+0.88s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 42
+0.884s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.884s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+0.884s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 42
+0.888s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.888s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+0.888s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 42
+0.891s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.891s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 2
+0.891s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 84
+0.895s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.895s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+0.895s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 42
+0.898s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.898s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+0.898s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 42
+0.902s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.902s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+0.902s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 42
+0.919942s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.919942s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+0.919942s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 1502
+0.919954s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.919954s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 2
+0.919954s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 3004
+0.919966s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.919966s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 3
+0.919966s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 4506
+0.919978s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.919978s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 4
+0.919978s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 6008
+0.91999s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.91999s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 5
+0.91999s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 7510
+0.920002s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.920002s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 6
+0.920002s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 8593
+0.923942s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.923942s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 6
+0.923942s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 8840
+0.923954s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.923954s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 7
+0.923954s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 10342
+0.926s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.926s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+0.926s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 42
+0.926942s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.926942s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 8
+0.926942s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 10587
+0.926954s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.926954s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 9
+0.926954s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 12089
+0.93s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.93s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 2
+0.93s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 84
+0.930942s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.930942s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 8
+0.930942s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 11919
+0.930954s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.930954s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 9
+0.930954s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 13421
+0.933s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.933s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 3
+0.933s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 126
+0.937s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.937s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+0.937s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 42
+0.937942s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.937942s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 8
+0.937942s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 11994
+0.937954s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.937954s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 9
+0.937954s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 13496
+0.937966s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.937966s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 10
+0.937966s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 14998
+0.937978s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.937978s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 11
+0.937978s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 16500
+0.94s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.94s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+0.94s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 42
+0.941942s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.941942s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 11
+0.941942s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 16328
+0.941954s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.941954s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 12
+0.941954s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 17830
+0.944s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.944s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+0.944s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 42
+0.944942s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.944942s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 13
+0.944942s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 18075
+0.944954s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.944954s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 14
+0.944954s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 19577
+0.948s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.948s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+0.948s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 42
+0.948942s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.948942s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 13
+0.948942s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 19407
+0.948954s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.948954s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 14
+0.948954s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 20909
+0.951s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.951s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 2
+0.951s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 84
+0.955s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.955s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+0.955s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 42
+0.955942s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.955942s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 13
+0.955942s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 19482
+0.955954s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.955954s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 14
+0.955954s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 20984
+0.955966s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.955966s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 15
+0.955966s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 22486
+0.955978s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.955978s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 16
+0.955978s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 23988
+0.958s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.958s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+0.958s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 42
+0.959942s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.959942s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 16
+0.959942s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 23816
+0.959954s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.959954s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 17
+0.959954s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 25318
+0.962s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.962s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+0.962s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 42
+0.962942s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.962942s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 18
+0.962942s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 25563
+0.962954s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.962954s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 19
+0.962954s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 27065
+0.966s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.966s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+0.966s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 42
+0.966942s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.966942s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 18
+0.966942s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 26895
+0.966954s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.966954s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 19
+0.966954s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 28397
+0.969s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.969s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 2
+0.969s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 84
+0.973s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.973s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+0.973s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 42
+0.976s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.976s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+0.976s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 42
+0.98s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.98s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+0.98s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 42
+0.984s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.984s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+0.984s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 42
+0.987s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.987s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 2
+0.987s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 84
+0.991s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.991s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+0.991s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 42
+0.994s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.994s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+0.994s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 42
+0.997942s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.997942s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 12
+0.997942s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 16926
+0.997954s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.997954s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 13
+0.997954s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 18428
+0.997966s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.997966s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 14
+0.997966s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 19930
+0.997978s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.997978s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 15
+0.997978s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 21432
+0.99799s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.99799s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 16
+0.99799s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 22934
+0.998s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.998s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+0.998s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 42
+0.998002s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+0.998002s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 16
+0.998002s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 24019
+1.001s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.001s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.001s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 42
+1.00194s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.00194s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 17
+1.00194s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 24264
+1.00195s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.00195s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 18
+1.00195s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 25766
+1.00494s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.00494s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 18
+1.00494s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 26013
+1.00495s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.00495s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 19
+1.00495s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 27515
+1.005s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.005s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.005s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 42
+1.00894s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.00894s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 19
+1.00894s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 27343
+1.00895s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.00895s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 20
+1.00895s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 28845
+1.009s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.009s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.009s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 42
+1.012s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.012s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 2
+1.012s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 84
+1.01594s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.01594s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 19
+1.01594s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 27418
+1.01595s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.01595s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 20
+1.01595s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 28920
+1.01597s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.01597s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 21
+1.01597s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 30422
+1.01598s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.01598s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 22
+1.01598s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 31924
+1.016s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.016s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.016s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 42
+1.019s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.019s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.019s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 42
+1.019s 3 LteEnbRrc:GetNewSrsConfigurationIndex(): 0x1561350 SRS p 40 set 0
+1.019s 3 LteEnbRrc:AddUe(): 0x1561350 New UE RNTI 1 cellId 2 srs CI 37
+1.01994s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.01994s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 22
+1.01994s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 31752
+1.01995s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.01995s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 23
+1.01995s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 33254
+1.02294s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.02294s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 23
+1.02294s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 33501
+1.02295s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.02295s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 24
+1.02295s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 35003
+1.023s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.023s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.023s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 42
+1.02694s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.02694s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 24
+1.02694s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 34831
+1.02695s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.02695s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 25
+1.02695s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 36333
+1.027s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.027s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.027s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 42
+1.03s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.03s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 2
+1.03s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 84
+1.03394s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.03394s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 24
+1.03394s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 34906
+1.03395s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.03395s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 25
+1.03395s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 36408
+1.03397s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.03397s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 26
+1.03397s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 37910
+1.03398s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.03398s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 27
+1.03398s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 39412
+1.034s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.034s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.034s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 42
+1.037s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.037s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.037s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 42
+1.03794s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.03794s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 27
+1.03794s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 39240
+1.03795s 2 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.03795s 2 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 28
+1.03795s 2 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 40742
+1.038s 2 LteRlcAm:DoTransmitPdcpPdu(): txonBufferSize = 61
+1.038s 2 LteRlcAm:DoTransmitPdcpPdu(): packet size     = 61
+1.038s 2 EpcX2:DoSendSnStatusTransfer(): Send X2 message: SN STATUS TRANSFER
+1.038s 2 EpcX2:DoSendSnStatusTransfer(): oldEnbUeX2apId = 1
+1.038s 2 EpcX2:DoSendSnStatusTransfer(): newEnbUeX2apId = 1
+1.038s 2 EpcX2:DoSendSnStatusTransfer(): sourceCellId = 1
+1.038s 2 EpcX2:DoSendSnStatusTransfer(): targetCellId = 2
+1.038s 2 EpcX2:DoSendSnStatusTransfer(): erabsList size = 0
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): 0x15b3bf0 Copying txonBuffer from RLC UM 1
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): 0x15b3bf0 m_x2forw buffer size = 0
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): 0x15b3bf0 Copying txonBuffer from RLC UM 1
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): 0x15b3bf0 m_x2forw buffer size = 40325
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): 0x15b3bf0 Forwarding m_x2forwardingBuffer to target eNB, drbid = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): RlcSdu size = 1273
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): 0x15b3bf0 Forwarding m_x2forwardingBuffer to target eNB, drbid = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): RlcSdu size = 1502
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): removed pdcp header, size = 1500
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): removed tags, size = 1500
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): sourceCellId = 1
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): targetCellId = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): gtpTeid = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): ueData = 0x1604a10
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): ueData size = 1512
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): 0x15b3bf0 After forwarding: buffer size = 39054
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): 0x15b3bf0 Forwarding m_x2forwardingBuffer to target eNB, drbid = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): RlcSdu size = 1502
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): removed pdcp header, size = 1500
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): removed tags, size = 1500
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): sourceCellId = 1
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): targetCellId = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): gtpTeid = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): ueData = 0x15e11b0
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): ueData size = 1512
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): 0x15b3bf0 After forwarding: buffer size = 37542
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): 0x15b3bf0 Forwarding m_x2forwardingBuffer to target eNB, drbid = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): RlcSdu size = 1502
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): removed pdcp header, size = 1500
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): removed tags, size = 1500
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): sourceCellId = 1
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): targetCellId = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): gtpTeid = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): ueData = 0x15d02a0
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): ueData size = 1512
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): 0x15b3bf0 After forwarding: buffer size = 36030
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): 0x15b3bf0 Forwarding m_x2forwardingBuffer to target eNB, drbid = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): RlcSdu size = 1502
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): removed pdcp header, size = 1500
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): removed tags, size = 1500
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): sourceCellId = 1
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): targetCellId = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): gtpTeid = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): ueData = 0x14df660
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): ueData size = 1512
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): 0x15b3bf0 After forwarding: buffer size = 34518
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): 0x15b3bf0 Forwarding m_x2forwardingBuffer to target eNB, drbid = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): RlcSdu size = 1502
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): removed pdcp header, size = 1500
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): removed tags, size = 1500
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): sourceCellId = 1
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): targetCellId = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): gtpTeid = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): ueData = 0x1614bc0
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): ueData size = 1512
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): 0x15b3bf0 After forwarding: buffer size = 33006
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): 0x15b3bf0 Forwarding m_x2forwardingBuffer to target eNB, drbid = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): RlcSdu size = 1502
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): removed pdcp header, size = 1500
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): removed tags, size = 1500
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): sourceCellId = 1
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): targetCellId = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): gtpTeid = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): ueData = 0x15e1470
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): ueData size = 1512
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): 0x15b3bf0 After forwarding: buffer size = 31494
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): 0x15b3bf0 Forwarding m_x2forwardingBuffer to target eNB, drbid = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): RlcSdu size = 1502
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): removed pdcp header, size = 1500
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): removed tags, size = 1500
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): sourceCellId = 1
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): targetCellId = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): gtpTeid = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): ueData = 0x14e4030
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): ueData size = 1512
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): 0x15b3bf0 After forwarding: buffer size = 29982
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): 0x15b3bf0 Forwarding m_x2forwardingBuffer to target eNB, drbid = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): RlcSdu size = 1502
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): removed pdcp header, size = 1500
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): removed tags, size = 1500
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): sourceCellId = 1
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): targetCellId = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): gtpTeid = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): ueData = 0x15f82f0
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): ueData size = 1512
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): 0x15b3bf0 After forwarding: buffer size = 28470
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): 0x15b3bf0 Forwarding m_x2forwardingBuffer to target eNB, drbid = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): RlcSdu size = 1502
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): removed pdcp header, size = 1500
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): removed tags, size = 1500
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): sourceCellId = 1
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): targetCellId = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): gtpTeid = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): ueData = 0x15eac50
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): ueData size = 1512
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): 0x15b3bf0 After forwarding: buffer size = 26958
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): 0x15b3bf0 Forwarding m_x2forwardingBuffer to target eNB, drbid = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): RlcSdu size = 1502
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): removed pdcp header, size = 1500
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): removed tags, size = 1500
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): sourceCellId = 1
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): targetCellId = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): gtpTeid = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): ueData = 0x15d21f0
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): ueData size = 1512
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): 0x15b3bf0 After forwarding: buffer size = 25446
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): 0x15b3bf0 Forwarding m_x2forwardingBuffer to target eNB, drbid = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): RlcSdu size = 1502
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): removed pdcp header, size = 1500
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): removed tags, size = 1500
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): sourceCellId = 1
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): targetCellId = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): gtpTeid = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): ueData = 0x14d7180
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): ueData size = 1512
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): 0x15b3bf0 After forwarding: buffer size = 23934
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): 0x15b3bf0 Forwarding m_x2forwardingBuffer to target eNB, drbid = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): RlcSdu size = 1502
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): removed pdcp header, size = 1500
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): removed tags, size = 1500
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): sourceCellId = 1
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): targetCellId = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): gtpTeid = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): ueData = 0x14d5420
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): ueData size = 1512
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): 0x15b3bf0 After forwarding: buffer size = 22422
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): 0x15b3bf0 Forwarding m_x2forwardingBuffer to target eNB, drbid = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): RlcSdu size = 1502
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): removed pdcp header, size = 1500
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): removed tags, size = 1500
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): sourceCellId = 1
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): targetCellId = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): gtpTeid = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): ueData = 0x160f1a0
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): ueData size = 1512
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): 0x15b3bf0 After forwarding: buffer size = 20910
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): 0x15b3bf0 Forwarding m_x2forwardingBuffer to target eNB, drbid = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): RlcSdu size = 1502
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): removed pdcp header, size = 1500
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): removed tags, size = 1500
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): sourceCellId = 1
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): targetCellId = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): gtpTeid = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): ueData = 0x15f3d40
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): ueData size = 1512
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): 0x15b3bf0 After forwarding: buffer size = 19398
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): 0x15b3bf0 Forwarding m_x2forwardingBuffer to target eNB, drbid = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): RlcSdu size = 1502
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): removed pdcp header, size = 1500
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): removed tags, size = 1500
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): sourceCellId = 1
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): targetCellId = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): gtpTeid = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): ueData = 0x1604f80
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): ueData size = 1512
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): 0x15b3bf0 After forwarding: buffer size = 17886
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): 0x15b3bf0 Forwarding m_x2forwardingBuffer to target eNB, drbid = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): RlcSdu size = 1502
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): removed pdcp header, size = 1500
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): removed tags, size = 1500
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): sourceCellId = 1
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): targetCellId = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): gtpTeid = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): ueData = 0x16137a0
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): ueData size = 1512
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): 0x15b3bf0 After forwarding: buffer size = 16374
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): 0x15b3bf0 Forwarding m_x2forwardingBuffer to target eNB, drbid = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): RlcSdu size = 1502
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): removed pdcp header, size = 1500
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): removed tags, size = 1500
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): sourceCellId = 1
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): targetCellId = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): gtpTeid = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): ueData = 0x15d5ad0
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): ueData size = 1512
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): 0x15b3bf0 After forwarding: buffer size = 14862
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): 0x15b3bf0 Forwarding m_x2forwardingBuffer to target eNB, drbid = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): RlcSdu size = 1502
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): removed pdcp header, size = 1500
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): removed tags, size = 1500
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): sourceCellId = 1
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): targetCellId = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): gtpTeid = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): ueData = 0x15db2b0
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): ueData size = 1512
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): 0x15b3bf0 After forwarding: buffer size = 13350
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): 0x15b3bf0 Forwarding m_x2forwardingBuffer to target eNB, drbid = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): RlcSdu size = 1502
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): removed pdcp header, size = 1500
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): removed tags, size = 1500
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): sourceCellId = 1
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): targetCellId = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): gtpTeid = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): ueData = 0x15cf640
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): ueData size = 1512
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): 0x15b3bf0 After forwarding: buffer size = 11838
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): 0x15b3bf0 Forwarding m_x2forwardingBuffer to target eNB, drbid = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): RlcSdu size = 1502
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): removed pdcp header, size = 1500
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): removed tags, size = 1500
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): sourceCellId = 1
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): targetCellId = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): gtpTeid = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): ueData = 0x15f3fe0
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): ueData size = 1512
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): 0x15b3bf0 After forwarding: buffer size = 10326
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): 0x15b3bf0 Forwarding m_x2forwardingBuffer to target eNB, drbid = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): RlcSdu size = 1502
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): removed pdcp header, size = 1500
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): removed tags, size = 1500
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): sourceCellId = 1
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): targetCellId = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): gtpTeid = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): ueData = 0x15d76b0
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): ueData size = 1512
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): 0x15b3bf0 After forwarding: buffer size = 8814
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): 0x15b3bf0 Forwarding m_x2forwardingBuffer to target eNB, drbid = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): RlcSdu size = 1502
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): removed pdcp header, size = 1500
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): removed tags, size = 1500
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): sourceCellId = 1
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): targetCellId = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): gtpTeid = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): ueData = 0x15dfa80
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): ueData size = 1512
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): 0x15b3bf0 After forwarding: buffer size = 7302
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): 0x15b3bf0 Forwarding m_x2forwardingBuffer to target eNB, drbid = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): RlcSdu size = 1502
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): removed pdcp header, size = 1500
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): removed tags, size = 1500
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): sourceCellId = 1
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): targetCellId = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): gtpTeid = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): ueData = 0x15cfb10
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): ueData size = 1512
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): 0x15b3bf0 After forwarding: buffer size = 5790
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): 0x15b3bf0 Forwarding m_x2forwardingBuffer to target eNB, drbid = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): RlcSdu size = 1502
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): removed pdcp header, size = 1500
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): removed tags, size = 1500
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): sourceCellId = 1
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): targetCellId = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): gtpTeid = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): ueData = 0x1485f90
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): ueData size = 1512
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): 0x15b3bf0 After forwarding: buffer size = 4278
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): 0x15b3bf0 Forwarding m_x2forwardingBuffer to target eNB, drbid = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): RlcSdu size = 1502
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): removed pdcp header, size = 1500
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): removed tags, size = 1500
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): sourceCellId = 1
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): targetCellId = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): gtpTeid = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): ueData = 0x148df20
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): ueData size = 1512
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): 0x15b3bf0 After forwarding: buffer size = 2766
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): 0x15b3bf0 Forwarding m_x2forwardingBuffer to target eNB, drbid = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): RlcSdu size = 1502
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): removed pdcp header, size = 1500
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): removed tags, size = 1500
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): sourceCellId = 1
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): targetCellId = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): gtpTeid = 2
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): ueData = 0x15e5170
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): ueData size = 1512
+1.038s 2 LteEnbRrc:RecvHandoverRequestAck(): 0x15b3bf0 After forwarding: buffer size = 1254
+1.04094s 2 LteEnbRrc:SendData(): forwarding incomming pkts to target eNB over X2-U
+1.04094s 2 LteEnbRrc:SendData(): sourceCellId = 1
+1.04094s 2 LteEnbRrc:SendData(): targetCellId = 2
+1.04094s 2 LteEnbRrc:SendData(): gtpTeid = 2
+1.04094s 2 LteEnbRrc:SendData(): ueData = 0x160bf90
+1.04094s 2 LteEnbRrc:SendData(): ueData size = 1500
+1.04095s 2 LteEnbRrc:SendData(): forwarding incomming pkts to target eNB over X2-U
+1.04095s 2 LteEnbRrc:SendData(): sourceCellId = 1
+1.04095s 2 LteEnbRrc:SendData(): targetCellId = 2
+1.04095s 2 LteEnbRrc:SendData(): gtpTeid = 2
+1.04095s 2 LteEnbRrc:SendData(): ueData = 0x160df60
+1.04095s 2 LteEnbRrc:SendData(): ueData size = 1500
+1.041s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.041s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.041s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 42
+1.04494s 2 LteEnbRrc:SendData(): forwarding incomming pkts to target eNB over X2-U
+1.04494s 2 LteEnbRrc:SendData(): sourceCellId = 1
+1.04494s 2 LteEnbRrc:SendData(): targetCellId = 2
+1.04494s 2 LteEnbRrc:SendData(): gtpTeid = 2
+1.04494s 2 LteEnbRrc:SendData(): ueData = 0x160df60
+1.04494s 2 LteEnbRrc:SendData(): ueData size = 1500
+1.04495s 2 LteEnbRrc:SendData(): forwarding incomming pkts to target eNB over X2-U
+1.04495s 2 LteEnbRrc:SendData(): sourceCellId = 1
+1.04495s 2 LteEnbRrc:SendData(): targetCellId = 2
+1.04495s 2 LteEnbRrc:SendData(): gtpTeid = 2
+1.04495s 2 LteEnbRrc:SendData(): ueData = 0x1604a10
+1.04495s 2 LteEnbRrc:SendData(): ueData size = 1500
+1.04521s 4 LteRlcAm:DoTransmitPdcpPdu(): txonBufferSize = 3
+1.04521s 4 LteRlcAm:DoTransmitPdcpPdu(): packet size     = 3
+1.05194s 2 LteEnbRrc:SendData(): forwarding incomming pkts to target eNB over X2-U
+1.05194s 2 LteEnbRrc:SendData(): sourceCellId = 1
+1.05194s 2 LteEnbRrc:SendData(): targetCellId = 2
+1.05194s 2 LteEnbRrc:SendData(): gtpTeid = 2
+1.05194s 2 LteEnbRrc:SendData(): ueData = 0x1567bf0
+1.05194s 2 LteEnbRrc:SendData(): ueData size = 1500
+1.05195s 2 LteEnbRrc:SendData(): forwarding incomming pkts to target eNB over X2-U
+1.05195s 2 LteEnbRrc:SendData(): sourceCellId = 1
+1.05195s 2 LteEnbRrc:SendData(): targetCellId = 2
+1.05195s 2 LteEnbRrc:SendData(): gtpTeid = 2
+1.05195s 2 LteEnbRrc:SendData(): ueData = 0x161bc60
+1.05195s 2 LteEnbRrc:SendData(): ueData size = 1500
+1.05197s 2 LteEnbRrc:SendData(): forwarding incomming pkts to target eNB over X2-U
+1.05197s 2 LteEnbRrc:SendData(): sourceCellId = 1
+1.05197s 2 LteEnbRrc:SendData(): targetCellId = 2
+1.05197s 2 LteEnbRrc:SendData(): gtpTeid = 2
+1.05197s 2 LteEnbRrc:SendData(): ueData = 0x15fb1b0
+1.05197s 2 LteEnbRrc:SendData(): ueData size = 1500
+1.05197s 2 LteEnbRrc:SendData(): forwarding incomming pkts to target eNB over X2-U
+1.05197s 2 LteEnbRrc:SendData(): sourceCellId = 1
+1.05197s 2 LteEnbRrc:SendData(): targetCellId = 2
+1.05197s 2 LteEnbRrc:SendData(): gtpTeid = 2
+1.05197s 2 LteEnbRrc:SendData(): ueData = 0x15f7200
+1.05197s 2 LteEnbRrc:SendData(): ueData size = 280
+1.05594s 2 LteEnbRrc:SendData(): forwarding incomming pkts to target eNB over X2-U
+1.05594s 2 LteEnbRrc:SendData(): sourceCellId = 1
+1.05594s 2 LteEnbRrc:SendData(): targetCellId = 2
+1.05594s 2 LteEnbRrc:SendData(): gtpTeid = 2
+1.05594s 2 LteEnbRrc:SendData(): ueData = 0x14e54a0
+1.05594s 2 LteEnbRrc:SendData(): ueData size = 1500
+1.05595s 2 LteEnbRrc:SendData(): forwarding incomming pkts to target eNB over X2-U
+1.05595s 2 LteEnbRrc:SendData(): sourceCellId = 1
+1.05595s 2 LteEnbRrc:SendData(): targetCellId = 2
+1.05595s 2 LteEnbRrc:SendData(): gtpTeid = 2
+1.05595s 2 LteEnbRrc:SendData(): ueData = 0x14c0bc0
+1.05595s 2 LteEnbRrc:SendData(): ueData size = 1500
+1.057s 3 EpcX2:RecvFromX2cSocket(): X2 SnStatusTransfer header: OldEnbUeX2apId = 1 NewEnbUeX2apId = 1 ErabsSubjectToStatusTransferList size = 0
+1.057s 3 EpcX2:RecvFromX2cSocket(): oldEnbUeX2apId = 1
+1.057s 3 EpcX2:RecvFromX2cSocket(): newEnbUeX2apId = 1
+1.057s 3 EpcX2:RecvFromX2cSocket(): sourceCellId = 1
+1.057s 3 EpcX2:RecvFromX2cSocket(): targetCellId = 2
+1.057s 3 EpcX2:RecvFromX2cSocket(): erabsList size = 0
+1.057s 3 LteEnbRrc:DoRecvSnStatusTransfer(): Recv X2 message: SN STATUS TRANSFER
+1.057s 3 LteEnbRrc:DoRecvSnStatusTransfer(): oldEnbUeX2apId = 1
+1.057s 3 LteEnbRrc:DoRecvSnStatusTransfer(): newEnbUeX2apId = 1
+1.057s 3 LteEnbRrc:DoRecvSnStatusTransfer(): erabsSubjectToStatusTransferList size = 0
+1.057s 3 LteEnbRrc:RecvSnStatusTransfer(): 0x15feee0
+1.057s 3 LteEnbRrc:DoRecvUeData(): Recv UE DATA FORWARDING through X2 interface
+1.057s 3 LteEnbRrc:DoRecvUeData(): sourceCellId = 1
+1.057s 3 LteEnbRrc:DoRecvUeData(): targetCellId = 2
+1.057s 3 LteEnbRrc:DoRecvUeData(): gtpTeid = 2
+1.057s 3 LteEnbRrc:DoRecvUeData(): ueData = 0x15cf1e0
+1.057s 3 LteEnbRrc:DoRecvUeData(): ueData size = 1500
+1.057s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.057s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.057s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 1502
+1.057s 3 LteEnbRrc:DoRecvUeData(): Recv UE DATA FORWARDING through X2 interface
+1.057s 3 LteEnbRrc:DoRecvUeData(): sourceCellId = 1
+1.057s 3 LteEnbRrc:DoRecvUeData(): targetCellId = 2
+1.057s 3 LteEnbRrc:DoRecvUeData(): gtpTeid = 2
+1.057s 3 LteEnbRrc:DoRecvUeData(): ueData = 0x15c2160
+1.057s 3 LteEnbRrc:DoRecvUeData(): ueData size = 1500
+1.057s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.057s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 2
+1.057s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 3004
+1.057s 3 LteEnbRrc:DoRecvUeData(): Recv UE DATA FORWARDING through X2 interface
+1.057s 3 LteEnbRrc:DoRecvUeData(): sourceCellId = 1
+1.057s 3 LteEnbRrc:DoRecvUeData(): targetCellId = 2
+1.057s 3 LteEnbRrc:DoRecvUeData(): gtpTeid = 2
+1.057s 3 LteEnbRrc:DoRecvUeData(): ueData = 0x14e1220
+1.057s 3 LteEnbRrc:DoRecvUeData(): ueData size = 1500
+1.057s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.057s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 3
+1.057s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 4506
+1.05701s 3 LteEnbRrc:DoRecvUeData(): Recv UE DATA FORWARDING through X2 interface
+1.05701s 3 LteEnbRrc:DoRecvUeData(): sourceCellId = 1
+1.05701s 3 LteEnbRrc:DoRecvUeData(): targetCellId = 2
+1.05701s 3 LteEnbRrc:DoRecvUeData(): gtpTeid = 2
+1.05701s 3 LteEnbRrc:DoRecvUeData(): ueData = 0x159fd10
+1.05701s 3 LteEnbRrc:DoRecvUeData(): ueData size = 1500
+1.05701s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.05701s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 4
+1.05701s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 6008
+1.05701s 3 LteEnbRrc:DoRecvUeData(): Recv UE DATA FORWARDING through X2 interface
+1.05701s 3 LteEnbRrc:DoRecvUeData(): sourceCellId = 1
+1.05701s 3 LteEnbRrc:DoRecvUeData(): targetCellId = 2
+1.05701s 3 LteEnbRrc:DoRecvUeData(): gtpTeid = 2
+1.05701s 3 LteEnbRrc:DoRecvUeData(): ueData = 0x15f6f00
+1.05701s 3 LteEnbRrc:DoRecvUeData(): ueData size = 1500
+1.05701s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.05701s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 5
+1.05701s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 7510
+1.05701s 3 LteEnbRrc:DoRecvUeData(): Recv UE DATA FORWARDING through X2 interface
+1.05701s 3 LteEnbRrc:DoRecvUeData(): sourceCellId = 1
+1.05701s 3 LteEnbRrc:DoRecvUeData(): targetCellId = 2
+1.05701s 3 LteEnbRrc:DoRecvUeData(): gtpTeid = 2
+1.05701s 3 LteEnbRrc:DoRecvUeData(): ueData = 0x14d5920
+1.05701s 3 LteEnbRrc:DoRecvUeData(): ueData size = 1500
+1.05701s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.05701s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 6
+1.05701s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 9012
+1.05701s 3 LteEnbRrc:DoRecvUeData(): Recv UE DATA FORWARDING through X2 interface
+1.05701s 3 LteEnbRrc:DoRecvUeData(): sourceCellId = 1
+1.05701s 3 LteEnbRrc:DoRecvUeData(): targetCellId = 2
+1.05701s 3 LteEnbRrc:DoRecvUeData(): gtpTeid = 2
+1.05701s 3 LteEnbRrc:DoRecvUeData(): ueData = 0x15c1c90
+1.05701s 3 LteEnbRrc:DoRecvUeData(): ueData size = 1500
+1.05701s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.05701s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 7
+1.05701s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 10514
+1.05701s 3 LteEnbRrc:DoRecvUeData(): Recv UE DATA FORWARDING through X2 interface
+1.05701s 3 LteEnbRrc:DoRecvUeData(): sourceCellId = 1
+1.05701s 3 LteEnbRrc:DoRecvUeData(): targetCellId = 2
+1.05701s 3 LteEnbRrc:DoRecvUeData(): gtpTeid = 2
+1.05701s 3 LteEnbRrc:DoRecvUeData(): ueData = 0x1478260
+1.05701s 3 LteEnbRrc:DoRecvUeData(): ueData size = 1500
+1.05701s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.05701s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 8
+1.05701s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 12016
+1.05701s 3 LteEnbRrc:DoRecvUeData(): Recv UE DATA FORWARDING through X2 interface
+1.05701s 3 LteEnbRrc:DoRecvUeData(): sourceCellId = 1
+1.05701s 3 LteEnbRrc:DoRecvUeData(): targetCellId = 2
+1.05701s 3 LteEnbRrc:DoRecvUeData(): gtpTeid = 2
+1.05701s 3 LteEnbRrc:DoRecvUeData(): ueData = 0x155eda0
+1.05701s 3 LteEnbRrc:DoRecvUeData(): ueData size = 1500
+1.05701s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.05701s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 9
+1.05701s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 13518
+1.05701s 3 LteEnbRrc:DoRecvUeData(): Recv UE DATA FORWARDING through X2 interface
+1.05701s 3 LteEnbRrc:DoRecvUeData(): sourceCellId = 1
+1.05701s 3 LteEnbRrc:DoRecvUeData(): targetCellId = 2
+1.05701s 3 LteEnbRrc:DoRecvUeData(): gtpTeid = 2
+1.05701s 3 LteEnbRrc:DoRecvUeData(): ueData = 0x1489190
+1.05701s 3 LteEnbRrc:DoRecvUeData(): ueData size = 1500
+1.05701s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.05701s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 10
+1.05701s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 15020
+1.05701s 3 LteEnbRrc:DoRecvUeData(): Recv UE DATA FORWARDING through X2 interface
+1.05701s 3 LteEnbRrc:DoRecvUeData(): sourceCellId = 1
+1.05701s 3 LteEnbRrc:DoRecvUeData(): targetCellId = 2
+1.05701s 3 LteEnbRrc:DoRecvUeData(): gtpTeid = 2
+1.05701s 3 LteEnbRrc:DoRecvUeData(): ueData = 0x14cc810
+1.05701s 3 LteEnbRrc:DoRecvUeData(): ueData size = 1500
+1.05701s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.05701s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 11
+1.05701s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 16522
+1.05702s 3 LteEnbRrc:DoRecvUeData(): Recv UE DATA FORWARDING through X2 interface
+1.05702s 3 LteEnbRrc:DoRecvUeData(): sourceCellId = 1
+1.05702s 3 LteEnbRrc:DoRecvUeData(): targetCellId = 2
+1.05702s 3 LteEnbRrc:DoRecvUeData(): gtpTeid = 2
+1.05702s 3 LteEnbRrc:DoRecvUeData(): ueData = 0x1488770
+1.05702s 3 LteEnbRrc:DoRecvUeData(): ueData size = 1500
+1.05702s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.05702s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 12
+1.05702s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 18024
+1.05702s 3 LteEnbRrc:DoRecvUeData(): Recv UE DATA FORWARDING through X2 interface
+1.05702s 3 LteEnbRrc:DoRecvUeData(): sourceCellId = 1
+1.05702s 3 LteEnbRrc:DoRecvUeData(): targetCellId = 2
+1.05702s 3 LteEnbRrc:DoRecvUeData(): gtpTeid = 2
+1.05702s 3 LteEnbRrc:DoRecvUeData(): ueData = 0x1482ae0
+1.05702s 3 LteEnbRrc:DoRecvUeData(): ueData size = 1500
+1.05702s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.05702s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 13
+1.05702s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 19526
+1.05702s 3 LteEnbRrc:DoRecvUeData(): Recv UE DATA FORWARDING through X2 interface
+1.05702s 3 LteEnbRrc:DoRecvUeData(): sourceCellId = 1
+1.05702s 3 LteEnbRrc:DoRecvUeData(): targetCellId = 2
+1.05702s 3 LteEnbRrc:DoRecvUeData(): gtpTeid = 2
+1.05702s 3 LteEnbRrc:DoRecvUeData(): ueData = 0x14e54a0
+1.05702s 3 LteEnbRrc:DoRecvUeData(): ueData size = 1500
+1.05702s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.05702s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 14
+1.05702s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 21028
+1.05702s 3 LteEnbRrc:DoRecvUeData(): Recv UE DATA FORWARDING through X2 interface
+1.05702s 3 LteEnbRrc:DoRecvUeData(): sourceCellId = 1
+1.05702s 3 LteEnbRrc:DoRecvUeData(): targetCellId = 2
+1.05702s 3 LteEnbRrc:DoRecvUeData(): gtpTeid = 2
+1.05702s 3 LteEnbRrc:DoRecvUeData(): ueData = 0x15e11b0
+1.05702s 3 LteEnbRrc:DoRecvUeData(): ueData size = 1500
+1.05702s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.05702s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 15
+1.05702s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 22530
+1.05702s 3 LteEnbRrc:DoRecvUeData(): Recv UE DATA FORWARDING through X2 interface
+1.05702s 3 LteEnbRrc:DoRecvUeData(): sourceCellId = 1
+1.05702s 3 LteEnbRrc:DoRecvUeData(): targetCellId = 2
+1.05702s 3 LteEnbRrc:DoRecvUeData(): gtpTeid = 2
+1.05702s 3 LteEnbRrc:DoRecvUeData(): ueData = 0x14e6530
+1.05702s 3 LteEnbRrc:DoRecvUeData(): ueData size = 1500
+1.05702s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.05702s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 16
+1.05702s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 24032
+1.05702s 3 LteEnbRrc:DoRecvUeData(): Recv UE DATA FORWARDING through X2 interface
+1.05702s 3 LteEnbRrc:DoRecvUeData(): sourceCellId = 1
+1.05702s 3 LteEnbRrc:DoRecvUeData(): targetCellId = 2
+1.05702s 3 LteEnbRrc:DoRecvUeData(): gtpTeid = 2
+1.05702s 3 LteEnbRrc:DoRecvUeData(): ueData = 0x14cd8d0
+1.05702s 3 LteEnbRrc:DoRecvUeData(): ueData size = 1500
+1.05702s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.05702s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 17
+1.05702s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 25534
+1.05702s 3 LteEnbRrc:DoRecvUeData(): Recv UE DATA FORWARDING through X2 interface
+1.05702s 3 LteEnbRrc:DoRecvUeData(): sourceCellId = 1
+1.05702s 3 LteEnbRrc:DoRecvUeData(): targetCellId = 2
+1.05702s 3 LteEnbRrc:DoRecvUeData(): gtpTeid = 2
+1.05702s 3 LteEnbRrc:DoRecvUeData(): ueData = 0x14b8d30
+1.05702s 3 LteEnbRrc:DoRecvUeData(): ueData size = 1500
+1.05702s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.05702s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 18
+1.05702s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 27036
+1.05702s 3 LteEnbRrc:DoRecvUeData(): Recv UE DATA FORWARDING through X2 interface
+1.05702s 3 LteEnbRrc:DoRecvUeData(): sourceCellId = 1
+1.05702s 3 LteEnbRrc:DoRecvUeData(): targetCellId = 2
+1.05702s 3 LteEnbRrc:DoRecvUeData(): gtpTeid = 2
+1.05702s 3 LteEnbRrc:DoRecvUeData(): ueData = 0x1489480
+1.05702s 3 LteEnbRrc:DoRecvUeData(): ueData size = 1500
+1.05702s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.05702s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 19
+1.05702s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 28538
+1.05703s 3 LteEnbRrc:DoRecvUeData(): Recv UE DATA FORWARDING through X2 interface
+1.05703s 3 LteEnbRrc:DoRecvUeData(): sourceCellId = 1
+1.05703s 3 LteEnbRrc:DoRecvUeData(): targetCellId = 2
+1.05703s 3 LteEnbRrc:DoRecvUeData(): gtpTeid = 2
+1.05703s 3 LteEnbRrc:DoRecvUeData(): ueData = 0x1488a40
+1.05703s 3 LteEnbRrc:DoRecvUeData(): ueData size = 1500
+1.05703s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.05703s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 20
+1.05703s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 30040
+1.05703s 3 LteEnbRrc:DoRecvUeData(): Recv UE DATA FORWARDING through X2 interface
+1.05703s 3 LteEnbRrc:DoRecvUeData(): sourceCellId = 1
+1.05703s 3 LteEnbRrc:DoRecvUeData(): targetCellId = 2
+1.05703s 3 LteEnbRrc:DoRecvUeData(): gtpTeid = 2
+1.05703s 3 LteEnbRrc:DoRecvUeData(): ueData = 0x15cc820
+1.05703s 3 LteEnbRrc:DoRecvUeData(): ueData size = 1500
+1.05703s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.05703s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 21
+1.05703s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 31542
+1.05703s 3 LteEnbRrc:DoRecvUeData(): Recv UE DATA FORWARDING through X2 interface
+1.05703s 3 LteEnbRrc:DoRecvUeData(): sourceCellId = 1
+1.05703s 3 LteEnbRrc:DoRecvUeData(): targetCellId = 2
+1.05703s 3 LteEnbRrc:DoRecvUeData(): gtpTeid = 2
+1.05703s 3 LteEnbRrc:DoRecvUeData(): ueData = 0x14e5ce0
+1.05703s 3 LteEnbRrc:DoRecvUeData(): ueData size = 1500
+1.05703s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.05703s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 22
+1.05703s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 33044
+1.05703s 3 LteEnbRrc:DoRecvUeData(): Recv UE DATA FORWARDING through X2 interface
+1.05703s 3 LteEnbRrc:DoRecvUeData(): sourceCellId = 1
+1.05703s 3 LteEnbRrc:DoRecvUeData(): targetCellId = 2
+1.05703s 3 LteEnbRrc:DoRecvUeData(): gtpTeid = 2
+1.05703s 3 LteEnbRrc:DoRecvUeData(): ueData = 0x14ec140
+1.05703s 3 LteEnbRrc:DoRecvUeData(): ueData size = 1500
+1.05703s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.05703s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 23
+1.05703s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 34546
+1.05703s 3 LteEnbRrc:DoRecvUeData(): Recv UE DATA FORWARDING through X2 interface
+1.05703s 3 LteEnbRrc:DoRecvUeData(): sourceCellId = 1
+1.05703s 3 LteEnbRrc:DoRecvUeData(): targetCellId = 2
+1.05703s 3 LteEnbRrc:DoRecvUeData(): gtpTeid = 2
+1.05703s 3 LteEnbRrc:DoRecvUeData(): ueData = 0x1460d90
+1.05703s 3 LteEnbRrc:DoRecvUeData(): ueData size = 1500
+1.05703s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.05703s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 24
+1.05703s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 36048
+1.05703s 3 LteEnbRrc:DoRecvUeData(): Recv UE DATA FORWARDING through X2 interface
+1.05703s 3 LteEnbRrc:DoRecvUeData(): sourceCellId = 1
+1.05703s 3 LteEnbRrc:DoRecvUeData(): targetCellId = 2
+1.05703s 3 LteEnbRrc:DoRecvUeData(): gtpTeid = 2
+1.05703s 3 LteEnbRrc:DoRecvUeData(): ueData = 0x147f270
+1.05703s 3 LteEnbRrc:DoRecvUeData(): ueData size = 1500
+1.05703s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.05703s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 25
+1.05703s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 37550
+1.05703s 3 LteEnbRrc:DoRecvUeData(): Recv UE DATA FORWARDING through X2 interface
+1.05703s 3 LteEnbRrc:DoRecvUeData(): sourceCellId = 1
+1.05703s 3 LteEnbRrc:DoRecvUeData(): targetCellId = 2
+1.05703s 3 LteEnbRrc:DoRecvUeData(): gtpTeid = 2
+1.05703s 3 LteEnbRrc:DoRecvUeData(): ueData = 0x14cd270
+1.05703s 3 LteEnbRrc:DoRecvUeData(): ueData size = 1500
+1.05703s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.05703s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 26
+1.05703s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 39052
+1.05793s 3 LteRlcAm:DoTransmitPdcpPdu(): txonBufferSize = 42
+1.05793s 3 LteRlcAm:DoTransmitPdcpPdu(): packet size     = 42
+1.05894s 2 LteEnbRrc:SendData(): forwarding incomming pkts to target eNB over X2-U
+1.05894s 2 LteEnbRrc:SendData(): sourceCellId = 1
+1.05894s 2 LteEnbRrc:SendData(): targetCellId = 2
+1.05894s 2 LteEnbRrc:SendData(): gtpTeid = 2
+1.05894s 2 LteEnbRrc:SendData(): ueData = 0x15cad10
+1.05894s 2 LteEnbRrc:SendData(): ueData size = 1500
+1.05895s 2 LteEnbRrc:SendData(): forwarding incomming pkts to target eNB over X2-U
+1.05895s 2 LteEnbRrc:SendData(): sourceCellId = 1
+1.05895s 2 LteEnbRrc:SendData(): targetCellId = 2
+1.05895s 2 LteEnbRrc:SendData(): gtpTeid = 2
+1.05895s 2 LteEnbRrc:SendData(): ueData = 0x15d38c0
+1.05895s 2 LteEnbRrc:SendData(): ueData size = 1500
+1.05994s 3 LteEnbRrc:DoRecvUeData(): Recv UE DATA FORWARDING through X2 interface
+1.05994s 3 LteEnbRrc:DoRecvUeData(): sourceCellId = 1
+1.05994s 3 LteEnbRrc:DoRecvUeData(): targetCellId = 2
+1.05994s 3 LteEnbRrc:DoRecvUeData(): gtpTeid = 2
+1.05994s 3 LteEnbRrc:DoRecvUeData(): ueData = 0x15c1d90
+1.05994s 3 LteEnbRrc:DoRecvUeData(): ueData size = 1500
+1.05994s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.05994s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 27
+1.05994s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 40426
+1.05996s 3 LteEnbRrc:DoRecvUeData(): Recv UE DATA FORWARDING through X2 interface
+1.05996s 3 LteEnbRrc:DoRecvUeData(): sourceCellId = 1
+1.05996s 3 LteEnbRrc:DoRecvUeData(): targetCellId = 2
+1.05996s 3 LteEnbRrc:DoRecvUeData(): gtpTeid = 2
+1.05996s 3 LteEnbRrc:DoRecvUeData(): ueData = 0x15c1b20
+1.05996s 3 LteEnbRrc:DoRecvUeData(): ueData size = 1500
+1.05996s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.05996s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 28
+1.05996s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 41928
+1.062s 4 LteRlcAm:DoTransmitPdcpPdu(): txonBufferSize = 3
+1.062s 4 LteRlcAm:DoTransmitPdcpPdu(): packet size     = 3
+1.06294s 2 LteEnbRrc:SendData(): forwarding incomming pkts to target eNB over X2-U
+1.06294s 2 LteEnbRrc:SendData(): sourceCellId = 1
+1.06294s 2 LteEnbRrc:SendData(): targetCellId = 2
+1.06294s 2 LteEnbRrc:SendData(): gtpTeid = 2
+1.06294s 2 LteEnbRrc:SendData(): ueData = 0x15f5bd0
+1.06294s 2 LteEnbRrc:SendData(): ueData size = 1500
+1.06295s 2 LteEnbRrc:SendData(): forwarding incomming pkts to target eNB over X2-U
+1.06295s 2 LteEnbRrc:SendData(): sourceCellId = 1
+1.06295s 2 LteEnbRrc:SendData(): targetCellId = 2
+1.06295s 2 LteEnbRrc:SendData(): gtpTeid = 2
+1.06295s 2 LteEnbRrc:SendData(): ueData = 0x14df660
+1.06295s 2 LteEnbRrc:SendData(): ueData size = 1500
+1.06394s 3 LteEnbRrc:DoRecvUeData(): Recv UE DATA FORWARDING through X2 interface
+1.06394s 3 LteEnbRrc:DoRecvUeData(): sourceCellId = 1
+1.06394s 3 LteEnbRrc:DoRecvUeData(): targetCellId = 2
+1.06394s 3 LteEnbRrc:DoRecvUeData(): gtpTeid = 2
+1.06394s 3 LteEnbRrc:DoRecvUeData(): ueData = 0x15f8c80
+1.06394s 3 LteEnbRrc:DoRecvUeData(): ueData size = 1500
+1.06394s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.06394s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 29
+1.06394s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 42906
+1.06396s 3 LteEnbRrc:DoRecvUeData(): Recv UE DATA FORWARDING through X2 interface
+1.06396s 3 LteEnbRrc:DoRecvUeData(): sourceCellId = 1
+1.06396s 3 LteEnbRrc:DoRecvUeData(): targetCellId = 2
+1.06396s 3 LteEnbRrc:DoRecvUeData(): gtpTeid = 2
+1.06396s 3 LteEnbRrc:DoRecvUeData(): ueData = 0x15b4cf0
+1.06396s 3 LteEnbRrc:DoRecvUeData(): ueData size = 1500
+1.06396s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.06396s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 30
+1.06396s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 44408
+1.06594s 2 LteEnbRrc:SendData(): forwarding incomming pkts to target eNB over X2-U
+1.06594s 2 LteEnbRrc:SendData(): sourceCellId = 1
+1.06594s 2 LteEnbRrc:SendData(): targetCellId = 2
+1.06594s 2 LteEnbRrc:SendData(): gtpTeid = 2
+1.06594s 2 LteEnbRrc:SendData(): ueData = 0x15ca440
+1.06594s 2 LteEnbRrc:SendData(): ueData size = 1500
+1.06595s 2 LteEnbRrc:SendData(): forwarding incomming pkts to target eNB over X2-U
+1.06595s 2 LteEnbRrc:SendData(): sourceCellId = 1
+1.06595s 2 LteEnbRrc:SendData(): targetCellId = 2
+1.06595s 2 LteEnbRrc:SendData(): gtpTeid = 2
+1.06595s 2 LteEnbRrc:SendData(): ueData = 0x15fb450
+1.06595s 2 LteEnbRrc:SendData(): ueData size = 1500
+1.06994s 2 LteEnbRrc:SendData(): forwarding incomming pkts to target eNB over X2-U
+1.06994s 2 LteEnbRrc:SendData(): sourceCellId = 1
+1.06994s 2 LteEnbRrc:SendData(): targetCellId = 2
+1.06994s 2 LteEnbRrc:SendData(): gtpTeid = 2
+1.06994s 2 LteEnbRrc:SendData(): ueData = 0x14de550
+1.06994s 2 LteEnbRrc:SendData(): ueData size = 1500
+1.06995s 2 LteEnbRrc:SendData(): forwarding incomming pkts to target eNB over X2-U
+1.06995s 2 LteEnbRrc:SendData(): sourceCellId = 1
+1.06995s 2 LteEnbRrc:SendData(): targetCellId = 2
+1.06995s 2 LteEnbRrc:SendData(): gtpTeid = 2
+1.06995s 2 LteEnbRrc:SendData(): ueData = 0x155e280
+1.06995s 2 LteEnbRrc:SendData(): ueData size = 1500
+1.07094s 3 LteEnbRrc:DoRecvUeData(): Recv UE DATA FORWARDING through X2 interface
+1.07094s 3 LteEnbRrc:DoRecvUeData(): sourceCellId = 1
+1.07094s 3 LteEnbRrc:DoRecvUeData(): targetCellId = 2
+1.07094s 3 LteEnbRrc:DoRecvUeData(): gtpTeid = 2
+1.07094s 3 LteEnbRrc:DoRecvUeData(): ueData = 0x15b4c50
+1.07094s 3 LteEnbRrc:DoRecvUeData(): ueData size = 1500
+1.07094s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.07094s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 30
+1.07094s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 44995
+1.07096s 3 LteEnbRrc:DoRecvUeData(): Recv UE DATA FORWARDING through X2 interface
+1.07096s 3 LteEnbRrc:DoRecvUeData(): sourceCellId = 1
+1.07096s 3 LteEnbRrc:DoRecvUeData(): targetCellId = 2
+1.07096s 3 LteEnbRrc:DoRecvUeData(): gtpTeid = 2
+1.07096s 3 LteEnbRrc:DoRecvUeData(): ueData = 0x15d4330
+1.07096s 3 LteEnbRrc:DoRecvUeData(): ueData size = 1500
+1.07096s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.07096s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 31
+1.07096s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 46497
+1.07097s 3 LteEnbRrc:DoRecvUeData(): Recv UE DATA FORWARDING through X2 interface
+1.07097s 3 LteEnbRrc:DoRecvUeData(): sourceCellId = 1
+1.07097s 3 LteEnbRrc:DoRecvUeData(): targetCellId = 2
+1.07097s 3 LteEnbRrc:DoRecvUeData(): gtpTeid = 2
+1.07097s 3 LteEnbRrc:DoRecvUeData(): ueData = 0x17c1640
+1.07097s 3 LteEnbRrc:DoRecvUeData(): ueData size = 1500
+1.07097s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.07097s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 32
+1.07097s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 47999
+1.07097s 3 LteEnbRrc:DoRecvUeData(): Recv UE DATA FORWARDING through X2 interface
+1.07097s 3 LteEnbRrc:DoRecvUeData(): sourceCellId = 1
+1.07097s 3 LteEnbRrc:DoRecvUeData(): targetCellId = 2
+1.07097s 3 LteEnbRrc:DoRecvUeData(): gtpTeid = 2
+1.07097s 3 LteEnbRrc:DoRecvUeData(): ueData = 0x15ca4b0
+1.07097s 3 LteEnbRrc:DoRecvUeData(): ueData size = 280
+1.07097s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.07097s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 33
+1.07097s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 48281
+1.073s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.073s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.073s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 54
+1.07494s 3 LteEnbRrc:DoRecvUeData(): Recv UE DATA FORWARDING through X2 interface
+1.07494s 3 LteEnbRrc:DoRecvUeData(): sourceCellId = 1
+1.07494s 3 LteEnbRrc:DoRecvUeData(): targetCellId = 2
+1.07494s 3 LteEnbRrc:DoRecvUeData(): gtpTeid = 2
+1.07494s 3 LteEnbRrc:DoRecvUeData(): ueData = 0x15b3a70
+1.07494s 3 LteEnbRrc:DoRecvUeData(): ueData size = 1500
+1.07494s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.07494s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 34
+1.07494s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 49326
+1.07496s 3 LteEnbRrc:DoRecvUeData(): Recv UE DATA FORWARDING through X2 interface
+1.07496s 3 LteEnbRrc:DoRecvUeData(): sourceCellId = 1
+1.07496s 3 LteEnbRrc:DoRecvUeData(): targetCellId = 2
+1.07496s 3 LteEnbRrc:DoRecvUeData(): gtpTeid = 2
+1.07496s 3 LteEnbRrc:DoRecvUeData(): ueData = 0x17e9c20
+1.07496s 3 LteEnbRrc:DoRecvUeData(): ueData size = 1500
+1.07496s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.07496s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 35
+1.07496s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 50828
+1.07694s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.07694s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 36
+1.07694s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 52068
+1.07695s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.07695s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 37
+1.07695s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 53570
+1.07697s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.07697s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 38
+1.07697s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 55072
+1.07698s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.07698s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 39
+1.07698s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 56574
+1.07794s 3 LteEnbRrc:DoRecvUeData(): Recv UE DATA FORWARDING through X2 interface
+1.07794s 3 LteEnbRrc:DoRecvUeData(): sourceCellId = 1
+1.07794s 3 LteEnbRrc:DoRecvUeData(): targetCellId = 2
+1.07794s 3 LteEnbRrc:DoRecvUeData(): gtpTeid = 2
+1.07794s 3 LteEnbRrc:DoRecvUeData(): ueData = 0x16137a0
+1.07794s 3 LteEnbRrc:DoRecvUeData(): ueData size = 1500
+1.07794s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.07794s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 40
+1.07794s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 57945
+1.07796s 3 LteEnbRrc:DoRecvUeData(): Recv UE DATA FORWARDING through X2 interface
+1.07796s 3 LteEnbRrc:DoRecvUeData(): sourceCellId = 1
+1.07796s 3 LteEnbRrc:DoRecvUeData(): targetCellId = 2
+1.07796s 3 LteEnbRrc:DoRecvUeData(): gtpTeid = 2
+1.07796s 3 LteEnbRrc:DoRecvUeData(): ueData = 0x15db2b0
+1.07796s 3 LteEnbRrc:DoRecvUeData(): ueData size = 1500
+1.07796s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.07796s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 41
+1.07796s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 59447
+1.08094s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.08094s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 42
+1.08094s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 60556
+1.08095s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.08095s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 43
+1.08095s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 62058
+1.08194s 3 LteEnbRrc:DoRecvUeData(): Recv UE DATA FORWARDING through X2 interface
+1.08194s 3 LteEnbRrc:DoRecvUeData(): sourceCellId = 1
+1.08194s 3 LteEnbRrc:DoRecvUeData(): targetCellId = 2
+1.08194s 3 LteEnbRrc:DoRecvUeData(): gtpTeid = 2
+1.08194s 3 LteEnbRrc:DoRecvUeData(): ueData = 0x14d6f90
+1.08194s 3 LteEnbRrc:DoRecvUeData(): ueData size = 1500
+1.08194s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.08194s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 44
+1.08194s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 63429
+1.08196s 3 LteEnbRrc:DoRecvUeData(): Recv UE DATA FORWARDING through X2 interface
+1.08196s 3 LteEnbRrc:DoRecvUeData(): sourceCellId = 1
+1.08196s 3 LteEnbRrc:DoRecvUeData(): targetCellId = 2
+1.08196s 3 LteEnbRrc:DoRecvUeData(): gtpTeid = 2
+1.08196s 3 LteEnbRrc:DoRecvUeData(): ueData = 0x14c11e0
+1.08196s 3 LteEnbRrc:DoRecvUeData(): ueData size = 1500
+1.08196s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.08196s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 45
+1.08196s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 64931
+1.08394s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.08394s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 45
+1.08394s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 66173
+1.08395s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.08395s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 46
+1.08395s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 67675
+1.08494s 3 LteEnbRrc:DoRecvUeData(): Recv UE DATA FORWARDING through X2 interface
+1.08494s 3 LteEnbRrc:DoRecvUeData(): sourceCellId = 1
+1.08494s 3 LteEnbRrc:DoRecvUeData(): targetCellId = 2
+1.08494s 3 LteEnbRrc:DoRecvUeData(): gtpTeid = 2
+1.08494s 3 LteEnbRrc:DoRecvUeData(): ueData = 0x15ce7d0
+1.08494s 3 LteEnbRrc:DoRecvUeData(): ueData size = 1500
+1.08494s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.08494s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 47
+1.08494s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 69046
+1.08496s 3 LteEnbRrc:DoRecvUeData(): Recv UE DATA FORWARDING through X2 interface
+1.08496s 3 LteEnbRrc:DoRecvUeData(): sourceCellId = 1
+1.08496s 3 LteEnbRrc:DoRecvUeData(): targetCellId = 2
+1.08496s 3 LteEnbRrc:DoRecvUeData(): gtpTeid = 2
+1.08496s 3 LteEnbRrc:DoRecvUeData(): ueData = 0x176d720
+1.08496s 3 LteEnbRrc:DoRecvUeData(): ueData size = 1500
+1.08496s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.08496s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 48
+1.08496s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 70548
+1.085s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.085s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.085s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 54
+1.08794s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.08794s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 49
+1.08794s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 71657
+1.08795s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.08795s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 50
+1.08795s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 73159
+1.08894s 3 LteEnbRrc:DoRecvUeData(): Recv UE DATA FORWARDING through X2 interface
+1.08894s 3 LteEnbRrc:DoRecvUeData(): sourceCellId = 1
+1.08894s 3 LteEnbRrc:DoRecvUeData(): targetCellId = 2
+1.08894s 3 LteEnbRrc:DoRecvUeData(): gtpTeid = 2
+1.08894s 3 LteEnbRrc:DoRecvUeData(): ueData = 0x15a2980
+1.08894s 3 LteEnbRrc:DoRecvUeData(): ueData size = 1500
+1.08894s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.08894s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 51
+1.08894s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 74530
+1.08896s 3 LteEnbRrc:DoRecvUeData(): Recv UE DATA FORWARDING through X2 interface
+1.08896s 3 LteEnbRrc:DoRecvUeData(): sourceCellId = 1
+1.08896s 3 LteEnbRrc:DoRecvUeData(): targetCellId = 2
+1.08896s 3 LteEnbRrc:DoRecvUeData(): gtpTeid = 2
+1.08896s 3 LteEnbRrc:DoRecvUeData(): ueData = 0x161bc60
+1.08896s 3 LteEnbRrc:DoRecvUeData(): ueData size = 1500
+1.08896s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.08896s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 52
+1.08896s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 76032
+1.09494s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.09494s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 52
+1.09494s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 76750
+1.09495s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.09495s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 53
+1.09495s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 78252
+1.09497s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.09497s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 54
+1.09497s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 79754
+1.09498s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.09498s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 55
+1.09498s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 81256
+1.096s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.096s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.096s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 54
+1.09894s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.09894s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 56
+1.09894s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 82234
+1.09895s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.09895s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 57
+1.09895s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 83736
+1.10194s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.10194s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 58
+1.10194s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 84845
+1.10195s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.10195s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 59
+1.10195s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 86347
+1.108s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.108s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.108s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 54
+1.119s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.119s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.119s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 54
+1.131s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.131s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.131s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 54
+1.142s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.142s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.142s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 54
+1.14494s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.14494s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 56
+1.14494s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 82224
+1.14495s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.14495s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 57
+1.14495s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 83726
+1.14497s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.14497s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 58
+1.14497s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 85228
+1.154s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.154s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.154s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 54
+1.15694s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.15694s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 58
+1.15694s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 85160
+1.165s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.165s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.165s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 54
+1.16794s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.16794s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 58
+1.16794s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 85223
+1.177s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.177s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.177s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 54
+1.188s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.188s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.188s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 54
+1.19094s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.19094s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 57
+1.19094s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 83716
+1.2s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.2s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.2s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 54
+1.2s -1 LteRlcAm:DoTransmitPdcpPdu(): txonBufferSize = 10
+1.2s -1 LteRlcAm:DoTransmitPdcpPdu(): packet size     = 10
+1.211s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.211s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.211s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 54
+1.21394s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.21394s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 56
+1.21394s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 82276
+1.223s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.223s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.223s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 54
+1.235s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.235s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.235s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 54
+1.23694s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.23694s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 55
+1.23694s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 80769
+1.246s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.246s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.246s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 54
+1.258s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.258s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.258s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 54
+1.25994s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.25994s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 54
+1.25994s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 79262
+1.269s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.269s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.269s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 54
+1.281s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.281s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.281s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 54
+1.28294s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.28294s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 53
+1.28294s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 77755
+1.292s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.292s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.292s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 54
+1.304s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.304s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.304s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 54
+1.30694s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.30694s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 52
+1.30694s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 76117
+1.315s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.315s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.315s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 54
+1.327s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.327s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.327s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 54
+1.32994s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.32994s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 51
+1.32994s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 74610
+1.338s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.338s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.338s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 54
+1.35s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.35s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.35s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 54
+1.35294s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.35294s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 50
+1.35294s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 73103
+1.361s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.361s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.361s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 54
+1.373s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.373s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.373s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 54
+1.37594s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.37594s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 49
+1.37594s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 71596
+1.384s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.384s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.384s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 54
+1.395s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.395s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.395s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 54
+1.39894s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.39894s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 48
+1.39894s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 70089
+1.407s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.407s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.407s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 54
+1.418s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.418s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.418s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 54
+1.42194s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.42194s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 47
+1.42194s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 68582
+1.43s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.43s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.43s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 54
+1.441s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.441s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.441s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 54
+1.444s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.444s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 2
+1.444s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 108
+1.44494s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.44494s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 45
+1.44494s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 67077
+1.455s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.455s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.455s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 54
+1.46694s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.46694s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 44
+1.46694s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 65701
+1.467s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.467s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.467s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 54
+1.478s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.478s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.478s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 62
+1.489s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.489s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.489s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 62
+1.48994s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.48994s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 43
+1.48994s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 64193
+1.49401s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.49401s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 44
+1.49401s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 65040
+1.501s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.501s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.501s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 62
+1.512s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.512s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.512s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 62
+1.524s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.524s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.524s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 62
+1.535s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.535s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.535s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 62
+1.547s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.547s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.547s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 62
+1.558s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.558s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.558s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 62
+1.57s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.57s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.57s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 62
+1.581s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.581s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.581s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 62
+1.593s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.593s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.593s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 62
+1.604s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.604s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.604s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 62
+1.616s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.616s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.616s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 62
+1.627s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.627s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.627s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 62
+1.639s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.639s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.639s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 62
+1.65s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.65s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.65s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 62
+1.662s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.662s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.662s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 62
+1.673s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.673s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.673s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 54
+1.68s -1 LteRlcAm:DoTransmitPdcpPdu(): txonBufferSize = 10
+1.68s -1 LteRlcAm:DoTransmitPdcpPdu(): packet size     = 10
+1.685s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.685s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.685s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 54
+1.697s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.697s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.697s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 54
+1.708s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.708s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.708s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 54
+1.72s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.72s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.72s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 54
+1.731s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.731s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.731s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 54
+1.743s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.743s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.743s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 54
+1.754s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.754s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.754s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 54
+1.766s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.766s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.766s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 54
+1.777s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.777s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.777s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 54
+1.788s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.788s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.788s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 54
+1.8s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.8s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.8s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 54
+1.811s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.811s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.811s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 54
+1.823s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.823s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.823s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 42
+1.834s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.834s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.834s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 42
+1.846s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.846s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.846s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 42
+1.857s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.857s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.857s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 42
+1.869s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.869s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.869s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 42
+1.88s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.88s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.88s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 42
+1.892s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.892s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.892s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 42
+1.89494s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.89494s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 10
+1.89494s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 14277
+1.89495s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.89495s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 11
+1.89495s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 15779
+1.903s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.903s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.903s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 42
+1.90594s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.90594s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 11
+1.90594s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 15842
+1.90595s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.90595s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 12
+1.90595s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 17344
+1.915s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.915s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.915s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 42
+1.91794s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.91794s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 12
+1.91794s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 17276
+1.91795s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.91795s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 13
+1.91795s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 18778
+1.926s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.926s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.926s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 42
+1.92894s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.92894s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 13
+1.92894s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 18841
+1.92895s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.92895s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 14
+1.92895s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 20343
+1.938s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.938s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.938s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 42
+1.94094s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.94094s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 14
+1.94094s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 20275
+1.94095s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.94095s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 15
+1.94095s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 21777
+1.949s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.949s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.949s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 42
+1.95194s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.95194s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 15
+1.95194s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 21840
+1.95195s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.95195s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 16
+1.95195s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 23342
+1.961s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.961s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.961s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 42
+1.96394s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.96394s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 16
+1.96394s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 23274
+1.96395s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.96395s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 17
+1.96395s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 24776
+1.972s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.972s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.972s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 42
+1.97494s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.97494s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 17
+1.97494s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 24839
+1.97495s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.97495s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 18
+1.97495s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 26341
+1.984s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.984s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.984s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 42
+1.98694s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.98694s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 18
+1.98694s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 26273
+1.98695s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.98695s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 19
+1.98695s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 27775
+1.995s 4 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.995s 4 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 1
+1.995s 4 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 54
+1.99794s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.99794s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 19
+1.99794s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 27838
+1.99795s 3 LteRlcUm:DoTransmitPdcpPdu(): Tx Buffer: New packet added
+1.99795s 3 LteRlcUm:DoTransmitPdcpPdu(): NumOfBuffers = 20
+1.99795s 3 LteRlcUm:DoTransmitPdcpPdu(): txBufferSize = 29340
+***Flow ID: 1 Src Addr 1.0.0.2:37880 Dst Addr 7.0.0.2:10001
+Tx Packets 172
+Rx Packets 147
+Lost packets 0
+Lost ratio 0
+Average delay received +279.04751558392622263117
+Mean received bitrate +1156.07379330233875519404
+Mean transmitted bitrate +1330.0758607618436275697
+***Flow ID: 2 Src Addr 7.0.0.2:10001 Dst Addr 1.0.0.2:37880
+Tx Packets 146
+Rx Packets 141
+Lost packets 0
+Lost ratio 0
+Average delay received +39.07064735746112922079
+Mean received bitrate +36.07502205362843837136
+Mean transmitted bitrate +36.07268624465257899636

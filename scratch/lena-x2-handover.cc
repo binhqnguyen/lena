@@ -389,20 +389,21 @@ main (int argc, char *argv[])
 		clientApps.Add(onOffHelper.Install(remoteHost));
         }
         else{
-		PUT_SAMPLING_INTERVAL = PUT_SAMPLING_INTERVAL*20;
-		PacketSinkHelper sink("ns3::UdpSocketFactory", InetSocketAddress(Ipv4Address::GetAny(), dlPort));
-		serverApps.Add(sink.Install(ueNodes.Get(u)));
+						PUT_SAMPLING_INTERVAL = PUT_SAMPLING_INTERVAL*20;
+						PacketSinkHelper sink("ns3::UdpSocketFactory", InetSocketAddress(Ipv4Address::GetAny(), dlPort));
+						serverApps.Add(sink.Install(ueNodes.Get(u)));
 
-		OnOffHelper onOffHelper("ns3::UdpSocketFactory", Address ( InetSocketAddress(ueIpIfaces.GetAddress(u), dlPort) ));
-		onOffHelper.SetConstantRate( DataRate(dataRate), packetSize );
-		clientApps.Add(onOffHelper.Install(remoteHost));
+						OnOffHelper onOffHelper("ns3::UdpSocketFactory", Address ( InetSocketAddress(ueIpIfaces.GetAddress(u), dlPort) ));
+						onOffHelper.SetConstantRate( DataRate(dataRate), packetSize );
+						clientApps.Add(onOffHelper.Install(remoteHost));
+						/*
+						PacketSinkHelper ul_sink("ns3::UdpSocketFactory", InetSocketAddress(Ipv4Address::GetAny(), ulPort));
+						serverApps.Add(ul_sink.Install(remoteHost));
 
-		PacketSinkHelper ul_sink("ns3::UdpSocketFactory", InetSocketAddress(Ipv4Address::GetAny(), ulPort));
-		serverApps.Add(ul_sink.Install(remoteHost));
-
-		OnOffHelper ul_onOffHelper("ns3::UdpSocketFactory", Address ( InetSocketAddress(remoteHostAddr, ulPort) ));
-		ul_onOffHelper.SetConstantRate( DataRate(dataRate), packetSize );
-		clientApps.Add(ul_onOffHelper.Install(ueNodes.Get(u)));          
+						OnOffHelper ul_onOffHelper("ns3::UdpSocketFactory", Address ( InetSocketAddress(remoteHostAddr, ulPort) ));
+						ul_onOffHelper.SetConstantRate( DataRate(dataRate), packetSize );
+						clientApps.Add(ul_onOffHelper.Install(ueNodes.Get(u)));          
+						*/
 	}
  	/*
 
@@ -459,9 +460,9 @@ main (int argc, char *argv[])
   }
   else{
 	  *debugger_wp->GetStream () << "Manual Handover at 20,50,80 second\n" ;
-	  lteHelper->HandoverRequest (Seconds (1.00), ueLteDevs.Get (0), enbLteDevs.Get (0), enbLteDevs.Get (1));
-	  lteHelper->HandoverRequest (Seconds (10.00), ueLteDevs.Get (0), enbLteDevs.Get (1), enbLteDevs.Get (0));
 	  lteHelper->HandoverRequest (Seconds (20.00), ueLteDevs.Get (0), enbLteDevs.Get (0), enbLteDevs.Get (1));
+	  lteHelper->HandoverRequest (Seconds (50.00), ueLteDevs.Get (0), enbLteDevs.Get (1), enbLteDevs.Get (0));
+	  lteHelper->HandoverRequest (Seconds (80.00), ueLteDevs.Get (0), enbLteDevs.Get (0), enbLteDevs.Get (1));
   }
     monitor = flowHelper.Install(ueNodes);
     monitor = flowHelper.Install(remoteHost);

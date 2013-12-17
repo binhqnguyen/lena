@@ -607,6 +607,82 @@ UeManager::RecvHandoverRequestAck (EpcX2SapUser::HandoverRequestAckParams params
         }
     }
   m_rrc->m_x2SapProvider->SendSnStatusTransfer (sst);
+
+	//Forward RlcTxBuffers to target eNodeb.
+	for ( std::map <uint8_t, Ptr<LteDataRadioBearerInfo> >::iterator drbIt = m_drbMap.begin ();
+        drbIt != m_drbMap.end ();
+        ++drbIt)
+    {
+      // RlcBuffers forwarding only for RlcAm bearers.
+      if (0 != drbIt->second->m_rlc->GetObject<LteRlcAm> ())
+      {
+				//Copy lte-rlc-am.m_txOnBuffer to X2 forwarding buffer.
+				NS_LOG_DEBUG(this << " Copying txonBuffer from RLC AM " << m_rnti);
+				m_x2forwardingBuffer = drbIt->second->m_rlc->GetObject<LteRlcAm>()->GetTxBuffer();
+				m_x2forwardingBufferSize =  drbIt->second->m_rlc->GetObject<LteRlcAm>()->GetTxBufferSize();
+			}
+			/*
+			else if (0 != drbIt->second->m_rlc->GetObject<LteRlcUm> ())
+			{
+				//Copy lte-rlc-um.m_txOnBuffer to X2 forwarding buffer.
+				NS_LOG_DEBUG(this << " Copying txonBuffer from RLC UM " << m_rnti);
+				m_x2forwardingBuffer = drbIt->second->m_rlc->GetObject<LteRlcUm>()->GetTxBuffer();
+				m_x2forwardingBufferSize =  drbIt->second->m_rlc->GetObject<LteRlcUm>()->GetTxBufferSize();
+			}
+			*/
+				//LteRlcAm m_txBuffer stores PDCP "PDU".
+				NS_LOG_DEBUG(this << " m_x2forw buffer size = " << m_x2forwardingBufferSize);
+					//Forwarding the packet inside m_x2forwardingBuffer to target eNB.	
+					while (!m_x2forwardingBuffer.empty()){
+								uint8_t drbid = Bid2Drbid (drbIt->second->m_drbIdentity);        
+								NS_LOG_DEBUG(this << " Forwarding m_x2forwardingBuffer to target eNB, drbid = " << uint16_t(drbid) );
+								EpcX2Sap::UeDataParams params;
+								params.sourceCellId = m_rrc->m_cellId;
+								params.targetCellId = m_targetCellId;
+								params.gtpTeid = GetDataRadioBearerInfo (drbid)->m_gtpTeid;
+								//Remove tags to get PDCP SDU from PDCP PDU.
+								//Ptr<Packet> rlcAmSdu =  (*(m_x2forwardingBuffer.begin()))->Copy();
+								Ptr<Packet> rlcAmSdu =  m_x2forwardingBuffer.at(0);
+								//Tags to be removed from rlcAmSdu (from outer to inner)
+								LteRlcSduStatusTag rlcSduStatusTag;
+								RlcTag	rlcTag;	//rlc layer timestamp
+								PdcpTag pdcpTag;	//pdcp layer timestamp
+								LtePdcpHeader pdcpHeader;
+								
+								
+								NS_LOG_DEBUG ("RlcSdu size = " << rlcAmSdu->GetSize() );
+								rlcAmSdu->RemoveHeader(pdcpHeader);	//remove pdcp header
+								
+								//only forward data PDCP PDUs (1-DATA_PDU,0-CTR_PDU)
+								if (pdcpHeader.GetDcBit() == 1 ){
+												NS_LOG_DEBUG ("removed pdcp header, size = " << rlcAmSdu->GetSize());
+
+												rlcAmSdu->RemoveAllPacketTags();
+												NS_LOG_DEBUG ("removed tags, size = " << rlcAmSdu->GetSize() );
+												params.ueData = rlcAmSdu;
+												/*
+												rlcAmSdu->RemovePacketTag(rlcSduStatusTag);	//remove Rlc status tag.
+												NS_LOG_DEBUG ("removed rlc status tag, size = " << rlcAmSdu->GetSize() );
+												rlcAmSdu->RemovePacketTag(rlcTag);	//remove Rlc timestamp
+												NS_LOG_DEBUG ("removed rlc timestamp, size = " << rlcAmSdu->GetSize() );
+												//rlcAmSdu->RemoveByteTag(pdcpTag);	//remove pdcp timestamp
+												//NS_LOG_DEBUG ("removed pdcp timestamp, size = " << rlcAmSdu->GetSize());
+												*/
+
+												m_rrc->m_x2SapProvider->SendUeData (params);
+												NS_LOG_DEBUG ("sourceCellId = " << params.sourceCellId);
+												NS_LOG_DEBUG ("targetCellId = " << params.targetCellId);
+												NS_LOG_DEBUG ("gtpTeid = " << params.gtpTeid);
+												NS_LOG_DEBUG ("ueData = " << params.ueData);
+												NS_LOG_DEBUG ("ueData size = " << params.ueData->GetSize ());
+
+												NS_LOG_DEBUG(this << " After forwarding: buffer size = " << m_x2forwardingBufferSize );
+								}
+					m_x2forwardingBufferSize -= (*(m_x2forwardingBuffer.begin()))->GetSize();
+					m_x2forwardingBuffer.erase (m_x2forwardingBuffer.begin());
+			//	}
+			}
+		}
 }
 
 
