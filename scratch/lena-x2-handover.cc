@@ -150,7 +150,7 @@ void ConfigStoreOutput(std::string);
 void ConfigStoreInput(std::string in_f);
 
 //******Handover monitoring********//
-Ptr<OutputStreamWrapper> ho_wp = asciiTraceHelper.CreateFileStream("/var/tmp/ln_result/radio/handover.dat");
+Ptr<OutputStreamWrapper> ho_wp = asciiTraceHelper.CreateFileStream(DIR+"handover.dat");
 void 
 NotifyConnectionEstablishedUe (std::string context, 
                                uint64_t imsi, 
@@ -469,7 +469,7 @@ main (int argc, char *argv[])
     monitor = flowHelper.GetMonitor();  
 
   // Uncomment to enable PCAP tracing
-  p2ph.EnablePcapAll("/var/tmp/ln_result/radio/lena-x2-handover");
+  p2ph.EnablePcapAll(DIR+"lena-x2-handover");
 
   lteHelper->EnableMacTraces ();
   lteHelper->EnableRlcTraces ();
