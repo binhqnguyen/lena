@@ -1,6 +1,7 @@
 #!/bin/bash
 E_NAME="CUBIC_noname"
 RE_DIR="/var/tmp/ln_result"
+CODE_DIR="/var/tmp/lena_dev"
 SIM_TIME="100"
 DISTANCE="150"
 PEDESTRIAN="1"
@@ -28,12 +29,12 @@ rm $RE_DIR/$5/*.svg
 rm $RE_DIR/$5/queue
 rm $RE_DIR/$5/*.pcap
 
-rm /home/binhn/ln/*.pcap
-rm /home/binhn/ln/DlRxPhyStats.txt
-rm /home/binhn/ln/DlTxPhyStats.txt
-rm /home/binhn/ln/UlRxPhyStats.txt
-rm /home/binhn/ln/DlTxPhyStats.txt
-rm /home/binhn/ln/lte.out
+rm $CODE_DIR/*.pcap
+rm $CODE_DIR/DlRxPhyStats.txt
+rm $CODE_DIR/DlTxPhyStats.txt
+rm $CODE_DIR/UlRxPhyStats.txt
+rm $CODE_DIR/DlTxPhyStats.txt
+rm $CODE_DIR/lte.out
 
 if [ "$2" != "" ];
 	then
@@ -51,20 +52,20 @@ BACKUP_FOLDER="$RE_DIR/from_cade/$E_NAME"
 echo "backup folder: $BACKUP_FOLDER"
 
 echo "running $lte nsc UDP ..."
-./waf --run "scratch/$lte --simTime=$SIM_TIME --isTcp=0 --distanceBetweenEnbs=$DISTANCE --isFading=1 --isPedestrian=$PEDESTRIAN --isAutoHo=1 --ho_type=2" > /var/tmp/ln_result/$5/UDP_LOG 2>&1 
-#./waf --run "scratch/$lte --simTime=$SIM_TIME --isTcp=0 --distanceBetweenEnbs=$DISTANCE --isFading=1 --isPedestrian=$PEDESTRIAN" > /var/tmp/ln_result/$5/UDP_LOG 2>&1 
+./waf --run "scratch/$lte --simTime=$SIM_TIME --isTcp=0 --distanceBetweenEnbs=$DISTANCE --isFading=1 --isPedestrian=$PEDESTRIAN --isAutoHo=1 --ho_type=2" > $RE_DIR/$5/UDP_LOG 2>&1 
+#./waf --run "scratch/$lte --simTime=$SIM_TIME --isTcp=0 --distanceBetweenEnbs=$DISTANCE --isFading=1 --isPedestrian=$PEDESTRIAN" > $RE_DIR/$5/UDP_LOG 2>&1 
 
 echo "running $lte nsc TCP ..."
-./waf --run "scratch/$lte --simTime=$SIM_TIME --isTcp=1 --distanceBetweenEnbs=$DISTANCE --isFading=1 --isPedestrian=$PEDESTRIAN --isAutoHo=1 --ho_type=2" > /var/tmp/ln_result/$5/TCP_LOG 2>&1 
-#./waf --run "scratch/$lte" > /var/tmp/ln_result/$5/TCP_LOG 2>&1 
+./waf --run "scratch/$lte --simTime=$SIM_TIME --isTcp=1 --distanceBetweenEnbs=$DISTANCE --isFading=1 --isPedestrian=$PEDESTRIAN --isAutoHo=1 --ho_type=2" > $RE_DIR/$5/TCP_LOG 2>&1 
+#./waf --run "scratch/$lte" > $RE_DIR/$5/TCP_LOG 2>&1 
 
-cp ~/ln/*.out $RE_DIR/$5/
-cp ~/ln/*.pcap $RE_DIR/$5/
-cp ~/ln/*.txt $RE_DIR/$5/
-cp ~/ln/.dat $RE_DIR/$5/
-cp ~/ln/lte.in $RE_DIR/$5/
-cp ~/ln/scratch/$lte.cc $RE_DIR/$5
-rm ~/ln/*.pcap
+cp $CODE_DIR/*.out $RE_DIR/$5/
+cp $CODE_DIR/*.pcap $RE_DIR/$5/
+cp $CODE_DIR/*.txt $RE_DIR/$5/
+cp $CODE_DIR/.dat $RE_DIR/$5/
+cp $CODE_DIR/lte.in $RE_DIR/$5/
+cp $CODE_DIR/scratch/$lte.cc $RE_DIR/$5
+rm $CODE_DIR/*.pcap
 mkdir $BACKUP_FOLDER
 cd $RE_DIR
 ./$processing.sh $E_NAME
