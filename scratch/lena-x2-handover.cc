@@ -511,7 +511,7 @@ main (int argc, char *argv[])
 	for (std::map<FlowId, FlowMonitor::FlowStats>::const_iterator iter = stats.begin(); iter != stats.end(); ++iter){
 	    ns3::Ipv4FlowClassifier::FiveTuple t = classifier->FindFlow(iter->first);
 
-	    std::cout  << "***Flow ID: " << iter->first << " Src Addr " << t.sourceAddress << ":" << t.sourcePort 
+	   *macro_wp->GetStream()  << "***Flow ID: " << iter->first << " Src Addr " << t.sourceAddress << ":" << t.sourcePort 
 			<< " Dst Addr " << t.destinationAddress << ":" << t.destinationPort  << std::endl
 	    << "Tx Packets " << iter->second.txPackets << std::endl
 	    << "Rx Packets " << iter->second.rxPackets << std::endl
@@ -519,7 +519,7 @@ main (int argc, char *argv[])
 	    << "Lost ratio " << double (iter->second.lostPackets)/(iter->second.lostPackets+iter->second.rxPackets) << std::endl;
 	    double ONEBIL=1000000000;
 	    if (iter->second.rxPackets > 1){
-     		std::cout  << "Average delay received " 
+     		*macro_wp->GetStream()   << "Average delay received " 
 		<< iter->second.delaySum/iter->second.rxPackets/1000000 << std::endl
         	<< "Mean received bitrate " 
 		<< 8*iter->second.rxBytes/(iter->second.timeLastRxPacket-iter->second.timeFirstRxPacket)*ONEBIL/(1024) 
