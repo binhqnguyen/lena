@@ -1,7 +1,7 @@
 #!/bin/bash
 E_NAME="CUBIC_noname"
 RE_DIR="/var/tmp/ln_result"
-CODE_DIR="/var/tmp/lena_dev"
+CODE_DIR="/var/tmp/lena"
 SIM_TIME="100"
 DISTANCE="150"
 PEDESTRIAN="1"
