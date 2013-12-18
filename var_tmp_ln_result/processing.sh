@@ -1,14 +1,15 @@
 #!/bin/bash
 ENV='/var/tmp/ln_result'
 RLC="LteRlcAm"
-if [ "$1" != "" ];
+if [ "$1" != "" -a "$2" != "" ];
 	then
 		E_NAME=$1
 	else
-		echo "Usage ./dr-radio-nsc-cade.sh <TCP NAME e.i. CUBIC>"
+		echo "Usage ./dr-radio-nsc-cade.sh <TCP NAME e.i. CUBIC> <Processing folder i.e. radio>"
 		exit;
 fi
-cd $ENV/radio/
+cd $ENV/$2/
+
 # cd ~/Documents/ln_result/radio
 pwd
 
