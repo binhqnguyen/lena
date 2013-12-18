@@ -68,7 +68,7 @@ cp $CODE_DIR/scratch/$lte.cc $RE_DIR/$5
 rm $CODE_DIR/*.pcap
 mkdir $BACKUP_FOLDER
 cd $RE_DIR
-./$processing.sh $E_NAME
+./$processing.sh $E_NAME $5
 cp -rf $RE_DIR/$5/ $BACKUP_FOLDER 
 
 
