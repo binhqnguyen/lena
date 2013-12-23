@@ -153,7 +153,7 @@ std::map <FlowId, FlowMonitor::FlowStats> stats;
 const uint32_t ONEBIL = 1000000000;
 
 /********* Ascii output files name *********/
-static std::string DIR = "/var/tmp/ln_result/radio/";
+static std::string DIR = "/var/tmp/ln_result/radio_dev/";
 static std::string macro = DIR+"macro_output.dat";
 static std::string put_send;
 static std::string debugger = "debugger.dat";
@@ -538,7 +538,7 @@ main (int argc, char *argv[])
 
     if (isTcp==1)
     	// Uncomment to enable PCAP tracing
-    	p2ph.EnablePcapAll("/var/tmp/ln_result/radio/lte-nsc");
+    	p2ph.EnablePcapAll(DIR+"lte-nsc");
 
 
     monitor = flowHelper.Install(ueNodes);

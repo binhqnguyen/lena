@@ -19,3 +19,8 @@ echo "running a2a4 rlcum lossless ctr-error..."
 echo "running a3 rlcum lossless  ctr-error..."
 ./x2-auto-ho-a3 a3_rlcum_lossless_no_ctrerror 200 300 0 radio_dev
 
+perl -pi -e 's/EpsBearerToRlcMapping \"RlcUmAlways\"/EpsBearerToRlcMapping \"RlcAmAlways\"/g' lte.in
+./bash-run-rlcam-windowssize.sh 
+
+
+perl -pi -e 's/EpsBearerToRlcMapping \"RlcUmAlways\"/EpsBearerToRlcMapping \"RlcUmAlways\"/g' lte.in

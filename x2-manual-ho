@@ -1,9 +1,9 @@
 #!/bin/bash
 E_NAME="CUBIC_noname"
 RE_DIR="/var/tmp/ln_result"
-PY_DIR="$REDIR/radio/"
+CODE_DIR="/var/tmp/lena_dev"
 SIM_TIME="100"
-DISTANCE="100"
+DISTANCE="150"
 PEDESTRIAN="1"
 lte="lena-x2-handover"
 processing="processing"
@@ -12,27 +12,29 @@ if [ "$1" != "" ];
 	then
 	E_NAME=$1
 	else
-		echo "usage rp-..sh <name of backup folder> [<simTime> <distance> <isPedestrian>]"
+		echo "usage rp-..sh <name of backup folder> [<simTime> <distance> <isPedestrian> <radio/radio_dev>]"
 		exit;
 fi
 
-echo "removing old files....."
-rm $RE_DIR/radio/*.dat
-rm $RE_DIR/radio/*.tmp
-rm $RE_DIR/radio/*.raw
-rm $RE_DIR/radio/TCP_LOG
-rm $RE_DIR/radio/UDP_LOG
-rm $RE_DIR/radio/*.txt
-rm $RE_DIR/radio/*.svg
-rm $RE_DIR/radio/queue
-rm $RE_DIR/radio/*.pcap
+PY_DIR="$REDIR/$5/"
 
-rm /home/binhn/ln/*.pcap
-rm /home/binhn/ln/DlRxPhyStats.txt
-rm /home/binhn/ln/DlTxPhyStats.txt
-rm /home/binhn/ln/UlRxPhyStats.txt
-rm /home/binhn/ln/DlTxPhyStats.txt
-rm /home/binhn/ln/lte.out
+echo "removing old files....."
+rm $RE_DIR/$5/*.dat
+rm $RE_DIR/$5/*.tmp
+rm $RE_DIR/$5/*.raw
+rm $RE_DIR/$5/TCP_LOG
+rm $RE_DIR/$5/UDP_LOG
+rm $RE_DIR/$5/*.txt
+rm $RE_DIR/$5/*.svg
+rm $RE_DIR/$5/queue
+rm $RE_DIR/$5/*.pcap
+
+rm $CODE_DIR/*.pcap
+rm $CODE_DIR/DlRxPhyStats.txt
+rm $CODE_DIR/DlTxPhyStats.txt
+rm $CODE_DIR/UlRxPhyStats.txt
+rm $CODE_DIR/DlTxPhyStats.txt
+rm $CODE_DIR/lte.out
 
 if [ "$2" != "" ];
 	then
@@ -49,26 +51,25 @@ echo $RE_DIR
 BACKUP_FOLDER="$RE_DIR/from_cade/$E_NAME"
 echo "backup folder: $BACKUP_FOLDER"
 
-#echo "running $lte nsc UDP ..."
-#./waf --run "scratch/$lte --simTime=$SIM_TIME --isTcp=0 --distance=$DISTANCE --isFading=0 --isPedestrian=$PEDESTRIAN" > /var/tmp/ln_result/radio/UDP_LOG 2>&1 
-#./waf --run "scratch/$lte --simTime=$SIM_TIME --isTcp=0 --distance=$DISTANCE --isFading=1 --isPedestrian=$PEDESTRIAN" > /var/tmp/ln_result/radio/UDP_LOG 2>&1 
+echo "running $lte nsc UDP ..."
+./waf --run "scratch/$lte --simTime=$SIM_TIME --isTcp=0 --distance=$DISTANCE --isFading=1 --isPedestrian=$PEDESTRIAN" > $RE_DIR/$5/UDP_LOG 2>&1 
+#./waf --run "scratch/$lte --simTime=$SIM_TIME --isTcp=0 --distanceBetweenEnbs=$DISTANCE --isFading=1 --isPedestrian=$PEDESTRIAN" > $RE_DIR/$5/UDP_LOG 2>&1 
 
 echo "running $lte nsc TCP ..."
-./waf --run "scratch/$lte --simTime=$SIM_TIME --isTcp=1 --distance=$DISTANCE --isFading=0 --isPedestrian=$PEDESTRIAN" > /var/tmp/ln_result/radio/TCP_LOG 2>&1 
-#./waf --run "scratch/$lte" > /var/tmp/ln_result/radio/TCP_LOG 2>&1 
+./waf --run "scratch/$lte --simTime=$SIM_TIME --isTcp=1 --distance=$DISTANCE --isFading=1 --isPedestrian=$PEDESTRIAN" > $RE_DIR/$5/TCP_LOG 2>&1 
+#./waf --run "scratch/$lte" > $RE_DIR/$5/TCP_LOG 2>&1 
 
-cp ~/ln/*.out $RE_DIR/radio/
-cp ~/ln/*.pcap $RE_DIR/radio/
-cp ~/ln/*.txt $RE_DIR/radio/
-cp ~/ln/.dat $RE_DIR/radio/
-cp ~/ln/lte.in $RE_DIR/radio/
-cp ~/ln/scratch/$lte.cc $RE_DIR/radio
-rm ~/ln/*.pcap
+cp $CODE_DIR/*.out $RE_DIR/$5/
+cp $CODE_DIR/*.pcap $RE_DIR/$5/
+cp $CODE_DIR/*.txt $RE_DIR/$5/
+cp $CODE_DIR/.dat $RE_DIR/$5/
+cp $CODE_DIR/lte.in $RE_DIR/$5/
+cp $CODE_DIR/scratch/$lte.cc $RE_DIR/$5
+rm $CODE_DIR/*.pcap
 mkdir $BACKUP_FOLDER
 cd $RE_DIR
-./$processing.sh $E_NAME
-cp $processing.sh $BACKUP_FOLDER
-cp -rf $RE_DIR/radio/ $BACKUP_FOLDER 
+./$processing.sh $E_NAME $5
+cp -rf $RE_DIR/$5/ $BACKUP_FOLDER 
 
 
 

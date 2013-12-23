@@ -322,7 +322,7 @@ main (int argc, char *argv[])
   NodeContainer enbNodes;
   if (isAutoHo==1){
 	numberOfEnbs = 5;
-	simTime = (numberOfEnbs-1)*1000/speed + 10;
+	simTime = (numberOfEnbs-1)*distanceBetweenEnbs/speed + 10;
   }
   enbNodes.Create(numberOfEnbs);
   ueNodes.Create(numberOfUes);

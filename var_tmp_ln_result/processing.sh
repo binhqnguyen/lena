@@ -43,6 +43,9 @@ cat tcp-put.dat | grep "1.0.0.2" > tcp_ack.dat
 cat udp-put.dat | grep "1.0.0.2" > udp_uplink.dat
 cat udp-put.dat | grep "7.0.0.2" > udp_downlink.dat
 
+
+cat handover.dat | grep "start handover of UE" > handover_time.dat
+
 ############# post processing: *_tmp files processing ########
 ./check_radio_error.py
 ./rlc_um_processing.py
