@@ -449,7 +449,6 @@ public:
    */
   virtual ~LteEnbRrc ();
 
-
   // inherited from Object
 protected:
   virtual void DoDispose (void);

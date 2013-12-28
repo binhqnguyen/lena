@@ -617,9 +617,49 @@ UeManager::RecvHandoverRequestAck (EpcX2SapUser::HandoverRequestAckParams params
       if (0 != drbIt->second->m_rlc->GetObject<LteRlcAm> ())
       {
 				//Copy lte-rlc-am.m_txOnBuffer to X2 forwarding buffer.
-				NS_LOG_DEBUG(this << " Copying txonBuffer from RLC AM " << m_rnti);
-				m_x2forwardingBuffer = drbIt->second->m_rlc->GetObject<LteRlcAm>()->GetTxBuffer();
-				m_x2forwardingBufferSize =  drbIt->second->m_rlc->GetObject<LteRlcAm>()->GetTxBufferSize();
+				Ptr<LteRlcAm> rlcAm = drbIt->second->m_rlc->GetObject<LteRlcAm>();
+				std::vector < Ptr<Packet> > txonBuffer = rlcAm->GetTxBuffer();
+				uint32_t txonBufferSize = rlcAm->GetTxBufferSize();
+				std::vector < LteRlcAm::RetxPdu > txedBuffer = rlcAm->GetTxedBuffer();
+				uint32_t txedBufferSize = rlcAm->GetTxedBufferSize();
+				std::vector < LteRlcAm::RetxPdu > retxBuffer = rlcAm->GetRetxBuffer();
+				uint32_t retxBufferSize = rlcAm->GetRetxBufferSize();
+				
+				//Translate Pdus in Rlc txed/retx buffer into RLC Sdus
+				//and put these Sdus into rlcAm->m_transmittingRlcSdus.
+				NS_LOG_DEBUG("retxBuffer size = " << retxBufferSize);
+				NS_LOG_DEBUG("txedBuffer size = " << txedBufferSize);
+				if ( retxBufferSize > 0 ){
+					rlcAm->RlcPdusToRlcSdus(rlcAm->GetRetxBuffer());	
+				}
+				if ( txedBufferSize > 0 ){
+					rlcAm->RlcPdusToRlcSdus(rlcAm->GetTxedBuffer());
+				}
+
+				//Construct the forwarding buffer
+				//Forwarding buffer = retxBuffer + txedBuffer + txonBuffer.
+				if ( txonBufferSize > 0 ){
+					if ( rlcAm->GetTransmittingRlcSduBufferSize() > 0){ //something inside the RLC AM's transmitting buffer 
+									NS_LOG_DEBUG ("ADDING TRANSMITTING SDUS OF RLC AM TO X2FORWARDINGBUFFER... Size = " << rlcAm->GetTransmittingRlcSduBufferSize() );
+									//copy the RlcSdu buffer (map) to forwardingBuffer.
+									std::map < uint32_t, Ptr<Packet> > rlcAmTransmittingBuffer = rlcAm->GetTransmittingRlcSduBuffer();
+									NS_LOG_DEBUG (" *** SIZE = " << rlcAmTransmittingBuffer.size());
+									for (std::map< uint32_t, Ptr<Packet> >::iterator it = rlcAmTransmittingBuffer.begin(); it != rlcAmTransmittingBuffer.end(); ++it){
+										if (it->second != 0){
+											NS_LOG_DEBUG ( this << " add to forwarding buffer SEQ = " << it->first << " Ptr<Packet> = " << it->second );
+											m_x2forwardingBuffer.push_back(it->second);
+										}
+									}	
+						NS_LOG_DEBUG(this << " ADDING TXONBUFFER OF RLC AM " << m_rnti << " Size = " << txonBufferSize) ;
+						m_x2forwardingBuffer.insert(m_x2forwardingBuffer.end(), txonBuffer.begin(), txonBuffer.end());
+						m_x2forwardingBufferSize += rlcAm->GetTransmittingRlcSduBufferSize() + txonBufferSize;
+					}
+					else { //TransmittingBuffer is empty. Only copy TxonBuffer.
+					NS_LOG_DEBUG(this << " ADDING TXONBUFFER OF RLC AM " << m_rnti << " Size = " << txonBufferSize) ;
+					m_x2forwardingBuffer = txonBuffer;
+					m_x2forwardingBufferSize += txonBufferSize;
+					}
+				}
 			}
 			else if (0 != drbIt->second->m_rlc->GetObject<LteRlcUm> ())
 			{
@@ -649,12 +689,15 @@ UeManager::RecvHandoverRequestAck (EpcX2SapUser::HandoverRequestAckParams params
 								
 								
 								NS_LOG_DEBUG ("RlcSdu size = " << rlcAmSdu->GetSize() );
-								rlcAmSdu->RemoveHeader(pdcpHeader);	//remove pdcp header
+								//rlcAmSdu->RemoveHeader(pdcpHeader);	//remove pdcp header
 								
 								//only forward data PDCP PDUs (1-DATA_PDU,0-CTR_PDU)
-								if (pdcpHeader.GetDcBit() == 1 ){
+								rlcAmSdu->PeekHeader(pdcpHeader);
+								if (pdcpHeader.GetDcBit() == 1 ){ //ignore control SDU.
+												NS_LOG_DEBUG ("SEQ = " << pdcpHeader.GetSequenceNumber());
 												NS_LOG_DEBUG ("removed pdcp header, size = " << rlcAmSdu->GetSize());
 
+												rlcAmSdu->RemoveHeader(pdcpHeader);	//remove pdcp header
 												rlcAmSdu->RemoveAllPacketTags();
 												NS_LOG_DEBUG ("removed tags, size = " << rlcAmSdu->GetSize() );
 												params.ueData = rlcAmSdu;
@@ -928,6 +971,7 @@ void
 UeManager::RecvRrcConnectionReconfigurationCompleted (LteRrcSap::RrcConnectionReconfigurationCompleted msg)
 {
   NS_LOG_FUNCTION (this);
+	NS_LOG_DEBUG(this << " eNB m_state = " << m_state);
   switch (m_state)
     {
     case CONNECTION_RECONFIGURATION:

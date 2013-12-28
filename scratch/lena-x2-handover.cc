@@ -82,8 +82,8 @@ FlowMonitorHelper flowHelper;
 Ptr<ns3::Ipv4FlowClassifier> classifier;
 std::map <FlowId, FlowMonitor::FlowStats> stats;
 std::string dataRate = "150Mb/s";
-//LogLevel logLevel = (LogLevel) (LOG_LEVEL_ALL | LOG_PREFIX_TIME | LOG_PREFIX_NODE | LOG_PREFIX_FUNC);
-LogLevel logLevel = (LogLevel) (LOG_PREFIX_TIME | LOG_PREFIX_NODE| LOG_PREFIX_FUNC | LOG_LEVEL_DEBUG);
+LogLevel logLevel = (LogLevel) (LOG_LEVEL_ALL | LOG_PREFIX_TIME | LOG_PREFIX_NODE | LOG_PREFIX_FUNC);
+//LogLevel logLevel = (LogLevel) (LOG_PREFIX_TIME | LOG_PREFIX_NODE| LOG_PREFIX_FUNC | LOG_LEVEL_DEBUG);
 uint32_t isAutoHo = 0;
 double speed = 20; //20m/s
 
@@ -460,9 +460,9 @@ main (int argc, char *argv[])
   }
   else{
 	  *debugger_wp->GetStream () << "Manual Handover at 20,50,80 second\n" ;
-	  lteHelper->HandoverRequest (Seconds (20.00), ueLteDevs.Get (0), enbLteDevs.Get (0), enbLteDevs.Get (1));
-	  lteHelper->HandoverRequest (Seconds (50.00), ueLteDevs.Get (0), enbLteDevs.Get (1), enbLteDevs.Get (0));
-	  lteHelper->HandoverRequest (Seconds (80.00), ueLteDevs.Get (0), enbLteDevs.Get (0), enbLteDevs.Get (1));
+	  lteHelper->HandoverRequest (Seconds (2.00), ueLteDevs.Get (0), enbLteDevs.Get (0), enbLteDevs.Get (1));
+	  lteHelper->HandoverRequest (Seconds (4.00), ueLteDevs.Get (0), enbLteDevs.Get (1), enbLteDevs.Get (0));
+	  lteHelper->HandoverRequest (Seconds (19.00), ueLteDevs.Get (0), enbLteDevs.Get (0), enbLteDevs.Get (1));
   }
     monitor = flowHelper.Install(ueNodes);
     monitor = flowHelper.Install(remoteHost);

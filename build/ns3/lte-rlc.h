@@ -57,7 +57,6 @@ public:
   static TypeId GetTypeId (void);
   virtual void DoDispose ();
 
-	//virtual std::vector < Ptr<Packet> > GetTxBuffer();
   /**
    *
    *
@@ -82,7 +81,7 @@ public:
   /**
    *
    *
-   * \return the RLC SAP Provider interface offered to the PDCP by this LTE_RLC
+   * \param s the RLC SAP Provider interface offered to the PDCP by this LTE_RLC
    */
   LteRlcSapProvider* GetLteRlcSapProvider ();
 
@@ -96,11 +95,10 @@ public:
   /**
    *
    *
-   * \return the MAC SAP User interface offered to the MAC by this LTE_RLC
+   * \param s the MAC SAP User interface offered to the MAC by this LTE_RLC
    */
   LteMacSapUser* GetLteMacSapUser ();
 
-	
 
 
   /// \todo MRE What is the sense to duplicate all the interfaces here???

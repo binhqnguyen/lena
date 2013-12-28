@@ -41,6 +41,12 @@ public:
   static TypeId GetTypeId (void);
   virtual void DoDispose ();
 
+	struct RetxPdu
+    {
+      Ptr<Packet> m_pdu;
+      uint16_t    m_retxCount;
+    };
+
   /**
    * RLC SAP
    */
@@ -52,9 +58,37 @@ public:
   virtual void DoNotifyTxOpportunity (uint32_t bytes, uint8_t layer, uint8_t harqId);
   virtual void DoNotifyHarqDeliveryFailure ();
   virtual void DoReceivePdu (Ptr<Packet> p);
-	std::vector < Ptr<Packet> > GetTxBuffer ();
-	uint32_t GetTxBufferSize();
+	
+	std::vector < Ptr<Packet> > GetTxBuffer(){
+		return m_txonBuffer;
+	}
+	uint32_t GetTxBufferSize(){
+		return m_txonBufferSize;
+	}
+	
+	std::vector < RetxPdu > GetTxedBuffer(){
+		return m_txedBuffer;
+	}
+	uint32_t GetTxedBufferSize(){
+		return m_txedBufferSize;
+	}
 
+	std::vector < RetxPdu > GetRetxBuffer(){
+		return m_retxBuffer;
+	}
+	uint32_t GetRetxBufferSize(){
+		return m_retxBufferSize;
+	}
+
+	std::map < uint32_t, Ptr<Packet> > GetTransmittingRlcSduBuffer(){
+		return m_transmittingRlcSduBuffer;
+	}
+	uint32_t GetTransmittingRlcSduBufferSize(){
+		return m_transmittingRlcSduBufferSize;
+	}
+	///< Binh: translate a vector of Rlc PDUs to Rlc SDUs 
+	///< and put the Rlc SDUs into m_transmittingRlcSdus.
+  void  RlcPdusToRlcSdus (std::vector < RetxPdu >  Pdus);
 private:
   /**
    * This method will schedule a timeout at WaitReplyTimeout interval
@@ -80,22 +114,28 @@ private:
 
   void DoReportBufferStatus ();
 
+	void Reassemble (Ptr<Packet> Packet);
+	//Create RlcSduBuffer <seqNumber, RlcSDU> based on m_transmittingRlcSdus.
+	//The buffer is ascending ordered on sequence number.
+	void CreateRlcSduBuffer ();
+
 private:
     std::vector < Ptr<Packet> > m_txonBuffer;       // Transmission buffer
 
-    struct RetxPdu
-    {
-      Ptr<Packet> m_pdu;
-      uint16_t    m_retxCount;
-    };
 
   std::vector <RetxPdu> m_txedBuffer;  ///< Buffer for transmitted and retransmitted PDUs 
                                        ///< that have not been acked but are not considered 
                                        ///< for retransmission 
   std::vector <RetxPdu> m_retxBuffer;  ///< Buffer for PDUs considered for retransmission
 
-    //Binh: Add max Tx buffersize
-    uint32_t m_maxTxBufferSize;
+	///< Binh: stores RLC SDUs that is not acked 
+	///< and forwarded to target eNB during lossless handover.
+	std::vector < Ptr<Packet> > m_transmittingRlcSdus;
+	uint32_t m_transmittingRlcSduBufferSize;
+  std::map <uint32_t, Ptr <Packet> > m_transmittingRlcSduBuffer;
+
+
+	uint32_t m_maxTxBufferSize;
     uint32_t m_txonBufferSize;
     uint32_t m_retxBufferSize;
     uint32_t m_txedBufferSize;
@@ -121,6 +161,7 @@ private:
 //   std::vector < Ptr<Packet> > m_reasBuffer;     // Reassembling buffer
 // 
     std::list < Ptr<Packet> > m_sdusBuffer;       // List of SDUs in a packet (PDU)
+		std::list < Ptr<Packet> > m_sdusAssembleBuffer;
 
   /**
    * State variables. See section 7.1 in TS 36.322
@@ -178,12 +219,15 @@ private:
                  WAITING_S0_FULL = 1,
                  WAITING_SI_SF   = 2 } ReassemblingState_t;
   ReassemblingState_t m_reassemblingState;
+  ReassemblingState_t m_assemblingState; //state of the RlcPduToRlcSdu assembling used for handover.
   Ptr<Packet> m_keepS0;
 
   /**
    * Expected Sequence Number
    */
   SequenceNumber10 m_expectedSeqNumber;
+	
+	SequenceNumber10 m_reassembleExpectedSeqNumber;
 
 };
 
