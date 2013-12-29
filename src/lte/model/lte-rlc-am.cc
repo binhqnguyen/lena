@@ -1458,9 +1458,15 @@ LteRlcAm::DoReceivePdu (Ptr<Packet> p)
         }
       else
         {
-          NS_LOG_LOGIC ("Place PDU in the reception buffer ( SN = " << seqNumber << " )");
-          m_rxonBuffer[ seqNumber.GetValue () ].m_byteSegments.push_back (p);
-          m_rxonBuffer[ seqNumber.GetValue () ].m_pduComplete = true;
+					// Discard duplicate PDU
+					if (m_rxonBuffer.find(seqNumber.GetValue()) != m_rxonBuffer.end()){ //found duplicated PDU
+						NS_LOG_LOGIC ("Discard duplicated PDU ( SN = " << seqNumber << " )");
+					}
+					else{
+          	NS_LOG_LOGIC ("Place PDU in the reception buffer ( SN = " << seqNumber << " )");
+          	m_rxonBuffer[ seqNumber.GetValue () ].m_byteSegments.push_back (p);
+          	m_rxonBuffer[ seqNumber.GetValue () ].m_pduComplete = true;
+					}
 
           // - if some byte segments of the AMD PDU contained in the RLC data PDU have been received before:
           //         - discard the duplicate byte segments.
@@ -1518,6 +1524,7 @@ LteRlcAm::DoReceivePdu (Ptr<Packet> p)
                       m_rxonBuffer[ m_vrR.GetValue () ].m_pduComplete )
                 {
                   NS_LOG_LOGIC ("Reassemble and Deliver ( SN = " << m_vrR << " )");
+									NS_LOG_DEBUG ("****size = " << m_rxonBuffer[ m_vrR.GetValue () ].m_byteSegments.size ());
                   NS_ASSERT_MSG (m_rxonBuffer[ m_vrR.GetValue () ].m_byteSegments.size () == 1,
                                 "Too many segments. PDU Reassembly process didn't work");
                   ReassembleAndDeliver (m_rxonBuffer[ m_vrR.GetValue () ].m_byteSegments.front ());
