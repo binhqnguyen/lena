@@ -1,7 +1,7 @@
 #!/bin/bash
 E_NAME="CUBIC_noname"
 RE_DIR="/var/tmp/ln_result"
-CODE_DIR="/var/tmp/lena_dev"
+CODE_DIR="/var/tmp/lena"
 SIM_TIME="100"
 DISTANCE="150"
 PEDESTRIAN="1"
@@ -51,8 +51,8 @@ echo $RE_DIR
 BACKUP_FOLDER="$RE_DIR/from_cade/$E_NAME"
 echo "backup folder: $BACKUP_FOLDER"
 
-#echo "running $lte nsc UDP ..."
-#./waf --run "scratch/$lte --simTime=$SIM_TIME --isTcp=0 --distanceBetweenEnbs=$DISTANCE --isFading=1 --isPedestrian=$PEDESTRIAN --isAutoHo=1 --ho_type=1" > $RE_DIR/$5/UDP_LOG 2>&1 
+echo "running $lte nsc UDP ..."
+./waf --run "scratch/$lte --simTime=$SIM_TIME --isTcp=0 --distanceBetweenEnbs=$DISTANCE --isFading=1 --isPedestrian=$PEDESTRIAN --isAutoHo=1 --ho_type=1" > $RE_DIR/$5/UDP_LOG 2>&1 
 #./waf --run "scratch/$lte --simTime=$SIM_TIME --isTcp=0 --distanceBetweenEnbs=$DISTANCE --isFading=1 --isPedestrian=$PEDESTRIAN" > $RE_DIR/$5/UDP_LOG 2>&1 
 
 echo "running $lte nsc TCP ..."
