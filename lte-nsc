@@ -1,21 +1,19 @@
 #!/bin/bash
 E_NAME="CUBIC_noname"
 RE_DIR="/var/tmp/ln_result"
-CODE_DIR="/var/tmp/lena_dev"
+CODE_DIR="/var/tmp/lena"
 SIM_TIME="100"
 DISTANCE="150"
 PEDESTRIAN="1"
 lte="lte"
 processing="processing"
 
-if [ "$1" != "" ];
-	then
-	E_NAME=$1
-	else
+if [ $# -lt 5 ]; then
 		echo "usage rp-..sh <name of backup folder> [<simTime> <distance> <isPedestrian> <radio/radio_dev>]"
 		exit;
 fi
 
+E_NAME=$1
 PY_DIR="$REDIR/$5/"
 
 echo "removing old files....."
@@ -51,8 +49,8 @@ echo $RE_DIR
 BACKUP_FOLDER="$RE_DIR/from_cade/$E_NAME"
 echo "backup folder: $BACKUP_FOLDER"
 
-echo "running $lte nsc UDP ..."
-./waf --run "scratch/$lte --simTime=$SIM_TIME --isTcp=0 --distance=$DISTANCE --isFading=1 --isPedestrian=$PEDESTRIAN" > $RE_DIR/$5/UDP_LOG 2>&1 
+#echo "running $lte nsc UDP ..."
+#./waf --run "scratch/$lte --simTime=$SIM_TIME --isTcp=0 --distance=$DISTANCE --isFading=1 --isPedestrian=$PEDESTRIAN" > $RE_DIR/$5/UDP_LOG 2>&1 
 #./waf --run "scratch/$lte --simTime=$SIM_TIME --isTcp=0 --distanceBetweenEnbs=$DISTANCE --isFading=1 --isPedestrian=$PEDESTRIAN" > $RE_DIR/$5/UDP_LOG 2>&1 
 
 ###store *Stats.txt 
@@ -70,7 +68,13 @@ cp $CODE_DIR/*.pcap $RE_DIR/$5/
 cp $CODE_DIR/*.txt $RE_DIR/$5/tcp_stats/
 cp $CODE_DIR/.dat $RE_DIR/$5/
 cp $CODE_DIR/lte.in $RE_DIR/$5/
-cp $CODE_DIR/scratch/$lte.cc $RE_DIR/$5
+
+##copy code
+rm -rf $RE_DIR/$5/code
+mkdir $RE_DIR/$5/code
+cp $CODE_DIR/scratch/$lte.cc $RE_DIR/$5/code
+cp $CODE_DIR/src/lte/model/lte-rlc* $RE_DIR/$5/code
+
 rm $CODE_DIR/*.pcap
 mkdir $BACKUP_FOLDER
 cd $RE_DIR

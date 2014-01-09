@@ -153,7 +153,7 @@ std::map <FlowId, FlowMonitor::FlowStats> stats;
 const uint32_t ONEBIL = 1000000000;
 
 /********* Ascii output files name *********/
-static std::string DIR = "/var/tmp/ln_result/radio_dev/";
+static std::string DIR = "/var/tmp/ln_result/radio/";
 static std::string macro = DIR+"macro_output.dat";
 static std::string put_send;
 static std::string debugger = "debugger.dat";
@@ -496,7 +496,7 @@ main (int argc, char *argv[])
 					clientApps.Add(onOffHelper.Install(remoteHost));
         }
         else{
-					PUT_SAMPLING_INTERVAL = PUT_SAMPLING_INTERVAL*20;
+					PUT_SAMPLING_INTERVAL = PUT_SAMPLING_INTERVAL*40;
 					/*********UDP Application********/
 					//Create a packet sink to receive packet on remoteHost
 					PacketSinkHelper sink("ns3::UdpSocketFactory", InetSocketAddress(Ipv4Address::GetAny(), dlPort));

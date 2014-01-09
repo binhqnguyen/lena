@@ -115,9 +115,13 @@ private:
   void DoReportBufferStatus ();
 
 	void Reassemble (Ptr<Packet> Packet);
+
 	//Create RlcSduBuffer <seqNumber, RlcSDU> based on m_transmittingRlcSdus.
 	//The buffer is ascending ordered on sequence number.
 	void CreateRlcSduBuffer ();
+
+	//Binh: check if a SN is inside the transmitting window
+	bool isInsideTransmittingWindow ();
 
 private:
     std::vector < Ptr<Packet> > m_txonBuffer;       // Transmission buffer
@@ -133,7 +137,7 @@ private:
 	std::vector < Ptr<Packet> > m_transmittingRlcSdus;
 	uint32_t m_transmittingRlcSduBufferSize;
   std::map <uint32_t, Ptr <Packet> > m_transmittingRlcSduBuffer;
-
+	
 
 	uint32_t m_maxTxBufferSize;
     uint32_t m_txonBufferSize;

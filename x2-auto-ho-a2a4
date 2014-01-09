@@ -1,7 +1,7 @@
 #!/bin/bash
 E_NAME="CUBIC_noname"
 RE_DIR="/var/tmp/ln_result"
-CODE_DIR="/var/tmp/lena"
+CODE_DIR="/var/tmp/lena_dev"
 SIM_TIME="100"
 DISTANCE="150"
 PEDESTRIAN="1"
@@ -63,7 +63,12 @@ cp $CODE_DIR/*.out $RE_DIR/$5/
 cp $CODE_DIR/*.pcap $RE_DIR/$5/
 cp $CODE_DIR/*.txt $RE_DIR/$5/
 cp $CODE_DIR/.dat $RE_DIR/$5/
-cp $CODE_DIR/lte.in $RE_DIR/$5/
+##copy code
+rm -rf $RE_DIR/$5/code
+mkdir $RE_DIR/$5/code
+cp $CODE_DIR/scratch/$lte.cc $RE_DIR/$5/code
+cp $CODE_DIR/src/lte/model/lte-rlc* $RE_DIR/$5/code
+
 cp $CODE_DIR/scratch/$lte.cc $RE_DIR/$5
 rm $CODE_DIR/*.pcap
 mkdir $BACKUP_FOLDER
