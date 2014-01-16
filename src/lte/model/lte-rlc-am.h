@@ -86,10 +86,16 @@ public:
 	uint32_t GetTransmittingRlcSduBufferSize(){
 		return m_transmittingRlcSduBufferSize;
 	}
+
+	Ptr<Packet> GetSegmentedRlcsdu(){
+		return m_segmented_rlcsdu;
+	}
 	///< Binh: translate a vector of Rlc PDUs to Rlc SDUs 
 	///< and put the Rlc SDUs into m_transmittingRlcSdus.
   void  RlcPdusToRlcSdus (std::vector < RetxPdu >  Pdus);
 private:
+	//Binh: whether the last SDU in the txonBuffer is a complete SDU.
+	bool is_fragmented;
   /**
    * This method will schedule a timeout at WaitReplyTimeout interval
    * in the future, unless a timer is already running for the cache,
@@ -122,10 +128,16 @@ private:
 
 	//Binh: check if a SN is inside the transmitting window
 	bool isInsideTransmittingWindow ();
+	
 
 private:
     std::vector < Ptr<Packet> > m_txonBuffer;       // Transmission buffer
 
+	//Binh: store a complete version of the incomplete RLC SDU at the 
+	//edge of the m_txonBuffer during the segmentation process.
+	//This SDU will be forwarded to target eNB in lossless HO
+	//to assure no packet is lost.
+	Ptr<Packet> m_segmented_rlcsdu;
 
   std::vector <RetxPdu> m_txedBuffer;  ///< Buffer for transmitted and retransmitted PDUs 
                                        ///< that have not been acked but are not considered 
@@ -211,7 +223,7 @@ private:
    */
   uint16_t m_maxRetxThreshold;  /// \todo How these parameters are configured???
   uint16_t m_pollPdu;
-  uint16_t m_pollByte;
+  uint32_t m_pollByte;
   
   bool m_txOpportunityForRetxAlwaysBigEnough;
   bool m_pollRetransmitTimerJustExpired;

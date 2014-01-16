@@ -7,15 +7,14 @@ DISTANCE="150"
 PEDESTRIAN="1"
 lte="lena-x2-handover"
 processing="processing"
+DEBUG="0"
 
-if [ "$1" != "" ];
-	then
-	E_NAME=$1
-	else
-		echo "usage rp-..sh <name of backup folder> [<simTime> <distance> <isPedestrian> <radio/radio_dev>]"
-		exit;
+if [ $# -lt 5 ]; then
+	echo "usage rp-..sh <name of backup folder> [<simTime> <distance> <isPedestrian> <radio/radio_dev>]"
+	exit;
 fi
 
+E_NAME=$1
 PY_DIR="$REDIR/$5/"
 
 echo "removing old files....."
@@ -51,12 +50,12 @@ echo $RE_DIR
 BACKUP_FOLDER="$RE_DIR/from_cade/$E_NAME"
 echo "backup folder: $BACKUP_FOLDER"
 
-echo "running $lte nsc UDP ..."
-./waf --run "scratch/$lte --simTime=$SIM_TIME --isTcp=0 --distance=$DISTANCE --isFading=1 --isPedestrian=$PEDESTRIAN" > $RE_DIR/$5/UDP_LOG 2>&1 
+#echo "running $lte nsc UDP ..."
+#./waf --run "scratch/$lte --simTime=$SIM_TIME --isTcp=0 --distance=$DISTANCE --isFading=1 --isPedestrian=$PEDESTRIAN" > $RE_DIR/$5/UDP_LOG 2>&1 
 #./waf --run "scratch/$lte --simTime=$SIM_TIME --isTcp=0 --distanceBetweenEnbs=$DISTANCE --isFading=1 --isPedestrian=$PEDESTRIAN" > $RE_DIR/$5/UDP_LOG 2>&1 
 
 echo "running $lte nsc TCP ..."
-./waf --run "scratch/$lte --simTime=$SIM_TIME --isTcp=1 --distance=$DISTANCE --isFading=1 --isPedestrian=$PEDESTRIAN" > $RE_DIR/$5/TCP_LOG 2>&1 
+./waf --run "scratch/$lte --simTime=$SIM_TIME --isTcp=1 --distance=$DISTANCE --isFading=1 --isPedestrian=$PEDESTRIAN --isDebug=$DEBUG" > $RE_DIR/$5/TCP_LOG 2>&1 
 #./waf --run "scratch/$lte" > $RE_DIR/$5/TCP_LOG 2>&1 
 
 cp $CODE_DIR/*.out $RE_DIR/$5/

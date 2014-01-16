@@ -50,9 +50,12 @@ LteRlcAm::LteRlcAm ()
 	m_transmittingRlcSduBufferSize = 0;
   m_statusPduRequested = false;
   m_statusPduBufferSize = 0;
+	//TODO:init m_segmented_rlcsdu (Ptr<Packet>)
+	//m_segmented_rlcsdu = 0;
+	is_fragmented = 0;
 
   // State variables: transmitting side
-  m_windowSize = 2;
+  m_windowSize = 512;
   m_vtA  = 0;
   m_vtMs = m_vtA + m_windowSize;
   m_vtS  = 0;
@@ -72,7 +75,7 @@ LteRlcAm::LteRlcAm ()
   // Configurable parameters
   m_maxRetxThreshold = 5;
   m_pollPdu = 1;
-  m_pollByte = 30000;
+  m_pollByte = 1500000;
 
   // SDU reassembling process
   m_reassemblingState = WAITING_S0_FULL;
@@ -149,6 +152,7 @@ LteRlcAm::DoDispose ()
   m_expectedSeqNumber = 0;
 	m_transmittingRlcSduBufferSize = 0;
 	m_transmittingRlcSduBuffer.clear();
+	is_fragmented = 0;
   LteRlc::DoDispose ();
 }
 
@@ -502,9 +506,21 @@ LteRlcAm::DoNotifyTxOpportunity (uint32_t bytes, uint8_t layer, uint8_t harqId)
   NS_LOG_LOGIC ("SDUs in TxonBuffer  = " << m_txonBuffer.size ());
   NS_LOG_LOGIC ("First SDU buffer  = " << *(m_txonBuffer.begin()));
   NS_LOG_LOGIC ("First SDU size    = " << (*(m_txonBuffer.begin()))->GetSize ());
+  NS_LOG_DEBUG ("First SDU size    = " << (*(m_txonBuffer.begin()))->GetSize ());
   NS_LOG_LOGIC ("Next segment size = " << nextSegmentSize);
   NS_LOG_LOGIC ("Remove SDU from TxBuffer");
   Ptr<Packet> firstSegment = (*(m_txonBuffer.begin ()))->Copy ();
+	//Binh: tricky: store the incomplete Rlc SDU for forwarding to 
+	//target eNB in lossless HO. This will reduce the work of 
+	//reassemling the incomplete SDU later.
+	Ptr<Packet> entireSdu ;
+	//if (firstSegment->GetSize() == 1502): Tricky, 1502 is UNKNOWN.
+	//Binh: store complete the last complete SDU of the txonBuffer.
+	if (!is_fragmented){
+		NS_LOG_DEBUG ("Last complete SDU in txonBuffer size = " << firstSegment->GetSize() << " SEQ = " << m_vtS );
+		entireSdu = (*(m_txonBuffer.begin ()))->Copy ();
+	}
+
   m_txonBufferSize -= (*(m_txonBuffer.begin()))->GetSize ();
   NS_LOG_LOGIC ("txBufferSize      = " << m_txonBufferSize );
   m_txonBuffer.erase (m_txonBuffer.begin ());
@@ -525,10 +541,15 @@ LteRlcAm::DoNotifyTxOpportunity (uint32_t bytes, uint8_t layer, uint8_t harqId)
 
           NS_LOG_LOGIC ("    IF ( firstSegment > nextSegmentSize ||");
           NS_LOG_LOGIC ("         firstSegment > 2047 )");
-
+			
+					
           // Segment txBuffer.FirstBuffer and
           // Give back the remaining segment to the transmission buffer
           Ptr<Packet> newSegment = firstSegment->CreateFragment (0, currSegmentSize);
+					//Binh: This firstSegment is fragmented. Update the status variable.
+					is_fragmented = 1;
+					
+					
           NS_LOG_LOGIC ("    newSegment size   = " << newSegment->GetSize ());
 
           // Status tag of the new and remaining segments
@@ -554,9 +575,11 @@ LteRlcAm::DoNotifyTxOpportunity (uint32_t bytes, uint8_t layer, uint8_t harqId)
           if (firstSegment->GetSize () > 0)
             {
               firstSegment->AddPacketTag (oldTag);
-
+				
+							//Binh: Mark the first SDU is txonBuffer is fragmented. This maybe not needed.
+							is_fragmented = 1;
               m_txonBuffer.insert (m_txonBuffer.begin (), firstSegment);
-              m_txonBufferSize += (*(m_txonBuffer.begin()))->GetSize ();
+							m_txonBufferSize += (*(m_txonBuffer.begin()))->GetSize ();
 
               NS_LOG_LOGIC ("    Txon buffer: Give back the remaining segment");
               NS_LOG_LOGIC ("    Txon buffers = " << m_txonBuffer.size ());
@@ -565,7 +588,7 @@ LteRlcAm::DoNotifyTxOpportunity (uint32_t bytes, uint8_t layer, uint8_t harqId)
             }
           else
             {
-              // Whole segment was taken, so adjust tag
+					              // Whole segment was taken, so adjust tag
               if (newTag.GetStatus () == LteRlcSduStatusTag::FIRST_SEGMENT)
                 {
                   newTag.SetStatus (LteRlcSduStatusTag::FULL_SDU);
@@ -660,12 +683,25 @@ LteRlcAm::DoNotifyTxOpportunity (uint32_t bytes, uint8_t layer, uint8_t harqId)
 
           // (more segments)
           firstSegment = (*(m_txonBuffer.begin ()))->Copy ();
+					//if (firstSegment->GetSize() == 1502): tricky, 1502 is UNKNOWN!
+					//Binh: New complete SDU is taken from txonBuffer so reset the 
+					//status is_fragmented.
+					is_fragmented = 0;
+					//Binh: Store the last complete SDU before segmentation in txonBuffer.
+					entireSdu = (*(m_txonBuffer.begin ()))->Copy ();
           m_txonBufferSize -= (*(m_txonBuffer.begin()))->GetSize ();
           m_txonBuffer.erase (m_txonBuffer.begin ());
           NS_LOG_LOGIC ("        txBufferSize = " << m_txonBufferSize );
         }
 
     }
+		//Binh: tricky: store the complete version of the LAST incomplete Rlc SDU for forwarding to 
+		//target eNB in lossless HO. This will reduce the work of 
+		//reassemling the incomplete SDU later.
+		if (entireSdu != NULL){
+			m_segmented_rlcsdu = entireSdu;
+			NS_LOG_DEBUG ("entireSdu = " << m_segmented_rlcsdu->GetSize() << " SEQ = " << m_vtS );
+		}
 
  	//Section 5.1.3.1.1: when deliver a new PDU to lower layer, SN is set to m_vtS and m_vtS increases by 1.
   rlcAmHeader.SetSequenceNumber ( m_vtS++ );
@@ -1297,7 +1333,7 @@ LteRlcAm::CreateRlcSduBuffer(){
 	LtePdcpHeader pdcpHeader;
 	for (std::vector < Ptr<Packet> >::iterator it = m_transmittingRlcSdus.begin(); it != m_transmittingRlcSdus.end(); ++it){
 		(*it)->PeekHeader(pdcpHeader);
-		NS_LOG_DEBUG ("SEQ = " << pdcpHeader.GetSequenceNumber());
+		NS_LOG_DEBUG ("RLCSDU_SEQ = " << pdcpHeader.GetSequenceNumber());
 		m_transmittingRlcSduBuffer[pdcpHeader.GetSequenceNumber()] = (*it)->Copy();
 	}
 }

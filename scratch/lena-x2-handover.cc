@@ -82,8 +82,8 @@ FlowMonitorHelper flowHelper;
 Ptr<ns3::Ipv4FlowClassifier> classifier;
 std::map <FlowId, FlowMonitor::FlowStats> stats;
 std::string dataRate = "150Mb/s";
-LogLevel logLevel = (LogLevel) (LOG_LEVEL_ALL | LOG_PREFIX_TIME | LOG_PREFIX_NODE | LOG_PREFIX_FUNC);
-//LogLevel logLevel = (LogLevel) (LOG_PREFIX_TIME | LOG_PREFIX_NODE| LOG_PREFIX_FUNC | LOG_LEVEL_DEBUG);
+//LogLevel logLevel = (LogLevel) (LOG_LEVEL_ALL | LOG_PREFIX_TIME | LOG_PREFIX_NODE | LOG_PREFIX_FUNC);
+LogLevel logLevel = (LogLevel) (LOG_PREFIX_TIME | LOG_PREFIX_NODE| LOG_PREFIX_FUNC | LOG_LEVEL_DEBUG);
 uint32_t isAutoHo = 0;
 double speed = 20; //20m/s
 
@@ -115,7 +115,7 @@ double distance = 500.0;
 uint32_t isDebug = 0;
 
 /********* Ascii output files name *********/
-static std::string DIR = "/var/tmp/ln_result/radio_dev/";
+static std::string DIR = "/var/tmp/ln_result/radio/";
 static std::string macro = DIR+"macro_output.dat";
 static std::string put_send;
 static std::string debugger = DIR+"debugger.dat";
@@ -460,9 +460,9 @@ main (int argc, char *argv[])
   }
   else{
 	  *debugger_wp->GetStream () << "Manual Handover at 20,50,80 second\n" ;
-	  lteHelper->HandoverRequest (Seconds (2.00), ueLteDevs.Get (0), enbLteDevs.Get (0), enbLteDevs.Get (1));
-	  lteHelper->HandoverRequest (Seconds (4.00), ueLteDevs.Get (0), enbLteDevs.Get (1), enbLteDevs.Get (0));
-	  lteHelper->HandoverRequest (Seconds (19.00), ueLteDevs.Get (0), enbLteDevs.Get (0), enbLteDevs.Get (1));
+	  lteHelper->HandoverRequest (Seconds (20.00), ueLteDevs.Get (0), enbLteDevs.Get (0), enbLteDevs.Get (1));
+	  lteHelper->HandoverRequest (Seconds (50.00), ueLteDevs.Get (0), enbLteDevs.Get (1), enbLteDevs.Get (0));
+	  lteHelper->HandoverRequest (Seconds (70.00), ueLteDevs.Get (0), enbLteDevs.Get (0), enbLteDevs.Get (1));
   }
     monitor = flowHelper.Install(ueNodes);
     monitor = flowHelper.Install(remoteHost);
@@ -652,6 +652,7 @@ void EnableLogComponents(){
   		LogComponentEnable ("LteUeRrc", logLevel);
   		LogComponentEnable ("LteUeNetDevice", logLevel);
 		}
+  	LogComponentEnable ("LteUeRrc", logLevel);
   	LogComponentEnable ("LteRlcUm", logLevel);
   	LogComponentEnable ("LteRlcAm", logLevel);
   	LogComponentEnable ("LteEnbRrc", logLevel);
@@ -708,8 +709,8 @@ void InstallMobility(NodeContainer ueNodes, NodeContainer enbNodes){
     enbMobility.SetPositionAllocator ("ns3::GridPositionAllocator",
                     "MinX", DoubleValue (0.0),  //zero point
                     "MinY", DoubleValue (0.0),  //zero point
-                    "DeltaX", DoubleValue (1000.0),  //distance among ENB nodes
-                    "DeltaY", DoubleValue (1000.0),
+                    "DeltaX", DoubleValue (300.0),  //distance among ENB nodes
+                    "DeltaY", DoubleValue (300.0),
                     "GridWidth", UintegerValue (10), //number of nodes on a line
                     "LayoutType", StringValue ("RowFirst"));
     enbMobility.Install (enbNodes); //===ENB #1 placed at (0.0)====//
@@ -719,8 +720,8 @@ void InstallMobility(NodeContainer ueNodes, NodeContainer enbNodes){
     if (is_random_allocation == 0){ //fixed position allocation
         *debugger_wp->GetStream() << "Allocating UEs with FIXED positions ....\n";
         ueMobility.SetPositionAllocator ("ns3::GridPositionAllocator",
-	    "MinX", DoubleValue (distance/sqrt(2)),  //1st UE is put at a location which is "distance" meters away from eNB.
-	    "MinY", DoubleValue (distance/sqrt(2)),  
+	    "MinX", DoubleValue (distance),  //1st UE is put at a location which is "distance" meters away from eNB.
+	    "MinY", DoubleValue (0),  
 	    "DeltaX", DoubleValue (100.0),  //distance among UE nodes
 	    "DeltaY", DoubleValue (100.0),
 	    "GridWidth", UintegerValue (3), //number of nodes on a line

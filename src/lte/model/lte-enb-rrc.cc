@@ -563,6 +563,50 @@ UeManager::PrepareHandover (uint16_t cellId)
 
 }
 
+/*
+ * Merge 2 buffers of RlcAmPdus into 1 vector with increment order of Pdus
+ */
+std::vector < LteRlcAm::RetxPdu >
+UeManager::MergeBuffers(std::vector < LteRlcAm::RetxPdu > first, std::vector < LteRlcAm::RetxPdu > second){
+	LteRlcAmHeader rlcamHeader_1, rlcamHeader_2;
+	std::vector < LteRlcAm::RetxPdu> result;
+	std::vector < LteRlcAm::RetxPdu>::iterator it_1 = first.begin();
+	std::vector < LteRlcAm::RetxPdu>::iterator it_2 = second.begin();
+	while (it_1 != first.end() && it_2 != second.end()){
+		while ((*it_1).m_pdu == 0){
+			it_1++;
+		}
+		while ((*it_2).m_pdu == 0){
+			it_2++;
+		}
+		(*it_1).m_pdu->PeekHeader(rlcamHeader_1);
+		(*it_2).m_pdu->PeekHeader(rlcamHeader_2);
+		if (rlcamHeader_1.GetSequenceNumber() > rlcamHeader_2.GetSequenceNumber()){
+			result.push_back((*it_2));	
+			++it_2;				
+		}
+		else if (rlcamHeader_2.GetSequenceNumber() > rlcamHeader_1.GetSequenceNumber()){
+			result.push_back((*it_1));
+			++it_1;					
+		}
+		else {
+			result.push_back((*it_1));
+			++it_1;
+			++it_2;
+		}
+		NS_LOG_DEBUG ("first,second = " << rlcamHeader_1.GetSequenceNumber() << "," << rlcamHeader_2.GetSequenceNumber());
+	}
+	while (it_1 != first.end()){
+		result.push_back((*it_1));
+		it_1++;
+	}
+	while (it_2 != second.end()){
+		result.push_back((*it_2));
+		it_2++;
+	}
+	return result;
+}
+ 
 void 
 UeManager::RecvHandoverRequestAck (EpcX2SapUser::HandoverRequestAckParams params)
 {
@@ -603,6 +647,7 @@ UeManager::RecvHandoverRequestAck (EpcX2SapUser::HandoverRequestAckParams params
           EpcX2Sap::ErabsSubjectToStatusTransferItem i;          
           i.dlPdcpSn = status.txSn;
           i.ulPdcpSn = status.rxSn;
+					NS_LOG_DEBUG ("SN STATUS SEND txSn, rxSn = " << status.txSn << "," << status.rxSn);
           sst.erabsSubjectToStatusTransferList.push_back (i);
         }
     }
@@ -629,16 +674,29 @@ UeManager::RecvHandoverRequestAck (EpcX2SapUser::HandoverRequestAckParams params
 				//and put these Sdus into rlcAm->m_transmittingRlcSdus.
 				NS_LOG_DEBUG("retxBuffer size = " << retxBufferSize);
 				NS_LOG_DEBUG("txedBuffer size = " << txedBufferSize);
-				if ( retxBufferSize > 0 ){
-					rlcAm->RlcPdusToRlcSdus(rlcAm->GetRetxBuffer());	
-				}
-				if ( txedBufferSize > 0 ){
-					rlcAm->RlcPdusToRlcSdus(rlcAm->GetTxedBuffer());
+				//Merge txed and retx buffers into a single buffer before doing RlcPdusToRlc.
+				if ( retxBufferSize + txedBufferSize > 0 ){
+					std::vector< LteRlcAm::RetxPdu > sortedTxedRetxBuffer;
+					if (retxBufferSize == 0){
+						sortedTxedRetxBuffer = txedBuffer;
+					}
+					else if (txedBufferSize == 0){
+						sortedTxedRetxBuffer = retxBuffer;
+					}
+					else {
+						sortedTxedRetxBuffer = MergeBuffers(txedBuffer, retxBuffer);
+					}
+					rlcAm->RlcPdusToRlcSdus(sortedTxedRetxBuffer);	
 				}
 
 				//Construct the forwarding buffer
 				//Forwarding buffer = retxBuffer + txedBuffer + txonBuffer.
 				if ( txonBufferSize > 0 ){
+					LtePdcpHeader pdcpHeader;
+					for (std::vector< Ptr<Packet> >::iterator it = txonBuffer.begin(); it != txonBuffer.end(); ++it){
+						(*it)->PeekHeader(pdcpHeader);
+						NS_LOG_DEBUG("txonBuffer SEQ = " << pdcpHeader.GetSequenceNumber() << " Size = " << (*it)->GetSize());
+					}
 					if ( rlcAm->GetTransmittingRlcSduBufferSize() > 0){ //something inside the RLC AM's transmitting buffer 
 									NS_LOG_DEBUG ("ADDING TRANSMITTING SDUS OF RLC AM TO X2FORWARDINGBUFFER... Size = " << rlcAm->GetTransmittingRlcSduBufferSize() );
 									//copy the RlcSdu buffer (map) to forwardingBuffer.
@@ -651,6 +709,13 @@ UeManager::RecvHandoverRequestAck (EpcX2SapUser::HandoverRequestAckParams params
 										}
 									}	
 						NS_LOG_DEBUG(this << " ADDING TXONBUFFER OF RLC AM " << m_rnti << " Size = " << txonBufferSize) ;
+						Ptr<Packet> segmentedRlcsdu = rlcAm->GetSegmentedRlcsdu();
+						if (segmentedRlcsdu != NULL){
+							segmentedRlcsdu->PeekHeader(pdcpHeader);
+							NS_LOG_DEBUG(this << "SegmenetedRlcSdu = " << segmentedRlcsdu->GetSize() << " SEQ = " << pdcpHeader.GetSequenceNumber());
+							//insert the complete version of the fragmented SDU to the front of txonBuffer.
+							txonBuffer.insert(txonBuffer.begin(),segmentedRlcsdu);
+						}
 						m_x2forwardingBuffer.insert(m_x2forwardingBuffer.end(), txonBuffer.begin(), txonBuffer.end());
 						m_x2forwardingBufferSize += rlcAm->GetTransmittingRlcSduBufferSize() + txonBufferSize;
 					}
@@ -668,6 +733,9 @@ UeManager::RecvHandoverRequestAck (EpcX2SapUser::HandoverRequestAckParams params
 				m_x2forwardingBuffer = drbIt->second->m_rlc->GetObject<LteRlcUm>()->GetTxBuffer();
 				m_x2forwardingBufferSize =  drbIt->second->m_rlc->GetObject<LteRlcUm>()->GetTxBufferSize();
 			}
+			//*********!!!!!*********//
+			//	m_x2forwardingBuffer.clear();
+			//**********!!!!!!*******//
 				//LteRlcAm m_txBuffer stores PDCP "PDU".
 				NS_LOG_DEBUG(this << " m_x2forw buffer size = " << m_x2forwardingBufferSize);
 					//Forwarding the packet inside m_x2forwardingBuffer to target eNB.	
@@ -745,6 +813,8 @@ void
 UeManager::SendData (uint8_t bid, Ptr<Packet> p)
 {
   NS_LOG_FUNCTION (this << p << (uint16_t) bid);
+	//LtePdcpHeader pdcpHeader;
+	//p->PeekHeader(pdcpHeader);
   switch (m_state)
     {
     case INITIAL_RANDOM_ACCESS:
@@ -768,11 +838,13 @@ UeManager::SendData (uint8_t bid, Ptr<Packet> p)
         uint8_t drbid = Bid2Drbid (bid);
         LtePdcpSapProvider* pdcpSapProvider = GetDataRadioBearerInfo (drbid)->m_pdcp->GetLtePdcpSapProvider ();
         pdcpSapProvider->TransmitPdcpSdu (params);
+				//NS_LOG_DEBUG("PDCP_SEQ = " << pdcpHeader.GetSequenceNumber());
       }
       break;
       
     case HANDOVER_LEAVING:
       {
+				NS_LOG_DEBUG("SEQ SEQ HANDOVERLEAVING STATE LTE ENB RRC.");
 				//m_x2forwardingBuffer is empty, forward incomming pkts to target eNB.
 				if (m_x2forwardingBuffer.empty()){
 								NS_LOG_DEBUG ("forwarding incomming pkts to target eNB over X2-U");
@@ -783,6 +855,7 @@ UeManager::SendData (uint8_t bid, Ptr<Packet> p)
 								params.targetCellId = m_targetCellId;
 								params.gtpTeid = GetDataRadioBearerInfo (drbid)->m_gtpTeid;
 								params.ueData = p;
+								NS_LOG_DEBUG("PDCP_FORWARDING_SEQ");
 								NS_LOG_DEBUG ("sourceCellId = " << params.sourceCellId);
 								NS_LOG_DEBUG ("targetCellId = " << params.targetCellId);
 								NS_LOG_DEBUG ("gtpTeid = " << params.gtpTeid);
@@ -795,6 +868,7 @@ UeManager::SendData (uint8_t bid, Ptr<Packet> p)
 				else{
 								NS_LOG_DEBUG ("append incomming pkts to m_x2forwardingBuffer");
 								m_x2forwardingBuffer.push_back(p);
+								//NS_LOG_DEBUG("Forwarding but push_bach to buffer SEQ = " << pdcpHeader.GetSequenceNumber());
 				}
       }      
       break;
@@ -876,13 +950,16 @@ UeManager::RecvSnStatusTransfer (EpcX2SapUser::SnStatusTransferParams params)
        erabIt != params.erabsSubjectToStatusTransferList.end ();
        ++erabIt)
     {
-      // LtePdcp::Status status;
-      // status.txSn = erabIt->dlPdcpSn;
-      // status.rxSn = erabIt->ulPdcpSn;
-      // uint8_t drbId = Bid2Drbid (erabIt->erabId);
-      // std::map <uint8_t, Ptr<LteDataRadioBearerInfo> >::iterator drbIt = m_drbMap.find (drbId);
-      // NS_ASSERT_MSG (drbIt != m_drbMap.end (), "could not find DRBID " << (uint32_t) drbId);
-      // drbIt->second->m_pdcp->SetStatus (status);
+			//Binh: assign PDCP layer status of the source ENB to the new ENB.
+       LtePdcp::Status status;
+       status.txSn = erabIt->dlPdcpSn;
+       status.rxSn = erabIt->ulPdcpSn;
+				NS_LOG_DEBUG ("SN STATUS RECEIVED txSn, rxSn = " << status.txSn << "," << status.rxSn);
+       //uint8_t drbId = Bid2Drbid (erabIt->erabId);
+       //std::map <uint8_t, Ptr<LteDataRadioBearerInfo> >::iterator drbIt = m_drbMap.find (drbId);
+       //NS_ASSERT_MSG (drbIt != m_drbMap.end (), "could not find DRBID " << (uint32_t) drbId);
+       //drbIt->second->m_pdcp->SetStatus (status);
+			//	NS_LOG_DEBUG ("PDCP SN Set for target ENB");
     }
 }
 
@@ -1122,6 +1199,7 @@ void
 UeManager::DoReceivePdcpSdu (LtePdcpSapUser::ReceivePdcpSduParameters params)
 {
   NS_LOG_FUNCTION (this);
+	NS_LOG_DEBUG("ENB RECEIVED_PDCPPDU");
   if (params.lcid > 2)
     {
       // data radio bearer
@@ -1386,6 +1464,7 @@ LteEnbRrc::LteEnbRrc ()
   m_x2SapUser = new EpcX2SpecificEpcX2SapUser<LteEnbRrc> (this);
   m_s1SapUser = new MemberEpcEnbS1SapUser<LteEnbRrc> (this);
   m_cphySapUser = new MemberLteEnbCphySapUser<LteEnbRrc> (this);
+	m_x2_received_cnt = 0;
 }
 
 
@@ -1825,7 +1904,6 @@ LteEnbRrc::SendData (Ptr<Packet> packet)
   NS_ASSERT_MSG (found, "no EpsBearerTag found in packet to be sent");
   Ptr<UeManager> ueManager = GetUeManager (tag.GetRnti ());
   ueManager->SendData (tag.GetBid (), packet);
-
   return true;
 }
 
@@ -2145,13 +2223,15 @@ LteEnbRrc::DoRecvUeData (EpcX2SapUser::UeDataParams params)
   NS_LOG_LOGIC ("ueData = " << params.ueData);
   NS_LOG_LOGIC ("ueData size = " << params.ueData->GetSize ());
 
-  NS_LOG_DEBUG ("Recv UE DATA FORWARDING through X2 interface");
-  NS_LOG_DEBUG ("sourceCellId = " << params.sourceCellId);
-  NS_LOG_DEBUG ("targetCellId = " << params.targetCellId);
-  NS_LOG_DEBUG ("gtpTeid = " << params.gtpTeid);
-  NS_LOG_DEBUG ("ueData = " << params.ueData);
-  NS_LOG_DEBUG ("ueData size = " << params.ueData->GetSize ());
-
+  NS_LOG_DEBUG ("Recv UE DATA FORWARDING through X2 interface cnt = " << m_x2_received_cnt++);
+  //NS_LOG_DEBUG ("sourceCellId = " << params.sourceCellId);
+  //NS_LOG_DEBUG ("targetCellId = " << params.targetCellId);
+  //NS_LOG_DEBUG ("gtpTeid = " << params.gtpTeid);
+  //NS_LOG_DEBUG ("ueData = " << params.ueData);
+  //NS_LOG_DEBUG ("ueData size = " << params.ueData->GetSize ());
+	//LtePdcpHeader pdcpHeader;
+	//params.ueData->PeekHeader(pdcpHeader);
+	//NS_LOG_DEBUG ("FORWARDING_RECEIVED_SEQ = " << pdcpHeader.GetSequenceNumber());
 
   std::map<uint32_t, X2uTeidInfo>::iterator 
     teidInfoIt = m_x2uTeidInfoMap.find (params.gtpTeid);

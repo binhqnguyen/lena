@@ -39,7 +39,7 @@
 #include <ns3/lte-enb-cphy-sap.h>
 #include <ns3/lte-rrc-sap.h>
 #include <ns3/lte-anr-sap.h>
-
+#include <ns3/lte-rlc-am.h>
 #include <map>
 #include <set>
 
@@ -296,7 +296,8 @@ public:
 
 
 private:
-
+	//Binh: merge 2 buffers into 1 with increment order.
+	std::vector < LteRlcAm::RetxPdu > MergeBuffers(std::vector < LteRlcAm::RetxPdu > first, std::vector < LteRlcAm::RetxPdu > second);
   /** 
    * Add a new LteDataRadioBearerInfo structure to the UeManager
    * 
@@ -438,6 +439,8 @@ class LteEnbRrc : public Object
   friend class UeManager;
 
 public:
+
+	uint32_t m_x2_received_cnt;
   /**
    * create an RRC instance for use within an eNB
    *

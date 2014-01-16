@@ -11163,3 +11163,3461 @@ Lost ratio 0
 Average delay received +40.10566676457735783945
 Mean received bitrate +18.15800832716426313099
 Mean transmitted bitrate +18.11407854887688031849
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 174
+Rx Packets 107
+Lost packets 65
+Lost ratio 0.377907
+Average delay received +49.08680354024760646466
+Mean received bitrate +2175.03679536716829727387
+Mean transmitted bitrate +204.00284909952814946898
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 63
+Rx Packets 63
+Lost packets 0
+Lost ratio 0
+Average delay received +38.16581727592512678618
+Mean received bitrate +35.09476410735019209065
+Mean transmitted bitrate +35.0134916346283756844
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 174
+Rx Packets 107
+Lost packets 65
+Lost ratio 0.377907
+Average delay received +49.0712875872884115147
+Mean received bitrate +2175.03679536716829727387
+Mean transmitted bitrate +204.00284909952814946898
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 63
+Rx Packets 63
+Lost packets 0
+Lost ratio 0
+Average delay received +38.17460143976975038218
+Mean received bitrate +35.09476410735019209065
+Mean transmitted bitrate +35.0134916346283756844
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 174
+Rx Packets 107
+Lost packets 65
+Lost ratio 0.377907
+Average delay received +49.0712875872884115147
+Mean received bitrate +2175.03679536716829727387
+Mean transmitted bitrate +204.00284909952814946898
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 63
+Rx Packets 63
+Lost packets 0
+Lost ratio 0
+Average delay received +38.17460143976975038218
+Mean received bitrate +35.09476410735019209065
+Mean transmitted bitrate +35.0134916346283756844
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 8097
+Rx Packets 7955
+Lost packets 50
+Lost ratio 0.0062461
+Average delay received +113.0147892200780853689
+Mean received bitrate +6441.15214802081809291344
+Mean transmitted bitrate +6542.16010770050409226565
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 3449
+Rx Packets 3440
+Lost packets 0
+Lost ratio 0
+Average delay received +38.00587931586621954028
+Mean received bitrate +83.17101659252857215872
+Mean transmitted bitrate +83.15872157022360145559
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 11890
+Rx Packets 11727
+Lost packets 94
+Lost ratio 0.00795195
+Average delay received +81.13837450206465150433
+Mean received bitrate +9498.14654474058279337169
+Mean transmitted bitrate +9606.18313782214889950141
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 4986
+Rx Packets 4975
+Lost packets 0
+Lost ratio 0
+Average delay received +36.01740010195557947661
+Mean received bitrate +119.07250070370013553008
+Mean transmitted bitrate +119.05543333318332888946
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 11890
+Rx Packets 11727
+Lost packets 94
+Lost ratio 0.00795195
+Average delay received +81.13837450206465150433
+Mean received bitrate +9498.14654474058279337169
+Mean transmitted bitrate +9606.18313782214889950141
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 4986
+Rx Packets 4975
+Lost packets 0
+Lost ratio 0
+Average delay received +36.01740010195557947661
+Mean received bitrate +119.07250070370013553008
+Mean transmitted bitrate +119.05543333318332888946
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 11890
+Rx Packets 11727
+Lost packets 94
+Lost ratio 0.00795195
+Average delay received +81.13837450206465150433
+Mean received bitrate +9498.14654474058279337169
+Mean transmitted bitrate +9606.18313782214889950141
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 4986
+Rx Packets 4975
+Lost packets 0
+Lost ratio 0
+Average delay received +36.01740010195557947661
+Mean received bitrate +119.07250070370013553008
+Mean transmitted bitrate +119.05543333318332888946
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 11890
+Rx Packets 11727
+Lost packets 94
+Lost ratio 0.00795195
+Average delay received +81.13837450206465150433
+Mean received bitrate +9498.14654474058279337169
+Mean transmitted bitrate +9606.18313782214889950141
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 4986
+Rx Packets 4975
+Lost packets 0
+Lost ratio 0
+Average delay received +36.01740010195557947661
+Mean received bitrate +119.07250070370013553008
+Mean transmitted bitrate +119.05543333318332888946
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 9858
+Rx Packets 9626
+Lost packets 122
+Lost ratio 0.0125154
+Average delay received +91.07349275001781461606
+Mean received bitrate +8781.18169130703080580216
+Mean transmitted bitrate +8239.02837024223221032651
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 4132
+Rx Packets 4132
+Lost packets 0
+Lost ratio 0
+Average delay received +36.09354091303850376244
+Mean received bitrate +113.04143833813658558017
+Mean transmitted bitrate +113.03005263499897815829
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19104
+Rx Packets 18928
+Lost packets 84
+Lost ratio 0.00441826
+Average delay received +83.08891353514839812935
+Mean received bitrate +15330.1721651482269872672
+Mean transmitted bitrate +15439.07948251845658381826
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 7831
+Rx Packets 7812
+Lost packets 0
+Lost ratio 0
+Average delay received +35.08589366047743811263
+Mean received bitrate +184.03568010329027463593
+Mean transmitted bitrate +184.00804638152254026093
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19104
+Rx Packets 18928
+Lost packets 84
+Lost ratio 0.00441826
+Average delay received +83.08891353514839812935
+Mean received bitrate +15330.1721651482269872672
+Mean transmitted bitrate +15439.07948251845658381826
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 7831
+Rx Packets 7812
+Lost packets 0
+Lost ratio 0
+Average delay received +35.08589366047743811263
+Mean received bitrate +184.03568010329027463593
+Mean transmitted bitrate +184.00804638152254026093
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19104
+Rx Packets 18928
+Lost packets 84
+Lost ratio 0.00441826
+Average delay received +83.08891353514839812935
+Mean received bitrate +15330.1721651482269872672
+Mean transmitted bitrate +15439.07948251845658381826
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 7831
+Rx Packets 7812
+Lost packets 0
+Lost ratio 0
+Average delay received +35.08589366047743811263
+Mean received bitrate +184.03568010329027463593
+Mean transmitted bitrate +184.00804638152254026093
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19104
+Rx Packets 18928
+Lost packets 84
+Lost ratio 0.00441826
+Average delay received +83.08891353514839812935
+Mean received bitrate +15330.1721651482269872672
+Mean transmitted bitrate +15439.07948251845658381826
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 7831
+Rx Packets 7812
+Lost packets 0
+Lost ratio 0
+Average delay received +35.08589366047743811263
+Mean received bitrate +184.03568010329027463593
+Mean transmitted bitrate +184.00804638152254026093
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19104
+Rx Packets 18928
+Lost packets 84
+Lost ratio 0.00441826
+Average delay received +83.08891353514839812935
+Mean received bitrate +15330.1721651482269872672
+Mean transmitted bitrate +15439.07948251845658381826
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 7831
+Rx Packets 7812
+Lost packets 0
+Lost ratio 0
+Average delay received +35.08589366047743811263
+Mean received bitrate +184.03568010329027463593
+Mean transmitted bitrate +184.00804638152254026093
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19104
+Rx Packets 18928
+Lost packets 84
+Lost ratio 0.00441826
+Average delay received +83.08891353514839812935
+Mean received bitrate +15330.1721651482269872672
+Mean transmitted bitrate +15439.07948251845658381826
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 7831
+Rx Packets 7812
+Lost packets 0
+Lost ratio 0
+Average delay received +35.08589366047743811263
+Mean received bitrate +184.03568010329027463593
+Mean transmitted bitrate +184.00804638152254026093
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19104
+Rx Packets 18928
+Lost packets 84
+Lost ratio 0.00441826
+Average delay received +83.08891353514839812935
+Mean received bitrate +15330.1721651482269872672
+Mean transmitted bitrate +15439.07948251845658381826
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 7831
+Rx Packets 7812
+Lost packets 0
+Lost ratio 0
+Average delay received +35.08589366047743811263
+Mean received bitrate +184.03568010329027463593
+Mean transmitted bitrate +184.00804638152254026093
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19104
+Rx Packets 18928
+Lost packets 84
+Lost ratio 0.00441826
+Average delay received +83.08891353514839812935
+Mean received bitrate +15330.1721651482269872672
+Mean transmitted bitrate +15439.07948251845658381826
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 7831
+Rx Packets 7812
+Lost packets 0
+Lost ratio 0
+Average delay received +35.08589366047743811263
+Mean received bitrate +184.03568010329027463593
+Mean transmitted bitrate +184.00804638152254026093
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19104
+Rx Packets 18928
+Lost packets 84
+Lost ratio 0.00441826
+Average delay received +83.08891353514839812935
+Mean received bitrate +15330.1721651482269872672
+Mean transmitted bitrate +15439.07948251845658381826
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 7831
+Rx Packets 7812
+Lost packets 0
+Lost ratio 0
+Average delay received +35.08589366047743811263
+Mean received bitrate +184.03568010329027463593
+Mean transmitted bitrate +184.00804638152254026093
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19104
+Rx Packets 18928
+Lost packets 84
+Lost ratio 0.00441826
+Average delay received +83.08891353514839812935
+Mean received bitrate +15330.1721651482269872672
+Mean transmitted bitrate +15439.07948251845658381826
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 7831
+Rx Packets 7812
+Lost packets 0
+Lost ratio 0
+Average delay received +35.08589366047743811263
+Mean received bitrate +184.03568010329027463593
+Mean transmitted bitrate +184.00804638152254026093
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19104
+Rx Packets 18928
+Lost packets 84
+Lost ratio 0.00441826
+Average delay received +83.08891353514839812935
+Mean received bitrate +15330.1721651482269872672
+Mean transmitted bitrate +15439.07948251845658381826
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 7831
+Rx Packets 7812
+Lost packets 0
+Lost ratio 0
+Average delay received +35.08589366047743811263
+Mean received bitrate +184.03568010329027463593
+Mean transmitted bitrate +184.00804638152254026093
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19104
+Rx Packets 18928
+Lost packets 84
+Lost ratio 0.00441826
+Average delay received +83.08891353514839812935
+Mean received bitrate +15330.1721651482269872672
+Mean transmitted bitrate +15439.07948251845658381826
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 7831
+Rx Packets 7812
+Lost packets 0
+Lost ratio 0
+Average delay received +35.08589366047743811263
+Mean received bitrate +184.03568010329027463593
+Mean transmitted bitrate +184.00804638152254026093
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19104
+Rx Packets 18928
+Lost packets 84
+Lost ratio 0.00441826
+Average delay received +83.08891353514839812935
+Mean received bitrate +15330.1721651482269872672
+Mean transmitted bitrate +15439.07948251845658381826
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 7831
+Rx Packets 7812
+Lost packets 0
+Lost ratio 0
+Average delay received +35.08589366047743811263
+Mean received bitrate +184.03568010329027463593
+Mean transmitted bitrate +184.00804638152254026093
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19104
+Rx Packets 18928
+Lost packets 84
+Lost ratio 0.00441826
+Average delay received +83.08891353514839812935
+Mean received bitrate +15330.1721651482269872672
+Mean transmitted bitrate +15439.07948251845658381826
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 7831
+Rx Packets 7812
+Lost packets 0
+Lost ratio 0
+Average delay received +35.08589366047743811263
+Mean received bitrate +184.03568010329027463593
+Mean transmitted bitrate +184.00804638152254026093
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19104
+Rx Packets 18928
+Lost packets 84
+Lost ratio 0.00441826
+Average delay received +83.08891353514839812935
+Mean received bitrate +15330.1721651482269872672
+Mean transmitted bitrate +15439.07948251845658381826
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 7831
+Rx Packets 7812
+Lost packets 0
+Lost ratio 0
+Average delay received +35.08589366047743811263
+Mean received bitrate +184.03568010329027463593
+Mean transmitted bitrate +184.00804638152254026093
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19104
+Rx Packets 18928
+Lost packets 84
+Lost ratio 0.00441826
+Average delay received +83.08891353514839812935
+Mean received bitrate +15330.1721651482269872672
+Mean transmitted bitrate +15439.07948251845658381826
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 7831
+Rx Packets 7812
+Lost packets 0
+Lost ratio 0
+Average delay received +35.08589366047743811263
+Mean received bitrate +184.03568010329027463593
+Mean transmitted bitrate +184.00804638152254026093
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19104
+Rx Packets 18928
+Lost packets 84
+Lost ratio 0.00441826
+Average delay received +83.08891353514839812935
+Mean received bitrate +15330.1721651482269872672
+Mean transmitted bitrate +15439.07948251845658381826
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 7831
+Rx Packets 7812
+Lost packets 0
+Lost ratio 0
+Average delay received +35.08589366047743811263
+Mean received bitrate +184.03568010329027463593
+Mean transmitted bitrate +184.00804638152254026093
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19104
+Rx Packets 18928
+Lost packets 84
+Lost ratio 0.00441826
+Average delay received +83.08891353514839812935
+Mean received bitrate +15330.1721651482269872672
+Mean transmitted bitrate +15439.07948251845658381826
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 7831
+Rx Packets 7812
+Lost packets 0
+Lost ratio 0
+Average delay received +35.08589366047743811263
+Mean received bitrate +184.03568010329027463593
+Mean transmitted bitrate +184.00804638152254026093
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19104
+Rx Packets 18928
+Lost packets 84
+Lost ratio 0.00441826
+Average delay received +83.08891353514839812935
+Mean received bitrate +15330.1721651482269872672
+Mean transmitted bitrate +15439.07948251845658381826
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 7831
+Rx Packets 7812
+Lost packets 0
+Lost ratio 0
+Average delay received +35.08589366047743811263
+Mean received bitrate +184.03568010329027463593
+Mean transmitted bitrate +184.00804638152254026093
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19104
+Rx Packets 18928
+Lost packets 84
+Lost ratio 0.00441826
+Average delay received +83.08891353514839812935
+Mean received bitrate +15330.1721651482269872672
+Mean transmitted bitrate +15439.07948251845658381826
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 7831
+Rx Packets 7812
+Lost packets 0
+Lost ratio 0
+Average delay received +35.08589366047743811263
+Mean received bitrate +184.03568010329027463593
+Mean transmitted bitrate +184.00804638152254026093
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19104
+Rx Packets 18928
+Lost packets 84
+Lost ratio 0.00441826
+Average delay received +83.08891353514839812935
+Mean received bitrate +15330.1721651482269872672
+Mean transmitted bitrate +15439.07948251845658381826
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 7831
+Rx Packets 7812
+Lost packets 0
+Lost ratio 0
+Average delay received +35.08589366047743811263
+Mean received bitrate +184.03568010329027463593
+Mean transmitted bitrate +184.00804638152254026093
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19104
+Rx Packets 18928
+Lost packets 84
+Lost ratio 0.00441826
+Average delay received +83.08891353514839812935
+Mean received bitrate +15330.1721651482269872672
+Mean transmitted bitrate +15439.07948251845658381826
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 7831
+Rx Packets 7812
+Lost packets 0
+Lost ratio 0
+Average delay received +35.08589366047743811263
+Mean received bitrate +184.03568010329027463593
+Mean transmitted bitrate +184.00804638152254026093
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19104
+Rx Packets 18928
+Lost packets 84
+Lost ratio 0.00441826
+Average delay received +83.08891353514839812935
+Mean received bitrate +15330.1721651482269872672
+Mean transmitted bitrate +15439.07948251845658381826
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 7831
+Rx Packets 7812
+Lost packets 0
+Lost ratio 0
+Average delay received +35.08589366047743811263
+Mean received bitrate +184.03568010329027463593
+Mean transmitted bitrate +184.00804638152254026093
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19104
+Rx Packets 18928
+Lost packets 84
+Lost ratio 0.00441826
+Average delay received +83.08891353514839812935
+Mean received bitrate +15330.1721651482269872672
+Mean transmitted bitrate +15439.07948251845658381826
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 7831
+Rx Packets 7812
+Lost packets 0
+Lost ratio 0
+Average delay received +35.08589366047743811263
+Mean received bitrate +184.03568010329027463593
+Mean transmitted bitrate +184.00804638152254026093
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19104
+Rx Packets 18928
+Lost packets 84
+Lost ratio 0.00441826
+Average delay received +83.08891353514839812935
+Mean received bitrate +15330.1721651482269872672
+Mean transmitted bitrate +15439.07948251845658381826
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 7831
+Rx Packets 7812
+Lost packets 0
+Lost ratio 0
+Average delay received +35.08589366047743811263
+Mean received bitrate +184.03568010329027463593
+Mean transmitted bitrate +184.00804638152254026093
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19104
+Rx Packets 18928
+Lost packets 84
+Lost ratio 0.00441826
+Average delay received +83.08891353514839812935
+Mean received bitrate +15330.1721651482269872672
+Mean transmitted bitrate +15439.07948251845658381826
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 7831
+Rx Packets 7812
+Lost packets 0
+Lost ratio 0
+Average delay received +35.08589366047743811263
+Mean received bitrate +184.03568010329027463593
+Mean transmitted bitrate +184.00804638152254026093
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19104
+Rx Packets 18928
+Lost packets 84
+Lost ratio 0.00441826
+Average delay received +83.08891353514839812935
+Mean received bitrate +15330.1721651482269872672
+Mean transmitted bitrate +15439.07948251845658381826
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 7831
+Rx Packets 7812
+Lost packets 0
+Lost ratio 0
+Average delay received +35.08589366047743811263
+Mean received bitrate +184.03568010329027463593
+Mean transmitted bitrate +184.00804638152254026093
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19104
+Rx Packets 18928
+Lost packets 84
+Lost ratio 0.00441826
+Average delay received +83.08891353514839812935
+Mean received bitrate +15330.1721651482269872672
+Mean transmitted bitrate +15439.07948251845658381826
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 7831
+Rx Packets 7812
+Lost packets 0
+Lost ratio 0
+Average delay received +35.08589366047743811263
+Mean received bitrate +184.03568010329027463593
+Mean transmitted bitrate +184.00804638152254026093
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19104
+Rx Packets 18928
+Lost packets 84
+Lost ratio 0.00441826
+Average delay received +83.08891353514839812935
+Mean received bitrate +15330.1721651482269872672
+Mean transmitted bitrate +15439.07948251845658381826
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 7831
+Rx Packets 7812
+Lost packets 0
+Lost ratio 0
+Average delay received +35.08589366047743811263
+Mean received bitrate +184.03568010329027463593
+Mean transmitted bitrate +184.00804638152254026093
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19104
+Rx Packets 18928
+Lost packets 84
+Lost ratio 0.00441826
+Average delay received +83.08891353514839812935
+Mean received bitrate +15330.1721651482269872672
+Mean transmitted bitrate +15439.07948251845658381826
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 7831
+Rx Packets 7812
+Lost packets 0
+Lost ratio 0
+Average delay received +35.08589366047743811263
+Mean received bitrate +184.03568010329027463593
+Mean transmitted bitrate +184.00804638152254026093
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19104
+Rx Packets 18928
+Lost packets 84
+Lost ratio 0.00441826
+Average delay received +83.08891353514839812935
+Mean received bitrate +15330.1721651482269872672
+Mean transmitted bitrate +15439.07948251845658381826
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 7831
+Rx Packets 7812
+Lost packets 0
+Lost ratio 0
+Average delay received +35.08589366047743811263
+Mean received bitrate +184.03568010329027463593
+Mean transmitted bitrate +184.00804638152254026093
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19104
+Rx Packets 18928
+Lost packets 84
+Lost ratio 0.00441826
+Average delay received +83.08891353514839812935
+Mean received bitrate +15330.1721651482269872672
+Mean transmitted bitrate +15439.07948251845658381826
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 7831
+Rx Packets 7812
+Lost packets 0
+Lost ratio 0
+Average delay received +35.08589366047743811263
+Mean received bitrate +184.03568010329027463593
+Mean transmitted bitrate +184.00804638152254026093
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19104
+Rx Packets 18928
+Lost packets 84
+Lost ratio 0.00441826
+Average delay received +83.08891353514839812935
+Mean received bitrate +15330.1721651482269872672
+Mean transmitted bitrate +15439.07948251845658381826
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 7831
+Rx Packets 7812
+Lost packets 0
+Lost ratio 0
+Average delay received +35.08589366047743811263
+Mean received bitrate +184.03568010329027463593
+Mean transmitted bitrate +184.00804638152254026093
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19104
+Rx Packets 18928
+Lost packets 84
+Lost ratio 0.00441826
+Average delay received +83.08891353514839812935
+Mean received bitrate +15330.1721651482269872672
+Mean transmitted bitrate +15439.07948251845658381826
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 7831
+Rx Packets 7812
+Lost packets 0
+Lost ratio 0
+Average delay received +35.08589366047743811263
+Mean received bitrate +184.03568010329027463593
+Mean transmitted bitrate +184.00804638152254026093
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19104
+Rx Packets 18928
+Lost packets 84
+Lost ratio 0.00441826
+Average delay received +83.08891353514839812935
+Mean received bitrate +15330.1721651482269872672
+Mean transmitted bitrate +15439.07948251845658381826
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 7831
+Rx Packets 7812
+Lost packets 0
+Lost ratio 0
+Average delay received +35.08589366047743811263
+Mean received bitrate +184.03568010329027463593
+Mean transmitted bitrate +184.00804638152254026093
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19104
+Rx Packets 18928
+Lost packets 84
+Lost ratio 0.00441826
+Average delay received +83.08891353514839812935
+Mean received bitrate +15330.1721651482269872672
+Mean transmitted bitrate +15439.07948251845658381826
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 7831
+Rx Packets 7812
+Lost packets 0
+Lost ratio 0
+Average delay received +35.08589366047743811263
+Mean received bitrate +184.03568010329027463593
+Mean transmitted bitrate +184.00804638152254026093
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19104
+Rx Packets 18928
+Lost packets 84
+Lost ratio 0.00441826
+Average delay received +83.08891353514839812935
+Mean received bitrate +15330.1721651482269872672
+Mean transmitted bitrate +15439.07948251845658381826
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 7831
+Rx Packets 7812
+Lost packets 0
+Lost ratio 0
+Average delay received +35.08589366047743811263
+Mean received bitrate +184.03568010329027463593
+Mean transmitted bitrate +184.00804638152254026093
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19104
+Rx Packets 18928
+Lost packets 84
+Lost ratio 0.00441826
+Average delay received +83.08891353514839812935
+Mean received bitrate +15330.1721651482269872672
+Mean transmitted bitrate +15439.07948251845658381826
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 7831
+Rx Packets 7812
+Lost packets 0
+Lost ratio 0
+Average delay received +35.08589366047743811263
+Mean received bitrate +184.03568010329027463593
+Mean transmitted bitrate +184.00804638152254026093
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19104
+Rx Packets 18928
+Lost packets 84
+Lost ratio 0.00441826
+Average delay received +83.08891353514839812935
+Mean received bitrate +15330.1721651482269872672
+Mean transmitted bitrate +15439.07948251845658381826
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 7831
+Rx Packets 7812
+Lost packets 0
+Lost ratio 0
+Average delay received +35.08589366047743811263
+Mean received bitrate +184.03568010329027463593
+Mean transmitted bitrate +184.00804638152254026093
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19104
+Rx Packets 18928
+Lost packets 84
+Lost ratio 0.00441826
+Average delay received +83.08891353514839812935
+Mean received bitrate +15330.1721651482269872672
+Mean transmitted bitrate +15439.07948251845658381826
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 7831
+Rx Packets 7812
+Lost packets 0
+Lost ratio 0
+Average delay received +35.08589366047743811263
+Mean received bitrate +184.03568010329027463593
+Mean transmitted bitrate +184.00804638152254026093
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 3
+Rx Packets 0
+Lost packets 2
+Lost ratio 1
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 3
+Rx Packets 0
+Lost packets 2
+Lost ratio 1
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 3
+Rx Packets 0
+Lost packets 2
+Lost ratio 1
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 3
+Rx Packets 0
+Lost packets 2
+Lost ratio 1
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 3
+Rx Packets 0
+Lost packets 2
+Lost ratio 1
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 3
+Rx Packets 0
+Lost packets 2
+Lost ratio 1
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 3
+Rx Packets 0
+Lost packets 2
+Lost ratio 1
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 3
+Rx Packets 0
+Lost packets 2
+Lost ratio 1
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 3
+Rx Packets 0
+Lost packets 2
+Lost ratio 1
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 3
+Rx Packets 0
+Lost packets 2
+Lost ratio 1
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 3
+Rx Packets 0
+Lost packets 2
+Lost ratio 1
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = 1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 18598
+Rx Packets 18371
+Lost packets 81
+Lost ratio 0.00438977
+Average delay received +83.12094188910123655004
+Mean received bitrate +14879.13164313731849083661
+Mean transmitted bitrate +15028.06554799130399330377
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 7506
+Rx Packets 7488
+Lost packets 0
+Lost ratio 0
+Average delay received +35.08114927526646901199
+Mean received bitrate +175.06738207428084326575
+Mean transmitted bitrate +175.04518916722743506262
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = 1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 2388
+Rx Packets 2233
+Lost packets 42
+Lost ratio 0.0184615
+Average delay received +534.02412597191985509367
+Mean received bitrate +1808.14827676472979311084
+Mean transmitted bitrate +1928.07103091796258898414
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 1145
+Rx Packets 1141
+Lost packets 0
+Lost ratio 0
+Average delay received +40.1735858465774017355
+Mean received bitrate +31.09289121286012688966
+Mean transmitted bitrate +31.10476433100481438966
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = 1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19514
+Rx Packets 19331
+Lost packets 81
+Lost ratio 0.00417268
+Average delay received +83.11547695506908428154
+Mean received bitrate +15657.07364798174872613913
+Mean transmitted bitrate +15769.13802427464643067296
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8029
+Rx Packets 8011
+Lost packets 0
+Lost ratio 0
+Average delay received +35.06666816703883710765
+Mean received bitrate +189.10539490117064666451
+Mean transmitted bitrate +189.07559147977663299263
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = 1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19514
+Rx Packets 19331
+Lost packets 81
+Lost ratio 0.00417268
+Average delay received +83.11540058949924353376
+Mean received bitrate +15657.07364798174872613913
+Mean transmitted bitrate +15769.13802427464643067296
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8029
+Rx Packets 8011
+Lost packets 0
+Lost ratio 0
+Average delay received +35.0667372775087607941
+Mean received bitrate +189.10539490117064666451
+Mean transmitted bitrate +189.07559147977663299263
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 20441
+Rx Packets 20264
+Lost packets 82
+Lost ratio 0.00403028
+Average delay received +81.08597114873336903513
+Mean received bitrate +16413.03918944851687920342
+Mean transmitted bitrate +16518.18361032135132266287
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8308
+Rx Packets 8289
+Lost packets 0
+Lost ratio 0
+Average delay received +35.05556275906257442129
+Mean received bitrate +194.11111835384468080246
+Mean transmitted bitrate +194.08260545090732728683
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 20441
+Rx Packets 20264
+Lost packets 82
+Lost ratio 0.00403028
+Average delay received +81.08597114873336903513
+Mean received bitrate +16413.03918944851687920342
+Mean transmitted bitrate +16518.18361032135132266287
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8308
+Rx Packets 8289
+Lost packets 0
+Lost ratio 0
+Average delay received +35.05556275906257442129
+Mean received bitrate +194.11111835384468080246
+Mean transmitted bitrate +194.08260545090732728683
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 20441
+Rx Packets 20264
+Lost packets 82
+Lost ratio 0.00403028
+Average delay received +81.08597114873336903513
+Mean received bitrate +16413.03918944851687920342
+Mean transmitted bitrate +16518.18361032135132266287
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8308
+Rx Packets 8289
+Lost packets 0
+Lost ratio 0
+Average delay received +35.05556275906257442129
+Mean received bitrate +194.11111835384468080246
+Mean transmitted bitrate +194.08260545090732728683
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 20441
+Rx Packets 20264
+Lost packets 82
+Lost ratio 0.00403028
+Average delay received +81.08597114873336903513
+Mean received bitrate +16413.03918944851687920342
+Mean transmitted bitrate +16518.18361032135132266287
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8308
+Rx Packets 8289
+Lost packets 0
+Lost ratio 0
+Average delay received +35.05556275906257442129
+Mean received bitrate +194.11111835384468080246
+Mean transmitted bitrate +194.08260545090732728683
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 20441
+Rx Packets 20264
+Lost packets 82
+Lost ratio 0.00403028
+Average delay received +81.08597114873336903513
+Mean received bitrate +16413.03918944851687920342
+Mean transmitted bitrate +16518.18361032135132266287
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8308
+Rx Packets 8289
+Lost packets 0
+Lost ratio 0
+Average delay received +35.05556275906257442129
+Mean received bitrate +194.11111835384468080246
+Mean transmitted bitrate +194.08260545090732728683
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 20441
+Rx Packets 20264
+Lost packets 82
+Lost ratio 0.00403028
+Average delay received +81.08597114873336903513
+Mean received bitrate +16413.03918944851687920342
+Mean transmitted bitrate +16518.18361032135132266287
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8308
+Rx Packets 8289
+Lost packets 0
+Lost ratio 0
+Average delay received +35.05556275906257442129
+Mean received bitrate +194.11111835384468080246
+Mean transmitted bitrate +194.08260545090732728683
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 20441
+Rx Packets 20264
+Lost packets 82
+Lost ratio 0.00403028
+Average delay received +81.08597114873336903513
+Mean received bitrate +16413.03918944851687920342
+Mean transmitted bitrate +16518.18361032135132266287
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8308
+Rx Packets 8289
+Lost packets 0
+Lost ratio 0
+Average delay received +35.05556275906257442129
+Mean received bitrate +194.11111835384468080246
+Mean transmitted bitrate +194.08260545090732728683
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 20441
+Rx Packets 20264
+Lost packets 82
+Lost ratio 0.00403028
+Average delay received +81.08597114873336903513
+Mean received bitrate +16413.03918944851687920342
+Mean transmitted bitrate +16518.18361032135132266287
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8308
+Rx Packets 8289
+Lost packets 0
+Lost ratio 0
+Average delay received +35.05556275906257442129
+Mean received bitrate +194.11111835384468080246
+Mean transmitted bitrate +194.08260545090732728683
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 20441
+Rx Packets 20264
+Lost packets 82
+Lost ratio 0.00403028
+Average delay received +81.08597114873336903513
+Mean received bitrate +16413.03918944851687920342
+Mean transmitted bitrate +16518.18361032135132266287
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8308
+Rx Packets 8289
+Lost packets 0
+Lost ratio 0
+Average delay received +35.05556275906257442129
+Mean received bitrate +194.11111835384468080246
+Mean transmitted bitrate +194.08260545090732728683
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 20441
+Rx Packets 20264
+Lost packets 82
+Lost ratio 0.00403028
+Average delay received +81.08597114873336903513
+Mean received bitrate +16413.03918944851687920342
+Mean transmitted bitrate +16518.18361032135132266287
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8308
+Rx Packets 8289
+Lost packets 0
+Lost ratio 0
+Average delay received +35.05556275906257442129
+Mean received bitrate +194.11111835384468080246
+Mean transmitted bitrate +194.08260545090732728683
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 20441
+Rx Packets 20264
+Lost packets 82
+Lost ratio 0.00403028
+Average delay received +81.08597114873336903513
+Mean received bitrate +16413.03918944851687920342
+Mean transmitted bitrate +16518.18361032135132266287
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8308
+Rx Packets 8289
+Lost packets 0
+Lost ratio 0
+Average delay received +35.05556275906257442129
+Mean received bitrate +194.11111835384468080246
+Mean transmitted bitrate +194.08260545090732728683
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 20441
+Rx Packets 20264
+Lost packets 82
+Lost ratio 0.00403028
+Average delay received +81.08597114873336903513
+Mean received bitrate +16413.03918944851687920342
+Mean transmitted bitrate +16518.18361032135132266287
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8308
+Rx Packets 8289
+Lost packets 0
+Lost ratio 0
+Average delay received +35.05556275906257442129
+Mean received bitrate +194.11111835384468080246
+Mean transmitted bitrate +194.08260545090732728683
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 20441
+Rx Packets 20264
+Lost packets 82
+Lost ratio 0.00403028
+Average delay received +81.08597114873336903513
+Mean received bitrate +16413.03918944851687920342
+Mean transmitted bitrate +16518.18361032135132266287
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8308
+Rx Packets 8289
+Lost packets 0
+Lost ratio 0
+Average delay received +35.05556275906257442129
+Mean received bitrate +194.11111835384468080246
+Mean transmitted bitrate +194.08260545090732728683
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 20441
+Rx Packets 20264
+Lost packets 82
+Lost ratio 0.00403028
+Average delay received +81.08597114873336903513
+Mean received bitrate +16413.03918944851687920342
+Mean transmitted bitrate +16518.18361032135132266287
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8308
+Rx Packets 8289
+Lost packets 0
+Lost ratio 0
+Average delay received +35.05556275906257442129
+Mean received bitrate +194.11111835384468080246
+Mean transmitted bitrate +194.08260545090732728683
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 20441
+Rx Packets 20264
+Lost packets 82
+Lost ratio 0.00403028
+Average delay received +81.08597114873336903513
+Mean received bitrate +16413.03918944851687920342
+Mean transmitted bitrate +16518.18361032135132266287
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8308
+Rx Packets 8289
+Lost packets 0
+Lost ratio 0
+Average delay received +35.05556275906257442129
+Mean received bitrate +194.11111835384468080246
+Mean transmitted bitrate +194.08260545090732728683
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 20441
+Rx Packets 20264
+Lost packets 82
+Lost ratio 0.00403028
+Average delay received +81.08597114873336903513
+Mean received bitrate +16413.03918944851687920342
+Mean transmitted bitrate +16518.18361032135132266287
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8308
+Rx Packets 8289
+Lost packets 0
+Lost ratio 0
+Average delay received +35.05556275906257442129
+Mean received bitrate +194.11111835384468080246
+Mean transmitted bitrate +194.08260545090732728683
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 20441
+Rx Packets 20264
+Lost packets 82
+Lost ratio 0.00403028
+Average delay received +81.08597114873336903513
+Mean received bitrate +16413.03918944851687920342
+Mean transmitted bitrate +16518.18361032135132266287
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8308
+Rx Packets 8289
+Lost packets 0
+Lost ratio 0
+Average delay received +35.05556275906257442129
+Mean received bitrate +194.11111835384468080246
+Mean transmitted bitrate +194.08260545090732728683
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 20441
+Rx Packets 20264
+Lost packets 82
+Lost ratio 0.00403028
+Average delay received +81.08597114873336903513
+Mean received bitrate +16413.03918944851687920342
+Mean transmitted bitrate +16518.18361032135132266287
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8308
+Rx Packets 8289
+Lost packets 0
+Lost ratio 0
+Average delay received +35.05556275906257442129
+Mean received bitrate +194.11111835384468080246
+Mean transmitted bitrate +194.08260545090732728683
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 20441
+Rx Packets 20264
+Lost packets 82
+Lost ratio 0.00403028
+Average delay received +81.08597114873336903513
+Mean received bitrate +16413.03918944851687920342
+Mean transmitted bitrate +16518.18361032135132266287
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8308
+Rx Packets 8289
+Lost packets 0
+Lost ratio 0
+Average delay received +35.05556275906257442129
+Mean received bitrate +194.11111835384468080246
+Mean transmitted bitrate +194.08260545090732728683
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 20441
+Rx Packets 20264
+Lost packets 82
+Lost ratio 0.00403028
+Average delay received +81.08597114873336903513
+Mean received bitrate +16413.03918944851687920342
+Mean transmitted bitrate +16518.18361032135132266287
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8308
+Rx Packets 8289
+Lost packets 0
+Lost ratio 0
+Average delay received +35.05556275906257442129
+Mean received bitrate +194.11111835384468080246
+Mean transmitted bitrate +194.08260545090732728683
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 20441
+Rx Packets 20264
+Lost packets 82
+Lost ratio 0.00403028
+Average delay received +81.08597114873336903513
+Mean received bitrate +16413.03918944851687920342
+Mean transmitted bitrate +16518.18361032135132266287
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8308
+Rx Packets 8289
+Lost packets 0
+Lost ratio 0
+Average delay received +35.05556275906257442129
+Mean received bitrate +194.11111835384468080246
+Mean transmitted bitrate +194.08260545090732728683
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 20441
+Rx Packets 20264
+Lost packets 82
+Lost ratio 0.00403028
+Average delay received +81.08597114873336903513
+Mean received bitrate +16413.03918944851687920342
+Mean transmitted bitrate +16518.18361032135132266287
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8308
+Rx Packets 8289
+Lost packets 0
+Lost ratio 0
+Average delay received +35.05556275906257442129
+Mean received bitrate +194.11111835384468080246
+Mean transmitted bitrate +194.08260545090732728683
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 20441
+Rx Packets 20264
+Lost packets 82
+Lost ratio 0.00403028
+Average delay received +81.08597114873336903513
+Mean received bitrate +16413.03918944851687920342
+Mean transmitted bitrate +16518.18361032135132266287
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8308
+Rx Packets 8289
+Lost packets 0
+Lost ratio 0
+Average delay received +35.05556275906257442129
+Mean received bitrate +194.11111835384468080246
+Mean transmitted bitrate +194.08260545090732728683
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 20441
+Rx Packets 20264
+Lost packets 82
+Lost ratio 0.00403028
+Average delay received +81.08597114873336903513
+Mean received bitrate +16413.03918944851687920342
+Mean transmitted bitrate +16518.18361032135132266287
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8308
+Rx Packets 8289
+Lost packets 0
+Lost ratio 0
+Average delay received +35.05556275906257442129
+Mean received bitrate +194.11111835384468080246
+Mean transmitted bitrate +194.08260545090732728683
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 20441
+Rx Packets 20264
+Lost packets 82
+Lost ratio 0.00403028
+Average delay received +81.08597114873336903513
+Mean received bitrate +16413.03918944851687920342
+Mean transmitted bitrate +16518.18361032135132266287
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8308
+Rx Packets 8289
+Lost packets 0
+Lost ratio 0
+Average delay received +35.05556275906257442129
+Mean received bitrate +194.11111835384468080246
+Mean transmitted bitrate +194.08260545090732728683
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 20441
+Rx Packets 20264
+Lost packets 82
+Lost ratio 0.00403028
+Average delay received +81.08597114873336903513
+Mean received bitrate +16413.03918944851687920342
+Mean transmitted bitrate +16518.18361032135132266287
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8308
+Rx Packets 8289
+Lost packets 0
+Lost ratio 0
+Average delay received +35.05556275906257442129
+Mean received bitrate +194.11111835384468080246
+Mean transmitted bitrate +194.08260545090732728683
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 20441
+Rx Packets 20264
+Lost packets 82
+Lost ratio 0.00403028
+Average delay received +81.08597114873336903513
+Mean received bitrate +16413.03918944851687920342
+Mean transmitted bitrate +16518.18361032135132266287
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8308
+Rx Packets 8289
+Lost packets 0
+Lost ratio 0
+Average delay received +35.05556275906257442129
+Mean received bitrate +194.11111835384468080246
+Mean transmitted bitrate +194.08260545090732728683
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 20441
+Rx Packets 20264
+Lost packets 82
+Lost ratio 0.00403028
+Average delay received +81.08597114873336903513
+Mean received bitrate +16413.03918944851687920342
+Mean transmitted bitrate +16518.18361032135132266287
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8308
+Rx Packets 8289
+Lost packets 0
+Lost ratio 0
+Average delay received +35.05556275906257442129
+Mean received bitrate +194.11111835384468080246
+Mean transmitted bitrate +194.08260545090732728683
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 20441
+Rx Packets 20264
+Lost packets 82
+Lost ratio 0.00403028
+Average delay received +81.08597114873336903513
+Mean received bitrate +16413.03918944851687920342
+Mean transmitted bitrate +16518.18361032135132266287
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8308
+Rx Packets 8289
+Lost packets 0
+Lost ratio 0
+Average delay received +35.05556275906257442129
+Mean received bitrate +194.11111835384468080246
+Mean transmitted bitrate +194.08260545090732728683
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 20441
+Rx Packets 20264
+Lost packets 82
+Lost ratio 0.00403028
+Average delay received +81.08597114873336903513
+Mean received bitrate +16413.03918944851687920342
+Mean transmitted bitrate +16518.18361032135132266287
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8308
+Rx Packets 8289
+Lost packets 0
+Lost ratio 0
+Average delay received +35.05556275906257442129
+Mean received bitrate +194.11111835384468080246
+Mean transmitted bitrate +194.08260545090732728683
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 20441
+Rx Packets 20264
+Lost packets 82
+Lost ratio 0.00403028
+Average delay received +81.08597114873336903513
+Mean received bitrate +16413.03918944851687920342
+Mean transmitted bitrate +16518.18361032135132266287
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8308
+Rx Packets 8289
+Lost packets 0
+Lost ratio 0
+Average delay received +35.05556275906257442129
+Mean received bitrate +194.11111835384468080246
+Mean transmitted bitrate +194.08260545090732728683
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 20441
+Rx Packets 20264
+Lost packets 82
+Lost ratio 0.00403028
+Average delay received +81.08597114873336903513
+Mean received bitrate +16413.03918944851687920342
+Mean transmitted bitrate +16518.18361032135132266287
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8308
+Rx Packets 8289
+Lost packets 0
+Lost ratio 0
+Average delay received +35.05556275906257442129
+Mean received bitrate +194.11111835384468080246
+Mean transmitted bitrate +194.08260545090732728683
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 20441
+Rx Packets 20264
+Lost packets 82
+Lost ratio 0.00403028
+Average delay received +81.08597114873336903513
+Mean received bitrate +16413.03918944851687920342
+Mean transmitted bitrate +16518.18361032135132266287
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8308
+Rx Packets 8289
+Lost packets 0
+Lost ratio 0
+Average delay received +35.05556275906257442129
+Mean received bitrate +194.11111835384468080246
+Mean transmitted bitrate +194.08260545090732728683
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 20441
+Rx Packets 20264
+Lost packets 82
+Lost ratio 0.00403028
+Average delay received +81.08597114873336903513
+Mean received bitrate +16413.03918944851687920342
+Mean transmitted bitrate +16518.18361032135132266287
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8308
+Rx Packets 8289
+Lost packets 0
+Lost ratio 0
+Average delay received +35.05556275906257442129
+Mean received bitrate +194.11111835384468080246
+Mean transmitted bitrate +194.08260545090732728683
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 20441
+Rx Packets 20264
+Lost packets 82
+Lost ratio 0.00403028
+Average delay received +81.08597114873336903513
+Mean received bitrate +16413.03918944851687920342
+Mean transmitted bitrate +16518.18361032135132266287
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8308
+Rx Packets 8289
+Lost packets 0
+Lost ratio 0
+Average delay received +35.05556275906257442129
+Mean received bitrate +194.11111835384468080246
+Mean transmitted bitrate +194.08260545090732728683
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 20441
+Rx Packets 20264
+Lost packets 82
+Lost ratio 0.00403028
+Average delay received +81.08597114873336903513
+Mean received bitrate +16413.03918944851687920342
+Mean transmitted bitrate +16518.18361032135132266287
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8308
+Rx Packets 8289
+Lost packets 0
+Lost ratio 0
+Average delay received +35.05556275906257442129
+Mean received bitrate +194.11111835384468080246
+Mean transmitted bitrate +194.08260545090732728683
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 20441
+Rx Packets 20264
+Lost packets 82
+Lost ratio 0.00403028
+Average delay received +81.08597114873336903513
+Mean received bitrate +16413.03918944851687920342
+Mean transmitted bitrate +16518.18361032135132266287
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8308
+Rx Packets 8289
+Lost packets 0
+Lost ratio 0
+Average delay received +35.05556275906257442129
+Mean received bitrate +194.11111835384468080246
+Mean transmitted bitrate +194.08260545090732728683
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 20441
+Rx Packets 20264
+Lost packets 82
+Lost ratio 0.00403028
+Average delay received +81.08597114873336903513
+Mean received bitrate +16413.03918944851687920342
+Mean transmitted bitrate +16518.18361032135132266287
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8308
+Rx Packets 8289
+Lost packets 0
+Lost ratio 0
+Average delay received +35.05556275906257442129
+Mean received bitrate +194.11111835384468080246
+Mean transmitted bitrate +194.08260545090732728683
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 20441
+Rx Packets 20264
+Lost packets 82
+Lost ratio 0.00403028
+Average delay received +81.08597114873336903513
+Mean received bitrate +16413.03918944851687920342
+Mean transmitted bitrate +16518.18361032135132266287
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8308
+Rx Packets 8289
+Lost packets 0
+Lost ratio 0
+Average delay received +35.05556275906257442129
+Mean received bitrate +194.11111835384468080246
+Mean transmitted bitrate +194.08260545090732728683
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 20441
+Rx Packets 20264
+Lost packets 82
+Lost ratio 0.00403028
+Average delay received +81.08597114873336903513
+Mean received bitrate +16413.03918944851687920342
+Mean transmitted bitrate +16518.18361032135132266287
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8308
+Rx Packets 8289
+Lost packets 0
+Lost ratio 0
+Average delay received +35.05556275906257442129
+Mean received bitrate +194.11111835384468080246
+Mean transmitted bitrate +194.08260545090732728683
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 20441
+Rx Packets 20264
+Lost packets 82
+Lost ratio 0.00403028
+Average delay received +81.08597114873336903513
+Mean received bitrate +16413.03918944851687920342
+Mean transmitted bitrate +16518.18361032135132266287
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8308
+Rx Packets 8289
+Lost packets 0
+Lost ratio 0
+Average delay received +35.05556275906257442129
+Mean received bitrate +194.11111835384468080246
+Mean transmitted bitrate +194.08260545090732728683
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 20441
+Rx Packets 20264
+Lost packets 82
+Lost ratio 0.00403028
+Average delay received +81.08597114873336903513
+Mean received bitrate +16413.03918944851687920342
+Mean transmitted bitrate +16518.18361032135132266287
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8308
+Rx Packets 8289
+Lost packets 0
+Lost ratio 0
+Average delay received +35.05556275906257442129
+Mean received bitrate +194.11111835384468080246
+Mean transmitted bitrate +194.08260545090732728683
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 20441
+Rx Packets 20264
+Lost packets 82
+Lost ratio 0.00403028
+Average delay received +81.08597114873336903513
+Mean received bitrate +16413.03918944851687920342
+Mean transmitted bitrate +16518.18361032135132266287
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8308
+Rx Packets 8289
+Lost packets 0
+Lost ratio 0
+Average delay received +35.05556275906257442129
+Mean received bitrate +194.11111835384468080246
+Mean transmitted bitrate +194.08260545090732728683
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 20441
+Rx Packets 20264
+Lost packets 82
+Lost ratio 0.00403028
+Average delay received +81.08597114873336903513
+Mean received bitrate +16413.03918944851687920342
+Mean transmitted bitrate +16518.18361032135132266287
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8308
+Rx Packets 8289
+Lost packets 0
+Lost ratio 0
+Average delay received +35.05556275906257442129
+Mean received bitrate +194.11111835384468080246
+Mean transmitted bitrate +194.08260545090732728683
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 20441
+Rx Packets 20264
+Lost packets 82
+Lost ratio 0.00403028
+Average delay received +81.08597114873336903513
+Mean received bitrate +16413.03918944851687920342
+Mean transmitted bitrate +16518.18361032135132266287
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8308
+Rx Packets 8289
+Lost packets 0
+Lost ratio 0
+Average delay received +35.05556275906257442129
+Mean received bitrate +194.11111835384468080246
+Mean transmitted bitrate +194.08260545090732728683
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 20441
+Rx Packets 20264
+Lost packets 82
+Lost ratio 0.00403028
+Average delay received +81.08597114873336903513
+Mean received bitrate +16413.03918944851687920342
+Mean transmitted bitrate +16518.18361032135132266287
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8308
+Rx Packets 8289
+Lost packets 0
+Lost ratio 0
+Average delay received +35.05556275906257442129
+Mean received bitrate +194.11111835384468080246
+Mean transmitted bitrate +194.08260545090732728683
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 20441
+Rx Packets 20264
+Lost packets 82
+Lost ratio 0.00403028
+Average delay received +81.08597114873336903513
+Mean received bitrate +16413.03918944851687920342
+Mean transmitted bitrate +16518.18361032135132266287
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8308
+Rx Packets 8289
+Lost packets 0
+Lost ratio 0
+Average delay received +35.05556275906257442129
+Mean received bitrate +194.11111835384468080246
+Mean transmitted bitrate +194.08260545090732728683
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 20441
+Rx Packets 20264
+Lost packets 82
+Lost ratio 0.00403028
+Average delay received +81.08597114873336903513
+Mean received bitrate +16413.03918944851687920342
+Mean transmitted bitrate +16518.18361032135132266287
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8308
+Rx Packets 8289
+Lost packets 0
+Lost ratio 0
+Average delay received +35.05556275906257442129
+Mean received bitrate +194.11111835384468080246
+Mean transmitted bitrate +194.08260545090732728683
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 20441
+Rx Packets 20264
+Lost packets 82
+Lost ratio 0.00403028
+Average delay received +81.08597114873336903513
+Mean received bitrate +16413.03918944851687920342
+Mean transmitted bitrate +16518.18361032135132266287
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8308
+Rx Packets 8289
+Lost packets 0
+Lost ratio 0
+Average delay received +35.05556275906257442129
+Mean received bitrate +194.11111835384468080246
+Mean transmitted bitrate +194.08260545090732728683
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 20441
+Rx Packets 20264
+Lost packets 82
+Lost ratio 0.00403028
+Average delay received +81.08597114873336903513
+Mean received bitrate +16413.03918944851687920342
+Mean transmitted bitrate +16518.18361032135132266287
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8308
+Rx Packets 8289
+Lost packets 0
+Lost ratio 0
+Average delay received +35.05556275906257442129
+Mean received bitrate +194.11111835384468080246
+Mean transmitted bitrate +194.08260545090732728683
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 20441
+Rx Packets 20264
+Lost packets 82
+Lost ratio 0.00403028
+Average delay received +81.08597114873336903513
+Mean received bitrate +16413.03918944851687920342
+Mean transmitted bitrate +16518.18361032135132266287
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8308
+Rx Packets 8289
+Lost packets 0
+Lost ratio 0
+Average delay received +35.05556275906257442129
+Mean received bitrate +194.11111835384468080246
+Mean transmitted bitrate +194.08260545090732728683
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 20441
+Rx Packets 20264
+Lost packets 82
+Lost ratio 0.00403028
+Average delay received +81.08597114873336903513
+Mean received bitrate +16413.03918944851687920342
+Mean transmitted bitrate +16518.18361032135132266287
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8308
+Rx Packets 8289
+Lost packets 0
+Lost ratio 0
+Average delay received +35.05556275906257442129
+Mean received bitrate +194.11111835384468080246
+Mean transmitted bitrate +194.08260545090732728683
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 20441
+Rx Packets 20264
+Lost packets 82
+Lost ratio 0.00403028
+Average delay received +81.08597114873336903513
+Mean received bitrate +16413.03918944851687920342
+Mean transmitted bitrate +16518.18361032135132266287
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8308
+Rx Packets 8289
+Lost packets 0
+Lost ratio 0
+Average delay received +35.05556275906257442129
+Mean received bitrate +194.11111835384468080246
+Mean transmitted bitrate +194.08260545090732728683
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 20441
+Rx Packets 20264
+Lost packets 82
+Lost ratio 0.00403028
+Average delay received +81.08597114873336903513
+Mean received bitrate +16413.03918944851687920342
+Mean transmitted bitrate +16518.18361032135132266287
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8308
+Rx Packets 8289
+Lost packets 0
+Lost ratio 0
+Average delay received +35.05556275906257442129
+Mean received bitrate +194.11111835384468080246
+Mean transmitted bitrate +194.08260545090732728683
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 20441
+Rx Packets 20264
+Lost packets 82
+Lost ratio 0.00403028
+Average delay received +81.08597114873336903513
+Mean received bitrate +16413.03918944851687920342
+Mean transmitted bitrate +16518.18361032135132266287
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8308
+Rx Packets 8289
+Lost packets 0
+Lost ratio 0
+Average delay received +35.05556275906257442129
+Mean received bitrate +194.11111835384468080246
+Mean transmitted bitrate +194.08260545090732728683
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 20441
+Rx Packets 20264
+Lost packets 82
+Lost ratio 0.00403028
+Average delay received +81.08597114873336903513
+Mean received bitrate +16413.03918944851687920342
+Mean transmitted bitrate +16518.18361032135132266287
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8308
+Rx Packets 8289
+Lost packets 0
+Lost ratio 0
+Average delay received +35.05556275906257442129
+Mean received bitrate +194.11111835384468080246
+Mean transmitted bitrate +194.08260545090732728683
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 20441
+Rx Packets 20264
+Lost packets 82
+Lost ratio 0.00403028
+Average delay received +81.08597114873336903513
+Mean received bitrate +16413.03918944851687920342
+Mean transmitted bitrate +16518.18361032135132266287
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8308
+Rx Packets 8289
+Lost packets 0
+Lost ratio 0
+Average delay received +35.05556275906257442129
+Mean received bitrate +194.11111835384468080246
+Mean transmitted bitrate +194.08260545090732728683
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 20441
+Rx Packets 20264
+Lost packets 82
+Lost ratio 0.00403028
+Average delay received +81.08597114873336903513
+Mean received bitrate +16413.03918944851687920342
+Mean transmitted bitrate +16518.18361032135132266287
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8308
+Rx Packets 8289
+Lost packets 0
+Lost ratio 0
+Average delay received +35.05556275906257442129
+Mean received bitrate +194.11111835384468080246
+Mean transmitted bitrate +194.08260545090732728683
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 20441
+Rx Packets 20264
+Lost packets 82
+Lost ratio 0.00403028
+Average delay received +81.08597114873336903513
+Mean received bitrate +16413.03918944851687920342
+Mean transmitted bitrate +16518.18361032135132266287
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8308
+Rx Packets 8289
+Lost packets 0
+Lost ratio 0
+Average delay received +35.05556275906257442129
+Mean received bitrate +194.11111835384468080246
+Mean transmitted bitrate +194.08260545090732728683
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 20441
+Rx Packets 20264
+Lost packets 82
+Lost ratio 0.00403028
+Average delay received +81.08597114873336903513
+Mean received bitrate +16413.03918944851687920342
+Mean transmitted bitrate +16518.18361032135132266287
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8308
+Rx Packets 8289
+Lost packets 0
+Lost ratio 0
+Average delay received +35.05556275906257442129
+Mean received bitrate +194.11111835384468080246
+Mean transmitted bitrate +194.08260545090732728683
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 174
+Rx Packets 107
+Lost packets 65
+Lost ratio 0.377907
+Average delay received +49.08680354024760646466
+Mean received bitrate +2175.03679536716829727387
+Mean transmitted bitrate +204.00284909952814946898
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 63
+Rx Packets 63
+Lost packets 0
+Lost ratio 0
+Average delay received +38.16581727592512678618
+Mean received bitrate +35.09476410735019209065
+Mean transmitted bitrate +35.0134916346283756844
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 174
+Rx Packets 107
+Lost packets 65
+Lost ratio 0.377907
+Average delay received +49.0712875872884115147
+Mean received bitrate +2175.03679536716829727387
+Mean transmitted bitrate +204.00284909952814946898
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 63
+Rx Packets 63
+Lost packets 0
+Lost ratio 0
+Average delay received +38.17460143976975038218
+Mean received bitrate +35.09476410735019209065
+Mean transmitted bitrate +35.0134916346283756844
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 174
+Rx Packets 107
+Lost packets 65
+Lost ratio 0.377907
+Average delay received +49.0712875872884115147
+Mean received bitrate +2175.03679536716829727387
+Mean transmitted bitrate +204.00284909952814946898
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 63
+Rx Packets 63
+Lost packets 0
+Lost ratio 0
+Average delay received +38.17460143976975038218
+Mean received bitrate +35.09476410735019209065
+Mean transmitted bitrate +35.0134916346283756844
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 8097
+Rx Packets 7955
+Lost packets 50
+Lost ratio 0.0062461
+Average delay received +113.0147892200780853689
+Mean received bitrate +6441.15214802081809291344
+Mean transmitted bitrate +6542.16010770050409226565
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 3449
+Rx Packets 3440
+Lost packets 0
+Lost ratio 0
+Average delay received +38.00587931586621954028
+Mean received bitrate +83.17101659252857215872
+Mean transmitted bitrate +83.15872157022360145559
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 11890
+Rx Packets 11727
+Lost packets 94
+Lost ratio 0.00795195
+Average delay received +81.13837450206465150433
+Mean received bitrate +9498.14654474058279337169
+Mean transmitted bitrate +9606.18313782214889950141
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 4986
+Rx Packets 4975
+Lost packets 0
+Lost ratio 0
+Average delay received +36.01740010195557947661
+Mean received bitrate +119.07250070370013553008
+Mean transmitted bitrate +119.05543333318332888946
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 11890
+Rx Packets 11727
+Lost packets 94
+Lost ratio 0.00795195
+Average delay received +81.13837450206465150433
+Mean received bitrate +9498.14654474058279337169
+Mean transmitted bitrate +9606.18313782214889950141
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 4986
+Rx Packets 4975
+Lost packets 0
+Lost ratio 0
+Average delay received +36.01740010195557947661
+Mean received bitrate +119.07250070370013553008
+Mean transmitted bitrate +119.05543333318332888946
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 11890
+Rx Packets 11727
+Lost packets 94
+Lost ratio 0.00795195
+Average delay received +81.13837450206465150433
+Mean received bitrate +9498.14654474058279337169
+Mean transmitted bitrate +9606.18313782214889950141
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 4986
+Rx Packets 4975
+Lost packets 0
+Lost ratio 0
+Average delay received +36.01740010195557947661
+Mean received bitrate +119.07250070370013553008
+Mean transmitted bitrate +119.05543333318332888946
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 11890
+Rx Packets 11727
+Lost packets 94
+Lost ratio 0.00795195
+Average delay received +81.13837450206465150433
+Mean received bitrate +9498.14654474058279337169
+Mean transmitted bitrate +9606.18313782214889950141
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 4986
+Rx Packets 4975
+Lost packets 0
+Lost ratio 0
+Average delay received +36.01740010195557947661
+Mean received bitrate +119.07250070370013553008
+Mean transmitted bitrate +119.05543333318332888946
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 11852
+Rx Packets 11700
+Lost packets 64
+Lost ratio 0.00544033
+Average delay received +114.13727785653610485716
+Mean received bitrate +9475.11229547905371485275
+Mean transmitted bitrate +9579.10778880465298820336
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 5007
+Rx Packets 4992
+Lost packets 0
+Lost ratio 0
+Average delay received +36.09712999257040437958
+Mean received bitrate +119.10812236366782107696
+Mean transmitted bitrate +119.09622503164676638946
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 18608
+Rx Packets 18376
+Lost packets 84
+Lost ratio 0.00455038
+Average delay received +83.06596774416620171981
+Mean received bitrate +14883.14094875842162244384
+Mean transmitted bitrate +15036.08053718445491472136
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 7498
+Rx Packets 7480
+Lost packets 0
+Lost ratio 0
+Average delay received +35.0914645331883995319
+Mean received bitrate +176.00600655474364032771
+Mean transmitted bitrate +175.16792517698096045325
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 18608
+Rx Packets 18376
+Lost packets 84
+Lost ratio 0.00455038
+Average delay received +83.06596774416620171981
+Mean received bitrate +14883.14094875842162244384
+Mean transmitted bitrate +15036.08053718445491472136
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 7498
+Rx Packets 7480
+Lost packets 0
+Lost ratio 0
+Average delay received +35.0914645331883995319
+Mean received bitrate +176.00600655474364032771
+Mean transmitted bitrate +175.16792517698096045325
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 18608
+Rx Packets 18376
+Lost packets 84
+Lost ratio 0.00455038
+Average delay received +83.06596774416620171981
+Mean received bitrate +14883.14094875842162244384
+Mean transmitted bitrate +15036.08053718445491472136
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 7498
+Rx Packets 7480
+Lost packets 0
+Lost ratio 0
+Average delay received +35.0914645331883995319
+Mean received bitrate +176.00600655474364032771
+Mean transmitted bitrate +175.16792517698096045325
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 18608
+Rx Packets 18376
+Lost packets 84
+Lost ratio 0.00455038
+Average delay received +83.06596774416620171981
+Mean received bitrate +14883.14094875842162244384
+Mean transmitted bitrate +15036.08053718445491472136
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 7498
+Rx Packets 7480
+Lost packets 0
+Lost ratio 0
+Average delay received +35.0914645331883995319
+Mean received bitrate +176.00600655474364032771
+Mean transmitted bitrate +175.16792517698096045325
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 18608
+Rx Packets 18376
+Lost packets 84
+Lost ratio 0.00455038
+Average delay received +83.06596774416620171981
+Mean received bitrate +14883.14094875842162244384
+Mean transmitted bitrate +15036.08053718445491472136
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 7498
+Rx Packets 7480
+Lost packets 0
+Lost ratio 0
+Average delay received +35.0914645331883995319
+Mean received bitrate +176.00600655474364032771
+Mean transmitted bitrate +175.16792517698096045325
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 14647
+Rx Packets 14474
+Lost packets 67
+Lost ratio 0.00460766
+Average delay received +95.11018556861850830157
+Mean received bitrate +11726.00710152452152242971
+Mean transmitted bitrate +11835.03336873113129476202
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 5937
+Rx Packets 5925
+Lost packets 0
+Lost ratio 0
+Average delay received +35.17076374018730563029
+Mean received bitrate +137.16512746080841233295
+Mean transmitted bitrate +137.16019339394851975483
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19512
+Rx Packets 19331
+Lost packets 80
+Lost ratio 0.00412137
+Average delay received +83.13928580964592613526
+Mean received bitrate +15657.07364798174872613913
+Mean transmitted bitrate +15767.00816633712080725215
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8099
+Rx Packets 8081
+Lost packets 0
+Lost ratio 0
+Average delay received +35.0638324785707959602
+Mean received bitrate +191.04296805720023492906
+Mean transmitted bitrate +191.01471339853095758531
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19512
+Rx Packets 19331
+Lost packets 80
+Lost ratio 0.00412137
+Average delay received +83.13928580964592613526
+Mean received bitrate +15657.07364798174872613913
+Mean transmitted bitrate +15767.00816633712080725215
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8099
+Rx Packets 8081
+Lost packets 0
+Lost ratio 0
+Average delay received +35.0638324785707959602
+Mean received bitrate +191.04296805720023492906
+Mean transmitted bitrate +191.01471339853095758531
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19512
+Rx Packets 19331
+Lost packets 80
+Lost ratio 0.00412137
+Average delay received +83.13928580964592613526
+Mean received bitrate +15657.07364798174872613913
+Mean transmitted bitrate +15767.00816633712080725215
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8099
+Rx Packets 8081
+Lost packets 0
+Lost ratio 0
+Average delay received +35.0638324785707959602
+Mean received bitrate +191.04296805720023492906
+Mean transmitted bitrate +191.01471339853095758531
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19512
+Rx Packets 19331
+Lost packets 80
+Lost ratio 0.00412137
+Average delay received +83.13928580964592613526
+Mean received bitrate +15657.07364798174872613913
+Mean transmitted bitrate +15767.00816633712080725215
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8099
+Rx Packets 8081
+Lost packets 0
+Lost ratio 0
+Average delay received +35.0638324785707959602
+Mean received bitrate +191.04296805720023492906
+Mean transmitted bitrate +191.01471339853095758531
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19512
+Rx Packets 19331
+Lost packets 80
+Lost ratio 0.00412137
+Average delay received +83.13928580964592613526
+Mean received bitrate +15657.07364798174872613913
+Mean transmitted bitrate +15767.00816633712080725215
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8099
+Rx Packets 8081
+Lost packets 0
+Lost ratio 0
+Average delay received +35.0638324785707959602
+Mean received bitrate +191.04296805720023492906
+Mean transmitted bitrate +191.01471339853095758531
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19512
+Rx Packets 19331
+Lost packets 80
+Lost ratio 0.00412137
+Average delay received +83.13928580964592613526
+Mean received bitrate +15657.07364798174872613913
+Mean transmitted bitrate +15767.00816633712080725215
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8099
+Rx Packets 8081
+Lost packets 0
+Lost ratio 0
+Average delay received +35.0638324785707959602
+Mean received bitrate +191.04296805720023492906
+Mean transmitted bitrate +191.01471339853095758531
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 16632
+Rx Packets 16421
+Lost packets 104
+Lost ratio 0.00629349
+Average delay received +95.04460468112122416545
+Mean received bitrate +13300.00733228110215460325
+Mean transmitted bitrate +13444.01524962325689441683
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 6820
+Rx Packets 6806
+Lost packets 0
+Lost ratio 0
+Average delay received +35.10398154648850002786
+Mean received bitrate +161.03730583026628400761
+Mean transmitted bitrate +160.18300088313704163315
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19514
+Rx Packets 19331
+Lost packets 81
+Lost ratio 0.00417268
+Average delay received +83.11629777243795978122
+Mean received bitrate +15657.07364798174872613913
+Mean transmitted bitrate +15769.13802427464643067296
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8029
+Rx Packets 8011
+Lost packets 0
+Lost ratio 0
+Average delay received +35.06595418639664677074
+Mean received bitrate +189.10539490117064666451
+Mean transmitted bitrate +189.07559147977663299263
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19514
+Rx Packets 19331
+Lost packets 81
+Lost ratio 0.00417268
+Average delay received +83.11629777243795978122
+Mean received bitrate +15657.07364798174872613913
+Mean transmitted bitrate +15769.13802427464643067296
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8029
+Rx Packets 8011
+Lost packets 0
+Lost ratio 0
+Average delay received +35.06595418639664677074
+Mean received bitrate +189.10539490117064666451
+Mean transmitted bitrate +189.07559147977663299263
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19514
+Rx Packets 19331
+Lost packets 81
+Lost ratio 0.00417268
+Average delay received +83.11629777243795978122
+Mean received bitrate +15657.07364798174872613913
+Mean transmitted bitrate +15769.13802427464643067296
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8029
+Rx Packets 8011
+Lost packets 0
+Lost ratio 0
+Average delay received +35.06595418639664677074
+Mean received bitrate +189.10539490117064666451
+Mean transmitted bitrate +189.07559147977663299263
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19514
+Rx Packets 19331
+Lost packets 81
+Lost ratio 0.00417268
+Average delay received +83.11629777243795978122
+Mean received bitrate +15657.07364798174872613913
+Mean transmitted bitrate +15769.13802427464643067296
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8029
+Rx Packets 8011
+Lost packets 0
+Lost ratio 0
+Average delay received +35.06595418639664677074
+Mean received bitrate +189.10539490117064666451
+Mean transmitted bitrate +189.07559147977663299263
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19514
+Rx Packets 19331
+Lost packets 81
+Lost ratio 0.00417268
+Average delay received +83.11629777243795978122
+Mean received bitrate +15657.07364798174872613913
+Mean transmitted bitrate +15769.13802427464643067296
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8029
+Rx Packets 8011
+Lost packets 0
+Lost ratio 0
+Average delay received +35.06595418639664677074
+Mean received bitrate +189.10539490117064666451
+Mean transmitted bitrate +189.07559147977663299263
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19514
+Rx Packets 19331
+Lost packets 81
+Lost ratio 0.00417268
+Average delay received +83.11629777243795978122
+Mean received bitrate +15657.07364798174872613913
+Mean transmitted bitrate +15769.13802427464643067296
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8029
+Rx Packets 8011
+Lost packets 0
+Lost ratio 0
+Average delay received +35.06595418639664677074
+Mean received bitrate +189.10539490117064666451
+Mean transmitted bitrate +189.07559147977663299263
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19514
+Rx Packets 19331
+Lost packets 81
+Lost ratio 0.00417268
+Average delay received +83.11629777243795978122
+Mean received bitrate +15657.07364798174872613913
+Mean transmitted bitrate +15769.13802427464643067296
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8029
+Rx Packets 8011
+Lost packets 0
+Lost ratio 0
+Average delay received +35.06595418639664677074
+Mean received bitrate +189.10539490117064666451
+Mean transmitted bitrate +189.07559147977663299263
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 18042
+Rx Packets 17866
+Lost packets 77
+Lost ratio 0.00429137
+Average delay received +83.14399895408416174964
+Mean received bitrate +14470.1141126095877249148
+Mean transmitted bitrate +14578.18429155556719041952
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 7404
+Rx Packets 7387
+Lost packets 0
+Lost ratio 0
+Average delay received +35.09295788377862422863
+Mean received bitrate +175.03500864228607764075
+Mean transmitted bitrate +175.01115859043517920325
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19514
+Rx Packets 19331
+Lost packets 81
+Lost ratio 0.00417268
+Average delay received +83.11571556934810848361
+Mean received bitrate +15657.07364798174872613913
+Mean transmitted bitrate +15769.13802427464643067296
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8029
+Rx Packets 8011
+Lost packets 0
+Lost ratio 0
+Average delay received +35.06646088087666572979
+Mean received bitrate +189.10539490117064666451
+Mean transmitted bitrate +189.07559147977663299263
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19514
+Rx Packets 19331
+Lost packets 81
+Lost ratio 0.00417268
+Average delay received +83.11571556934810848361
+Mean received bitrate +15657.07364798174872613913
+Mean transmitted bitrate +15769.13802427464643067296
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8029
+Rx Packets 8011
+Lost packets 0
+Lost ratio 0
+Average delay received +35.06646088087666572979
+Mean received bitrate +189.10539490117064666451
+Mean transmitted bitrate +189.07559147977663299263
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19514
+Rx Packets 19331
+Lost packets 81
+Lost ratio 0.00417268
+Average delay received +83.11571556934810848361
+Mean received bitrate +15657.07364798174872613913
+Mean transmitted bitrate +15769.13802427464643067296
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8029
+Rx Packets 8011
+Lost packets 0
+Lost ratio 0
+Average delay received +35.06646088087666572979
+Mean received bitrate +189.10539490117064666451
+Mean transmitted bitrate +189.07559147977663299263
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19514
+Rx Packets 19331
+Lost packets 81
+Lost ratio 0.00417268
+Average delay received +83.11571556934810848361
+Mean received bitrate +15657.07364798174872613913
+Mean transmitted bitrate +15769.13802427464643067296
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8029
+Rx Packets 8011
+Lost packets 0
+Lost ratio 0
+Average delay received +35.06646088087666572979
+Mean received bitrate +189.10539490117064666451
+Mean transmitted bitrate +189.07559147977663299263
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19514
+Rx Packets 19331
+Lost packets 81
+Lost ratio 0.00417268
+Average delay received +83.11571556934810848361
+Mean received bitrate +15657.07364798174872613913
+Mean transmitted bitrate +15769.13802427464643067296
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8029
+Rx Packets 8011
+Lost packets 0
+Lost ratio 0
+Average delay received +35.06646088087666572979
+Mean received bitrate +189.10539490117064666451
+Mean transmitted bitrate +189.07559147977663299263
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19514
+Rx Packets 19331
+Lost packets 81
+Lost ratio 0.00417268
+Average delay received +83.11571556934810848361
+Mean received bitrate +15657.07364798174872613913
+Mean transmitted bitrate +15769.13802427464643067296
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8029
+Rx Packets 8011
+Lost packets 0
+Lost ratio 0
+Average delay received +35.06646088087666572979
+Mean received bitrate +189.10539490117064666451
+Mean transmitted bitrate +189.07559147977663299263
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19514
+Rx Packets 19331
+Lost packets 81
+Lost ratio 0.00417268
+Average delay received +83.11571556934810848361
+Mean received bitrate +15657.07364798174872613913
+Mean transmitted bitrate +15769.13802427464643067296
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8029
+Rx Packets 8011
+Lost packets 0
+Lost ratio 0
+Average delay received +35.06646088087666572979
+Mean received bitrate +189.10539490117064666451
+Mean transmitted bitrate +189.07559147977663299263
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19514
+Rx Packets 19331
+Lost packets 81
+Lost ratio 0.00417268
+Average delay received +83.11571556934810848361
+Mean received bitrate +15657.07364798174872613913
+Mean transmitted bitrate +15769.13802427464643067296
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8029
+Rx Packets 8011
+Lost packets 0
+Lost ratio 0
+Average delay received +35.06646088087666572979
+Mean received bitrate +189.10539490117064666451
+Mean transmitted bitrate +189.07559147977663299263
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 18756
+Rx Packets 18547
+Lost packets 91
+Lost ratio 0.0048825
+Average delay received +81.14828392456388868945
+Mean received bitrate +15022.0533726305271035101
+Mean transmitted bitrate +15156.00920902770391176654
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 7568
+Rx Packets 7556
+Lost packets 0
+Lost ratio 0
+Average delay received +35.07790834707455848241
+Mean received bitrate +176.12430557851460712459
+Mean transmitted bitrate +176.07750221124981220271
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19514
+Rx Packets 19331
+Lost packets 81
+Lost ratio 0.00417268
+Average delay received +83.11547695506908428154
+Mean received bitrate +15657.07364798174872613913
+Mean transmitted bitrate +15769.13802427464643067296
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8029
+Rx Packets 8011
+Lost packets 0
+Lost ratio 0
+Average delay received +35.06666816703883710765
+Mean received bitrate +189.10539490117064666451
+Mean transmitted bitrate +189.07559147977663299263
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19514
+Rx Packets 19331
+Lost packets 81
+Lost ratio 0.00417268
+Average delay received +83.11547695506908428154
+Mean received bitrate +15657.07364798174872613913
+Mean transmitted bitrate +15769.13802427464643067296
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8029
+Rx Packets 8011
+Lost packets 0
+Lost ratio 0
+Average delay received +35.06666816703883710765
+Mean received bitrate +189.10539490117064666451
+Mean transmitted bitrate +189.07559147977663299263
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19514
+Rx Packets 19331
+Lost packets 81
+Lost ratio 0.00417268
+Average delay received +83.11547695506908428154
+Mean received bitrate +15657.07364798174872613913
+Mean transmitted bitrate +15769.13802427464643067296
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8029
+Rx Packets 8011
+Lost packets 0
+Lost ratio 0
+Average delay received +35.06666816703883710765
+Mean received bitrate +189.10539490117064666451
+Mean transmitted bitrate +189.07559147977663299263
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19514
+Rx Packets 19331
+Lost packets 81
+Lost ratio 0.00417268
+Average delay received +83.11547695506908428154
+Mean received bitrate +15657.07364798174872613913
+Mean transmitted bitrate +15769.13802427464643067296
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8029
+Rx Packets 8011
+Lost packets 0
+Lost ratio 0
+Average delay received +35.06666816703883710765
+Mean received bitrate +189.10539490117064666451
+Mean transmitted bitrate +189.07559147977663299263
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19514
+Rx Packets 19331
+Lost packets 81
+Lost ratio 0.00417268
+Average delay received +83.11547695506908428154
+Mean received bitrate +15657.07364798174872613913
+Mean transmitted bitrate +15769.13802427464643067296
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8029
+Rx Packets 8011
+Lost packets 0
+Lost ratio 0
+Average delay received +35.06666816703883710765
+Mean received bitrate +189.10539490117064666451
+Mean transmitted bitrate +189.07559147977663299263
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19514
+Rx Packets 19331
+Lost packets 81
+Lost ratio 0.00417268
+Average delay received +83.11547695506908428154
+Mean received bitrate +15657.07364798174872613913
+Mean transmitted bitrate +15769.13802427464643067296
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8029
+Rx Packets 8011
+Lost packets 0
+Lost ratio 0
+Average delay received +35.06666816703883710765
+Mean received bitrate +189.10539490117064666451
+Mean transmitted bitrate +189.07559147977663299263
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19514
+Rx Packets 19331
+Lost packets 81
+Lost ratio 0.00417268
+Average delay received +83.11547695506908428154
+Mean received bitrate +15657.07364798174872613913
+Mean transmitted bitrate +15769.13802427464643067296
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8029
+Rx Packets 8011
+Lost packets 0
+Lost ratio 0
+Average delay received +35.06666816703883710765
+Mean received bitrate +189.10539490117064666451
+Mean transmitted bitrate +189.07559147977663299263
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19514
+Rx Packets 19331
+Lost packets 81
+Lost ratio 0.00417268
+Average delay received +83.11547695506908428154
+Mean received bitrate +15657.07364798174872613913
+Mean transmitted bitrate +15769.13802427464643067296
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8029
+Rx Packets 8011
+Lost packets 0
+Lost ratio 0
+Average delay received +35.06666816703883710765
+Mean received bitrate +189.10539490117064666451
+Mean transmitted bitrate +189.07559147977663299263
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19514
+Rx Packets 19331
+Lost packets 81
+Lost ratio 0.00417268
+Average delay received +83.11547695506908428154
+Mean received bitrate +15657.07364798174872613913
+Mean transmitted bitrate +15769.13802427464643067296
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 8029
+Rx Packets 8011
+Lost packets 0
+Lost ratio 0
+Average delay received +35.06666816703883710765
+Mean received bitrate +189.10539490117064666451
+Mean transmitted bitrate +189.07559147977663299263
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 19161
+Rx Packets 18968
+Lost packets 81
+Lost ratio 0.00425219
+Average delay received +81.03859620945193614419
+Mean received bitrate +15363.06214267631494460892
+Mean transmitted bitrate +15483.06768550733560181034
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 7787
+Rx Packets 7769
+Lost packets 0
+Lost ratio 0
+Average delay received +35.07387304556399918497
+Mean received bitrate +182.0218280894507351995
+Mean transmitted bitrate +181.18280959301529165316
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 3
+Rx Packets 0
+Lost packets 2
+Lost ratio 1
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 3
+Rx Packets 0
+Lost packets 2
+Lost ratio 1
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 3
+Rx Packets 0
+Lost packets 2
+Lost ratio 1
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 3
+Rx Packets 0
+Lost packets 2
+Lost ratio 1
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 3
+Rx Packets 0
+Lost packets 2
+Lost ratio 1
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 3
+Rx Packets 0
+Lost packets 2
+Lost ratio 1
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 3
+Rx Packets 0
+Lost packets 2
+Lost ratio 1
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 3
+Rx Packets 0
+Lost packets 2
+Lost ratio 1
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 3
+Rx Packets 0
+Lost packets 2
+Lost ratio 1
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 3
+Rx Packets 0
+Lost packets 2
+Lost ratio 1
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = -1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 3
+Rx Packets 0
+Lost packets 2
+Lost ratio 1
+=========Experiment=========
+TCP: 1
+Distance from eNB: 400
+Mobility: Pedestrian = 1, Fading = 1, Cost231 Path loss = 0
+***Flow ID: 1 Src Addr 1.0.0.2:50742 Dst Addr 7.0.0.2:2001
+Tx Packets 53181
+Rx Packets 52992
+Lost packets 90
+Lost ratio 0.00169549
+Average delay received +83.11739620329304745521
+Mean received bitrate +15734.03149047952936358231
+Mean transmitted bitrate +15776.13415224387018002859
+***Flow ID: 2 Src Addr 7.0.0.2:2001 Dst Addr 1.0.0.2:50742
+Tx Packets 21199
+Rx Packets 21181
+Lost packets 0
+Lost ratio 0
+Average delay received +35.07741153215989064425
+Mean received bitrate +176.10762278111509540584
+Mean transmitted bitrate +176.10089991323106220271
