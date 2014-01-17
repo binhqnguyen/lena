@@ -93,9 +93,17 @@ public:
 	///< Binh: translate a vector of Rlc PDUs to Rlc SDUs 
 	///< and put the Rlc SDUs into m_transmittingRlcSdus.
   void  RlcPdusToRlcSdus (std::vector < RetxPdu >  Pdus);
+	
+	std::vector < Ptr<Packet> > GetTxedRlcSduBuffer (){
+		return m_txedRlcSduBuffer;
+	}
 private:
 	//Binh: whether the last SDU in the txonBuffer is a complete SDU.
 	bool is_fragmented;
+
+	//Binh
+	std::vector < Ptr <Packet> > m_txedRlcSduBuffer;
+	uint32_t m_txedRlcSduBufferSize;
   /**
    * This method will schedule a timeout at WaitReplyTimeout interval
    * in the future, unless a timer is already running for the cache,

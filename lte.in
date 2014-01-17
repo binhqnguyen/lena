@@ -1,7 +1,7 @@
 default ns3::LteHelper::UseIdealRrc "true"
 default ns3::LteEnbPhy::TxPower "46"
 default ns3::LteUePhy::TxPower "23"
-default ns3::LteEnbRrc::EpsBearerToRlcMapping "RlcUmAlways"
+default ns3::LteEnbRrc::EpsBearerToRlcMapping "RlcAmAlways"
 default ns3::PfFfMacScheduler::HarqEnabled "true"
 default ns3::LteSpectrumPhy::DataErrorModelEnabled "true"
 default ns3::LteSpectrumPhy::CtrlErrorModelEnabled "false"

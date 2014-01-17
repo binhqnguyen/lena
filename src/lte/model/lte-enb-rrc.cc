@@ -709,6 +709,8 @@ UeManager::RecvHandoverRequestAck (EpcX2SapUser::HandoverRequestAckParams params
 										}
 									}	
 						NS_LOG_DEBUG(this << " ADDING TXONBUFFER OF RLC AM " << m_rnti << " Size = " << txonBufferSize) ;
+
+					
 						Ptr<Packet> segmentedRlcsdu = rlcAm->GetSegmentedRlcsdu();
 						if (segmentedRlcsdu != NULL){
 							segmentedRlcsdu->PeekHeader(pdcpHeader);
@@ -718,6 +720,26 @@ UeManager::RecvHandoverRequestAck (EpcX2SapUser::HandoverRequestAckParams params
 						}
 						m_x2forwardingBuffer.insert(m_x2forwardingBuffer.end(), txonBuffer.begin(), txonBuffer.end());
 						m_x2forwardingBufferSize += rlcAm->GetTransmittingRlcSduBufferSize() + txonBufferSize;
+
+						//Get the rlcAm
+						std::vector < Ptr <Packet> > rlcAmTxedSduBuffer = rlcAm->GetTxedRlcSduBuffer();
+						LtePdcpHeader pdcpHeader_1;
+						m_x2forwardingBuffer.at(0)->PeekHeader(pdcpHeader_1);
+						uint16_t i = 0;
+						for (std::vector< Ptr<Packet> >::iterator it = rlcAmTxedSduBuffer.begin(); it != rlcAmTxedSduBuffer.end(); ++it){
+							if ((*it) != NULL){
+								(*it)->PeekHeader(pdcpHeader);
+								//NS_LOG_DEBUG("rlcAmTxedSduBuffer SEQ = " << pdcpHeader.GetSequenceNumber() << " Size = " << (*it)->GetSize());
+							
+								//add the previous SDU of the forwarding buffer to the forwarding buffer.
+								if (pdcpHeader.GetSequenceNumber() >= (pdcpHeader_1.GetSequenceNumber() - 2) && pdcpHeader.GetSequenceNumber() <= (pdcpHeader_1.GetSequenceNumber()) ){
+									NS_LOG_DEBUG("Added previous SDU to forwarding buffer SEQ = " << pdcpHeader.GetSequenceNumber() << " Size = " << (*it)->GetSize());
+									m_x2forwardingBuffer.insert(m_x2forwardingBuffer.begin()+i, (*it)->Copy());
+									++i;
+								}
+							}
+						}
+						
 					}
 					else { //TransmittingBuffer is empty. Only copy TxonBuffer.
 					NS_LOG_DEBUG(this << " ADDING TXONBUFFER OF RLC AM " << m_rnti << " Size = " << txonBufferSize) ;

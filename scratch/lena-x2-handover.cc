@@ -461,8 +461,10 @@ main (int argc, char *argv[])
   else{
 	  *debugger_wp->GetStream () << "Manual Handover at 20,50,80 second\n" ;
 	  lteHelper->HandoverRequest (Seconds (20.00), ueLteDevs.Get (0), enbLteDevs.Get (0), enbLteDevs.Get (1));
-	  lteHelper->HandoverRequest (Seconds (50.00), ueLteDevs.Get (0), enbLteDevs.Get (1), enbLteDevs.Get (0));
+	  lteHelper->HandoverRequest (Seconds (40.00), ueLteDevs.Get (0), enbLteDevs.Get (1), enbLteDevs.Get (0));
 	  lteHelper->HandoverRequest (Seconds (70.00), ueLteDevs.Get (0), enbLteDevs.Get (0), enbLteDevs.Get (1));
+	  //lteHelper->HandoverRequest (Seconds (100.00), ueLteDevs.Get (0), enbLteDevs.Get (1), enbLteDevs.Get (0));
+	  //lteHelper->HandoverRequest (Seconds (130.00), ueLteDevs.Get (0), enbLteDevs.Get (0), enbLteDevs.Get (1));
   }
     monitor = flowHelper.Install(ueNodes);
     monitor = flowHelper.Install(remoteHost);

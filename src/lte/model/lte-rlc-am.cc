@@ -50,6 +50,8 @@ LteRlcAm::LteRlcAm ()
 	m_transmittingRlcSduBufferSize = 0;
   m_statusPduRequested = false;
   m_statusPduBufferSize = 0;
+	m_txedRlcSduBuffer.resize (0);
+	m_txedRlcSduBufferSize = 0;
 	//TODO:init m_segmented_rlcsdu (Ptr<Packet>)
 	//m_segmented_rlcsdu = 0;
 	is_fragmented = 0;
@@ -153,6 +155,8 @@ LteRlcAm::DoDispose ()
 	m_transmittingRlcSduBufferSize = 0;
 	m_transmittingRlcSduBuffer.clear();
 	is_fragmented = 0;
+	m_txedRlcSduBuffer.clear ();
+	m_txedRlcSduBufferSize = 0;
   LteRlc::DoDispose ();
 }
 
@@ -687,6 +691,14 @@ LteRlcAm::DoNotifyTxOpportunity (uint32_t bytes, uint8_t layer, uint8_t harqId)
 					//Binh: New complete SDU is taken from txonBuffer so reset the 
 					//status is_fragmented.
 					is_fragmented = 0;
+					m_txedRlcSduBuffer.push_back((*(m_txonBuffer.begin()))->Copy());
+					NS_LOG_DEBUG ("m_txedRlcSduBuffer.size() = " << m_txedRlcSduBuffer.size());
+					if (m_txedRlcSduBuffer.size() > 1024){
+						NS_LOG_DEBUG ("m_txedRlcSduBuffer.size() = " << m_txedRlcSduBuffer.size() << " clear and resize");
+						m_txedRlcSduBuffer.clear();
+						m_txedRlcSduBuffer.resize(0);
+						NS_LOG_DEBUG ("m_txedRlcSduBuffer.size() = " << m_txedRlcSduBuffer.size() << " after clear and resize");
+					}
 					//Binh: Store the last complete SDU before segmentation in txonBuffer.
 					entireSdu = (*(m_txonBuffer.begin ()))->Copy ();
           m_txonBufferSize -= (*(m_txonBuffer.begin()))->GetSize ();
