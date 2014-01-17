@@ -22,6 +22,10 @@
 #perl -pi -e 's/EpsBearerToRlcMapping \"RlcUmAlways\"/EpsBearerToRlcMapping \"RlcAmAlways\"/g' lte.in
 #./bash-run-rlcam-windowssize.sh 25
 
-./x2-manual-ho tmp 200 150 -1 radio
+#./x2-manual-ho tmp 200 150 -1 radio
 
-./x2-auto-ho-a2a4 a2a4_newlossless_ho 200 400 0 radio
+./x2-auto-ho-a2a4 a2a4_newlossless 200 400 0 radio
+
+perl -pi -e 's/EpsBearerToRlcMapping \"RlcAmAlways\"/EpsBearerToRlcMapping \"RlcUmAlways\"/g' lte.in
+./x2-auto-ho-a2a4 a2a4_newseamless 200 400 0 radio
+#perl -pi -e 's/EpsBearerToRlcMapping \"RlcUmAlways\"/EpsBearerToRlcMapping \"RlcAmAlways\"/g' lte.in

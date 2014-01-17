@@ -285,6 +285,10 @@ main (int argc, char *argv[])
 
   Ptr<Node> pgw = epcHelper->GetPgwNode ();
 
+	epcHelper->SetAttribute("S1uLinkDataRate", DataRateValue (DataRate ("1Gb/s")));
+  epcHelper->SetAttribute("S1uLinkDelay", TimeValue (Seconds (0.015)));
+  epcHelper->SetAttribute("S1uLinkMtu", UintegerValue (1500));
+
   // Create a single RemoteHost
   NodeContainer remoteHostContainer;
   remoteHostContainer.Create (1);
@@ -698,7 +702,9 @@ void CommandlineParameters(int argc, char* argv[]){
     cmd.AddValue("isAutoHo", "Whether doing auto handover", isAutoHo);
     cmd.AddValue("ho_type", "Auto HO type: 1 for a2a4-ho, 2 for a3-ho", ho_type);
 
-  cmd.Parse(argc, argv);
+    cmd.AddValue("a2_servingcell_threshold", "a2a4 HO: if current cell radio is worse than this", a2_servingcell_threshold);
+    cmd.AddValue("a4_neighbourcell_offset", "a2a4 HO: if the target cell radio is better than the source cell by this amount", a4_neighbourcell_offset);
+  	cmd.Parse(argc, argv);
 }
 
 void InstallMobility(NodeContainer ueNodes, NodeContainer enbNodes){

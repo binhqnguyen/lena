@@ -270,6 +270,9 @@ main (int argc, char *argv[])
   lteHelper->SetSchedulerType("ns3::RrFfMacScheduler");
 
   Ptr<Node> pgw = epcHelper->GetPgwNode ();
+	epcHelper->SetAttribute("S1uLinkDataRate", DataRateValue (DataRate ("1Gb/s")));
+  epcHelper->SetAttribute("S1uLinkDelay", TimeValue (Seconds (0.015)));
+  epcHelper->SetAttribute("S1uLinkMtu", UintegerValue (1500));
 
   // Create a single RemoteHost
   NodeContainer remoteHostContainer;
