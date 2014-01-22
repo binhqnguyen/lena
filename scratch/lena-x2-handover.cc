@@ -75,14 +75,15 @@ double moving_speed = 3; //UE moving speed in km/h (3km/h for pedestrian, 60km/h
 static uint32_t isTcp=1;
 uint32_t packetSize = 900;
 double samplingInterval = 0.005;    /*getTcp() function invoke for each x second*/
-uint16_t PUT_SAMPLING_INTERVAL = 25; /*sample a TCP throughput for each x pkts*/
+uint16_t PUT_SAMPLING_INTERVAL = 40; /*sample a TCP throughput for each x pkts*/
 double t = 0.0;
 Ptr<ns3::FlowMonitor> monitor;
 FlowMonitorHelper flowHelper;
 Ptr<ns3::Ipv4FlowClassifier> classifier;
 std::map <FlowId, FlowMonitor::FlowStats> stats;
 std::string dataRate = "150Mb/s";
-LogLevel logLevel = (LogLevel) (LOG_LEVEL_ALL | LOG_PREFIX_TIME | LOG_PREFIX_NODE | LOG_PREFIX_FUNC);
+//LogLevel logLevel = (LogLevel) (LOG_LEVEL_ALL | LOG_PREFIX_TIME | LOG_PREFIX_NODE | LOG_PREFIX_FUNC);
+LogLevel logLevel = (LogLevel) (LOG_PREFIX_TIME | LOG_PREFIX_NODE| LOG_PREFIX_FUNC | LOG_LEVEL_DEBUG);
 uint32_t isAutoHo = 0;
 double speed = 20; //20m/s
 
@@ -110,6 +111,8 @@ uint16_t numberOfEnbs = 2;
 uint16_t numBearersPerUe = 1;
 double distance = 500.0;
 
+/********DEBUGGING mode********/
+uint32_t isDebug = 0;
 
 /********* Ascii output files name *********/
 static std::string DIR = "/var/tmp/ln_result/radio/";
@@ -147,7 +150,7 @@ void ConfigStoreOutput(std::string);
 void ConfigStoreInput(std::string in_f);
 
 //******Handover monitoring********//
-Ptr<OutputStreamWrapper> ho_wp = asciiTraceHelper.CreateFileStream("/var/tmp/ln_result/radio/handover.dat");
+Ptr<OutputStreamWrapper> ho_wp = asciiTraceHelper.CreateFileStream(DIR+"handover.dat");
 void 
 NotifyConnectionEstablishedUe (std::string context, 
                                uint64_t imsi, 
@@ -249,7 +252,6 @@ NS_LOG_COMPONENT_DEFINE ("EpcX2HandoverExample");
 int
 main (int argc, char *argv[])
 {
-  EnableLogComponents();
   // change some default attributes so that they are reasonable for
   // this scenario, but do this before processing command line
   // arguments, so that the user is allowed to override these settings 
@@ -260,6 +262,7 @@ main (int argc, char *argv[])
   // Command line arguments
   CommandlineParameters(argc, argv);
   init_wrappers();
+  EnableLogComponents();
   
   Ptr<LteHelper> lteHelper = CreateObject<LteHelper> ();
   Ptr<PointToPointEpcHelper>  epcHelper = CreateObject<PointToPointEpcHelper> ();
@@ -267,6 +270,9 @@ main (int argc, char *argv[])
   lteHelper->SetSchedulerType("ns3::RrFfMacScheduler");
 
   Ptr<Node> pgw = epcHelper->GetPgwNode ();
+	epcHelper->SetAttribute("S1uLinkDataRate", DataRateValue (DataRate ("1Gb/s")));
+  epcHelper->SetAttribute("S1uLinkDelay", TimeValue (Seconds (0.015)));
+  epcHelper->SetAttribute("S1uLinkMtu", UintegerValue (1500));
 
   // Create a single RemoteHost
   NodeContainer remoteHostContainer;
@@ -275,10 +281,7 @@ main (int argc, char *argv[])
   InternetStackHelper internet;
     internet.SetTcp("ns3::NscTcpL4Protocol", "Library", StringValue("liblinux2.6.26.so"));
     internet.Install (remoteHost);
-    Config::Set ("/NodeList/*/$ns3::Ns3NscStack<linux2.6.26>/net.ipv4.tcp_sack", StringValue (SACK));
-    Config::Set ("/NodeList/*/$ns3::Ns3NscStack<linux2.6.26>/net.ipv4.tcp_timestamps", StringValue (TIME_STAMP));
-    Config::Set ("/NodeList/*/$ns3::Ns3NscStack<linux2.6.26>/net.ipv4.tcp_window_scaling", StringValue (WINDOW_SCALING));
-    Config::Set ("/NodeList/*/$ns3::Ns3NscStack<linux2.6.26>/net.ipv4.tcp_congestion_control", StringValue (TCP_VERSION))
+   //Config::Set ("/NodeList/*/$ns3::Ns3NscStack<linux2.6.26>/net.ipv4.tcp_rmem", StringValue ("4096 87380 8338608"));
 ;
 
   // Create the Internet
@@ -324,6 +327,15 @@ main (int argc, char *argv[])
   internet.Install (ueNodes);
   Ipv4InterfaceContainer ueIpIfaces;
   ueIpIfaces = epcHelper->AssignUeIpv4Address (NetDeviceContainer (ueLteDevs));
+  Config::Set ("/NodeList/*/$ns3::Ns3NscStack<linux2.6.26>/net.ipv4.tcp_sack", StringValue (SACK));
+    Config::Set ("/NodeList/*/$ns3::Ns3NscStack<linux2.6.26>/net.ipv4.tcp_timestamps", StringValue (TIME_STAMP));
+    Config::Set ("/NodeList/*/$ns3::Ns3NscStack<linux2.6.26>/net.ipv4.tcp_window_scaling", StringValue (WINDOW_SCALING));
+    Config::Set ("/NodeList/*/$ns3::Ns3NscStack<linux2.6.26>/net.ipv4.tcp_congestion_control", StringValue (TCP_VERSION));
+    //Config::Set ("/NodeList/*/$ns3::Ns3NscStack<linux2.6.26>/net.core.wmem_max", StringValue ("8338608"));
+    //Config::Set ("/NodeList/*/$ns3::Ns3NscStack<linux2.6.26>/net.core.rmem_max", StringValue ("8338608"));
+    Config::Set ("/NodeList/*/$ns3::Ns3NscStack<linux2.6.26>/net.ipv4.tcp_rmem", StringValue ("4096 8000000 8338608"));
+    //Config::Set ("/NodeList/*/$ns3::Ns3NscStack<linux2.6.26>/net.ipv4.tcp_wmem", StringValue ("4096 5000000 8338608"));
+   
   // Assign IP address to UEs, and install applications
   for (uint32_t u = 0; u < ueNodes.GetN (); ++u)
     {
@@ -380,20 +392,21 @@ main (int argc, char *argv[])
 		clientApps.Add(onOffHelper.Install(remoteHost));
         }
         else{
-		PUT_SAMPLING_INTERVAL = PUT_SAMPLING_INTERVAL*4;
-		PacketSinkHelper sink("ns3::UdpSocketFactory", InetSocketAddress(Ipv4Address::GetAny(), dlPort));
-		serverApps.Add(sink.Install(ueNodes.Get(u)));
+						PUT_SAMPLING_INTERVAL = PUT_SAMPLING_INTERVAL*20;
+						PacketSinkHelper sink("ns3::UdpSocketFactory", InetSocketAddress(Ipv4Address::GetAny(), dlPort));
+						serverApps.Add(sink.Install(ueNodes.Get(u)));
 
-		OnOffHelper onOffHelper("ns3::UdpSocketFactory", Address ( InetSocketAddress(ueIpIfaces.GetAddress(u), dlPort) ));
-		onOffHelper.SetConstantRate( DataRate(dataRate), packetSize );
-		clientApps.Add(onOffHelper.Install(remoteHost));
+						OnOffHelper onOffHelper("ns3::UdpSocketFactory", Address ( InetSocketAddress(ueIpIfaces.GetAddress(u), dlPort) ));
+						onOffHelper.SetConstantRate( DataRate(dataRate), packetSize );
+						clientApps.Add(onOffHelper.Install(remoteHost));
+						/*
+						PacketSinkHelper ul_sink("ns3::UdpSocketFactory", InetSocketAddress(Ipv4Address::GetAny(), ulPort));
+						serverApps.Add(ul_sink.Install(remoteHost));
 
-		PacketSinkHelper ul_sink("ns3::UdpSocketFactory", InetSocketAddress(Ipv4Address::GetAny(), ulPort));
-		serverApps.Add(ul_sink.Install(remoteHost));
-
-		OnOffHelper ul_onOffHelper("ns3::UdpSocketFactory", Address ( InetSocketAddress(remoteHostAddr, ulPort) ));
-		ul_onOffHelper.SetConstantRate( DataRate(dataRate), packetSize );
-		clientApps.Add(ul_onOffHelper.Install(ueNodes.Get(u)));          
+						OnOffHelper ul_onOffHelper("ns3::UdpSocketFactory", Address ( InetSocketAddress(remoteHostAddr, ulPort) ));
+						ul_onOffHelper.SetConstantRate( DataRate(dataRate), packetSize );
+						clientApps.Add(ul_onOffHelper.Install(ueNodes.Get(u)));          
+						*/
 	}
  	/*
 
@@ -445,21 +458,23 @@ main (int argc, char *argv[])
   // X2-based Handover
   if (isAutoHo == 1){
 	*debugger_wp->GetStream ()<< "Auto Handover..., ServingCellHandoverThreshold = 30, NeighbourCellHandoverOffset = 1\n" ;
-	Config::SetDefault("ns3::LteEnbRrc::ServingCellHandoverThreshold",UintegerValue (30));
-	Config::SetDefault("ns3::LteEnbRrc::NeighbourCellHandoverOffset",UintegerValue (1));
+	Config::SetDefault("ns3::A2A4RsrqHandoverAlgorithm::ServingCellThreshold",UintegerValue (30));
+	Config::SetDefault("ns3::A2A4RsrqHandoverAlgorithm::NeighbourCellOffset",UintegerValue (1));
   }
   else{
 	  *debugger_wp->GetStream () << "Manual Handover at 20,50,80 second\n" ;
-	  lteHelper->HandoverRequest (Seconds (20.00), ueLteDevs.Get (0), enbLteDevs.Get (0), enbLteDevs.Get (1));
-	  lteHelper->HandoverRequest (Seconds (50.00), ueLteDevs.Get (0), enbLteDevs.Get (1), enbLteDevs.Get (0));
-	  lteHelper->HandoverRequest (Seconds (80.00), ueLteDevs.Get (0), enbLteDevs.Get (0), enbLteDevs.Get (1));
+	  lteHelper->HandoverRequest (Seconds (10.00), ueLteDevs.Get (0), enbLteDevs.Get (0), enbLteDevs.Get (1));
+	  lteHelper->HandoverRequest (Seconds (20.00), ueLteDevs.Get (0), enbLteDevs.Get (1), enbLteDevs.Get (0));
+	  //lteHelper->HandoverRequest (Seconds (70.00), ueLteDevs.Get (0), enbLteDevs.Get (0), enbLteDevs.Get (1));
+	  //lteHelper->HandoverRequest (Seconds (100.00), ueLteDevs.Get (0), enbLteDevs.Get (1), enbLteDevs.Get (0));
+	  //lteHelper->HandoverRequest (Seconds (130.00), ueLteDevs.Get (0), enbLteDevs.Get (0), enbLteDevs.Get (1));
   }
     monitor = flowHelper.Install(ueNodes);
     monitor = flowHelper.Install(remoteHost);
     monitor = flowHelper.GetMonitor();  
 
   // Uncomment to enable PCAP tracing
-  p2ph.EnablePcapAll("/var/tmp/ln_result/radio/lena-x2-handover");
+  p2ph.EnablePcapAll(DIR+"lena-x2-handover");
 
   lteHelper->EnableMacTraces ();
   lteHelper->EnableRlcTraces ();
@@ -484,7 +499,7 @@ main (int argc, char *argv[])
   Config::Connect ("/NodeList/*/DeviceList/*/LteUeRrc/HandoverEndOk",
                    MakeCallback (&NotifyHandoverEndOkUe));
 
-/*=============schedule to get TCP throughput============*/
+ /*=============schedule to get TCP throughput============*/
   Time t = Seconds(0.0);
   Simulator::ScheduleWithContext (0 ,Seconds (0.0), &getTcpPut);
 
@@ -501,7 +516,7 @@ main (int argc, char *argv[])
 	for (std::map<FlowId, FlowMonitor::FlowStats>::const_iterator iter = stats.begin(); iter != stats.end(); ++iter){
 	    ns3::Ipv4FlowClassifier::FiveTuple t = classifier->FindFlow(iter->first);
 
-	    std::cout  << "***Flow ID: " << iter->first << " Src Addr " << t.sourceAddress << ":" << t.sourcePort 
+	   *macro_wp->GetStream()  << "***Flow ID: " << iter->first << " Src Addr " << t.sourceAddress << ":" << t.sourcePort 
 			<< " Dst Addr " << t.destinationAddress << ":" << t.destinationPort  << std::endl
 	    << "Tx Packets " << iter->second.txPackets << std::endl
 	    << "Rx Packets " << iter->second.rxPackets << std::endl
@@ -509,7 +524,7 @@ main (int argc, char *argv[])
 	    << "Lost ratio " << double (iter->second.lostPackets)/(iter->second.lostPackets+iter->second.rxPackets) << std::endl;
 	    double ONEBIL=1000000000;
 	    if (iter->second.rxPackets > 1){
-     		std::cout  << "Average delay received " 
+     		*macro_wp->GetStream()   << "Average delay received " 
 		<< iter->second.delaySum/iter->second.rxPackets/1000000 << std::endl
         	<< "Mean received bitrate " 
 		<< 8*iter->second.rxBytes/(iter->second.timeLastRxPacket-iter->second.timeFirstRxPacket)*ONEBIL/(1024) 
@@ -629,20 +644,26 @@ void ConfigStoreInput(std::string in_f){
 }
 
 void EnableLogComponents(){
-
-  // LogComponentEnable ("LteHelper", logLevel);
-  // LogComponentEnable ("EpcHelper", logLevel);
-  LogComponentEnable ("EpcEnbApplication", logLevel);
-  LogComponentEnable ("EpcX2", logLevel);
-  LogComponentEnable ("EpcSgwPgwApplication", logLevel);
-  LogComponentEnable ("LteRlcUm", logLevel);
-  LogComponentEnable ("LteRlcAm", logLevel);
-  LogComponentEnable ("NscTcpSocketImpl",LOG_LEVEL_DEBUG);
-
-  LogComponentEnable ("LteEnbRrc", logLevel);
-  LogComponentEnable ("LteEnbNetDevice", logLevel);
-  LogComponentEnable ("LteUeRrc", logLevel);
-  // LogComponentEnable ("LteUeNetDevice", logLevel);
+	if (isTcp==1){
+		if (isDebug==0){
+			LogLevel logLevel = (LogLevel) (LOG_LEVEL_ALL | LOG_PREFIX_TIME | LOG_PREFIX_NODE | LOG_PREFIX_FUNC);
+			//LogComponentEnable ("LteHelper", logLevel);
+  		//LogComponentEnable ("EpcHelper", logLevel);
+  		LogComponentEnable ("EpcEnbApplication", logLevel);
+  		LogComponentEnable ("EpcX2", logLevel);
+  		LogComponentEnable ("EpcSgwPgwApplication", logLevel);
+  		LogComponentEnable ("NscTcpSocketImpl",LOG_LEVEL_DEBUG);
+  		LogComponentEnable ("LteEnbNetDevice", logLevel);
+  		LogComponentEnable ("LteUeRrc", logLevel);
+  		LogComponentEnable ("LteUeNetDevice", logLevel);
+		}
+  	LogComponentEnable ("LteUeRrc", logLevel);
+  	LogComponentEnable ("LteRlcUm", logLevel);
+  	LogComponentEnable ("LteRlcAm", logLevel);
+  	LogComponentEnable ("LteEnbRrc", logLevel);
+  	LogComponentEnable ("LtePdcp", logLevel);
+  	LogComponentEnable ("EpcX2", logLevel);
+ }
 }
 void SetDefaultConfigs(){
   Config::SetDefault ("ns3::UdpClient::Interval", TimeValue (MicroSeconds(10000)));
@@ -682,6 +703,7 @@ void CommandlineParameters(int argc, char* argv[]){
     cmd.AddValue("TIME_STAMP", "TCP TIME_STAMP", TIME_STAMP);
     cmd.AddValue("WINDOW_SCALING", "TCP WINDOW_SCALING", WINDOW_SCALING);
     cmd.AddValue("isAutoHo", "Whether doing auto handover", isAutoHo);
+    cmd.AddValue("isDebug", "Whether in debug mode (turn on/off log)", isDebug);
 
   cmd.Parse(argc, argv);
 }
@@ -692,8 +714,8 @@ void InstallMobility(NodeContainer ueNodes, NodeContainer enbNodes){
     enbMobility.SetPositionAllocator ("ns3::GridPositionAllocator",
                     "MinX", DoubleValue (0.0),  //zero point
                     "MinY", DoubleValue (0.0),  //zero point
-                    "DeltaX", DoubleValue (1000.0),  //distance among ENB nodes
-                    "DeltaY", DoubleValue (1000.0),
+                    "DeltaX", DoubleValue (300.0),  //distance among ENB nodes
+                    "DeltaY", DoubleValue (300.0),
                     "GridWidth", UintegerValue (10), //number of nodes on a line
                     "LayoutType", StringValue ("RowFirst"));
     enbMobility.Install (enbNodes); //===ENB #1 placed at (0.0)====//
@@ -703,8 +725,8 @@ void InstallMobility(NodeContainer ueNodes, NodeContainer enbNodes){
     if (is_random_allocation == 0){ //fixed position allocation
         *debugger_wp->GetStream() << "Allocating UEs with FIXED positions ....\n";
         ueMobility.SetPositionAllocator ("ns3::GridPositionAllocator",
-	    "MinX", DoubleValue (distance/sqrt(2)),  //1st UE is put at a location which is "distance" meters away from eNB.
-	    "MinY", DoubleValue (distance/sqrt(2)),  
+	    "MinX", DoubleValue (distance),  //1st UE is put at a location which is "distance" meters away from eNB.
+	    "MinY", DoubleValue (0),  
 	    "DeltaX", DoubleValue (100.0),  //distance among UE nodes
 	    "DeltaY", DoubleValue (100.0),
 	    "GridWidth", UintegerValue (3), //number of nodes on a line
@@ -766,16 +788,19 @@ void InstallFading(Ptr<LteHelper> lteHelper){
 
 void EnablePositionTracking(NetDeviceContainer enbLteDevs, NodeContainer ueNodes){
     NetDeviceContainer::Iterator enbLteDevIt = enbLteDevs.Begin ();
-    Vector enbPosition = (*enbLteDevIt)->GetNode ()->GetObject<MobilityModel> ()->GetPosition ();
-    Ptr<MobilityModel> ue_mobility_model = ueNodes.Get(0)->GetObject<MobilityModel>();
-    double x = ue_mobility_model->GetPosition().x;
-    double y = ue_mobility_model->GetPosition().y;
-    *debugger_wp->GetStream() << "eNB(x,y)= " << enbPosition.x << ", " << enbPosition.y << std::endl;
-    *debugger_wp->GetStream() << "UE (x,y)= " << x << ", " << y << " d= " << sqrt(x*x+y*y) << std::endl;
-
-    ue_mobility_model->TraceConnectWithoutContext("CourseChange", MakeBoundCallback(&CourseChange, ue_positions_wp));
-    //Tracking.
-    Simulator::Schedule(Seconds(1), &pos_tracking, position_tracking_wp, ue_mobility_model);
+    for (NetDeviceContainer::Iterator enbLteDevIt = enbLteDevs.Begin(); enbLteDevIt != enbLteDevs.End(); enbLteDevIt++){
+    	Vector enbPosition = (*enbLteDevIt)->GetNode ()->GetObject<MobilityModel> ()->GetPosition ();
+    	*debugger_wp->GetStream() << "eNB(x,y)= " << enbPosition.x << ", " << enbPosition.y << std::endl;
+		}
+		for (uint16_t i = 0; i < ueNodes.GetN(); i++ ){
+			Ptr<MobilityModel> ue_mobility_model = ueNodes.Get(i)->GetObject<MobilityModel>();
+    	double x = ue_mobility_model->GetPosition().x;
+    	double y = ue_mobility_model->GetPosition().y;
+    	*debugger_wp->GetStream() << "UE (x,y)= " << x << ", " << y << " d= " << sqrt(x*x+y*y) << std::endl;
+    	ue_mobility_model->TraceConnectWithoutContext("CourseChange", MakeBoundCallback(&CourseChange, ue_positions_wp));
+			//Tracking.
+    	Simulator::Schedule(Seconds(1), &pos_tracking, position_tracking_wp, ue_mobility_model);
+		}
 }
 
 

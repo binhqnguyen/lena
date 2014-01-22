@@ -56,6 +56,9 @@ LtePdcpSpecificLteRlcSapUser::LtePdcpSpecificLteRlcSapUser ()
 void
 LtePdcpSpecificLteRlcSapUser::ReceivePdcpPdu (Ptr<Packet> p)
 {
+	LtePdcpHeader pdcpHeader;
+	p->PeekHeader (pdcpHeader);
+	//NS_LOG_DEBUG ("RECEIVED_PDCPPDU_SEQ = " << pdcpHeader.GetSequenceNumber());
   m_pdcp->DoReceivePdu (p);
 }
 
@@ -181,7 +184,7 @@ LtePdcp::DoTransmitPdcpSdu (Ptr<Packet> p)
     }
 
   pdcpHeader.SetDcBit (LtePdcpHeader::DATA_PDU);
-
+	NS_LOG_DEBUG("PDCPSEND_SEQ = " << m_txSequenceNumber);
   NS_LOG_LOGIC ("PDCP header: " << pdcpHeader);
   p->AddHeader (pdcpHeader);
 
@@ -194,7 +197,7 @@ LtePdcp::DoTransmitPdcpSdu (Ptr<Packet> p)
   params.rnti = m_rnti;
   params.lcid = m_lcid;
   params.pdcpPdu = p;
-
+	//NS_LOG_DEBUG(this << "PDCP PDU size = " << p->GetSize());
   m_rlcSapProvider->TransmitPdcpPdu (params);
 }
 
@@ -227,6 +230,7 @@ LtePdcp::DoReceivePdu (Ptr<Packet> p)
   params.rnti = m_rnti;
   params.lcid = m_lcid;
   m_pdcpSapUser->ReceivePdcpSdu (params);
+	NS_LOG_DEBUG ("PDCPPDU SEQ = " << m_rxSequenceNumber << " <rnti,lcid> = " << m_rnti << " , " << m_lcid) ;
 }
 
 

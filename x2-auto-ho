@@ -61,7 +61,13 @@ cp ~/ln/*.out $RE_DIR/radio/
 cp ~/ln/*.pcap $RE_DIR/radio/
 cp ~/ln/*.txt $RE_DIR/radio/
 cp ~/ln/.dat $RE_DIR/radio/
-cp ~/ln/lte.in $RE_DIR/radio/
+
+##copy code
+rm -rf $RE_DIR/$5/code
+mkdir $RE_DIR/$5/code
+cp $CODE_DIR/scratch/$lte.cc $RE_DIR/$5/code
+cp $CODE_DIR/src/lte/model/lte-rlc* $RE_DIR/$5/code
+
 cp ~/ln/scratch/$lte.cc $RE_DIR/radio
 rm ~/ln/*.pcap
 mkdir $BACKUP_FOLDER

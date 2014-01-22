@@ -299,6 +299,7 @@ EpcX2::RecvFromX2cSocket (Ptr<Socket> socket)
             packet->RemoveHeader (x2SnStatusXferHeader);
 
             NS_LOG_INFO ("X2 SnStatusTransfer header: " << x2SnStatusXferHeader);
+            NS_LOG_DEBUG ("X2 SnStatusTransfer header: " << x2SnStatusXferHeader);
 
             EpcX2SapUser::SnStatusTransferParams params;
             params.oldEnbUeX2apId = x2SnStatusXferHeader.GetOldEnbUeX2apId ();
@@ -312,6 +313,13 @@ EpcX2::RecvFromX2cSocket (Ptr<Socket> socket)
             NS_LOG_LOGIC ("sourceCellId = " << params.sourceCellId);
             NS_LOG_LOGIC ("targetCellId = " << params.targetCellId);
             NS_LOG_LOGIC ("erabsList size = " << params.erabsSubjectToStatusTransferList.size ());
+
+						NS_LOG_DEBUG ("oldEnbUeX2apId = " << params.oldEnbUeX2apId);
+            NS_LOG_DEBUG ("newEnbUeX2apId = " << params.newEnbUeX2apId);
+            NS_LOG_DEBUG ("sourceCellId = " << params.sourceCellId);
+            NS_LOG_DEBUG ("targetCellId = " << params.targetCellId);
+            NS_LOG_DEBUG ("erabsList size = " << params.erabsSubjectToStatusTransferList.size ());
+
 
             m_x2SapUser->RecvSnStatusTransfer (params);
         }
@@ -567,6 +575,16 @@ EpcX2::DoSendSnStatusTransfer (EpcX2SapProvider::SnStatusTransferParams params)
   NS_LOG_LOGIC ("remoteIpAddr = " << remoteIpAddr);
 
   NS_LOG_INFO ("Send X2 message: SN STATUS TRANSFER");
+
+
+  NS_LOG_DEBUG ("Send X2 message: SN STATUS TRANSFER");
+  NS_LOG_DEBUG ("oldEnbUeX2apId = " << params.oldEnbUeX2apId);
+  NS_LOG_DEBUG ("newEnbUeX2apId = " << params.newEnbUeX2apId);
+  NS_LOG_DEBUG ("sourceCellId = " << params.sourceCellId);
+  NS_LOG_DEBUG ("targetCellId = " << params.targetCellId);
+  NS_LOG_DEBUG ("erabsList size = " << params.erabsSubjectToStatusTransferList.size ());
+
+
 
   // Build the X2 message
   EpcX2SnStatusTransferHeader x2SnStatusXferHeader;

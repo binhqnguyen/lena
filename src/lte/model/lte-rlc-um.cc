@@ -103,6 +103,11 @@ LteRlcUm::DoTransmitPdcpPdu (Ptr<Packet> p)
       m_txBufferSize += p->GetSize ();
       NS_LOG_LOGIC ("NumOfBuffers = " << m_txBuffer.size() );
       NS_LOG_LOGIC ("txBufferSize = " << m_txBufferSize);
+
+			NS_LOG_DEBUG ("Tx Buffer: New packet added");
+      NS_LOG_DEBUG ("NumOfBuffers = " << m_txBuffer.size() );
+      NS_LOG_DEBUG ("txBufferSize = " << m_txBufferSize);
+
     }
   else
     {
@@ -111,6 +116,12 @@ LteRlcUm::DoTransmitPdcpPdu (Ptr<Packet> p)
       NS_LOG_LOGIC ("MaxTxBufferSize = " << m_maxTxBufferSize);
       NS_LOG_LOGIC ("txBufferSize    = " << m_txBufferSize);
       NS_LOG_LOGIC ("packet size     = " << p->GetSize ());
+
+			NS_LOG_DEBUG ("TxBuffer is full. RLC SDU discarded");
+      NS_LOG_DEBUG ("MaxTxBufferSize = " << m_maxTxBufferSize);
+      NS_LOG_DEBUG ("txBufferSize    = " << m_txBufferSize);
+      NS_LOG_DEBUG ("packet size     = " << p->GetSize ());
+
     }
 
   /** Report Buffer Status */
@@ -398,6 +409,11 @@ LteRlcUm::DoNotifyHarqDeliveryFailure ()
   NS_LOG_FUNCTION (this);
 }
 
+std::vector < Ptr<Packet> > 
+LteRlcUm::GetTxBuffer()
+{
+	return m_txBuffer;
+}
 void
 LteRlcUm::DoReceivePdu (Ptr<Packet> p)
 {

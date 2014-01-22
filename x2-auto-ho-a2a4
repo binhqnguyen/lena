@@ -1,0 +1,82 @@
+#!/bin/bash
+E_NAME="CUBIC_noname"
+RE_DIR="/var/tmp/ln_result"
+CODE_DIR="/var/tmp/lena"
+SIM_TIME="100"
+DISTANCE="150"
+PEDESTRIAN="1"
+A2_THRESHOLD="34"
+lte="lena-x2-auto-handover"
+processing="processing"
+
+if [ "$1" != "" ];
+	then
+	E_NAME=$1
+	else
+		echo "usage rp-..sh <name of backup folder> [<simTime> <distance> <isPedestrian> <radio/radio_dev>]"
+		exit;
+fi
+
+PY_DIR="$REDIR/$5/"
+
+echo "removing old files....."
+rm $RE_DIR/$5/*.dat
+rm $RE_DIR/$5/*.tmp
+rm $RE_DIR/$5/*.raw
+rm $RE_DIR/$5/TCP_LOG
+rm $RE_DIR/$5/UDP_LOG
+rm $RE_DIR/$5/*.txt
+rm $RE_DIR/$5/*.svg
+rm $RE_DIR/$5/queue
+rm $RE_DIR/$5/*.pcap
+
+rm $CODE_DIR/*.pcap
+rm $CODE_DIR/DlRxPhyStats.txt
+rm $CODE_DIR/DlTxPhyStats.txt
+rm $CODE_DIR/UlRxPhyStats.txt
+rm $CODE_DIR/DlTxPhyStats.txt
+rm $CODE_DIR/lte.out
+
+if [ "$2" != "" ];
+	then
+		SIM_TIME=$2
+		DISTANCE=$3
+		PEDESTRIAN=$4
+		echo "t=$SIM_TIME d=$DISTANCE p=$PEDESTRIAN"
+fi
+
+echo $E_NAME 
+echo $PY_DIR
+echo $RE_DIR
+
+BACKUP_FOLDER="$RE_DIR/from_cade/$E_NAME"
+echo "backup folder: $BACKUP_FOLDER"
+
+#echo "running $lte nsc UDP ..."
+#./waf --run "scratch/$lte --simTime=$SIM_TIME --isTcp=0 --distanceBetweenEnbs=$DISTANCE --isFading=1 --isPedestrian=$PEDESTRIAN --isAutoHo=1 --ho_type=1" > $RE_DIR/$5/UDP_LOG 2>&1 
+#./waf --run "scratch/$lte --simTime=$SIM_TIME --isTcp=0 --distanceBetweenEnbs=$DISTANCE --isFading=1 --isPedestrian=$PEDESTRIAN" > $RE_DIR/$5/UDP_LOG 2>&1 
+
+echo "running $lte nsc TCP ..."
+./waf --run "scratch/$lte --simTime=$SIM_TIME --isTcp=1 --distanceBetweenEnbs=$DISTANCE --isFading=1 --isPedestrian=$PEDESTRIAN --isAutoHo=1 --ho_type=1" > $RE_DIR/$5/TCP_LOG 2>&1 
+#./waf --run "scratch/$lte" > $RE_DIR/$5/TCP_LOG 2>&1 
+
+cp $CODE_DIR/*.out $RE_DIR/$5/
+cp $CODE_DIR/*.pcap $RE_DIR/$5/
+cp $CODE_DIR/*.txt $RE_DIR/$5/
+cp $CODE_DIR/.dat $RE_DIR/$5/
+cp $CODE_DIR/lte.* $RE_DIR/$5/
+##copy code
+rm -rf $RE_DIR/$5/code
+mkdir $RE_DIR/$5/code
+cp $CODE_DIR/scratch/$lte.cc $RE_DIR/$5/code
+cp $CODE_DIR/src/lte/model/lte-rlc* $RE_DIR/$5/code
+
+cp $CODE_DIR/scratch/$lte.cc $RE_DIR/$5
+rm $CODE_DIR/*.pcap
+mkdir $BACKUP_FOLDER
+cd $RE_DIR
+./$processing.sh $E_NAME $5
+cp -rf $RE_DIR/$5/ $BACKUP_FOLDER 
+
+
+

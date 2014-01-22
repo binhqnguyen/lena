@@ -32,6 +32,7 @@
 #include <ns3/lte-rlc-um.h>
 #include <ns3/lte-rlc-am.h>
 #include <ns3/lte-pdcp.h>
+#include <ns3/lte-pdcp-header.h>
 #include <ns3/lte-radio-bearer-info.h>
 
 #include <cmath>
@@ -458,7 +459,6 @@ LteUeRrc::DoDisconnect ()
 void
 LteUeRrc::DoReceivePdcpSdu (LtePdcpSapUser::ReceivePdcpSduParameters params)
 {
-  NS_LOG_FUNCTION (this);
   m_asSapUser->RecvData (params.pdcpSdu);
 }
 

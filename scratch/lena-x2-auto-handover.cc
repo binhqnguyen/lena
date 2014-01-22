@@ -80,10 +80,14 @@ Ptr<ns3::Ipv4FlowClassifier> classifier;
 std::map <FlowId, FlowMonitor::FlowStats> stats;
 std::string dataRate = "150Mb/s";
 LogLevel logLevel = (LogLevel) (LOG_LEVEL_ALL | LOG_PREFIX_TIME | LOG_PREFIX_NODE | LOG_PREFIX_FUNC);
+////Handover
 uint32_t isAutoHo = 1;
 double speed = 10; //10m/s
 double X2_path_delay = 19; //X2 path delay in ms.
 std::string X2_path_rate = "1Gb/s" ; //X2 path data rate.
+uint8_t a2_servingcell_threshold = 34; //if current cell signal strength smaller than this, consider HO (default 30) [0-34] as in Section 9.1.7 of [TS36133]
+uint8_t a4_neighbourcell_offset = 1; //if neighbour cell signal strength is larger than the source cell by this amount, allow HO. (default 1).
+uint32_t ho_type = 1; //1. a2a4 HO, 2. a3 HO.
 
 std::map<Ipv4Address, double> last_tx_time;
 std::map<Ipv4Address, double> last_rx_time ;
@@ -107,7 +111,7 @@ const uint32_t ONEBIL = 1000000000;
 uint16_t numberOfUes = 1;
 uint16_t numberOfEnbs = 5;
 uint16_t numBearersPerUe = 1;
-double distanceBetweenEnbs = 500.0;
+double distanceBetweenEnbs = 300.0;
 
 
 /********* Ascii output files name *********/
@@ -146,7 +150,7 @@ void ConfigStoreOutput(std::string);
 void ConfigStoreInput(std::string in_f);
 
 //******Handover monitoring********//
-Ptr<OutputStreamWrapper> ho_wp = asciiTraceHelper.CreateFileStream("/var/tmp/ln_result/radio/handover.dat");
+Ptr<OutputStreamWrapper> ho_wp = asciiTraceHelper.CreateFileStream(DIR+"handover.dat");
 void 
 NotifyConnectionEstablishedUe (std::string context, 
                                uint64_t imsi, 
@@ -248,7 +252,6 @@ NS_LOG_COMPONENT_DEFINE ("EpcX2HandoverExample");
 int
 main (int argc, char *argv[])
 {
-  EnableLogComponents();
   // change some default attributes so that they are reasonable for
   // this scenario, but do this before processing command line
   // arguments, so that the user is allowed to override these settings 
@@ -259,13 +262,32 @@ main (int argc, char *argv[])
   // Command line arguments
   CommandlineParameters(argc, argv);
   init_wrappers();
+  EnableLogComponents();
   
   Ptr<LteHelper> lteHelper = CreateObject<LteHelper> ();
   Ptr<PointToPointEpcHelper> epcHelper = CreateObject<PointToPointEpcHelper> ();
   lteHelper->SetEpcHelper (epcHelper);
   lteHelper->SetSchedulerType("ns3::RrFfMacScheduler");
+  switch (ho_type){
+	case 1:
+		lteHelper->SetHandoverAlgorithmType ("ns3::A2A4RsrqHandoverAlgorithm");
+		lteHelper->SetHandoverAlgorithmAttribute ("ServingCellThreshold",UintegerValue (a2_servingcell_threshold));
+		lteHelper->SetHandoverAlgorithmAttribute ("NeighbourCellOffset",UintegerValue (a4_neighbourcell_offset));
+		break;
+	case 2:
+		lteHelper->SetHandoverAlgorithmType ("ns3::A3RsrpHandoverAlgorithm");
+		lteHelper->SetHandoverAlgorithmAttribute ("Hysteresis", DoubleValue (3.0));
+		lteHelper->SetHandoverAlgorithmAttribute ("TimeToTrigger", TimeValue (MilliSeconds (256)));
+		break;
+	default:
+		*debugger_wp->GetStream() << "Something wrong with HO type setup\n";
+  }
 
   Ptr<Node> pgw = epcHelper->GetPgwNode ();
+
+	epcHelper->SetAttribute("S1uLinkDataRate", DataRateValue (DataRate ("1Gb/s")));
+  epcHelper->SetAttribute("S1uLinkDelay", TimeValue (Seconds (0.015)));
+  epcHelper->SetAttribute("S1uLinkMtu", UintegerValue (1500));
 
   // Create a single RemoteHost
   NodeContainer remoteHostContainer;
@@ -303,8 +325,8 @@ main (int argc, char *argv[])
   NodeContainer ueNodes;
   NodeContainer enbNodes;
   if (isAutoHo==1){
-	numberOfEnbs = 3;
-	simTime = numberOfEnbs*1000/speed;
+	numberOfEnbs = 5;
+	simTime = (numberOfEnbs-1)*distanceBetweenEnbs/speed + 10;
   }
   enbNodes.Create(numberOfEnbs);
   ueNodes.Create(numberOfUes);
@@ -381,7 +403,7 @@ main (int argc, char *argv[])
 		clientApps.Add(onOffHelper.Install(remoteHost));
         }
         else{
-		PUT_SAMPLING_INTERVAL = PUT_SAMPLING_INTERVAL*7;
+		PUT_SAMPLING_INTERVAL = PUT_SAMPLING_INTERVAL*20;
 		PacketSinkHelper sink("ns3::UdpSocketFactory", InetSocketAddress(Ipv4Address::GetAny(), dlPort));
 		serverApps.Add(sink.Install(ueNodes.Get(u)));
 
@@ -443,18 +465,13 @@ main (int argc, char *argv[])
   // Add X2 inteface
   lteHelper->AddX2Interface (enbNodes);
 
-  // X2-based Handover
-  *debugger_wp->GetStream ()<< "Auto Handover..., ServingCellHandoverThreshold = 30, NeighbourCellHandoverOffset = 1\n" ;
-  Config::SetDefault("ns3::LteEnbRrc::ServingCellHandoverThreshold",UintegerValue (30));
-  Config::SetDefault("ns3::LteEnbRrc::NeighbourCellHandoverOffset",UintegerValue (1));
-
-    monitor = flowHelper.Install(ueNodes);
+     monitor = flowHelper.Install(ueNodes);
     monitor = flowHelper.Install(remoteHost);
     monitor = flowHelper.GetMonitor();  
 
   // Uncomment to enable PCAP tracing
   if (isTcp==1){
-  	p2ph.EnablePcapAll("/var/tmp/ln_result/radio/lena-x2-handover");
+  	p2ph.EnablePcapAll(DIR+"lena-x2-handover");
   }
   lteHelper->EnableMacTraces ();
   lteHelper->EnableRlcTraces ();
@@ -496,7 +513,7 @@ main (int argc, char *argv[])
 	for (std::map<FlowId, FlowMonitor::FlowStats>::const_iterator iter = stats.begin(); iter != stats.end(); ++iter){
 	    ns3::Ipv4FlowClassifier::FiveTuple t = classifier->FindFlow(iter->first);
 
-	    std::cout  << "***Flow ID: " << iter->first << " Src Addr " << t.sourceAddress << ":" << t.sourcePort 
+	    *macro_wp->GetStream()  << "***Flow ID: " << iter->first << " Src Addr " << t.sourceAddress << ":" << t.sourcePort 
 			<< " Dst Addr " << t.destinationAddress << ":" << t.destinationPort  << std::endl
 	    << "Tx Packets " << iter->second.txPackets << std::endl
 	    << "Rx Packets " << iter->second.rxPackets << std::endl
@@ -504,7 +521,7 @@ main (int argc, char *argv[])
 	    << "Lost ratio " << double (iter->second.lostPackets)/(iter->second.lostPackets+iter->second.rxPackets) << std::endl;
 	    double ONEBIL=1000000000;
 	    if (iter->second.rxPackets > 1){
-     		std::cout  << "Average delay received " 
+     		*macro_wp->GetStream()   << "Average delay received " 
 		<< iter->second.delaySum/iter->second.rxPackets/1000000 << std::endl
         	<< "Mean received bitrate " 
 		<< 8*iter->second.rxBytes/(iter->second.timeLastRxPacket-iter->second.timeFirstRxPacket)*ONEBIL/(1024) 
@@ -649,8 +666,14 @@ void SetDefaultConfigs(){
   Config::SetDefault ("ns3::DropTailQueue::MaxPackets", UintegerValue(10000));
   Config::SetDefault ("ns3::DropTailQueue::MaxBytes", UintegerValue(999999));
   Config::SetDefault ("ns3::LteRlcUm::MaxTxBufferSize", UintegerValue(150000));
-  Config::SetDefault ("ns3::EpcHelper::X2LinkDelay", TimeValue(MilliSeconds(X2_path_delay)));
-  Config::SetDefault ("ns3::EpcHelper::X2LinkDataRate", DataRateValue(DataRate(X2_path_rate)));
+  Config::SetDefault ("ns3::PointToPointEpcHelper::X2LinkDelay", TimeValue(MilliSeconds(X2_path_delay)));
+  Config::SetDefault ("ns3::PointToPointEpcHelper::X2LinkDataRate", DataRateValue(DataRate(X2_path_rate)));
+  // X2-based Handover
+ // *debugger_wp->GetStream ()<< "Auto Handover..., ServingCellHandoverThreshold = 30, NeighbourCellHandoverOffset = 1\n" ;
+  //Config::SetDefault("ns3::A2A4RsrqHandoverAlgorithm::ServingCellThreshold",UintegerValue (a2_servingcell_threshold));
+  //Config::SetDefault("ns3::A2A4RsrqHandoverAlgorithm::NeighbourCellOffset",UintegerValue (a4_neighbourcell_offset));
+
+
 }
 void CommandlineParameters(int argc, char* argv[]){
   CommandLine cmd;
@@ -677,8 +700,11 @@ void CommandlineParameters(int argc, char* argv[]){
     cmd.AddValue("TIME_STAMP", "TCP TIME_STAMP", TIME_STAMP);
     cmd.AddValue("WINDOW_SCALING", "TCP WINDOW_SCALING", WINDOW_SCALING);
     cmd.AddValue("isAutoHo", "Whether doing auto handover", isAutoHo);
+    cmd.AddValue("ho_type", "Auto HO type: 1 for a2a4-ho, 2 for a3-ho", ho_type);
 
-  cmd.Parse(argc, argv);
+    cmd.AddValue("a2_servingcell_threshold", "a2a4 HO: if current cell radio is worse than this", a2_servingcell_threshold);
+    cmd.AddValue("a4_neighbourcell_offset", "a2a4 HO: if the target cell radio is better than the source cell by this amount", a4_neighbourcell_offset);
+  	cmd.Parse(argc, argv);
 }
 
 void InstallMobility(NodeContainer ueNodes, NodeContainer enbNodes){

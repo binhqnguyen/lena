@@ -47,8 +47,7 @@ NS_LOG_COMPONENT_DEFINE ("NscTcpSocketImpl");
 
 namespace ns3 {
 
-NS_OBJECT_ENSURE_REGISTERED (NscTcpSocketImpl)
-  ;
+NS_OBJECT_ENSURE_REGISTERED (NscTcpSocketImpl);
 
 TypeId
 NscTcpSocketImpl::GetTypeId ()
@@ -844,7 +843,7 @@ NscTcpSocketImpl::GetNativeNs3Errno (int error) const
     case NSC_EAGAIN: return ERROR_AGAIN;
     case NSC_EISCONN:   // fallthrough
     case NSC_EALREADY: return ERROR_ISCONN;
-    case NSC_ECONNREFUSED: return ERROR_NOROUTETOHOST;   /// \todo better mapping?
+    case NSC_ECONNREFUSED: return ERROR_NOROUTETOHOST;   // XXX, better mapping?
     case NSC_ECONNRESET:   // for no, all of these fall through
     case NSC_EHOSTDOWN:
     case NSC_ENETUNREACH:
@@ -852,7 +851,7 @@ NscTcpSocketImpl::GetNativeNs3Errno (int error) const
     case NSC_EMSGSIZE: return ERROR_MSGSIZE;
     case NSC_ENOTCONN: return ERROR_NOTCONN;
     case NSC_ESHUTDOWN: return ERROR_SHUTDOWN;
-    case NSC_ETIMEDOUT: return ERROR_NOTCONN;   /// \todo this mapping isn't correct
+    case NSC_ETIMEDOUT: return ERROR_NOTCONN;   // XXX - this mapping isn't correct
     case NSC_ENOTDIR:   // used by eg. sysctl(2). Shouldn't happen normally,
     // but is triggered by e.g. show_config().
     case NSC_EUNKNOWN: return ERROR_INVAL;   // Catches stacks that 'return -1' without real mapping
@@ -875,6 +874,134 @@ bool
 NscTcpSocketImpl::GetAllowBroadcast () const
 {
   return false;
+}
+
+int
+NscTcpSocketImpl::UpdateTcpVars()
+{
+  char cwnd_t[32];
+  char srtt_t[32];
+  char ssthresh_t[32];
+  char seqno_t[32];
+  char ack_t[32];
+  char rttvar_t[32];
+  char frto_highmark_t[32]; //nxt_snd when rto occurred
+  char frto_counter_t[32];  //number of new ACKs after rto
+  char retrans_out_t[32]; //retransmitted pkts out
+  char undo_marker_t[32]; //tracking retransmitted started here.
+  char total_retrans_t[32]; //total retransmits of the entire connection
+  //cubic tcp's paras
+  char cubic_cnt_t[32];  
+  char cubic_wmax_t[32];  
+  char cubic_loss_cwnd_t[32];  
+  char cubic_last_time_t[32];  
+  char cubic_tcp_cwnd_t[32];  
+  char cubic_bic_K_t[32];  
+
+  uint32_t cwnd = 0;
+  uint32_t srtt = 0;
+  double srtt_d = 0.0;
+  uint32_t ssthresh = 0;
+  uint32_t seqno = 0;
+  uint32_t ack = 0;
+  uint32_t rttvar = 0;
+  double rttvar_d = 0.0;
+  uint64_t ticks_per_second = 0;
+  uint32_t frto_highmark= 0;
+  uint32_t frto_counter = 0;
+  uint32_t retrans_out = 0;
+  uint32_t undo_marker = 0;
+  uint32_t total_retrans = 0;
+  //cubic tcp's paras
+  uint32_t cubic_cnt = -1;
+  uint32_t cubic_wmax = -1;
+  uint32_t cubic_loss_cwnd = -1;
+  uint32_t cubic_last_time = -1;
+  uint32_t cubic_tcp_cwnd = -1;
+  uint32_t cubic_bic_K = -1;
+	/*
+  NS_LOG_UNCOND( m_nscTcpSocket->get_var("cwnd_", cwnd_t, sizeof(cwnd_t)) <<
+  m_nscTcpSocket->get_var("srtt_", srtt_t, sizeof(srtt_t)) <<
+  m_nscTcpSocket->get_var("ssthresh_", ssthresh_t, sizeof(ssthresh_t)) <<
+  m_nscTcpSocket->get_var("seqno_", seqno_t, sizeof(seqno_t)) <<
+  m_nscTcpSocket->get_var("ack_", ack_t, sizeof(ack_t)) <<
+  m_nscTcpSocket->get_var("frto_highmark_", frto_highmark_t, sizeof(frto_highmark_t)) <<
+  m_nscTcpSocket->get_var("frto_counter_", frto_counter_t, sizeof(frto_counter_t)) <<
+  m_nscTcpSocket->get_var("retrans_out_", retrans_out_t, sizeof(retrans_out_t)) <<
+  m_nscTcpSocket->get_var("undo_marker_", undo_marker_t, sizeof(undo_marker_t)) <<
+  m_nscTcpSocket->get_var("total_retrans_", total_retrans_t, sizeof(total_retrans_t)) <<
+  m_nscTcpSocket->get_var("cubic_wmax_", cubic_wmax_t , sizeof(cubic_wmax_t)) <<
+  m_nscTcpSocket->get_var("cubic_cnt_", cubic_cnt_t , sizeof(cubic_cnt_t)) <<
+  m_nscTcpSocket->get_var("cubic_loss_cwnd_", cubic_loss_cwnd_t , sizeof(cubic_loss_cwnd_t)) <<
+  m_nscTcpSocket->get_var("cubic_last_time_", cubic_last_time_t , sizeof(cubic_last_time_t)) <<
+  m_nscTcpSocket->get_var("cubic_tcp_cwnd_", cubic_tcp_cwnd_t , sizeof(cubic_tcp_cwnd_t)) <<
+  m_nscTcpSocket->get_var("cubic_bic_K_", cubic_bic_K_t , sizeof(cubic_bic_K_t)) );
+	*/
+  //Get socket variables
+  //This function calls nsc/<linux>/nsc/sim_support.cpp/get_var() and then nsc/<linux>/nsc/support.c/nsc_get_tcp_var()
+  //More tcp's vars can be reveal by changing nsc/<linux>/nsc/support.c/nsc_get_tcp_var() 
+  //and by referring to nsc/<linux>/include/linux/tcp.h for variable names.
+  if (m_nscTcpSocket->get_var("cwnd_", cwnd_t, sizeof(cwnd_t)) &&
+  m_nscTcpSocket->get_var("srtt_", srtt_t, sizeof(srtt_t)) &&
+  m_nscTcpSocket->get_var("ssthresh_", ssthresh_t, sizeof(ssthresh_t)) &&
+  m_nscTcpSocket->get_var("seqno_", seqno_t, sizeof(seqno_t)) &&
+  m_nscTcpSocket->get_var("ack_", ack_t, sizeof(ack_t)) &&
+  m_nscTcpSocket->get_var("frto_highmark_", frto_highmark_t, sizeof(frto_highmark_t)) &&
+  m_nscTcpSocket->get_var("frto_counter_", frto_counter_t, sizeof(frto_counter_t)) &&
+  m_nscTcpSocket->get_var("retrans_out_", retrans_out_t, sizeof(retrans_out_t)) &&
+  m_nscTcpSocket->get_var("undo_marker_", undo_marker_t, sizeof(undo_marker_t)) &&
+  m_nscTcpSocket->get_var("total_retrans_", total_retrans_t, sizeof(total_retrans_t)) &&
+  m_nscTcpSocket->get_var("cubic_wmax_", cubic_wmax_t , sizeof(cubic_wmax_t)) &&
+  m_nscTcpSocket->get_var("cubic_cnt_", cubic_cnt_t , sizeof(cubic_cnt_t)) &&
+  m_nscTcpSocket->get_var("cubic_loss_cwnd_", cubic_loss_cwnd_t , sizeof(cubic_loss_cwnd_t)) &&
+  m_nscTcpSocket->get_var("cubic_last_time_", cubic_last_time_t , sizeof(cubic_last_time_t)) &&
+  m_nscTcpSocket->get_var("cubic_tcp_cwnd_", cubic_tcp_cwnd_t , sizeof(cubic_tcp_cwnd_t)) &&
+  m_nscTcpSocket->get_var("cubic_bic_K_", cubic_bic_K_t , sizeof(cubic_bic_K_t)) )
+  {
+  	//Convert char* to integer.
+ 	cwnd = atoi(cwnd_t);
+  	srtt = atof(srtt_t); //in ticks
+  	ssthresh = atoi(ssthresh_t);
+  	seqno = atoi(seqno_t);
+ 	ack = atoi(ack_t);
+  	rttvar = atof(rttvar_t); //in ticks
+  	frto_highmark = atoi(frto_highmark_t);
+  	frto_counter = atoi(frto_counter_t);
+  	retrans_out = atoi(retrans_out_t);
+  	undo_marker = atoi(undo_marker_t);
+  	total_retrans = atoi(total_retrans_t);
+	cubic_wmax = atoi(cubic_wmax_t);
+	cubic_cnt = atoi(cubic_cnt_t);
+	cubic_loss_cwnd = atoi(cubic_loss_cwnd_t);
+	cubic_last_time = atoi(cubic_last_time_t);
+	cubic_tcp_cwnd = atoi(cubic_tcp_cwnd_t);
+	cubic_bic_K = atoi(cubic_bic_K_t);
+  	//convert srtt and rttvar to second
+  	ticks_per_second = sysconf(_SC_CLK_TCK);
+  	srtt_d = double (srtt)/ticks_per_second;
+  	rttvar_d = double (rttvar)/ticks_per_second;
+  
+
+	NS_LOG_DEBUG("RemoteAdd= " << m_remoteAddress 
+		      	<< " cwnd= " << cwnd 
+ 	      		<< " srtt= " << srtt_d
+			<< " ssthresh= " << ssthresh
+			<< " cubic_cnt= " << cubic_cnt
+			<< " cubic_wmax= " << cubic_wmax
+			<< " cubic_loss_cwnd= " << cubic_loss_cwnd
+			<< " cubic_last_time= " << cubic_last_time
+			<< " cubic_tcp_cwnd= " << cubic_tcp_cwnd
+			<< " cubic_bic_K= " << cubic_bic_K
+			<< " seqno= " << seqno
+			<< " ack= " << ack
+			<< " rttvar= " << rttvar_d
+			<< " frto_highmark= " << frto_highmark
+			<< " frto_counter= " << frto_counter
+			<< " retrans_out= " << retrans_out
+			<< " undo_marker= " << undo_marker
+			<< " total_retrans= " << total_retrans );
+ }
+  return 1;
 }
 
 } // namespace ns3
