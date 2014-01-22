@@ -37,5 +37,12 @@
 ehthumbs.db
 Thumbs.db
 
-#tag file
+#tags
 tags
+
+#folder
+bindings
+build
+.metadata
+.hg
+.waf-1.7.13*
