@@ -5,6 +5,7 @@ CODE_DIR="/var/tmp/lena"
 SIM_TIME="100"
 DISTANCE="150"
 PEDESTRIAN="1"
+A2_THRESHOLD="34"
 lte="lena-x2-auto-handover"
 processing="processing"
 
@@ -63,6 +64,7 @@ cp $CODE_DIR/*.out $RE_DIR/$5/
 cp $CODE_DIR/*.pcap $RE_DIR/$5/
 cp $CODE_DIR/*.txt $RE_DIR/$5/
 cp $CODE_DIR/.dat $RE_DIR/$5/
+cp $CODE_DIR/lte.* $RE_DIR/$5/
 ##copy code
 rm -rf $RE_DIR/$5/code
 mkdir $RE_DIR/$5/code

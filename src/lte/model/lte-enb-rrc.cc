@@ -748,6 +748,10 @@ UeManager::RecvHandoverRequestAck (EpcX2SapUser::HandoverRequestAckParams params
 					}
 				}
 			}
+			//For RlcUM, no forwarding available as the simulator itself (seamless HO).
+			//However, as the LTE-UMTS book, PDCP txbuffer should be forwarded for seamless 
+			//HO. Enable this code for txbuffer forwarding in seamless HO (which is believe to 
+			//be correct). Binh
 			else if (0 != drbIt->second->m_rlc->GetObject<LteRlcUm> ())
 			{
 				//Copy lte-rlc-um.m_txOnBuffer to X2 forwarding buffer.
@@ -755,9 +759,6 @@ UeManager::RecvHandoverRequestAck (EpcX2SapUser::HandoverRequestAckParams params
 				m_x2forwardingBuffer = drbIt->second->m_rlc->GetObject<LteRlcUm>()->GetTxBuffer();
 				m_x2forwardingBufferSize =  drbIt->second->m_rlc->GetObject<LteRlcUm>()->GetTxBufferSize();
 			}
-			//*********!!!!!*********//
-			//	m_x2forwardingBuffer.clear();
-			//**********!!!!!!*******//
 				//LteRlcAm m_txBuffer stores PDCP "PDU".
 				NS_LOG_DEBUG(this << " m_x2forw buffer size = " << m_x2forwardingBufferSize);
 					//Forwarding the packet inside m_x2forwardingBuffer to target eNB.	
