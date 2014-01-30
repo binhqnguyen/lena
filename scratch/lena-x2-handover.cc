@@ -267,7 +267,7 @@ main (int argc, char *argv[])
   Ptr<LteHelper> lteHelper = CreateObject<LteHelper> ();
   Ptr<PointToPointEpcHelper>  epcHelper = CreateObject<PointToPointEpcHelper> ();
   lteHelper->SetEpcHelper (epcHelper);
-  lteHelper->SetSchedulerType("ns3::RrFfMacScheduler");
+  lteHelper->SetSchedulerType("ns3::PfFfMacScheduler");
 
   Ptr<Node> pgw = epcHelper->GetPgwNode ();
 	epcHelper->SetAttribute("S1uLinkDataRate", DataRateValue (DataRate ("1Gb/s")));
@@ -279,10 +279,9 @@ main (int argc, char *argv[])
   remoteHostContainer.Create (1);
   Ptr<Node> remoteHost = remoteHostContainer.Get (0);
   InternetStackHelper internet;
-    internet.SetTcp("ns3::NscTcpL4Protocol", "Library", StringValue("liblinux2.6.26.so"));
-    internet.Install (remoteHost);
+  internet.SetTcp("ns3::NscTcpL4Protocol", "Library", StringValue("liblinux2.6.26.so"));
+  internet.Install (remoteHost);
    //Config::Set ("/NodeList/*/$ns3::Ns3NscStack<linux2.6.26>/net.ipv4.tcp_rmem", StringValue ("4096 87380 8338608"));
-;
 
   // Create the Internet
   PointToPointHelper p2ph;
@@ -302,13 +301,14 @@ main (int argc, char *argv[])
   // interface 0 is localhost, 1 is the p2p device
   remoteHostStaticRouting->AddNetworkRouteTo (Ipv4Address ("7.0.0.0"), Ipv4Mask ("255.0.0.0"), 1);
 
-  NodeContainer ueNodes;
   NodeContainer enbNodes;
   if (isAutoHo==1){
 	numberOfEnbs = 5;
 	simTime = numberOfEnbs*1000/speed;
   }
   enbNodes.Create(numberOfEnbs);
+
+  NodeContainer ueNodes;
   ueNodes.Create(numberOfUes);
 
   // Install Mobility Model
@@ -324,6 +324,7 @@ main (int argc, char *argv[])
   EnablePositionTracking(enbLteDevs, ueNodes);
 
     // Install the IP stack on the UEs
+  internet.SetTcp("ns3::NscTcpL4Protocol", "Library", StringValue("liblinux2.6.26.so"));
   internet.Install (ueNodes);
   Ipv4InterfaceContainer ueIpIfaces;
   ueIpIfaces = epcHelper->AssignUeIpv4Address (NetDeviceContainer (ueLteDevs));
@@ -333,7 +334,7 @@ main (int argc, char *argv[])
     Config::Set ("/NodeList/*/$ns3::Ns3NscStack<linux2.6.26>/net.ipv4.tcp_congestion_control", StringValue (TCP_VERSION));
     //Config::Set ("/NodeList/*/$ns3::Ns3NscStack<linux2.6.26>/net.core.wmem_max", StringValue ("8338608"));
     //Config::Set ("/NodeList/*/$ns3::Ns3NscStack<linux2.6.26>/net.core.rmem_max", StringValue ("8338608"));
-    Config::Set ("/NodeList/*/$ns3::Ns3NscStack<linux2.6.26>/net.ipv4.tcp_rmem", StringValue ("4096 8000000 8338608"));
+    //Config::Set ("/NodeList/*/$ns3::Ns3NscStack<linux2.6.26>/net.ipv4.tcp_rmem", StringValue ("4096 8000000 8338608"));
     //Config::Set ("/NodeList/*/$ns3::Ns3NscStack<linux2.6.26>/net.ipv4.tcp_wmem", StringValue ("4096 5000000 8338608"));
    
   // Assign IP address to UEs, and install applications
@@ -390,6 +391,7 @@ main (int argc, char *argv[])
 		OnOffHelper onOffHelper("ns3::TcpSocketFactory", Address ( InetSocketAddress(ueIpIfaces.GetAddress(u) , dlPort) ));
 		onOffHelper.SetConstantRate( DataRate(dataRate), packetSize );
 		clientApps.Add(onOffHelper.Install(remoteHost));
+
         }
         else{
 						PUT_SAMPLING_INTERVAL = PUT_SAMPLING_INTERVAL*20;
@@ -399,14 +401,13 @@ main (int argc, char *argv[])
 						OnOffHelper onOffHelper("ns3::UdpSocketFactory", Address ( InetSocketAddress(ueIpIfaces.GetAddress(u), dlPort) ));
 						onOffHelper.SetConstantRate( DataRate(dataRate), packetSize );
 						clientApps.Add(onOffHelper.Install(remoteHost));
-						/*
+
 						PacketSinkHelper ul_sink("ns3::UdpSocketFactory", InetSocketAddress(Ipv4Address::GetAny(), ulPort));
 						serverApps.Add(ul_sink.Install(remoteHost));
 
 						OnOffHelper ul_onOffHelper("ns3::UdpSocketFactory", Address ( InetSocketAddress(remoteHostAddr, ulPort) ));
 						ul_onOffHelper.SetConstantRate( DataRate(dataRate), packetSize );
 						clientApps.Add(ul_onOffHelper.Install(ueNodes.Get(u)));          
-						*/
 	}
  	/*
 
@@ -500,7 +501,6 @@ main (int argc, char *argv[])
                    MakeCallback (&NotifyHandoverEndOkUe));
 
  /*=============schedule to get TCP throughput============*/
-  Time t = Seconds(0.0);
   Simulator::ScheduleWithContext (0 ,Seconds (0.0), &getTcpPut);
 
  
@@ -657,6 +657,7 @@ void EnableLogComponents(){
   		LogComponentEnable ("LteUeRrc", logLevel);
   		LogComponentEnable ("LteUeNetDevice", logLevel);
 		}
+    LogComponentEnable ("NscTcpL4Protocol", (LogLevel) (LOG_LEVEL_ALL | LOG_PREFIX_TIME | LOG_PREFIX_NODE | LOG_PREFIX_FUNC));
   	LogComponentEnable ("LteUeRrc", logLevel);
   	LogComponentEnable ("LteRlcUm", logLevel);
   	LogComponentEnable ("LteRlcAm", logLevel);
