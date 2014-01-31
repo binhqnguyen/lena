@@ -8,6 +8,7 @@ if __name__ == "__main__":
 	INPUT_FILE =  "sequence_send.raw" 
 	OUTPUT_FILE = "sequence_send.dat"
 	MOD = 1000
+	TIME_DIFF = 0.25 ##diff between simulation time and tcpdump timestamp
 
 	file = open (INPUT_FILE)
 	if (os.path.isfile(OUTPUT_FILE)):      ##if output file not exist
@@ -26,7 +27,7 @@ if __name__ == "__main__":
 		hr = timestamp_bl[0]
 		min = timestamp_bl[1]
 		seconds = timestamp_bl[2]
-		timestamp_sec = float(hr)*60*60 + float(min)*60 + float(seconds)
+		timestamp_sec = float(hr)*60*60 + float(min)*60 + float(seconds) + TIME_DIFF*2
 		
 		s_len = tokens[14]
 		seq_from = long (seq_from)/ long (s_len)
@@ -63,7 +64,7 @@ if __name__ == "__main__":
 		hr = timestamp_bl[0]
 		min = timestamp_bl[1]
 		seconds = timestamp_bl[2]
-		timestamp_sec = float (hr)*60*60 + float (min)*60 + float (seconds)
+		timestamp_sec = float (hr)*60*60 + float (min)*60 + float (seconds) + TIME_DIFF*2
 		
 		seq = long (seq)/ long (s_len)
 		seq = seq % MOD

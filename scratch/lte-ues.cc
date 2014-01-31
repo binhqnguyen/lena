@@ -42,6 +42,9 @@
 using namespace ns3;
 
 #define kilo 1000
+#define LONG_LIVED_UE "7.0.0.2"
+#define COARSE_GRAIN_SAMPLING 40
+
 double simTime = 100;   //simulation time for EACH application
 static double ue_position_tracking_timer = 0; //timer to schedule position tracking
 
@@ -64,7 +67,7 @@ double distance_among_ues_y = 50;
 double distance_among_enbs_x = 350;
 double distance_among_enbs_y = 350;
 //UE circle random allocation radius.
-double distance_rho = 350;
+double distance_rho = 100;
 //Moving
 double moving_bound = 50000;
 double VEH_VE = 60; //60km/h for vehicular
@@ -96,7 +99,7 @@ static Ptr<LteHelper> lteHelper = CreateObject<LteHelper> ();
 static Ptr<PointToPointEpcHelper>  epcHelper = CreateObject<PointToPointEpcHelper> ();
 static InternetStackHelper internet;
 static NodeContainer enbNodes;
-static NodeContainer ueNodes;
+//static NodeContainer ueNodes;
 
 /*HO related
 uint32_t isAutoHo = 0;
@@ -122,7 +125,7 @@ double p2pLinkMtu = 1500;
 uint32_t isTcp=1;
 uint32_t packetSize = 900;
 double samplingInterval = 0.005;    /*getTcp() function invoke for each x second*/
-uint16_t PUT_SAMPLING_INTERVAL = 40; /*sample a TCP throughput for each x pkts*/
+uint16_t PUT_SAMPLING_INTERVAL = 0; /*sample a TCP throughput for each x pkts*/
 double put_sampling_timer = 0.0;    /*getTcpPut() invoked each period*/
 double ue_joining_timer = 0.0;
 Ptr<ns3::FlowMonitor> monitor;
@@ -154,12 +157,13 @@ std::map<Ipv4Address, double> meanRxRate_send;
 std::map<Ipv4Address, double> meanTcpDelay_send;
 std::map<Ipv4Address, uint64_t> numOfLostPackets_send;
 std::map<Ipv4Address, uint64_t> numOfTxPacket_send;
+std::map<uint32_t, uint32_t> source_destination_port;
 
 const double ONEBIL = 1000000000;
 
-uint16_t numberOfUes = 5;
+uint16_t numberOfUes = 3;
 uint16_t numberOfEnbs = 2;
-uint16_t numBearersPerUe = 2;
+uint16_t numBearersPerUe = 1;
 
 /********DEBUGGING mode********/
 uint32_t isDebug = 0;
@@ -183,13 +187,27 @@ Ptr<OutputStreamWrapper> overall_wp;
 Ptr<OutputStreamWrapper> position_tracking_wp;
 
 /** Random seeds set up **/
-Ptr<ParetoRandomVariable> pareto = CreateObject<ParetoRandomVariable>();
-double pareto_mean = 5.0;
-double pareto_shape = 2.0;
+Ptr<ParetoRandomVariable> flow_per_ue_pareto = CreateObject<ParetoRandomVariable>();
+double flow_per_ue_pa_mean = 1.5;
+double flow_per_ue_pa_shape = 3;
+
+Ptr<ExponentialRandomVariable> flow_duration_B_exp  = CreateObject<ExponentialRandomVariable> ();
+double flow_duration_B_exp_mean = 8000; //mean 8KB
+double flow_duration_B_exp_bound = 0;
+
+Ptr<ParetoRandomVariable> ontime_s_pareto  = CreateObject<ParetoRandomVariable> ();
+double ontime_s_pa_mean = 2;
+double ontime_s_pa_shape = 0.5; 
+
+
+Ptr<ParetoRandomVariable> thinktime_s_pareto  = CreateObject<ParetoRandomVariable> ();
+double thinktime_s_pa_mean = 20;
+double thinktime_s_pa_shape = 0.5;
 
 Ptr<UniformRandomVariable> uniform = CreateObject<UniformRandomVariable>();
 double uniform_min = 0.0;
 double uniform_max = 10.0;
+
 
 void SetUpRandomSeed();
 /*********/
@@ -201,6 +219,8 @@ void EnableLogComponents();
 void SetDefaultConfigs();
 void CommandlineParameters (int argc, char* argv[]);
 void InstallMobilityUe (NodeContainer ueNodes, uint16_t is_pedestrian);
+void InstallLocationUe(NodeContainer ueNodes, uint32_t distance_rho);
+void InstallLocationUe(NodeContainer ueNodes, double distance_ue_root_x, double distance_ue_root_y, double distance_among_ues_x, double distance_among_ues_y);
 void InstallMobilityEnb(NodeContainer enbNodes, double distance_among_enbs_x, double distance_among_enbs_y);
 void InstallFading(Ptr<LteHelper> lteHelper);
 void EnablePositionTrackingEnb(NetDeviceContainer enbLteDevs);
@@ -238,6 +258,7 @@ NS_LOG_COMPONENT_DEFINE ("EpcX2HandoverExample");
 int
 main (int argc, char *argv[])
 {
+SetUpRandomSeed();
 // change some default attributes so that they are reasonable for
 // this scenario, but do this before processing command line
 // arguments, so that the user is allowed to override these settings 
@@ -268,6 +289,7 @@ set_up_enbs();
   *Install mobility
   *Attach UEs to the specified eNB
   */
+UeJoining(1, testingEnbDev);	//
 UeJoining(numberOfUes, testingEnbDev);
 
 /** Manual HOs used for joining and leaving UEs**/
@@ -276,7 +298,6 @@ UeJoining(numberOfUes, testingEnbDev);
 //lteHelper->HandoverRequest (Seconds (20.00), ueLteDevs.Get (0), enbLteDevs.Get (1), enbLteDevs.Get (0));
 /** end HOs ***/
 
-monitor = flowHelper.Install(ueNodes);
 monitor = flowHelper.Install(remoteHost);
 monitor = flowHelper.GetMonitor();  
 
@@ -437,6 +458,7 @@ InstallWorkload (NodeContainer ueNodes, Ptr<NetDevice> joining_enb_dev){
   //Config::Set ("/NodeList/*/$ns3::Ns3NscStack<linux2.6.26>/net.ipv4.tcp_rmem", StringValue ("4096 8000000 8338608"));
   //Config::Set ("/NodeList/*/$ns3::Ns3NscStack<linux2.6.26>/net.ipv4.tcp_wmem", StringValue ("4096 5000000 8338608"));
  
+	*debugger_wp->GetStream() << "xxx\n";
   //Attach all Ues to the specified eNB.
   //This attach process is MANUAL and not going through the 
   //proper cell selection but jump to CONNECTED state and create a default BEARER immediately.
@@ -450,8 +472,9 @@ InstallWorkload (NodeContainer ueNodes, Ptr<NetDevice> joining_enb_dev){
   *debugger_wp->GetStream() << "Workload for UEs:\n"
       << "-------------------\n";
   /**UE workload**/
-	uint16_t number_of_bearers_per_ue = 2;
-	//TODO:
+	uint16_t number_of_bearers_per_ue = uint16_t (ceil(flow_per_ue_pareto->GetValue()));
+	uint32_t flow_duration_B = 0;
+	//Workload:
 	//1. number of beaer per ue.
 	//2. short flow duration in KB (pareto, mean=9KB, shape=0.5).
 	//3. long flow duration in KB (pareto, mean=1MB, shape=0.5).
@@ -459,15 +482,17 @@ InstallWorkload (NodeContainer ueNodes, Ptr<NetDevice> joining_enb_dev){
 	//5. flow on time in second (2s).??? SPDY
 	//6. think time (flow off time) in second (2s).??? SPDY
   for (uint32_t u = 0; u < ueNodes.GetN(); ++u){
+		number_of_bearers_per_ue = flow_per_ue_pareto->GetValue();
     Ptr<Node> ue = ueNodes.Get (u);
     // Set the default gateway for the UE
     ueStaticRouting = ipv4RoutingHelper.GetStaticRouting (ue->GetObject<Ipv4> ());
     ueStaticRouting->SetDefaultRoute (epcHelper->GetUeDefaultGatewayAddress (), 1);
-		
+		*debugger_wp->GetStream() << "UE IP " << ue->GetObject<Ipv4>() 
+														<< " Flows per UE: " << number_of_bearers_per_ue << std::endl;
     for (uint32_t b = 0; b < number_of_bearers_per_ue; ++b){
       ++dlPort;
       ++ulPort;
-
+			
       ApplicationContainer clientApps;
       ApplicationContainer serverApps;
 
@@ -476,9 +501,18 @@ InstallWorkload (NodeContainer ueNodes, Ptr<NetDevice> joining_enb_dev){
         PacketSinkHelper sink("ns3::TcpSocketFactory", InetSocketAddress(Ipv4Address::GetAny(), dlPort));
         serverApps.Add(sink.Install(ueNodes.Get(u)));
 
+				//Generate a random value for flow duration.
+				flow_duration_B = uint32_t (flow_duration_B_exp->GetValue());
+
+				*debugger_wp->GetStream() << "\n Flow duration (B) " << flow_duration_B << std::endl;
+
         OnOffHelper onOffHelper("ns3::TcpSocketFactory", Address ( InetSocketAddress(ueIpIfaces.GetAddress(u) , dlPort) ));
+				//onOffHelper.SetAttribute("MaxBytes", UintegerValue(300000));
+				onOffHelper.SetAttribute("OnTime", StringValue("ns3::ParetoRandomVariable[Mean=2,Shape=0.5]"));
+				onOffHelper.SetAttribute("OffTime", StringValue("ns3::ParetoRandomVariable[Mean=30,Shape=0.5]"));
         onOffHelper.SetConstantRate( DataRate(dataRate), packetSize );
         clientApps.Add(onOffHelper.Install(remoteHost));
+
 				/*
 				PacketSinkHelper ul_sink("ns3::TcpSocketFactory", InetSocketAddress(Ipv4Address::GetAny(), ulPort));
       	serverApps.Add(ul_sink.Install(remoteHost));
@@ -539,20 +573,21 @@ InstallWorkload (NodeContainer ueNodes, Ptr<NetDevice> joining_enb_dev){
 void
 UeJoining(uint32_t number_of_ues, Ptr<NetDevice> joining_enb_dev){
 
-  *debugger_wp->GetStream() << "UEJoining:" 
+  *debugger_wp->GetStream() << "UEJoining:\n----------" 
               << "\nNumber of joining Ues: " << number_of_ues
               << "\nJoining event is at (s): " << Simulator::Now().GetSeconds()
               //<< "\n# of current ues in testing cell: " << current_ues.size()
               << "\n# of ues left so far: " << gone_ue_cnt << std::endl;
-
+	NodeContainer ueNodes;
+  //ues.Create(number_of_ues);
   ueNodes.Create(number_of_ues);
 
   // Install Mobility Model
   InstallMobilityUe(ueNodes, isPedestrian); 
-
+	InstallLocationUe(ueNodes, distance_rho);
 	// Install workload for each UE 
 	InstallWorkload (ueNodes, joining_enb_dev);	//TODO
-
+	monitor = flowHelper.Install(ueNodes);
 }
 
 void
@@ -565,11 +600,28 @@ UeLeaving(uint32_t number_of_ues, LteEnbNetDevice target_enb){
 void
 SetUpRandomSeed(){
   /** Pareto Random **/
-
+	//TODO:
+	//1. number of beaer per ue.
+	//2. short flow duration in KB (pareto, mean=9KB, shape=0.5).
+	//3. long flow duration in KB (pareto, mean=1MB, shape=0.5).
+	//4. percentage between short/long flow (0.6% long).
+	//5. flow on time in second (2s).??? SPDY
+	//6. think time (flow off time) in second (2s).??? SPDY
 	//Flow per UE
-  pareto->SetAttribute("Mean", DoubleValue (pareto_mean));
-  pareto->SetAttribute("Shape", DoubleValue (pareto_shape));
-		
+ 	flow_per_ue_pareto->SetAttribute("Mean", DoubleValue (flow_per_ue_pa_mean));
+  flow_per_ue_pareto->SetAttribute("Shape", DoubleValue (flow_per_ue_pa_shape));
+	
+	//Flow duration in Bytes
+	flow_duration_B_exp->SetAttribute("Mean", DoubleValue (flow_duration_B_exp_mean));
+	flow_duration_B_exp->SetAttribute("Bound", DoubleValue (flow_duration_B_exp_bound));
+
+	//On time
+	ontime_s_pareto->SetAttribute("Mean", DoubleValue(ontime_s_pa_mean));
+	ontime_s_pareto->SetAttribute("Shape", DoubleValue(ontime_s_pa_shape));
+
+	//Think time
+	thinktime_s_pareto->SetAttribute("Mean", DoubleValue(thinktime_s_pa_mean));
+	thinktime_s_pareto->SetAttribute("Shape", DoubleValue(thinktime_s_pa_shape));
 
   /** Uniform Random **/
   uniform->SetAttribute("Min", DoubleValue(uniform_min));
@@ -601,6 +653,11 @@ getTcpPut(){
       last_delay_sum[t.destinationAddress] = 0;
       last_rx_pkts[t.destinationAddress] = 0;
     }
+
+		source_destination_port[t.sourcePort] = t.destinationPort;
+
+		//Adjust sampling rate based on destination IP. Only the long-lived UE is measured using COARSE_GRAIN_SAMPLING. 
+		PUT_SAMPLING_INTERVAL = (t.destinationAddress == LONG_LIVED_UE)? COARSE_GRAIN_SAMPLING : 0;
     /*sending/receiving rate*/
     if (iter->second.txPackets > last_tx_pkts[t.destinationAddress] + PUT_SAMPLING_INTERVAL && iter->second.timeLastTxPacket > last_tx_time[t.destinationAddress]){
       meanTxRate_send[t.destinationAddress] = 8*(iter->second.txBytes-last_tx_bytes[t.destinationAddress])/(iter->second.timeLastTxPacket.GetDouble()-last_tx_time[t.destinationAddress])*ONEBIL/kilo;
@@ -620,6 +677,7 @@ getTcpPut(){
       last_rx_pkts[t.destinationAddress] = iter->second.rxPackets;
     }
     numOfTxPacket_send[t.destinationAddress] = iter->second.txPackets;
+		
   }
 
   std::map<Ipv4Address,double>::iterator it1 = meanRxRate_send.begin();
@@ -627,18 +685,20 @@ getTcpPut(){
   std::map<Ipv4Address,uint64_t>::iterator it4 = numOfTxPacket_send.begin();
   std::map<Ipv4Address,double>::iterator it5 = meanTxRate_send.begin();
   std::map<Ipv4Address,double>::iterator it6 = tcp_delay.begin();
-
+	std::map<Ipv4Address,double>::iterator it7 = last_rx_bytes.begin();
+	std::map<Ipv4Address,double>::iterator it8 = last_tx_bytes.begin();
+	std::map<uint32_t,uint32_t>::iterator it9 = source_destination_port.begin();
   for (;it1 != meanRxRate_send.end(); ){
     *put_send_wp->GetStream() << Simulator::Now().GetSeconds() << "\t\t"
         << (*it1).first << "\t\t"
         << (*it1).second << "\t\t"
-        << "x" << "\t\t"
+        << (*it7).second << "\t\t"
         << (*it3).second << "\t\t"
         << (*it4).second << "\t\t"
+        << (*it9).second << "\t\t"
         << "x" << "\t\t"
         << "x" << "\t\t"
-        << "x" << "\t\t"
-        << "x" << "\t"
+        << (*it8).second << "\t"
         << (*it5).second << "\t"
         << (*it6).second <<  "\n";
     ++it1;
@@ -646,6 +706,9 @@ getTcpPut(){
     ++it4;
     ++it5;
     ++it6;
+		++it7;
+		++it8;
+		++it9;
   }
 
   while (put_sampling_timer < simTime){
@@ -756,7 +819,7 @@ void InstallMobilityEnb(NodeContainer enbNodes, double distance_among_enbs_x, do
                             << distance_among_enbs_x << " , " << distance_among_enbs_y << " >\n";
 }
 
-void InstallLocationUe(NodeContainer ueNodes, uint16_t rho){
+void InstallLocationUe(NodeContainer ueNodes, uint32_t distance_rho){
   	MobilityHelper ueMobility;
   	*debugger_wp->GetStream() << "UEs allocation:\n------------\n";
     ueMobility.SetPositionAllocator ("ns3::UniformDiscPositionAllocator", //nodes are put randomly inside a circle with the central point is (x,y).
@@ -906,16 +969,18 @@ init_wrappers(){
   macro_wp = asciiTraceHelper.CreateFileStream(macro);
   put_send_wp = asciiTraceHelper.CreateFileStream(put_send);
 
-  *put_send_wp->GetStream() << "#DestinationIp\t"
-                << "Time\t"
-                << "Send Tcp throughput\t"
-                << "Send Tcp delay\t"
+  *put_send_wp->GetStream() << "Time\t"
+                << "Destination IP\t"
+                << "Tcp Goodput\t"
+                << "Received bytes\t"
                 << "Number of Lost Pkts\t"
                 << "Number of Tx Pkts\t"
-                << "ErrorUlTx\t"
-                << "ErrorDlTx\t"
-                << "HarqUlTx\t"
-                << "HarqDlTx\n";
+                << "x\t"
+                << "x\t"
+                << "x\t"
+                << "Transmitted bytes\t"
+								<< "Tcp throughput\t"
+								<< "Tcp delay\n";
 }  
 
 

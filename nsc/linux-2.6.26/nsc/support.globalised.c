@@ -1,5 +1,5 @@
 # 1 "linux-2.6.26/nsc/support.c"
-# 1 "/home/binhn/lena/nsc//"
+# 1 "/var/tmp/lena/nsc//"
 # 1 "<built-in>"
 # 1 "<command-line>"
 # 1 "linux-2.6.26/include/linux/config.h" 1
@@ -33555,7 +33555,7 @@ int nsc_get_tcp_var(void *so, const char *var, char *result, int rlen)
     u32 tcp_cwnd = -1;
     u32 bic_K = -1;
 
-
+    nsc_debugf("bictcp = %s\n", ca);
     if (strcmp(var, "cubic_cnt_") == 0
  || strcmp(var, "cubic_wmax_") == 0
  || strcmp(var, "cubic_loss_cwnd_") == 0
@@ -33563,7 +33563,7 @@ int nsc_get_tcp_var(void *so, const char *var, char *result, int rlen)
  || strcmp(var, "cubic_tcp_cwnd_") == 0
  || strcmp(var, "cubic_bic_K_") == 0
  ){
-      if ( get_cubic_paras(ca, &cnt, &last_max_cwnd, &loss_cwnd, &last_time, &tcp_cwnd, &bic_K) ){
+      if ( sock && get_cubic_paras(ca, &cnt, &last_max_cwnd, &loss_cwnd, &last_time, &tcp_cwnd, &bic_K) ){
    if ( strcmp(var,"cubic_cnt_") == 0 )
     snprintf(result, rlen, "%u", cnt);
    if ( strcmp(var,"cubic_wmax_") == 0 )
@@ -33581,12 +33581,14 @@ int nsc_get_tcp_var(void *so, const char *var, char *result, int rlen)
     }
     if(strcmp(var, "srtt_") == 0)
     {
-        return snprintf(result, rlen, "%f", (float)(tp->srtt >> 3));
-
+    if (tp)
+         return snprintf(result, rlen, "%f", (float)(tp->srtt >> 3));
+        return 1;
     }
     else if(strcmp(var, "rttvar_") == 0)
     {
-        snprintf(result, rlen, "%f", (float)tp->rttvar);
+    if (tp)
+         return snprintf(result, rlen, "%f", (float)tp->rttvar);
         return 1;
     }
 
@@ -33595,52 +33597,61 @@ int nsc_get_tcp_var(void *so, const char *var, char *result, int rlen)
 
     else if(strcmp(var, "cwnd_") == 0)
     {
-        return snprintf(result, rlen, "%u", tp->snd_cwnd);
-
+    if (tp)
+         snprintf(result, rlen, "%u", tp->snd_cwnd);
+        return 1;
     }
     else if(strcmp(var, "ssthresh_") == 0)
     {
-        snprintf(result, rlen, "%u", tp->snd_ssthresh);
+        if (tp)
+     return snprintf(result, rlen, "%u", tp->snd_ssthresh);
         return 1;
     }
     else if(strcmp(var, "seqno_") == 0)
     {
-        snprintf(result, rlen, "%u", tp->snd_nxt);
+        if (tp)
+     return snprintf(result, rlen, "%u", tp->snd_nxt);
         return 1;
     }
     else if(strcmp(var, "ack_") == 0)
     {
-        snprintf(result, rlen, "%u", tp->rcv_nxt);
+        if (tp)
+     return snprintf(result, rlen, "%u", tp->rcv_nxt);
         return 1;
     }
-# 877 "linux-2.6.26/nsc/support.c"
+# 883 "linux-2.6.26/nsc/support.c"
     else if(strcmp(var,"frto_highmark_")==0)
     {
-  snprintf(result, rlen, "%u", tp->frto_highmark);
+     if (tp)
+     return snprintf(result, rlen, "%u", tp->frto_highmark);
         return 1;
     }
 
     else if(strcmp(var,"frto_counter_")==0)
     {
-  snprintf(result, rlen, "%u", (char) tp->frto_counter);
+     if (tp)
+     return snprintf(result, rlen, "%u", (char) tp->frto_counter);
         return 1;
     }
 
     else if(strcmp(var,"retrans_out_")==0)
     {
-  snprintf(result, rlen, "%u", tp->retrans_out);
+     if (tp)
+     return snprintf(result, rlen, "%u", tp->retrans_out);
         return 1;
     }
 
     else if(strcmp(var,"undo_marker_")==0)
     {
-  snprintf(result, rlen, "%u", tp->undo_marker);
+     if (tp)
+     return snprintf(result, rlen, "%u", tp->undo_marker);
         return 1;
     }
 
     else if(strcmp(var,"total_retrans_")==0)
     {
-  snprintf(result, rlen, "%u", tp->total_retrans);
+     if (tp)
+     return snprintf(result, rlen, "%u", tp->total_retrans);
         return 1;
     }
 
