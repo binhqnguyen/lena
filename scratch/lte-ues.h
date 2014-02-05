@@ -196,7 +196,7 @@ struct UES{
   NodeContainer ueNodes;
   NetDeviceContainer ueLteDevs;
   Ipv4InterfaceContainer ueIpIfaces;
-}
+};
 
 /*******Function prototype*******/
 void SetUpRandomSeed();  
@@ -235,5 +235,6 @@ void NotifyHandoverEndOkEnb (std::string context, uint64_t imsi, uint16_t cellid
 UES CreateUes(uint32_t number_of_ues);
 void UeLeaving(uint32_t number_of_ues, Node target_enb);
 void InstallWorkload (UES ueNodes);
+void ScheduleUeAttach(double second, UES ues);
 
 #endif

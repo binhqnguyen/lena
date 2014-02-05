@@ -58,7 +58,7 @@ set_up_enbs();
   *Install mobility
   *Attach UEs to the specified eNB
   */
-CreateUes(1);	//
+InstallWorkload(CreateUes(1));	//
 ScheduleUeAttach(5, CreateUes(numberOfUes));  //attach UEs at 5s.
 
 /** Manual HOs used for joining and leaving UEs**/
@@ -76,7 +76,7 @@ enable_lte_traces();
 hook_ho_callbacks();
 
 /**Schedule the first get_tcp_put invoke*/
-Simulator::WithContext (0 ,Seconds (0.0), &getTcpPut);
+Simulator::ScheduleWithContext (0 ,Seconds (0.0), &getTcpPut);
 
 ConfigStoreOutput(configure_output);
 
@@ -216,7 +216,9 @@ InstallWorkload (UES ues){
   Ipv4InterfaceContainer ueIpIfaces = ues.ueIpIfaces;
 
   lteHelper->Attach(NetDeviceContainer(ueLteDevs), testingEnbDev);
-
+	*debugger_wp->GetStream() << "--------------\nUE attachs at: " 
+						<< Simulator::Now().GetSeconds() << "s"
+						<< "\n----------------\n";
   //Randomize the starting time of clientApps and serverApps.
   Ptr<UniformRandomVariable> startTimeSeconds = CreateObject<UniformRandomVariable> ();
   startTimeSeconds->SetAttribute ("Min", DoubleValue (0.5));
@@ -241,7 +243,7 @@ InstallWorkload (UES ues){
     // Set the default gateway for the UE
     ueStaticRouting = ipv4RoutingHelper.GetStaticRouting (ue->GetObject<Ipv4> ());
     ueStaticRouting->SetDefaultRoute (epcHelper->GetUeDefaultGatewayAddress (), 1);
-		*debugger_wp->GetStream() << "UE IP " << ue->GetObject<Ipv4>() 
+		*debugger_wp->GetStream() << "\nUE IP " << ue->GetObject<Ipv4>() 
 														<< " Flows per UE: " << number_of_bearers_per_ue << std::endl;
     for (uint32_t b = 0; b < number_of_bearers_per_ue; ++b){
       ++dlPort;
@@ -258,7 +260,7 @@ InstallWorkload (UES ues){
 				//Generate a random value for flow duration.
 				//flow_duration_B = uint32_t (flow_duration_B_exp->GetValue());
 
-				*debugger_wp->GetStream() << "\n Flow duration (B) " << flow_duration_B << std::endl;
+				*debugger_wp->GetStream() << "Flow duration (B) " << flow_duration_B << std::endl;
 
         OnOffHelper onOffHelper("ns3::TcpSocketFactory", Address ( InetSocketAddress(ueIpIfaces.GetAddress(u) , dlPort) ));
 				//onOffHelper.SetAttribute("MaxBytes", UintegerValue(300000));
@@ -292,6 +294,7 @@ InstallWorkload (UES ues){
         ul_onOffHelper.SetConstantRate( DataRate(dataRate), packetSize );
         clientApps.Add(ul_onOffHelper.Install(ueNodes.Get(u)));
       }
+			/*
       Ptr<EpcTft> tft = Create<EpcTft> ();
       EpcTft::PacketFilter dlpf;
       dlpf.localPortStart = dlPort;
@@ -303,7 +306,7 @@ InstallWorkload (UES ues){
       tft->Add (ulpf);
       EpsBearer bearer (EpsBearer::NGBR_VIDEO_TCP_DEFAULT);
       lteHelper->ActivateDedicatedEpsBearer (ueLteDevs.Get (u), bearer, tft);
-
+			*/
       Time startTime = Seconds (Simulator::Now().GetSeconds() + startTimeSeconds->GetValue ());
       serverApps.Start (startTime);
       clientApps.Start (startTime);
@@ -331,7 +334,6 @@ CreateUes(uint32_t number_of_ues){
 
   *debugger_wp->GetStream() << "CreateUes:\n----------" 
               << "\nNumber of joining Ues: " << number_of_ues
-              << "\nJoining event is at (s): " << Simulator::Now().GetSeconds()
               //<< "\n# of current ues in testing cell: " << current_ues.size()
               << "\n# of ues left so far: " << gone_ue_cnt << std::endl;
 	NodeContainer ueNodes;
