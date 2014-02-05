@@ -58,7 +58,7 @@ set_up_enbs();
   *Install mobility
   *Attach UEs to the specified eNB
   */
-InstallWorkload(CreateUes(1));	//
+ScheduleUeAttach(0, CreateUes(1));	//
 ScheduleUeAttach(5, CreateUes(numberOfUes));  //attach UEs at 5s.
 
 /** Manual HOs used for joining and leaving UEs**/
@@ -215,15 +215,6 @@ InstallWorkload (UES ues){
   NetDeviceContainer ueLteDevs = ues.ueLteDevs;
   Ipv4InterfaceContainer ueIpIfaces = ues.ueIpIfaces;
 
-  lteHelper->Attach(NetDeviceContainer(ueLteDevs), testingEnbDev);
-	*debugger_wp->GetStream() << "--------------\nUE attachs at: " 
-						<< Simulator::Now().GetSeconds() << "s"
-						<< "\n----------------\n";
-  //Randomize the starting time of clientApps and serverApps.
-  Ptr<UniformRandomVariable> startTimeSeconds = CreateObject<UniformRandomVariable> ();
-  startTimeSeconds->SetAttribute ("Min", DoubleValue (0.5));
-  startTimeSeconds->SetAttribute ("Max", DoubleValue (0.6));
-
   *debugger_wp->GetStream() << "Installing workload for UEs:\n"
       << "--------------------------\n";
   /**UE workload**/
@@ -307,13 +298,6 @@ InstallWorkload (UES ues){
       EpsBearer bearer (EpsBearer::NGBR_VIDEO_TCP_DEFAULT);
       lteHelper->ActivateDedicatedEpsBearer (ueLteDevs.Get (u), bearer, tft);
 			*/
-      Time startTime = Seconds (Simulator::Now().GetSeconds() + startTimeSeconds->GetValue ());
-      serverApps.Start (startTime);
-      clientApps.Start (startTime);
-      *debugger_wp->GetStream() << "UE-ID # " << u
-          << " dlport/ulport = " << dlPort << " , " << ulPort
-          << " TCP = " << isTcp 
-          << " App start = " << startTime.GetSeconds() << std::endl;
     } // end for b
   }
 	
@@ -364,14 +348,129 @@ CreateUes(uint32_t number_of_ues){
   //Config::Set ("/NodeList/*/$ns3::Ns3NscStack<linux2.6.26>/net.ipv4.tcp_wmem", StringValue ("4096 5000000 8338608"));
 
 	monitor = flowHelper.Install(ueNodes);
+
+  *debugger_wp->GetStream() << "Installing workload for UEs:\n"
+      << "--------------------------\n";
+  /**UE workload**/
+  //uint16_t number_of_bearers_per_ue = uint16_t (ceil(flow_per_ue_pareto->GetValue()));
+  uint16_t number_of_bearers_per_ue = 1;
+  uint32_t flow_duration_B = 0;
+  //Workload:
+  //1. number of beaer per ue.
+  //2. short flow duration in KB (pareto, mean=9KB, shape=0.5).
+  //3. long flow duration in KB (pareto, mean=1MB, shape=0.5).
+  //4. percentage between short/long flow (0.6% long).
+  //5. flow on time in second (2s).??? SPDY
+  //6. think time (flow off time) in second (2s).??? SPDY
+  ApplicationContainer clientApps;
+  ApplicationContainer serverApps;    
+  for (uint32_t u = 0; u < ueNodes.GetN(); ++u){
+    //number_of_bearers_per_ue = flow_per_ue_pareto->GetValue();
+    Ptr<Node> ue = ueNodes.Get (u);
+    // Set the default gateway for the UE
+    ueStaticRouting = ipv4RoutingHelper.GetStaticRouting (ue->GetObject<Ipv4> ());
+    ueStaticRouting->SetDefaultRoute (epcHelper->GetUeDefaultGatewayAddress (), 1);
+    *debugger_wp->GetStream() << "\nUE IP " << ue->GetObject<Ipv4>() 
+                            << " Flows per UE: " << number_of_bearers_per_ue << std::endl;
+    for (uint32_t b = 0; b < number_of_bearers_per_ue; ++b){
+      ++dlPort;
+      ++ulPort;
+
+      if (isTcp == 1){
+        LogComponentEnable("Queue",logLevel);    //Only enable Queue monitoring for TCP to accelerate experiment speed.
+        PacketSinkHelper sink("ns3::TcpSocketFactory", InetSocketAddress(Ipv4Address::GetAny(), dlPort));
+        serverApps.Add(sink.Install(ueNodes.Get(u)));
+
+        //Generate a random value for flow duration.
+        //flow_duration_B = uint32_t (flow_duration_B_exp->GetValue());
+
+        *debugger_wp->GetStream() << "Flow duration (B) " << flow_duration_B << std::endl;
+
+        OnOffHelper onOffHelper("ns3::TcpSocketFactory", Address ( InetSocketAddress(ueIpIfaces.GetAddress(u) , dlPort) ));
+        //onOffHelper.SetAttribute("MaxBytes", UintegerValue(300000));
+        //onOffHelper.SetAttribute("OnTime", StringValue("ns3::ParetoRandomVariable[Mean=2,Shape=0.5]"));
+        //onOffHelper.SetAttribute("OffTime", StringValue("ns3::ParetoRandomVariable[Mean=30,Shape=0.5]"));
+        onOffHelper.SetConstantRate( DataRate(dataRate), packetSize );
+        clientApps.Add(onOffHelper.Install(remoteHost));
+
+        /*
+        PacketSinkHelper ul_sink("ns3::TcpSocketFactory", InetSocketAddress(Ipv4Address::GetAny(), ulPort));
+        serverApps.Add(ul_sink.Install(remoteHost));
+
+        OnOffHelper ul_onOffHelper("ns3::TcpSocketFactory", Address ( InetSocketAddress(remoteHostAddr, ulPort) ));
+        ul_onOffHelper.SetConstantRate( DataRate(dataRate), packetSize );
+        clientApps.Add(ul_onOffHelper.Install(ueNodes.Get(u)));
+        */
+      }
+      else{
+        PUT_SAMPLING_INTERVAL = PUT_SAMPLING_INTERVAL*20;
+        PacketSinkHelper sink("ns3::UdpSocketFactory", InetSocketAddress(Ipv4Address::GetAny(), dlPort));
+        serverApps.Add(sink.Install(ueNodes.Get(u)));
+
+        OnOffHelper onOffHelper("ns3::UdpSocketFactory", Address ( InetSocketAddress(ueIpIfaces.GetAddress(u), dlPort) ));
+        onOffHelper.SetConstantRate( DataRate(dataRate), packetSize );
+        clientApps.Add(onOffHelper.Install(remoteHost));
+
+        PacketSinkHelper ul_sink("ns3::UdpSocketFactory", InetSocketAddress(Ipv4Address::GetAny(), ulPort));
+        serverApps.Add(ul_sink.Install(remoteHost));
+
+        OnOffHelper ul_onOffHelper("ns3::UdpSocketFactory", Address ( InetSocketAddress(remoteHostAddr, ulPort) ));
+        ul_onOffHelper.SetConstantRate( DataRate(dataRate), packetSize );
+        clientApps.Add(ul_onOffHelper.Install(ueNodes.Get(u)));
+      }
+      /*
+      Ptr<EpcTft> tft = Create<EpcTft> ();
+      EpcTft::PacketFilter dlpf;
+      dlpf.localPortStart = dlPort;
+      dlpf.localPortEnd = dlPort;
+      tft->Add (dlpf); 
+      EpcTft::PacketFilter ulpf;
+      ulpf.remotePortStart = ulPort;
+      ulpf.remotePortEnd = ulPort;
+      tft->Add (ulpf);
+      EpsBearer bearer (EpsBearer::NGBR_VIDEO_TCP_DEFAULT);
+      lteHelper->ActivateDedicatedEpsBearer (ueLteDevs.Get (u), bearer, tft);
+      */
+    } // end for one UE
+    *debugger_wp->GetStream() << "UE-ID # " << u
+      << " dlport/ulport = " << dlPort << " , " << ulPort
+      << " TCP = " << isTcp << std::endl;
+  }
+  
+  //for (NetDeviceContainer::Iterator devIt = ueLteDevs.Begin(); devIt != ueLteDevs.End(); ++devIt){
+    //pcapHelper.GetFilenameFromDevice(DIR+"lte-ues",(*devIt),true);
+    //*debugger_wp->GetStream() << "aaa" << (*devIt)->GetNode()->GetObject<Ipv4>();
+    //Ptr<PcapHelperForDevice> pcapHelper;
+    //pcapHelper->EnablePcapInternal(DIR+"UE-",(*devIt),1,1);
+  //}
+
   ues.ueNodes = ueNodes;
   ues.ueLteDevs = ueLteDevs;
   ues.ueIpIfaces = ueIpIfaces;
+  ues.clientApps = clientApps;
+  ues.serverApps = serverApps;
   return ues;
 }
 
 void ScheduleUeAttach (double second, UES ues){
-  Simulator::ScheduleWithContext (0 ,Seconds (second), &InstallWorkload, ues);
+  Simulator::ScheduleWithContext (0 ,Seconds (second), &UeAttach, ues);
+}
+
+void UeAttach(UES ues){
+    *debugger_wp->GetStream() << "--------------\nUE attachs: "
+            << ues.ueNodes.GetN() << " at " 
+            << Simulator::Now().GetSeconds() << "s"
+            << "\n----------------\n";
+    lteHelper->Attach(NetDeviceContainer(ues.ueLteDevs), testingEnbDev);
+
+    //Randomize the starting time of clientApps and serverApps.
+    Ptr<UniformRandomVariable> startTimeSeconds = CreateObject<UniformRandomVariable> ();
+    startTimeSeconds->SetAttribute ("Min", DoubleValue (0.5));
+    startTimeSeconds->SetAttribute ("Max", DoubleValue (0.6));
+    Time startTime = Seconds (Simulator::Now().GetSeconds() + startTimeSeconds->GetValue ());
+    ues.serverApps.Start (startTime);
+    ues.clientApps.Start (startTime);
+    *debugger_wp->GetStream() << " Apps start = " << startTime.GetSeconds() << std::endl;
 }
 
 void

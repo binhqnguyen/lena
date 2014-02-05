@@ -196,6 +196,8 @@ struct UES{
   NodeContainer ueNodes;
   NetDeviceContainer ueLteDevs;
   Ipv4InterfaceContainer ueIpIfaces;
+  ApplicationContainer clientApps;
+  ApplicationContainer serverApps;
 };
 
 /*******Function prototype*******/
@@ -236,5 +238,6 @@ UES CreateUes(uint32_t number_of_ues);
 void UeLeaving(uint32_t number_of_ues, Node target_enb);
 void InstallWorkload (UES ueNodes);
 void ScheduleUeAttach(double second, UES ues);
+void UeAttach(UES ues);
 
 #endif
