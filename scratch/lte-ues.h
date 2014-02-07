@@ -29,7 +29,7 @@ using namespace ns3;
 #define LONG_LIVED_UE "7.0.0.2"
 #define COARSE_GRAIN_SAMPLING 40
 
-double simTime = 100;   //simulation time for EACH application
+double simTime = 200;   //simulation time for EACH application
 static double ue_position_tracking_timer = 0; //timer to schedule position tracking
 
 
@@ -43,15 +43,15 @@ uint16_t isFading = 1;
 /***** Mobility parameters******/
 uint16_t is_random_allocation = 0;  //UEs fixed position allocation by default
 //UE grid allocation parameters.
-double distance_ue_root_x = 50;
-double distance_ue_root_y = 50;
-double distance_among_ues_x = 50;
-double distance_among_ues_y = 50;
+double distance_ue_root_x = -150;
+double distance_ue_root_y = 150;
+double distance_among_ues_x = 20;
+double distance_among_ues_y = -100;
 //ENB grid allocation parameters.
 double distance_among_enbs_x = 350;
 double distance_among_enbs_y = 350;
 //UE circle random allocation radius.
-double distance_rho = 100;
+double distance_rho = 200;
 //Moving
 double moving_bound = 50000;
 double VEH_VE = 60; //60km/h for vehicular
@@ -95,7 +95,8 @@ uint32_t gone_ue_cnt = 0;
 
 
 //MAC
-std::string mac_scheduler = "ns3::RrFfMacScheduler";
+//std::string mac_scheduler = "ns3::RrFfMacScheduler";
+std::string mac_scheduler = "ns3::PfFfMacScheduler";
 
 //CORE
 std::string s1uLinkDataRate = "1Gb/s";
@@ -145,7 +146,7 @@ std::map<uint32_t, uint32_t> source_destination_port;
 
 const double ONEBIL = 1000000000;
 
-uint16_t numberOfUes = 3;
+uint16_t numberOfUes = 0;
 uint16_t numberOfEnbs = 2;
 uint16_t numBearersPerUe = 1;
 
@@ -192,6 +193,7 @@ Ptr<UniformRandomVariable> uniform = CreateObject<UniformRandomVariable>();
 double uniform_min = 0.0;
 double uniform_max = 10.0;
 
+double on_time = 30.0;
 struct UES{
   NodeContainer ueNodes;
   NetDeviceContainer ueLteDevs;
@@ -234,10 +236,11 @@ void NotifyHandoverStartEnb (std::string context, uint64_t imsi, uint16_t cellid
 void NotifyHandoverEndOkEnb (std::string context, uint64_t imsi, uint16_t cellid, uint16_t rnti);
 
 /**** UE leaving or joining ****/
-UES CreateUes(uint32_t number_of_ues);
+UES CreateUes(uint32_t number_of_ues, double startTime, double on_time);
 void UeLeaving(uint32_t number_of_ues, Node target_enb);
 void InstallWorkload (UES ueNodes);
 void ScheduleUeAttach(double second, UES ues);
 void UeAttach(UES ues);
+void SetAppsStartTime (double startTime, ApplicationContainer serverApps, ApplicationContainer clientApps);
 
 #endif

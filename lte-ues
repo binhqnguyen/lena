@@ -4,7 +4,7 @@ RE_DIR="/var/tmp/ln_result"
 CODE_DIR="/var/tmp/lena_dev"
 SIM_TIME="100"
 PEDESTRIAN="1"
-lte="lte-ues-m"
+lte="lte-ues"
 processing="processing"
 
 if [ $# -lt 4 ]; then

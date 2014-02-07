@@ -1,0 +1,79 @@
+#!/bin/bash
+E_NAME="CUBIC_noname"
+RE_DIR="/var/tmp/ln_result"
+CODE_DIR="/var/tmp/lena"
+SIM_TIME="100"
+PEDESTRIAN="1"
+lte="lte-ues-m"
+processing="processing"
+NUM_UES=1
+
+if [ $# -lt 5 ]; then
+	echo "usage rp-..sh <name of backup folder> [<simTime> <isPedestrian> <radio/radio_dev> <number of UEs>"
+	exit;
+fi
+NUM_UES=$5
+E_NAME=$1
+PY_DIR="$REDIR/$4/"
+
+echo "removing old files....."
+rm $RE_DIR/$4/*.dat
+rm $RE_DIR/$4/*.tmp
+rm $RE_DIR/$4/*.raw
+rm $RE_DIR/$4/TCP_LOG
+rm $RE_DIR/$4/UDP_LOG
+rm $RE_DIR/$4/*.txt
+rm $RE_DIR/$4/*.svg
+rm $RE_DIR/$4/queue
+rm $RE_DIR/$4/*.pcap
+
+rm $CODE_DIR/*.pcap
+rm $CODE_DIR/DlRxPhyStats.txt
+rm $CODE_DIR/DlTxPhyStats.txt
+rm $CODE_DIR/UlRxPhyStats.txt
+rm $CODE_DIR/DlTxPhyStats.txt
+rm $CODE_DIR/lte-ues.out
+
+if [ "$2" != "" ];
+	then
+		SIM_TIME=$2
+		PEDESTRIAN=$3
+		echo "t=$SIM_TIME p=$PEDESTRIAN"
+fi
+
+echo $E_NAME 
+echo $PY_DIR
+echo $RE_DIR
+
+BACKUP_FOLDER="$RE_DIR/from_cade/$E_NAME"
+echo "backup folder: $BACKUP_FOLDER"
+
+#echo "running $lte nsc UDP ..."
+#./waf --run "scratch/$lte --simTime=$SIM_TIME --isTcp=0 --isFading=1 --isPedestrian=$PEDESTRIAN" > $RE_DIR/$4/UDP_LOG 2>&1 
+#./waf --run "scratch/$lte --simTime=$SIM_TIME --isTcp=0 --distanceBetweenEnbs=$DISTANCE --isFading=1 --isPedestrian=$PEDESTRIAN" > $RE_DIR/$4/UDP_LOG 2>&1 
+
+echo "running $lte nsc TCP ..."
+./waf --run "scratch/$lte --simTime=$SIM_TIME --isTcp=1  --isFading=1 --isPedestrian=$PEDESTRIAN" > $RE_DIR/$4/TCP_LOG 2>&1 
+#./waf --run "scratch/$lte" > $RE_DIR/$4/TCP_LOG 2>&1 
+
+cp $CODE_DIR/*.out $RE_DIR/$4/
+cp $CODE_DIR/*.pcap $RE_DIR/$4/
+cp $CODE_DIR/*.txt $RE_DIR/$4/
+cp $CODE_DIR/.dat $RE_DIR/$4/
+##copy code
+rm -rf $RE_DIR/$4/code
+mkdir $RE_DIR/$4/code
+cp $CODE_DIR/scratch/$lte.cc $RE_DIR/$4/code
+cp $CODE_DIR/src/lte/model/lte-rlc* $RE_DIR/$4/code
+
+cp $CODE_DIR/scratch/$lte.cc $RE_DIR/$4
+rm $CODE_DIR/*.pcap
+mkdir $BACKUP_FOLDER
+cd $RE_DIR
+./$processing.sh $E_NAME $4 $5
+cp -rf $RE_DIR/$4/ $BACKUP_FOLDER 
+cp $RE_DIR/processing.sh $BACKUP_FOLDER
+
+
+
+

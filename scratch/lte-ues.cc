@@ -380,6 +380,7 @@ set_up_remote_host_and_sgw_and_p2p_link(){
   remoteHostStaticRouting = ipv4RoutingHelper.GetStaticRouting (remoteHost->GetObject<Ipv4> ());
   // interface 0 is localhost, 1 is the p2p device
   remoteHostStaticRouting->AddNetworkRouteTo (Ipv4Address ("7.0.0.0"), Ipv4Mask ("255.0.0.0"), 1);
+	p2ph.EnablePcapAll(DIR+"lte_ues");
 }
 
 void

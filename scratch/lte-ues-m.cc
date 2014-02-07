@@ -23,7 +23,7 @@
  * It instantiates two eNodeB, attaches one UE to the 'source' eNB and
  * triggers a handover of the UE towards the 'target' eNB.
  */
-NS_LOG_COMPONENT_DEFINE ("EpcX2HandoverExample");
+NS_LOG_COMPONENT_DEFINE ("lte-ues-timeout");
 int
 main (int argc, char *argv[])
 {
@@ -58,8 +58,31 @@ set_up_enbs();
   *Install mobility
   *Attach UEs to the specified eNB
   */
-ScheduleUeAttach(0, CreateUes(1));	//
-ScheduleUeAttach(5, CreateUes(numberOfUes));  //attach UEs at 5s.
+//ScheduleUoeAttach(0, CreateUes(1,0.0));	//
+uint16_t join_ue = 30;
+double join_time = 50.0;
+CreateUes(1,0.0,1000);	//current UEs constantly in the cell.
+CreateUes(join_ue,join_time*1,1000);	//current UEs constantly in the cell.
+CreateUes(join_ue,join_time*2,1000);	//current UEs constantly in the cell.
+CreateUes(join_ue,join_time*3,1000);	//current UEs constantly in the cell.
+CreateUes(join_ue,join_time*4,1000);	//current UEs constantly in the cell.
+//CreateUes(join_ue,join_time*5,1000);	//current UEs constantly in the cell.
+//CreateUes(join_ue,join_time*6,1000);	//current UEs constantly in the cell.
+
+/*
+uint16_t current_ue = 1;
+CreateUes(current_ue,0.0,0);	//current UEs constantly in the cell.
+double join_time = 20;
+uint16_t cnt = 0;
+for (uint16_t join_ue = 1; join_ue < 20; ){
+	CreateUes(join_ue,join_time,on_time);	//UE on for on_time from join_time.
+	join_time += on_time*2;
+	join_ue += 4; //num of UEs = 1+5+9+13+17=45.
+	cnt++;
+}
+simTime = 20 + cnt*on_time*2;
+*/
+//ScheduleUeAttach(5, CreateUes(numberOfUes));  //attach UEs at 5s.
 
 /** Manual HOs used for joining and leaving UEs**/
 //*debugger_wp->GetStream () << "Manual Handover at 20,50,80 second\n" ;
@@ -149,6 +172,7 @@ set_up_remote_host_and_sgw_and_p2p_link(){
   remoteHostStaticRouting = ipv4RoutingHelper.GetStaticRouting (remoteHost->GetObject<Ipv4> ());
   // interface 0 is localhost, 1 is the p2p device
   remoteHostStaticRouting->AddNetworkRouteTo (Ipv4Address ("7.0.0.0"), Ipv4Mask ("255.0.0.0"), 1);
+	p2ph.EnablePcapAll(DIR+"lte_ues_m");
 }
 
 void
@@ -201,6 +225,10 @@ get_average_result(){
           << std::endl
           << "Mean transmitted bitrate " 
           << 8*iter->second.txBytes/(iter->second.timeLastTxPacket-iter->second.timeFirstTxPacket)*ONEBIL/(1024) 
+					<< "\nlastRxTime = " << iter->second.timeLastRxPacket.GetSeconds()
+					<< "\nfirstRxTime = " << iter->second.timeFirstRxPacket.GetSeconds()
+					<< "\nlastTxTime = " << iter->second.timeLastTxPacket.GetSeconds()
+					<< "\nfirstTxTime = " << iter->second.timeFirstTxPacket.GetSeconds()
           << std::endl;
     } 
   }
@@ -285,7 +313,6 @@ InstallWorkload (UES ues){
         ul_onOffHelper.SetConstantRate( DataRate(dataRate), packetSize );
         clientApps.Add(ul_onOffHelper.Install(ueNodes.Get(u)));
       }
-			/*
       Ptr<EpcTft> tft = Create<EpcTft> ();
       EpcTft::PacketFilter dlpf;
       dlpf.localPortStart = dlPort;
@@ -297,7 +324,15 @@ InstallWorkload (UES ues){
       tft->Add (ulpf);
       EpsBearer bearer (EpsBearer::NGBR_VIDEO_TCP_DEFAULT);
       lteHelper->ActivateDedicatedEpsBearer (ueLteDevs.Get (u), bearer, tft);
-			*/
+
+    	Ptr<UniformRandomVariable> startTimeSeconds = CreateObject<UniformRandomVariable> ();
+    	startTimeSeconds->SetAttribute ("Min", DoubleValue (0.5));
+    	startTimeSeconds->SetAttribute ("Max", DoubleValue (0.6));
+    	//Time startTime = Seconds (Simulator::Now().GetSeconds() + startTimeSeconds->GetValue ());
+    	Time startTime = Seconds (5 + startTimeSeconds->GetValue ());
+    	ues.serverApps.Start (startTime);
+    	ues.clientApps.Start (startTime);
+    	*debugger_wp->GetStream() << " Apps start = " << startTime.GetSeconds() << std::endl;
     } // end for b
   }
 	
@@ -313,10 +348,10 @@ InstallWorkload (UES ues){
   * Create and install Lte devices and Internet stack on UEs.
   */
 UES
-CreateUes(uint32_t number_of_ues){
+CreateUes(uint32_t number_of_ues, double startTime, double on_time){
   struct UES ues;
 
-  *debugger_wp->GetStream() << "CreateUes:\n----------" 
+  *debugger_wp->GetStream() << "\n----------\nCreateUes:\n----------" 
               << "\nNumber of joining Ues: " << number_of_ues
               //<< "\n# of current ues in testing cell: " << current_ues.size()
               << "\n# of ues left so far: " << gone_ue_cnt << std::endl;
@@ -348,6 +383,13 @@ CreateUes(uint32_t number_of_ues){
   //Config::Set ("/NodeList/*/$ns3::Ns3NscStack<linux2.6.26>/net.ipv4.tcp_wmem", StringValue ("4096 5000000 8338608"));
 
 	monitor = flowHelper.Install(ueNodes);
+
+  *debugger_wp->GetStream() << "--------------\nUE attachs: "
+            << ueNodes.GetN() << " at " 
+            << Simulator::Now().GetSeconds() << "s"
+            << "\n----------------\n";
+  lteHelper->Attach(NetDeviceContainer(ueLteDevs), testingEnbDev);
+
 
   *debugger_wp->GetStream() << "Installing workload for UEs:\n"
       << "--------------------------\n";
@@ -388,19 +430,27 @@ CreateUes(uint32_t number_of_ues){
 
         OnOffHelper onOffHelper("ns3::TcpSocketFactory", Address ( InetSocketAddress(ueIpIfaces.GetAddress(u) , dlPort) ));
         //onOffHelper.SetAttribute("MaxBytes", UintegerValue(300000));
-        //onOffHelper.SetAttribute("OnTime", StringValue("ns3::ParetoRandomVariable[Mean=2,Shape=0.5]"));
+        /*
+        if (on_time > 0){
+					std::stringstream ots;
+					ots << on_time;
+					std::string on_time_str = ots.str();
+					*debugger_wp->GetStream() << "On time = " << on_time_str << "\n";
+        	onOffHelper.SetAttribute("OnTime", StringValue(" ns3::ConstantRandomVariable[Constant=2]"));
+				}
+				*/
         //onOffHelper.SetAttribute("OffTime", StringValue("ns3::ParetoRandomVariable[Mean=30,Shape=0.5]"));
         onOffHelper.SetConstantRate( DataRate(dataRate), packetSize );
         clientApps.Add(onOffHelper.Install(remoteHost));
 
-        /*
+				/*
         PacketSinkHelper ul_sink("ns3::TcpSocketFactory", InetSocketAddress(Ipv4Address::GetAny(), ulPort));
         serverApps.Add(ul_sink.Install(remoteHost));
 
         OnOffHelper ul_onOffHelper("ns3::TcpSocketFactory", Address ( InetSocketAddress(remoteHostAddr, ulPort) ));
         ul_onOffHelper.SetConstantRate( DataRate(dataRate), packetSize );
         clientApps.Add(ul_onOffHelper.Install(ueNodes.Get(u)));
-        */
+				*/
       }
       else{
         PUT_SAMPLING_INTERVAL = PUT_SAMPLING_INTERVAL*20;
@@ -418,7 +468,6 @@ CreateUes(uint32_t number_of_ues){
         ul_onOffHelper.SetConstantRate( DataRate(dataRate), packetSize );
         clientApps.Add(ul_onOffHelper.Install(ueNodes.Get(u)));
       }
-      /*
       Ptr<EpcTft> tft = Create<EpcTft> ();
       EpcTft::PacketFilter dlpf;
       dlpf.localPortStart = dlPort;
@@ -430,13 +479,18 @@ CreateUes(uint32_t number_of_ues){
       tft->Add (ulpf);
       EpsBearer bearer (EpsBearer::NGBR_VIDEO_TCP_DEFAULT);
       lteHelper->ActivateDedicatedEpsBearer (ueLteDevs.Get (u), bearer, tft);
-      */
     } // end for one UE
     *debugger_wp->GetStream() << "UE-ID # " << u
       << " dlport/ulport = " << dlPort << " , " << ulPort
       << " TCP = " << isTcp << std::endl;
   }
-  
+
+	/*This HAS TO BE DONE before simulator.Start()
+ 	 *Because simulator.Start() will also trigger apps starting
+	 *If no starting time set for an app, the init value will be used, which is 0.
+	 */
+  SetAppsStartTime(startTime,  serverApps, clientApps);
+
   //for (NetDeviceContainer::Iterator devIt = ueLteDevs.Begin(); devIt != ueLteDevs.End(); ++devIt){
     //pcapHelper.GetFilenameFromDevice(DIR+"lte-ues",(*devIt),true);
     //*debugger_wp->GetStream() << "aaa" << (*devIt)->GetNode()->GetObject<Ipv4>();
@@ -452,25 +506,31 @@ CreateUes(uint32_t number_of_ues){
   return ues;
 }
 
+void SetAppsStartTime (double start, ApplicationContainer serverApps, ApplicationContainer clientApps){
+      //Randomize the starting time of clientApps and serverApps.
+    //Ptr<UniformRandomVariable> startTimeSeconds = CreateObject<UniformRandomVariable> ();
+    //startTimeSeconds->SetAttribute ("Min", DoubleValue (0.5));
+    //startTimeSeconds->SetAttribute ("Max", DoubleValue (0.6));
+   	//Time startTime = Seconds (start + startTimeSeconds->GetValue ());
+   	Time startTime = Seconds (start);
+    serverApps.Start (startTime);
+    clientApps.Start (startTime);
+    *debugger_wp->GetStream() << "*** Server and " << clientApps.GetN() << " client apps start = " << startTime.GetSeconds() << std::endl;
+}
+
 void ScheduleUeAttach (double second, UES ues){
   Simulator::ScheduleWithContext (0 ,Seconds (second), &UeAttach, ues);
 }
 
 void UeAttach(UES ues){
-    *debugger_wp->GetStream() << "--------------\nUE attachs: "
-            << ues.ueNodes.GetN() << " at " 
-            << Simulator::Now().GetSeconds() << "s"
-            << "\n----------------\n";
-    lteHelper->Attach(NetDeviceContainer(ues.ueLteDevs), testingEnbDev);
-
-    //Randomize the starting time of clientApps and serverApps.
+      //Randomize the starting time of clientApps and serverApps.
     Ptr<UniformRandomVariable> startTimeSeconds = CreateObject<UniformRandomVariable> ();
     startTimeSeconds->SetAttribute ("Min", DoubleValue (0.5));
     startTimeSeconds->SetAttribute ("Max", DoubleValue (0.6));
     Time startTime = Seconds (Simulator::Now().GetSeconds() + startTimeSeconds->GetValue ());
     ues.serverApps.Start (startTime);
     ues.clientApps.Start (startTime);
-    *debugger_wp->GetStream() << " Apps start = " << startTime.GetSeconds() << std::endl;
+    *debugger_wp->GetStream() << "*** Server and Client apps start = " << startTime.GetSeconds() << std::endl;
 }
 
 void
@@ -540,7 +600,8 @@ getTcpPut(){
 		source_destination_port[t.sourcePort] = t.destinationPort;
 
 		//Adjust sampling rate based on destination IP. Only the long-lived UE is measured using COARSE_GRAIN_SAMPLING. 
-		PUT_SAMPLING_INTERVAL = (t.destinationAddress == LONG_LIVED_UE)? COARSE_GRAIN_SAMPLING : 0;
+		//PUT_SAMPLING_INTERVAL = (t.destinationAddress == LONG_LIVED_UE)? COARSE_GRAIN_SAMPLING : 0;
+		PUT_SAMPLING_INTERVAL = COARSE_GRAIN_SAMPLING;
     /*sending/receiving rate*/
     if (iter->second.txPackets > last_tx_pkts[t.destinationAddress] + PUT_SAMPLING_INTERVAL && iter->second.timeLastTxPacket > last_tx_time[t.destinationAddress]){
       meanTxRate_send[t.destinationAddress] = 8*(iter->second.txBytes-last_tx_bytes[t.destinationAddress])/(iter->second.timeLastTxPacket.GetDouble()-last_tx_time[t.destinationAddress])*ONEBIL/kilo;
@@ -696,7 +757,7 @@ void InstallMobilityEnb(NodeContainer enbNodes, double distance_among_enbs_x, do
                   "GridWidth", UintegerValue (10), //number of nodes on a line
                   "LayoutType", StringValue ("RowFirst"));
   enbMobility.Install (enbNodes); //===ENB #1 placed at (0.0)====//
-  *debugger_wp->GetStream() << "ENBs allocation:\n-----------\n"
+  *debugger_wp->GetStream() << "\n--------------\nENBs allocation:\n-----------\n"
                             << "Grid position, root <0,0>, "
                             << "distance_among_enbs <x,y> = < " 
                             << distance_among_enbs_x << " , " << distance_among_enbs_y << " >\n";
@@ -704,7 +765,7 @@ void InstallMobilityEnb(NodeContainer enbNodes, double distance_among_enbs_x, do
 
 void InstallLocationUe(NodeContainer ueNodes, uint32_t distance_rho){
   	MobilityHelper ueMobility;
-  	*debugger_wp->GetStream() << "UEs allocation:\n------------\n";
+  	*debugger_wp->GetStream() << "\n--------------\nUEs allocation:\n------------\n";
     ueMobility.SetPositionAllocator ("ns3::UniformDiscPositionAllocator", //nodes are put randomly inside a circle with the central point is (x,y).
     "X", DoubleValue (0),
     "Y", DoubleValue (0),
@@ -715,13 +776,13 @@ void InstallLocationUe(NodeContainer ueNodes, uint32_t distance_rho){
 }
 void InstallLocationUe(NodeContainer ueNodes, double distance_ue_root_x, double distance_ue_root_y, double distance_among_ues_x, double distance_among_ues_y){
 	MobilityHelper ueMobility;
-  *debugger_wp->GetStream() << "UEs allocation:\n------------\n";
+  *debugger_wp->GetStream() << "\n-------------\nUEs allocation:\n------------\n";
   ueMobility.SetPositionAllocator ("ns3::GridPositionAllocator",
         "MinX", DoubleValue (distance_ue_root_x),  //1st UE is put at a location which is "distance" meters away from eNB.
         "MinY", DoubleValue (distance_ue_root_y),  
         "DeltaX", DoubleValue (distance_among_ues_x),  //distance among UE nodes
         "DeltaY", DoubleValue (distance_among_ues_y),
-        "GridWidth", UintegerValue (5), //number of nodes on a line
+        "GridWidth", UintegerValue (distance_ue_root_x*(-2)/distance_among_ues_x), //number of nodes on a line
         "LayoutType", StringValue ("RowFirst"));
 	ueMobility.Install(ueNodes);
   *debugger_wp->GetStream() << "Fixed grid allocation: root = < "
@@ -731,7 +792,7 @@ void InstallLocationUe(NodeContainer ueNodes, double distance_ue_root_x, double 
 }
 void InstallMobilityUe(NodeContainer ueNodes, uint16_t is_pedestrian){
 	MobilityHelper ueMobility;
-  *debugger_wp->GetStream() << "UEs Mobility:\n------------\n";
+  *debugger_wp->GetStream() << "\n-------------\nUEs Mobility:\n------------\n";
 	if (!is_pedestrian) 
 		moving_speed = VEH_VE;     //vehicular mobility
 	else moving_speed = PED_VE;
@@ -765,8 +826,7 @@ void InstallFading(Ptr<LteHelper> lteHelper){
     lteHelper->SetFadingModelAttribute("WindowSize",TimeValue(Seconds(0.5)));
     lteHelper->SetFadingModelAttribute("RbNum",UintegerValue(radioDlBandwidth));
     lteHelper->SetFadingModelAttribute("TraceFilename", StringValue(traceFile));
-    *debugger_wp->GetStream() << "Trace fading ENABLED:\n"
-        << "--------------------"
+    *debugger_wp->GetStream() << "\n----------------\nTrace fading ENABLED:\n-------------"
         << "\nPesdestrian = " << isPedestrian
         << "\nTrace time = " << traceTime
         << "\nTrace file= " << traceFile << std::endl;
@@ -777,8 +837,7 @@ void InstallFading(Ptr<LteHelper> lteHelper){
 void EnablePositionTrackingEnb(NetDeviceContainer enbLteDevs){
   NetDeviceContainer::Iterator enbLteDevIt = enbLteDevs.Begin ();
   uint16_t i = 0;
-  *debugger_wp->GetStream() << "ENBs postion:\n"
-      << "------------\n";
+  *debugger_wp->GetStream() << "\n-------------\nENBs postion:\n--------------\n";
   for (NetDeviceContainer::Iterator enbLteDevIt = enbLteDevs.Begin(); enbLteDevIt != enbLteDevs.End(); enbLteDevIt++){
   	Vector enbPosition = (*enbLteDevIt)->GetNode ()->GetObject<MobilityModel> ()->GetPosition ();
     *debugger_wp->GetStream() << "eNB " << i << ": (x,y) = " 
@@ -788,8 +847,7 @@ void EnablePositionTrackingEnb(NetDeviceContainer enbLteDevs){
 }
 
 void EnablePositionTrackingUes(NodeContainer ueNodes){
-  *debugger_wp->GetStream() << "UEs position:\n"
-      << "--------------\n";
+  *debugger_wp->GetStream() << "\n-------------\nUEs position:\n-------------\n";
   for (uint32_t i = 0; i < ueNodes.GetN(); i++ ){
     Ptr<MobilityModel> ue_mobility_model = ueNodes.Get(i)->GetObject<MobilityModel>();
     double x = ue_mobility_model->GetPosition().x;
