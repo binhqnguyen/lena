@@ -121,6 +121,7 @@ std::string dataRate = "150Mb/s";
 uint16_t dlPort = 10000;
 uint16_t ulPort = 20000;
 LogLevel logLevel = (LogLevel) (LOG_PREFIX_TIME | LOG_PREFIX_NODE| LOG_PREFIX_FUNC | LOG_LEVEL_DEBUG);
+//LogLevel logLevel = (LogLevel) (LOG_PREFIX_TIME | LOG_PREFIX_NODE| LOG_PREFIX_FUNC | LOG_LEVEL_ALL);
 
 //Routing
 Ptr<Ipv4StaticRouting> remoteHostStaticRouting;

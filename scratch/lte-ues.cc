@@ -741,13 +741,13 @@ void ConfigStoreInput(std::string in_f){
 void EnableLogComponents(){
 	if (isTcp==1){
 		if (isDebug==0){
-			//LogLevel logLevel = (LogLevel) (LOG_LEVEL_ALL | LOG_PREFIX_TIME | LOG_PREFIX_NODE | LOG_PREFIX_FUNC);
+			LogLevel logLevel = (LogLevel) (LOG_LEVEL_ALL | LOG_PREFIX_TIME | LOG_PREFIX_NODE | LOG_PREFIX_FUNC);
 			//LogComponentEnable ("LteHelper", logLevel);
   		//LogComponentEnable ("EpcHelper", logLevel);
   		LogComponentEnable ("EpcEnbApplication", logLevel);
   		LogComponentEnable ("EpcX2", logLevel);
   		LogComponentEnable ("EpcSgwPgwApplication", logLevel);
-  		LogComponentEnable ("NscTcpSocketImpl",LOG_LEVEL_DEBUG);
+  		LogComponentEnable ("NscTcpSocketImpl",logLevel);
   		LogComponentEnable ("LteEnbNetDevice", logLevel);
   		LogComponentEnable ("LteUeRrc", logLevel);
   		LogComponentEnable ("LteUeNetDevice", logLevel);

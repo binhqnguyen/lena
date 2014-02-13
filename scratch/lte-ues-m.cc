@@ -59,13 +59,13 @@ set_up_enbs();
   *Attach UEs to the specified eNB
   */
 //ScheduleUoeAttach(0, CreateUes(1,0.0));	//
-uint16_t join_ue = 30;
+uint16_t join_ue = 6;
 double join_time = 50.0;
-CreateUes(1,0.0,1000);	//current UEs constantly in the cell.
+CreateUes(3,0.0,1000);	//current UEs constantly in the cell.
 CreateUes(join_ue,join_time*1,1000);	//current UEs constantly in the cell.
 CreateUes(join_ue,join_time*2,1000);	//current UEs constantly in the cell.
 CreateUes(join_ue,join_time*3,1000);	//current UEs constantly in the cell.
-CreateUes(join_ue,join_time*4,1000);	//current UEs constantly in the cell.
+//CreateUes(join_ue,join_time*4,1000);	//current UEs constantly in the cell.
 //CreateUes(join_ue,join_time*5,1000);	//current UEs constantly in the cell.
 //CreateUes(join_ue,join_time*6,1000);	//current UEs constantly in the cell.
 
@@ -684,18 +684,18 @@ void ConfigStoreInput(std::string in_f){
 void EnableLogComponents(){
 	if (isTcp==1){
 		if (isDebug==0){
-			//LogLevel logLevel = (LogLevel) (LOG_LEVEL_ALL | LOG_PREFIX_TIME | LOG_PREFIX_NODE | LOG_PREFIX_FUNC);
+			LogLevel logLevel = (LogLevel) (LOG_LEVEL_ALL | LOG_PREFIX_TIME | LOG_PREFIX_NODE | LOG_PREFIX_FUNC);
 			//LogComponentEnable ("LteHelper", logLevel);
   		//LogComponentEnable ("EpcHelper", logLevel);
   		LogComponentEnable ("EpcEnbApplication", logLevel);
   		LogComponentEnable ("EpcX2", logLevel);
   		LogComponentEnable ("EpcSgwPgwApplication", logLevel);
-  		LogComponentEnable ("NscTcpSocketImpl",LOG_LEVEL_DEBUG);
+  		LogComponentEnable ("NscTcpSocketImpl",logLevel);
   		LogComponentEnable ("LteEnbNetDevice", logLevel);
   		LogComponentEnable ("LteUeRrc", logLevel);
   		LogComponentEnable ("LteUeNetDevice", logLevel);
 		}
-		LogComponentEnable ("NscTcpL4Protocol", (LogLevel) (LOG_LEVEL_ALL | LOG_PREFIX_TIME | LOG_PREFIX_NODE | LOG_PREFIX_FUNC));
+		LogComponentEnable ("NscTcpL4Protocol", logLevel);
 		LogComponentEnable ("Ipv4", logLevel);
   	LogComponentEnable ("LteUeRrc", logLevel);
   	LogComponentEnable ("LteRlcUm", logLevel);

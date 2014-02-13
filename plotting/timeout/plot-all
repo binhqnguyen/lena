@@ -1,0 +1,6 @@
+#!/bin/bash
+
+for ((i=2;i<38;i++))
+do 
+gnuplot -e "ue=700$i" plot-averaged 
+done

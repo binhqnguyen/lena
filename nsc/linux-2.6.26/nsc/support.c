@@ -800,47 +800,77 @@ int nsc_get_tcp_var(void *so, const char *var, char *result, int rlen)
     struct sock *sock = ((struct socket *)so)->sk;
     struct tcp_sock *tp = tcp_sk(sock);
     struct bictcp *ca = inet_csk_ca(sock);
-    u32 cnt = -1;
-    u32 last_max_cwnd = -1;
-    u32 loss_cwnd = -1;
-    u32 last_time = -1;
-    u32 tcp_cwnd = -1;
-    u32 bic_K = -1;
+    u32 cnt = 0;
+    u32 last_max_cwnd = 0;
+    u32 loss_cwnd = 0;
+    u32 last_time = 0;
+    u32 tcp_cwnd = 0;
+    u32 bic_K = 0;
+    u32 icsk_rto = 0;
     
     nsc_debugf("bictcp = %s\n", ca);
-    if (strcmp(var, "cubic_cnt_") == 0			//get cubic tcp's paras
-	|| strcmp(var, "cubic_wmax_") == 0
-	|| strcmp(var, "cubic_loss_cwnd_") == 0
-	|| strcmp(var, "cubic_last_time_") == 0
-	|| strcmp(var, "cubic_tcp_cwnd_") == 0
-	|| strcmp(var, "cubic_bic_K_") == 0
+    if (strcmp(var, "cubic_cnt_") == 0			/* increase cwnd by 1 after ACKs */
+	|| strcmp(var, "cubic_wmax_") == 0				/* last maximum snd_cwnd */
+	|| strcmp(var, "cubic_loss_cwnd_") == 0		/* congestion window at last loss */
+	|| strcmp(var, "cubic_last_time_") == 0		/* time when updated last_cwnd */
+	|| strcmp(var, "cubic_tcp_cwnd_") == 0	/* estimated tcp cwnd */
+	|| strcmp(var, "cubic_bic_K_") == 0			/* time to origin point from the beginning of the current epoch */
 	){
     		if ( sock && get_cubic_paras(ca, &cnt, &last_max_cwnd, &loss_cwnd, &last_time, &tcp_cwnd, &bic_K) ){
-			if ( strcmp(var,"cubic_cnt_") == 0 )
-				snprintf(result, rlen, "%u", cnt);
-			if ( strcmp(var,"cubic_wmax_") == 0 )
-				snprintf(result, rlen, "%u", last_max_cwnd);
-			if ( strcmp(var,"cubic_loss_cwnd_") == 0 )
-				snprintf(result, rlen, "%u", loss_cwnd);
-			if ( strcmp(var,"cubic_last_time_") == 0 )
-				snprintf(result, rlen, "%u", last_time);
- 			if ( strcmp(var,"cubic_tcp_cwnd_") == 0 )
-				snprintf(result, rlen, "%u", tcp_cwnd);
-			if ( strcmp(var,"cubic_bic_K_") == 0 )
-				snprintf(result, rlen, "%u", bic_K);
+			if ( strcmp(var,"cubic_cnt_") == 0 ){
+				return snprintf(result, rlen, "%u", cnt);
+			}
+			if ( strcmp(var,"cubic_wmax_") == 0 ){
+				return snprintf(result, rlen, "%u", last_max_cwnd);
+			}
+			if ( strcmp(var,"cubic_loss_cwnd_") == 0 ){
+				return snprintf(result, rlen, "%u", loss_cwnd);
+			}
+			if ( strcmp(var,"cubic_last_time_") == 0 ){
+				return snprintf(result, rlen, "%u", last_time);
+			}
+ 			if ( strcmp(var,"cubic_tcp_cwnd_") == 0 ){
+				return snprintf(result, rlen, "%u", tcp_cwnd);
+			}
+			if ( strcmp(var,"cubic_bic_K_") == 0 ){
+				return snprintf(result, rlen, "%u", bic_K);
+			}
 		}
-		return -1;
+			return 1;
     }
+		if (strcmp(var, "rto_") == 0)	/*inet_connection_sock: timeout (unsigned long)*/
+			return snprintf(result, rlen, "%u", jiffies_to_usecs(inet_csk(sock)->icsk_timeout));
+
+		if (strcmp(var, "re_rto_") == 0)	/*inet_connection_sock: retransmit timeout (__u32)*/
+			return snprintf(result, rlen, "%u", jiffies_to_usecs(inet_csk(sock)->icsk_rto));
+
+		if (strcmp(var, "ca_state_") == 0)	/*inet_connection_sock: congestion control state (u8)*/
+			return snprintf(result, rlen, "%u", inet_csk(sock)->icsk_ca_state);
+
+		if (strcmp(var, "retransmits_") == 0)	/*inet_connection_sock: number of unrecoverd [RTO] timeouts (u8)*/
+			return snprintf(result, rlen, "%u", inet_csk(sock)->icsk_retransmits);
+
+		if (strcmp(var, "backoff_") == 0)	/*inet_connection_sock: Backoff (u8)*/
+			return snprintf(result, rlen, "%u", inet_csk(sock)->icsk_backoff);
+
+		if (strcmp(var, "HZ_") == 0){
+			return snprintf(result, rlen, "%u", HZ);
+		}
     if(strcmp(var, "srtt_") == 0)  // in ticks
     {
-				if (tp)
-        	return snprintf(result, rlen, "%f", (float)(tp->srtt >> 3));
+				if (tp){	
+        	return snprintf(result, rlen, "%u", jiffies_to_usecs(tp->srtt)>>3);
+				}
         return 1;
     }
-    else if(strcmp(var, "rttvar_") == 0) // in ticks
-    {
+    if(strcmp(var, "srttvar_") == 0) // in ticks
 				if (tp)
-        	return snprintf(result, rlen, "%f", (float)tp->rttvar);
+        	return snprintf(result, rlen, "%u", jiffies_to_usecs(tp->rttvar));
+    if(strcmp(var, "rttvar_") == 0) // in ticks
+    {
+				if (tp){
+        	return snprintf(result, rlen, "%u", jiffies_to_usecs(tp->mdev)>>2);
+				}
        	return 1;
     }
     /*
