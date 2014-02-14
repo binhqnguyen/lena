@@ -806,7 +806,6 @@ int nsc_get_tcp_var(void *so, const char *var, char *result, int rlen)
     u32 last_time = 0;
     u32 tcp_cwnd = 0;
     u32 bic_K = 0;
-    u32 icsk_rto = 0;
     
     nsc_debugf("bictcp = %s\n", ca);
     if (strcmp(var, "cubic_cnt_") == 0			/* increase cwnd by 1 after ACKs */
@@ -838,6 +837,9 @@ int nsc_get_tcp_var(void *so, const char *var, char *result, int rlen)
 		}
 			return 1;
     }
+		if (strcmp(var, "pending_") == 0)	/*inet_connection_sock: icsk_pending (u8), event that resets the retransmission timer*/
+			return snprintf(result, rlen, "%u", inet_csk(sock)->icsk_pending);
+
 		if (strcmp(var, "rto_") == 0)	/*inet_connection_sock: timeout (unsigned long)*/
 			return snprintf(result, rlen, "%u", jiffies_to_usecs(inet_csk(sock)->icsk_timeout));
 

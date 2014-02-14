@@ -33554,7 +33554,6 @@ int nsc_get_tcp_var(void *so, const char *var, char *result, int rlen)
     u32 last_time = 0;
     u32 tcp_cwnd = 0;
     u32 bic_K = 0;
-    u32 icsk_rto = 0;
 
     nsc_debugf("bictcp = %s\n", ca);
     if (strcmp(var, "cubic_cnt_") == 0
@@ -33586,6 +33585,9 @@ int nsc_get_tcp_var(void *so, const char *var, char *result, int rlen)
   }
    return 1;
     }
+  if (strcmp(var, "pending_") == 0)
+   return snprintf(result, rlen, "%u", inet_csk(sock)->icsk_pending);
+
   if (strcmp(var, "rto_") == 0)
    return snprintf(result, rlen, "%u", jiffies_to_usecs(inet_csk(sock)->icsk_timeout));
 
@@ -33649,7 +33651,7 @@ int nsc_get_tcp_var(void *so, const char *var, char *result, int rlen)
      return snprintf(result, rlen, "%u", tp->rcv_nxt);
         return 1;
     }
-# 913 "linux-2.6.26/nsc/support.c"
+# 915 "linux-2.6.26/nsc/support.c"
     else if(strcmp(var,"frto_highmark_")==0)
     {
      if (tp)

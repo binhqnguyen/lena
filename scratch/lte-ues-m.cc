@@ -59,9 +59,9 @@ set_up_enbs();
   *Attach UEs to the specified eNB
   */
 //ScheduleUoeAttach(0, CreateUes(1,0.0));	//
-uint16_t join_ue = 6;
+uint16_t join_ue = 15;
 double join_time = 50.0;
-CreateUes(3,0.0,1000);	//current UEs constantly in the cell.
+CreateUes(1,0.0,1000);	//current UEs constantly in the cell.
 CreateUes(join_ue,join_time*1,1000);	//current UEs constantly in the cell.
 CreateUes(join_ue,join_time*2,1000);	//current UEs constantly in the cell.
 CreateUes(join_ue,join_time*3,1000);	//current UEs constantly in the cell.
@@ -74,7 +74,7 @@ uint16_t current_ue = 1;
 CreateUes(current_ue,0.0,0);	//current UEs constantly in the cell.
 double join_time = 20;
 uint16_t cnt = 0;
-for (uint16_t join_ue = 1; join_ue < 20; ){
+for (uint16_t join_ue = 15; join_ue < 20; ){
 	CreateUes(join_ue,join_time,on_time);	//UE on for on_time from join_time.
 	join_time += on_time*2;
 	join_ue += 4; //num of UEs = 1+5+9+13+17=45.

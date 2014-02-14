@@ -925,7 +925,7 @@ NscTcpSocketImpl::UpdateTcpVars()
 	char ca_state_t[1];/*congestion control state*/
 	char retransmits_t[1];/*number of unrecovered [RTO] timeouts*/
 	char backoff_t[1];/*backoff*/
-
+	char pending_t[1];/*reason for resetting retransmission timer*/
 
   uint32_t cwnd = 0;
   double srtt = 0;
@@ -952,6 +952,7 @@ NscTcpSocketImpl::UpdateTcpVars()
 	uint16_t ca_state = 0;
 	uint16_t retransmits = 0;
 	uint16_t backoff = 0;
+	uint16_t pending = 0;
 
   //Get socket variables
   //This function calls nsc/<linux>/nsc/sim_support.cpp/get_var() and then nsc/<linux>/nsc/support.c/nsc_get_tcp_var()
@@ -998,6 +999,7 @@ NscTcpSocketImpl::UpdateTcpVars()
   m_nscTcpSocket->get_var("re_rto_", re_rto_t , 32) &&
   m_nscTcpSocket->get_var("ca_state_", ca_state_t , 1) &&
   m_nscTcpSocket->get_var("retransmits_", retransmits_t , 1) &&
+  m_nscTcpSocket->get_var("pending_", pending_t , 1) &&
   m_nscTcpSocket->get_var("backoff_", backoff_t , 1) )
   {
   	//Convert char* to integer.
@@ -1025,6 +1027,7 @@ NscTcpSocketImpl::UpdateTcpVars()
 	ca_state = atoi(ca_state_t);
 	retransmits = atoi(retransmits_t);
 	backoff = atoi(backoff_t);
+	pending = atoi(pending_t);
   
 
 	NS_LOG_INFO("RemoteAdd= " << m_remoteAddress 
@@ -1051,7 +1054,8 @@ NscTcpSocketImpl::UpdateTcpVars()
 			<< " retransmission timeout = " << re_rto/1000000
 			<< " congest_state = " << ca_state
 			<< " retransmits = " << retransmits
-			<< " backoff = " << backoff );
+			<< " backoff = " << backoff
+			<< " pending= " << pending);
 	return 0;
  }
 	else{

@@ -2,9 +2,9 @@
 ##======CONST=======
 BUFFSIZE=512
 RLC="RLC AM"
-M=" pedestrian mobility, 9 UEs joining each time "
+M=" pedestrian mobility, 6 UEs joining each time "
 TCP="CUBIC ".RLC.M
-BUFF="RLC buffer ".BUFFSIZE." KB"
+BUFF="RLC buffer ".BUFFSIZE." KB\n"
 x1 = 0
 x2 = 200
 SEGSIZE=1448
@@ -60,7 +60,87 @@ plot "cubic-".ue.".dat" using 3:10 title "cwnd" with lines,\
 ##"cubic.dat" using ($19/1000):(10) title "cubic last updated time" pt 1,\
 #"cubic.dat" using 1:21 title "cubic estimated tcp_cwnd" pt 0,\
 
+#====================first join 50s======================
+reset
+set title "LTE timeout timer and RTO \n".TCP.", ".BUFF."ue ".ue
+set key inside top right box
+set xlabel "Time (s)"
+#set xtic 20
+set ylabel "value (packets)"
+set y2label "delay (ms)"
+set output "timeout-rto-".ue."-49-55.svg"
+#set y2tics nomirror tc lt 2
+#set y2range [0:800]
+#set yrange [0:1200]
+set xrange [49:55]
+set y2tics nomirror tc lt 2
 
+set terminal svg
+
+plot "cubic-".ue.".dat" using 3:(($50-$3)*1000) title "timeout" pt 0 lt 11 axis x1y2,\
+"cubic-".ue.".dat" using 3:($54*1000) title "rto" pt 0 lt 10 axis x1y2,\
+"retrans-".ue."-truth.dat" using 1:(0) title "retransmissions" pt 1 axis x1y2,\
+"tcp_send-".ue.".dat" using 1:12 title "packet delay" pt 0 lt 12 axis x1y2
+
+
+#====================second join 100s======================
+reset
+set title "LTE timeout timer and RTO \n".TCP.", ".BUFF."ue ".ue
+set key inside top right box
+set xlabel "Time (s)"
+#set xtic 20
+set ylabel "value (packets)"
+set y2label "delay (ms)"
+set output "timeout-rto-".ue."-99-105.svg"
+#set y2tics nomirror tc lt 2
+#set y2range [0:800]
+#set yrange [0:1200]
+set xrange [99:105]
+set y2tics nomirror tc lt 2
+
+set terminal svg
+
+plot "cubic-".ue.".dat" using 3:(($50-$3)*1000) title "timeout" pt 0 lt 11 axis x1y2,\
+"cubic-".ue.".dat" using 3:($54*1000) title "rto" pt 0 lt 10 axis x1y2,\
+"retrans-".ue."-truth.dat" using 1:(0) title "retransmissions" pt 1 axis x1y2,\
+"tcp_send-".ue.".dat" using 1:12 title "packet delay" pt 0 lt 12 axis x1y2
+
+
+#====================third join 150s======================
+reset
+set title "LTE timeout timer and RTO \n".TCP.", ".BUFF."ue ".ue
+set key inside top right box
+set xlabel "Time (s)"
+#set xtic 20
+set ylabel "value (packets)"
+set y2label "delay (ms)"
+set output "timeout-rto-".ue."-149-155.svg"
+#set y2tics nomirror tc lt 2
+#set y2range [0:800]
+#set yrange [0:1200]
+set xrange [149:155]
+set y2tics nomirror tc lt 2
+
+set terminal svg
+
+plot "cubic-".ue.".dat" using 3:(($50-$3)*1000) title "timeout" pt 0 lt 11 axis x1y2,\
+"cubic-".ue.".dat" using 3:($54*1000) title "rto" pt 0 lt 10 axis x1y2,\
+"retrans-".ue."-truth.dat" using 1:(0) title "retransmissions" pt 1 axis x1y2,\
+"tcp_send-".ue.".dat" using 1:12 title "packet delay" pt 0 lt 12 axis x1y2
+
+#plot "cubic-".ue.".dat" using 3:50 title "cwnd" with lines,\
+#"cubic-".ue.".dat" using 3:18 title "cubic Wmax" pt 0 lt 9,\
+#"cubic-".ue.".dat" using 3:($54*1000) title "retransmission timeout" with lines lt 10 axis x1y2,\
+#"cubic-".ue.".dat"  using 3:(filter_1st_ssth($14)) title "ssthreshold" with lines lt 3 lc 3,\
+#"retrans-".ue.".dat" using 1:($2) title "retransmissions" with points pt 6 axis x1y2,\
+#"tcp_send-".ue.".dat" using 1:12 title "TCP delay" with lines axis x1y2,\
+#"join.dat" using 9:12 title "UEs joining event" pt 2 axis x1y2,\
+#"enb_rlcum_txqueue_size.dat" using 1:($2/PKTSIZE) title "eNB's RLC TxQueue size" pt 0,\
+#"retrans-burst-".ue.".dat" using 1:2 title "Burst retransmission count" with points pt 6 axis x1y2
+#"retrans.dat" using 1:(20):($2) title "retransmissions" with points pt 6 ps variable axis x2y2,\
+##"cubic.dat" using 1:17 title "cubic loss cwnd" pt 1,\
+##"cubic.dat" using ($19/1000):(10) title "cubic last updated time" pt 1,\
+#"cubic.dat" using 1:21 title "cubic estimated tcp_cwnd" pt 0,\
 
 #===========================================
 reset
