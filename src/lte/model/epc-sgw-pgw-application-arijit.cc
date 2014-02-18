@@ -27,9 +27,6 @@
 #include "ns3/inet-socket-address.h"
 #include "ns3/epc-gtpu-header.h"
 #include "ns3/abort.h"
-#include <ns3/simulator.h>
-#include <ns3/nstime.h>
-
 
 namespace ns3 {
 
@@ -44,10 +41,8 @@ NS_LOG_COMPONENT_DEFINE ("EpcSgwPgwApplication")
 
 EpcSgwPgwApplication::UeInfo::UeInfo ()
 {
-	pktCnt = 0;
-	marker = 10000; //pkts between 2 pagings.
-	pagingDelay = 100; //in ms
   NS_LOG_FUNCTION (this);
+  packetCnt = 0;
 }
 
 void
@@ -139,6 +134,7 @@ bool
 EpcSgwPgwApplication::RecvFromTunDevice (Ptr<Packet> packet, const Address& source, const Address& dest, uint16_t protocolNumber)
 {
   NS_LOG_FUNCTION (this << source << dest << packet << packet->GetSize ());
+
   // get IP address of UE
   Ptr<Packet> pCopy = packet->Copy ();
   Ipv4Header ipv4Header;
@@ -155,23 +151,22 @@ EpcSgwPgwApplication::RecvFromTunDevice (Ptr<Packet> packet, const Address& sour
   else
     {
       Ipv4Address enbAddr = it->second->GetEnbAddr ();      
-      uint32_t teid = it->second->Classify (packet);   
+      uint32_t teid = it->second->Classify (packet);
+      uint32_t packetCnt = it->second->packetCnt;   
       if (teid == 0)
         {
           NS_LOG_WARN ("no matching bearer for this packet");                   
         }
       else
-        {	
-					if (it->second->pktCnt % it->second->marker == 0){
-						//synthetic paging delay
-						NS_LOG_INFO ("pktCnt = " << it->second->pktCnt << " paging delay " << it->second->pagingDelay);
-						Simulator::Schedule (MilliSeconds(it->second->pagingDelay), &EpcSgwPgwApplication::SendToS1uSocket, this, packet, enbAddr, teid);
-					}
-					else{
-          	SendToS1uSocket (packet, enbAddr, teid);
-					}
-					it->second->pktCnt++;	//increase pkt count for this UE.
-					//NS_LOG_LOGIC ("UE " << ueAddr << " pkt cnt " << it->second->pktCnt);
+        {
+          if (packetCnt % 10 != 0)
+          {
+            SendToS1uSocket (packet, enbAddr, teid);
+          }
+          else
+          {
+               Simulator::Schedule (MilliSeconds (1000), &EpcSgwPgwApplication::SendToS1uSocket,this,packet, enbAddr, teid);
+          }
         }
     }
   // there is no reason why we should notify the TUN
@@ -321,3 +316,4 @@ EpcSgwPgwApplication::DoModifyBearerRequest (EpcS11SapSgw::ModifyBearerRequestMe
 }
  
 }; // namespace ns3
+

@@ -208,6 +208,9 @@ private:
     void SetUeAddr (Ipv4Address addr);
 
 
+		uint32_t pktCnt;
+		uint16_t marker; 	//pkts.
+		uint16_t pagingDelay; //in ms.
   private:
     EpcTftClassifier m_tftClassifier;
     Ipv4Address m_enbAddr;
