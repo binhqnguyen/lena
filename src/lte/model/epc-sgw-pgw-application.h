@@ -209,8 +209,8 @@ private:
 
 
 		uint32_t pktCnt;
-		uint16_t marker; 	//pkts.
 		uint16_t pagingDelay; //in ms.
+		int32_t last_pkt_time; //last to-UE pkt time in second.
   private:
     EpcTftClassifier m_tftClassifier;
     Ipv4Address m_enbAddr;

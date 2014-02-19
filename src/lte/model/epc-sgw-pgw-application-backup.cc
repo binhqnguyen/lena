@@ -42,7 +42,9 @@ NS_LOG_COMPONENT_DEFINE ("EpcSgwPgwApplication")
 EpcSgwPgwApplication::UeInfo::UeInfo ()
 {
   NS_LOG_FUNCTION (this);
-  packetCnt = 0;
+  pktCnt = 0;
+	last_pkt_time = -5000;
+	pagingDelay = 100;
 }
 
 void
@@ -152,21 +154,24 @@ EpcSgwPgwApplication::RecvFromTunDevice (Ptr<Packet> packet, const Address& sour
     {
       Ipv4Address enbAddr = it->second->GetEnbAddr ();      
       uint32_t teid = it->second->Classify (packet);
-      uint32_t packetCnt = it->second->packetCnt;   
       if (teid == 0)
         {
           NS_LOG_WARN ("no matching bearer for this packet");                   
         }
       else
         {
-          if (packetCnt % 10 != 0)
+          if (Simulator::Now().GetMilliSeconds() > it->second->last_pkt_time + 5000) //Last pkt is 5s before, do paging
           {
-            SendToS1uSocket (packet, enbAddr, teid);
+						NS_LOG_INFO("pktCnt " << it->second->pktCnt << " last_time " << it->second->last_pkt_time
+												<< " current " << Simulator::Now().GetSeconds() << " paging_delay " << it->second->pagingDelay);
+            Simulator::Schedule (MilliSeconds (it->second->pagingDelay), &EpcSgwPgwApplication::SendToS1uSocket,this,packet, enbAddr, teid);
           }
           else
           {
-               Simulator::Schedule (MilliSeconds (1000), &EpcSgwPgwApplication::SendToS1uSocket,this,packet, enbAddr, teid);
+            SendToS1uSocket (packet, enbAddr, teid);
           }
+					it->second->last_pkt_time = Simulator::Now().GetMilliSeconds();
+					it->second->pktCnt++;
         }
     }
   // there is no reason why we should notify the TUN
