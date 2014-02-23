@@ -106,7 +106,7 @@ do
 	gnuplot -e "ue='$ue'" plot-averaged
 done
 
-./plot_sequence.sh
+./plot-sequence.sh $NUM_UE
 
 #######backing up#########
 #BACKUP_FOLDER="$ENV/from_cade/$E_NAME"

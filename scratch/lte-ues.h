@@ -62,9 +62,10 @@ double speed_mps = 20; //20m/s
 /*******Simulation******/
 uint16_t radioUlBandwidth = 25;  
 uint16_t radioDlBandwidth = 25;  //same as above, for downlink.
-std::string SACK="1";
+std::string SACK="0";
 std::string TIME_STAMP="0";
 std::string WINDOW_SCALING="1";
+std::string FRTO="0";
 std::string TCP_VERSION="cubic"; //reno,westwood,vegas,veno,yeah,illinois,htcp,hybla
 std::string configure_input = "lte-ues.in";
 std::string configure_output = "lte-ues.out";
@@ -120,8 +121,8 @@ std::map <FlowId, FlowMonitor::FlowStats> stats;
 std::string dataRate = "150Mb/s";
 uint16_t dlPort = 10000;
 uint16_t ulPort = 20000;
-LogLevel logLevel = (LogLevel) (LOG_PREFIX_TIME | LOG_PREFIX_NODE| LOG_PREFIX_FUNC | LOG_LEVEL_DEBUG);
-//LogLevel logLevel = (LogLevel) (LOG_PREFIX_TIME | LOG_PREFIX_NODE| LOG_PREFIX_FUNC | LOG_LEVEL_ALL);
+//LogLevel logLevel = (LogLevel) (LOG_PREFIX_TIME | LOG_PREFIX_NODE| LOG_PREFIX_FUNC | LOG_LEVEL_DEBUG);
+LogLevel logLevel = (LogLevel) (LOG_PREFIX_TIME | LOG_PREFIX_NODE| LOG_PREFIX_FUNC | LOG_LEVEL_ALL);
 
 //Routing
 Ptr<Ipv4StaticRouting> remoteHostStaticRouting;

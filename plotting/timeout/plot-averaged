@@ -27,6 +27,9 @@ filter(x)=((x<100||x>1000000)?1/0:x)
 filter_1st_ssth(x)=((x<1000000)?x:1/0)
 is_missing(x)=system("/var/tmp/ln_result/radio/check_missing_file.sh ".x)
 
+
+
+
 #===========================================
 reset
 set title "LTE Congestion window \n".TCP.", ".BUFF."ue ".ue
@@ -45,7 +48,7 @@ set y2tics nomirror tc lt 2
 set terminal svg
 
 
-plot "cubic-".ue.".dat" using 3:10 title "cwnd" with lines,\
+plot "cubic-".ue.".dat" using 3:10 title "cwnd" pt 0 lt 1,\
 "cubic-".ue.".dat" using 3:18 title "cubic Wmax" pt 0 lt 9,\
 "cubic-".ue.".dat" using 3:($54*1000) title "retransmission timeout" with lines lt 10 axis x1y2,\
 "cubic-".ue.".dat"  using 3:(filter_1st_ssth($14)) title "ssthreshold" with lines lt 3 lc 3,\
@@ -80,13 +83,39 @@ set terminal svg
 plot "cubic-".ue.".dat" using 3:(($50-$3)*1000) title "timeout" pt 0 lt 11 axis x1y2,\
 "cubic-".ue.".dat" using 3:($54*1000) title "rto" pt 0 lt 10 axis x1y2,\
 "retrans-".ue."-truth.dat" using 1:(0) title "retransmissions" pt 1 axis x1y2,\
+"cubic-".ue.".dat" using 3:10 title "cwnd" pt 0 lt 1,\
 "tcp_send-".ue.".dat" using 1:12 title "packet delay" pt 0 lt 12 axis x1y2
+
+#=========
+reset
+set title "Packet sequence ".TCP.", ".BUFF
+set key inside bottom right box
+set xlabel "Time (s)"
+#set xtic 10
+set ylabel "packet sequence #"
+set y2label "count"
+set output "sequence-".ue."-49-55.svg"
+set y2tics nomirror tc lt 2
+set y2range [0:8]
+#set yrange [0:1200]
+set xrange [49:55]
+#set x2range [x1:x2]
+#set y2tics nomirror tc lt 4
+#set log y2
+
+set terminal svg
+
+
+plot "sequence_send-".ue.".dat" using 1:2 title "send seq number" pt 1 lt 1,\
+"sequence_ack-".ue.".dat" using 1:2 title "ack seq number" pt 1 lt 2,\
+"enb_dev_queue_drop.txt" using 1:(0) title "enb queue droptail" pt 2,\
+"retrans-".ue."-truth.dat" using 1:(0):($2) title "retransmissions" pt 1 lt 3
 
 
 #====================second join 100s======================
 reset
 set title "LTE timeout timer and RTO \n".TCP.", ".BUFF."ue ".ue
-set key inside top right box
+set key inside top left box
 set xlabel "Time (s)"
 #set xtic 20
 set ylabel "value (packets)"
@@ -103,7 +132,33 @@ set terminal svg
 plot "cubic-".ue.".dat" using 3:(($50-$3)*1000) title "timeout" pt 0 lt 11 axis x1y2,\
 "cubic-".ue.".dat" using 3:($54*1000) title "rto" pt 0 lt 10 axis x1y2,\
 "retrans-".ue."-truth.dat" using 1:(0) title "retransmissions" pt 1 axis x1y2,\
+"cubic-".ue.".dat" using 3:10 title "cwnd" pt 0 lt 1,\
 "tcp_send-".ue.".dat" using 1:12 title "packet delay" pt 0 lt 12 axis x1y2
+
+#=========
+reset
+set title "Packet sequence ".TCP.", ".BUFF
+set key inside top right left box
+set xlabel "Time (s)"
+#set xtic 10
+set ylabel "packet sequence #"
+set y2label "count"
+set output "sequence-".ue."-99-105.svg"
+set y2tics nomirror tc lt 2
+set y2range [0:8]
+#set yrange [0:1200]
+set xrange [99:105]
+#set x2range [x1:x2]
+#set y2tics nomirror tc lt 4
+#set log y2
+
+set terminal svg
+
+
+plot "sequence_send-".ue.".dat" using 1:2 title "send seq number" pt 1 lt 1,\
+"sequence_ack-".ue.".dat" using 1:2 title "ack seq number" pt 1 lt 2,\
+"enb_dev_queue_drop.txt" using 1:(0) title "enb queue droptail" pt 2,\
+"retrans-".ue."-truth.dat" using 1:(0):($2) title "retransmissions" pt 1 lt 3
 
 
 #====================third join 150s======================
@@ -117,7 +172,7 @@ set y2label "delay (ms)"
 set output "timeout-rto-".ue."-149-155.svg"
 #set y2tics nomirror tc lt 2
 #set y2range [0:800]
-#set yrange [0:1200]
+  #set yrange [0:1200]
 set xrange [149:155]
 set y2tics nomirror tc lt 2
 
@@ -128,19 +183,30 @@ plot "cubic-".ue.".dat" using 3:(($50-$3)*1000) title "timeout" pt 0 lt 11 axis 
 "retrans-".ue."-truth.dat" using 1:(0) title "retransmissions" pt 1 axis x1y2,\
 "tcp_send-".ue.".dat" using 1:12 title "packet delay" pt 0 lt 12 axis x1y2
 
-#plot "cubic-".ue.".dat" using 3:50 title "cwnd" with lines,\
-#"cubic-".ue.".dat" using 3:18 title "cubic Wmax" pt 0 lt 9,\
-#"cubic-".ue.".dat" using 3:($54*1000) title "retransmission timeout" with lines lt 10 axis x1y2,\
-#"cubic-".ue.".dat"  using 3:(filter_1st_ssth($14)) title "ssthreshold" with lines lt 3 lc 3,\
-#"retrans-".ue.".dat" using 1:($2) title "retransmissions" with points pt 6 axis x1y2,\
-#"tcp_send-".ue.".dat" using 1:12 title "TCP delay" with lines axis x1y2,\
-#"join.dat" using 9:12 title "UEs joining event" pt 2 axis x1y2,\
-#"enb_rlcum_txqueue_size.dat" using 1:($2/PKTSIZE) title "eNB's RLC TxQueue size" pt 0,\
-#"retrans-burst-".ue.".dat" using 1:2 title "Burst retransmission count" with points pt 6 axis x1y2
-#"retrans.dat" using 1:(20):($2) title "retransmissions" with points pt 6 ps variable axis x2y2,\
-##"cubic.dat" using 1:17 title "cubic loss cwnd" pt 1,\
-##"cubic.dat" using ($19/1000):(10) title "cubic last updated time" pt 1,\
-#"cubic.dat" using 1:21 title "cubic estimated tcp_cwnd" pt 0,\
+#=========
+reset
+set title "Packet sequence ".TCP.", ".BUFF
+set key inside bottom right box
+set xlabel "Time (s)"
+#set xtic 10
+set ylabel "packet sequence #"
+set y2label "count"
+set output "sequence-".ue."-149-155.svg"
+set y2tics nomirror tc lt 2
+set y2range [0:8]
+#set yrange [0:1200]
+set xrange [149:155]
+#set x2range [x1:x2]
+#set y2tics nomirror tc lt 4
+#set log y2
+
+set terminal svg
+
+
+plot "sequence_send-".ue.".dat" using 1:2 title "send seq number" pt 1 lt 1,\
+"sequence_ack-".ue.".dat" using 1:2 title "ack seq number" pt 1 lt 2,\
+"enb_dev_queue_drop.txt" using 1:(0) title "enb queue droptail" pt 2,\
+"retrans-".ue."-truth.dat" using 1:(0):($2) title "retransmissions" pt 1 lt 3
 
 #===========================================
 reset

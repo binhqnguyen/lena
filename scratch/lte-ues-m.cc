@@ -59,9 +59,9 @@ set_up_enbs();
   *Attach UEs to the specified eNB
   */
 //ScheduleUoeAttach(0, CreateUes(1,0.0));	//
-uint16_t join_ue = 15;
+uint16_t join_ue = 3;
 double join_time = 50.0;
-CreateUes(1,0.0,1000);	//current UEs constantly in the cell.
+CreateUes(3,0.0,1000);	//current UEs constantly in the cell.
 CreateUes(join_ue,join_time*1,1000);	//current UEs constantly in the cell.
 CreateUes(join_ue,join_time*2,1000);	//current UEs constantly in the cell.
 CreateUes(join_ue,join_time*3,1000);	//current UEs constantly in the cell.
@@ -152,6 +152,7 @@ set_up_remote_host_and_sgw_and_p2p_link(){
   Config::Set ("/NodeList/*/$ns3::Ns3NscStack<linux2.6.26>/net.ipv4.tcp_timestamps", StringValue (TIME_STAMP));
   Config::Set ("/NodeList/*/$ns3::Ns3NscStack<linux2.6.26>/net.ipv4.tcp_window_scaling", StringValue (WINDOW_SCALING));
   Config::Set ("/NodeList/*/$ns3::Ns3NscStack<linux2.6.26>/net.ipv4.tcp_congestion_control", StringValue (TCP_VERSION));
+  Config::Set ("/NodeList/*/$ns3::Ns3NscStack<linux2.6.26>/net.ipv4.tcp_frto", StringValue (FRTO));
   //Config::Set ("/NodeList/*/$ns3::Ns3NscStack<linux2.6.26>/net.core.wmem_max", StringValue ("8338608"));
   //Config::Set ("/NodeList/*/$ns3::Ns3NscStack<linux2.6.26>/net.core.rmem_max", StringValue ("8338608"));
   //Config::Set ("/NodeList/*/$ns3::Ns3NscStack<linux2.6.26>/net.ipv4.tcp_rmem", StringValue ("4096 8000000 8338608"));
@@ -687,22 +688,22 @@ void EnableLogComponents(){
 			LogLevel logLevel = (LogLevel) (LOG_LEVEL_ALL | LOG_PREFIX_TIME | LOG_PREFIX_NODE | LOG_PREFIX_FUNC);
 			//LogComponentEnable ("LteHelper", logLevel);
   		//LogComponentEnable ("EpcHelper", logLevel);
-  		LogComponentEnable ("EpcEnbApplication", logLevel);
-  		LogComponentEnable ("EpcX2", logLevel);
-  		LogComponentEnable ("EpcSgwPgwApplication", logLevel);
+  		//LogComponentEnable ("EpcEnbApplication", logLevel);
+  		//LogComponentEnable ("EpcX2", logLevel);
+  		//LogComponentEnable ("EpcSgwPgwApplication", logLevel);
   		LogComponentEnable ("NscTcpSocketImpl",logLevel);
   		LogComponentEnable ("LteEnbNetDevice", logLevel);
-  		LogComponentEnable ("LteUeRrc", logLevel);
-  		LogComponentEnable ("LteUeNetDevice", logLevel);
+  		//LogComponentEnable ("LteUeRrc", logLevel);
+  		//LogComponentEnable ("LteUeNetDevice", logLevel);
 		}
 		LogComponentEnable ("NscTcpL4Protocol", logLevel);
-		LogComponentEnable ("Ipv4", logLevel);
-  	LogComponentEnable ("LteUeRrc", logLevel);
-  	LogComponentEnable ("LteRlcUm", logLevel);
+		//LogComponentEnable ("Ipv4", logLevel);
+  	//LogComponentEnable ("LteUeRrc", logLevel);
+  	//LogComponentEnable ("LteRlcUm", logLevel);
   	LogComponentEnable ("LteRlcAm", logLevel);
-  	LogComponentEnable ("LteEnbRrc", logLevel);
-  	LogComponentEnable ("LtePdcp", logLevel);
-  	LogComponentEnable ("EpcX2", logLevel);
+  	//LogComponentEnable ("LteEnbRrc", logLevel);
+  	//LogComponentEnable ("LtePdcp", logLevel);
+  	//LogComponentEnable ("EpcX2", logLevel);
  }
 }
 void SetDefaultConfigs(){
