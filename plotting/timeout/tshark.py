@@ -37,13 +37,17 @@ if __name__ == "__main__":
       line = file.readline()
 
     INPUT_FILE =  "sequence_ack-700"+str(i+2)+".all" 
-    OUTPUT_FILE = "sequence_ack-700"+str(i+2)+".dat" 
+    OUTPUT_FILE_1 = "sequence_ack-700"+str(i+2)+".dat" 
+    OUTPUT_FILE_2 = "sequence_dupack-700"+str(i+2)+".dat" 
 
     file = open (INPUT_FILE)
-    if (os.path.isfile(OUTPUT_FILE)):      ##if output file not exist
-        open(OUTPUT_FILE,'w').close()
-    outfile = open (OUTPUT_FILE,'w+')
+    if (os.path.isfile(OUTPUT_FILE_1)):      ##if output file not exist
+        open(OUTPUT_FILE_1,'w').close()
+    outfile_1 = open (OUTPUT_FILE_1,'w+')
 
+    if (os.path.isfile(OUTPUT_FILE_2)):      ##if output file not exist
+        open(OUTPUT_FILE_2,'w').close()
+    outfile_2 = open (OUTPUT_FILE_2,'w+')
 
     line = file.readline()
     tokens = {}
@@ -51,6 +55,10 @@ if __name__ == "__main__":
     while (line):
       tokens = line.split()
       timestamp = tokens[1]
+      #dupack and ack filtering
+      if re.search('Dup ACK',line):
+        outfile = outfile_2
+      else: outfile = outfile_1
       
       ack_i = 0
       for j in range(0,len(tokens)):

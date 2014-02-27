@@ -48,46 +48,6 @@ if __name__ == "__main__":
 					last_rt_time = float (tokens[2])
 			line = file.readline()
 
-	#########Without cumulating########
-	for i in range(0,UE):
-		INPUT_FILE =  "cubic-700"+str(i+2)+".dat" 
-		OUTPUT_FILE = "retrans-700"+str(i+2)+"-truth.dat"
-		
-		if (not os.path.exists(INPUT_FILE)):
-			continue
-		file = open (INPUT_FILE)
-		line = file.readline()
-		tokens = {}
-
-		CUMMULATIVE_INTERVAL = 0.0 #within 10ms, retrans are cummulatively counted.
-
-		if (os.path.isfile(OUTPUT_FILE)):      ##if output file not exist
-			open(OUTPUT_FILE,'w').close()
-		outfile = open (OUTPUT_FILE,'w+')
-		last_rt_cnt = 0
-		last_rt_time = 0.0
-		cum_retrans = 0
-		while (line):
-			tokens = line.split()
-			#print (tokens[-1]+"\n")
-			if (int (tokens[43]) > last_rt_cnt):	#retrans detected
-				last_rt_cnt = int (tokens[43])
-				#print (tokens[-1]+"\n")
-				try:
-					float (tokens[2])
-				except ValueError:
-					line = file.readline()
-					continue
-
-				if (float (tokens[2]) < last_rt_time + CUMMULATIVE_INTERVAL): ##cummulatively count retrans
-					cum_retrans += 1
-				else:
-				#print (tokens[-1]+"\n")
-					outfile.write(str (last_rt_time)+"\t"+ str (cum_retrans+1)+"\n")
-					cum_retrans = 0  #reset cum_retrans		
-					last_rt_time = float (tokens[2])
-			line = file.readline()
-
 	#####Retransmission burst sizes and total #####
 	for i in range(0,UE):
 		INPUT_FILE =  "retrans-700"+str(i+2)+".dat" 

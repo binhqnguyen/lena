@@ -59,7 +59,7 @@ set_up_enbs();
   *Attach UEs to the specified eNB
   */
 //ScheduleUoeAttach(0, CreateUes(1,0.0));	//
-uint16_t join_ue = 3;
+uint16_t join_ue = 6;
 double join_time = 50.0;
 CreateUes(3,0.0,1000);	//current UEs constantly in the cell.
 CreateUes(join_ue,join_time*1,1000);	//current UEs constantly in the cell.
@@ -373,11 +373,12 @@ CreateUes(uint32_t number_of_ues, double startTime, double on_time){
   internet.Install (ueNodes);
   Ipv4InterfaceContainer ueIpIfaces;
   ueIpIfaces = epcHelper->AssignUeIpv4Address (NetDeviceContainer (ueLteDevs));
-  
   Config::Set ("/NodeList/*/$ns3::Ns3NscStack<linux2.6.26>/net.ipv4.tcp_sack", StringValue (SACK));
   Config::Set ("/NodeList/*/$ns3::Ns3NscStack<linux2.6.26>/net.ipv4.tcp_timestamps", StringValue (TIME_STAMP));
   Config::Set ("/NodeList/*/$ns3::Ns3NscStack<linux2.6.26>/net.ipv4.tcp_window_scaling", StringValue (WINDOW_SCALING));
-  Config::Set ("/NodeList/*/$ns3::Ns3NscStack<linux2.6.26>/net.ipv4.tcp_congestion_control", StringValue (TCP_VERSION)); 
+  Config::Set ("/NodeList/*/$ns3::Ns3NscStack<linux2.6.26>/net.ipv4.tcp_congestion_control", StringValue (TCP_VERSION));
+  Config::Set ("/NodeList/*/$ns3::Ns3NscStack<linux2.6.26>/net.ipv4.tcp_frto", StringValue (FRTO));
+
   //Config::Set ("/NodeList/*/$ns3::Ns3NscStack<linux2.6.26>/net.core.wmem_max", StringValue ("8338608"));
   //Config::Set ("/NodeList/*/$ns3::Ns3NscStack<linux2.6.26>/net.core.rmem_max", StringValue ("8338608"));
   //Config::Set ("/NodeList/*/$ns3::Ns3NscStack<linux2.6.26>/net.ipv4.tcp_rmem", StringValue ("4096 8000000 8338608"));

@@ -63,7 +63,7 @@ cp $CODE_DIR/.dat $RE_DIR/$4/
 ##copy code
 rm -rf $RE_DIR/$4/code
 mkdir $RE_DIR/$4/code
-cp $CODE_DIR/scratch/$lte.cc $RE_DIR/$4/code
+cp $CODE_DIR/scratch/ $RE_DIR/$4/code
 cp $CODE_DIR/src/lte/model/lte-rlc* $RE_DIR/$4/code
 
 cp $CODE_DIR/scratch/$lte.cc $RE_DIR/$4
