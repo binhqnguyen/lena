@@ -47,9 +47,9 @@ done
 
 ################ RLC UM log ###########
 echo "***RLC preparation ...."
-grep -w " $RLC:" TCP_LOG > enb_rlc_um.raw
-grep -w "TxBuffer is full. RLC SDU discarded" enb_rlc_um.raw  > enb_rlcum_txqueue_drop_tmp.tmp
-grep -w "$RLC:DoTransmitPdcpPdu(): txBufferSize" TCP_LOG | grep -v "5 $RLC:DoTransmitPdcpPdu(): txBufferSize" > enb_rlcum_txqueue_size_tmp.tmp
+grep " $RLC:" TCP_LOG > enb_rlc_um.raw
+grep "TxBuffer is full. RLC SDU discarded" enb_rlc_um.raw  > enb_rlcum_txqueue_drop_tmp.tmp
+grep "$RLC:DoTransmitPdcpPdu(): txBufferSize" TCP_LOG | grep -v "5 $RLC:DoTransmitPdcpPdu(): txBufferSize" > enb_rlcum_txqueue_size_tmp.tmp
 
 ######Send and ack flow#####
 echo "***Sending flow and acking flow put preparation ...."
@@ -98,6 +98,8 @@ echo "***Running scripts for post processing ...."
 ########calculate retrans from cubic.dat##########
 ./retrans_count.py $NUM_UE
 
+./plot-sequence.sh $NUM_UE
+
 ######plot and move graph files######
 echo "***Plotting graphs ...."
 for ((ue_ip=0; ue_ip < $NUM_UE; ue_ip++))
@@ -106,7 +108,6 @@ do
 	gnuplot -e "ue='$ue'" plot-averaged
 done
 
-./plot-sequence.sh $NUM_UE
 
 #######backing up#########
 #BACKUP_FOLDER="$ENV/from_cade/$E_NAME"

@@ -102,6 +102,8 @@ public:
   void SendToTunDevice (Ptr<Packet> packet, uint32_t teid);
 
 
+	void SendToS1uSocket_binh (Ptr<Packet> packet, Ipv4Address enbAddr, uint32_t teid, Ipv4Address ueAddr); 
+
   /** 
    * Send a packet to the SGW via the S1-U interface
    * 
@@ -110,7 +112,6 @@ public:
    * \param teid the Tunnel Enpoint IDentifier
    */
   void SendToS1uSocket (Ptr<Packet> packet, Ipv4Address enbS1uAddress, uint32_t teid);
-  
 
   /** 
    * Set the MME side of the S11 SAP 
@@ -219,6 +220,7 @@ private:
   };
 
 
+	uint16_t m_is_delay_peak;
  /**
   * UDP socket to send and receive GTP-U packets to and from the S1-U interface
   */

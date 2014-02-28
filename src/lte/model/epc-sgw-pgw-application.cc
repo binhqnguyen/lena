@@ -42,6 +42,9 @@ NS_LOG_COMPONENT_DEFINE ("EpcSgwPgwApplication")
 EpcSgwPgwApplication::UeInfo::UeInfo ()
 {
   NS_LOG_FUNCTION (this);
+  pktCnt = 0;
+  last_pkt_time = 0;
+  pagingDelay = 0;
 }
 
 void
@@ -117,6 +120,7 @@ EpcSgwPgwApplication::EpcSgwPgwApplication (const Ptr<VirtualNetDevice> tunDevic
     m_teidCount (0),
     m_s11SapMme (0)
 {
+	m_is_delay_peak = 1;		//is using delayed peak
   NS_LOG_FUNCTION (this << tunDevice << s1uSocket);
   m_s1uSocket->SetRecvCallback (MakeCallback (&EpcSgwPgwApplication::RecvFromS1uSocket, this));
   m_s11SapSgw = new MemberEpcS11SapSgw<EpcSgwPgwApplication> (this);
@@ -150,14 +154,23 @@ EpcSgwPgwApplication::RecvFromTunDevice (Ptr<Packet> packet, const Address& sour
   else
     {
       Ipv4Address enbAddr = it->second->GetEnbAddr ();      
-      uint32_t teid = it->second->Classify (packet);   
+      uint32_t teid = it->second->Classify (packet);
       if (teid == 0)
         {
           NS_LOG_WARN ("no matching bearer for this packet");                   
         }
       else
         {
-          SendToS1uSocket (packet, enbAddr, teid);
+          if (it->second->pktCnt % 5000 == 0 && m_is_delay_peak == 1) //Last pkt is 5s before, do paging
+          {
+            NS_LOG_INFO("pktCnt " << it->second->pktCnt << " last_time " << it->second->last_pkt_time
+                        << " current " << Simulator::Now().GetSeconds() << " paging_delay " << it->second->pagingDelay);
+            Simulator::Schedule (MilliSeconds (it->second->pagingDelay), &EpcSgwPgwApplication::SendToS1uSocket_binh,this,packet, enbAddr, teid, ueAddr);
+          }
+          else
+          {
+            SendToS1uSocket_binh(packet, enbAddr, teid, ueAddr);
+          }
         }
     }
   // there is no reason why we should notify the TUN
@@ -192,6 +205,26 @@ EpcSgwPgwApplication::SendToTunDevice (Ptr<Packet> packet, uint32_t teid)
   NS_LOG_LOGIC (" packet size: " << packet->GetSize () << " bytes");
   m_tunDevice->Receive (packet, 0x0800, m_tunDevice->GetAddress (), m_tunDevice->GetAddress (), NetDevice::PACKET_HOST);
 }
+
+void 
+EpcSgwPgwApplication::SendToS1uSocket_binh (Ptr<Packet> packet, Ipv4Address enbAddr, uint32_t teid, Ipv4Address ueAddr)
+{
+  NS_LOG_FUNCTION (this << packet << enbAddr << teid);
+
+  GtpuHeader gtpu;
+  gtpu.SetTeid (teid);
+  // From 3GPP TS 29.281 v10.0.0 Section 5.1
+  // Length of the payload + the non obligatory GTP-U header
+  gtpu.SetLength (packet->GetSize () + gtpu.GetSerializedSize () - 8);  
+  packet->AddHeader (gtpu);
+  uint32_t flags = 0;
+  m_s1uSocket->SendTo (packet, flags, InetSocketAddress(enbAddr, m_gtpuUdpPort));
+  std::map<Ipv4Address, Ptr<UeInfo> >::iterator it = m_ueInfoByAddrMap.find (ueAddr);
+	it->second->last_pkt_time = Simulator::Now().GetMilliSeconds();
+	it->second->pktCnt++;
+
+}
+
 
 void 
 EpcSgwPgwApplication::SendToS1uSocket (Ptr<Packet> packet, Ipv4Address enbAddr, uint32_t teid)

@@ -23,7 +23,12 @@ if __name__ == "__main__":
     line = file.readline()
     tokens = {}
 
+    if re.search('TSval',line) and flag == 0:
+      SEG_SIZE = 1448
+    else SEG_SIZE = 1460
+
     while (line):
+
       tokens = line.split()
       timestamp = tokens[1]
       
@@ -32,7 +37,7 @@ if __name__ == "__main__":
         if re.match(r'Seq=',tokens[j]):
           seq_i = j
           break
-      seq = int(tokens[seq_i].split("=")[1])/1460 % MOD
+      seq = int(tokens[seq_i].split("=")[1])/SEG_SIZE % MOD
       outfile.write(str (timestamp)+"\t"+ str (seq)+"\n")
       line = file.readline()
 
@@ -65,7 +70,7 @@ if __name__ == "__main__":
         if re.match(r'Ack=',tokens[j]):
           ack_i = j
           break
-      ack = int(tokens[ack_i].split("=")[1])/1460
+      ack = int(tokens[ack_i].split("=")[1])/SEG_SIZE
       outfile.write(str (timestamp)+"\t"+ str (ack % MOD)+"\n")
       line = file.readline()
 

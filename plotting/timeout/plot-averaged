@@ -71,11 +71,11 @@ set xlabel "Time (s)"
 #set xtic 20
 set ylabel "value (packets)"
 set y2label "delay (ms)"
-set output "timeout-rto-".ue."-49-55.svg"
+set output "timeout-rto-".ue."-50-57.svg"
 #set y2tics nomirror tc lt 2
 #set y2range [0:800]
 #set yrange [0:1200]
-set xrange [49:55]
+set xrange [50:57]
 set y2tics nomirror tc lt 2
 
 set terminal svg
@@ -89,16 +89,16 @@ plot "cubic-".ue.".dat" using 3:(($50-$3)*1000) title "timeout" pt 0 lt 11 axis 
 #=========
 reset
 set title "Packet sequence ".TCP.", ".BUFF
-set key inside bottom right box
+set key inside top right box
 set xlabel "Time (s)"
 #set xtic 10
 set ylabel "packet sequence #"
 set y2label "count"
-set output "sequence-".ue."-49-55.svg"
+set output "sequence-".ue."-50-57.svg"
 set y2tics nomirror tc lt 2
 set y2range [0:8]
 #set yrange [0:1200]
-set xrange [49:55]
+set xrange [50:57]
 #set x2range [x1:x2]
 #set y2tics nomirror tc lt 4
 #set log y2
@@ -110,6 +110,8 @@ plot "sequence_send-".ue.".dat" using 1:2 title "send seq number" pt 1 lt 1,\
 "sequence_ack-".ue.".dat" using 1:2 title "ack seq number" pt 1 lt 2,\
 "sequence_dupack-".ue.".dat" using 1:2 title "dup-ack seq number" pt 1 lt 3,\
 "enb_dev_queue_drop.txt" using 1:(0) title "enb queue droptail" pt 2,\
+"sequence_first_retrans-".ue.".dat" using 1:2 title "1st retrans #" pt 1 lt 6,\
+"sequence_second_retrans-".ue.".dat" using 1:2 title "2nd retrans #" pt 1 lt 7,\
 "retrans-".ue."-truth.dat" using 1:(0):($2) title "retransmissions" pt 1 lt 3
 
 
@@ -160,6 +162,8 @@ plot "sequence_send-".ue.".dat" using 1:2 title "send seq number" pt 1 lt 1,\
 "sequence_ack-".ue.".dat" using 1:2 title "ack seq number" pt 1 lt 2,\
 "sequence_dupack-".ue.".dat" using 1:2 title "dup-ack seq number" pt 1 lt 3,\
 "enb_dev_queue_drop.txt" using 1:(0) title "enb queue droptail" pt 2,\
+"sequence_first_retrans-".ue.".dat" using 1:2 title "1st retrans #" pt 1 lt 6,\
+"sequence_second_retrans-".ue.".dat" using 1:2 title "2nd retrans #" pt 1 lt 7,\
 "retrans-".ue."-truth.dat" using 1:(0):($2) title "retransmissions" pt 1 lt 3
 
 
@@ -209,8 +213,58 @@ plot "sequence_send-".ue.".dat" using 1:2 title "send seq number" pt 1 lt 1,\
 "sequence_ack-".ue.".dat" using 1:2 title "ack seq number" pt 1 lt 2,\
 "sequence_dupack-".ue.".dat" using 1:2 title "dup-ack seq number" pt 1 lt 3,\
 "enb_dev_queue_drop.txt" using 1:(0) title "enb queue droptail" pt 2,\
+"sequence_first_retrans-".ue.".dat" using 1:2 title "1st retrans #" pt 1 lt 6,\
+"sequence_second_retrans-".ue.".dat" using 1:2 title "2nd retrans #" pt 1 lt 7,\
 "retrans-".ue."-truth.dat" using 1:(0):($2) title "retransmissions" pt 1 lt 3
 
+
+#====================normal loss======================
+reset
+set title "LTE timeout timer and RTO \n".TCP.", ".BUFF."ue ".ue
+set key inside top right box
+set xlabel "Time (s)"
+#set xtic 20
+set ylabel "value (packets)"
+set y2label "delay (ms)"
+set output "timeout-rto-".ue."-38-40.svg"
+#set y2tics nomirror tc lt 2
+#set y2range [0:800]
+  #set yrange [0:1200]
+set xrange [38:40]
+set y2tics nomirror tc lt 2
+
+set terminal svg
+
+plot "cubic-".ue.".dat" using 3:(($50-$3)*1000) title "timeout" pt 0 lt 11 axis x1y2,\
+"cubic-".ue.".dat" using 3:($54*1000) title "rto" pt 0 lt 10 axis x1y2,\
+"retrans-".ue."-truth.dat" using 1:(0) title "retransmissions" pt 1 axis x1y2,\
+"tcp_send-".ue.".dat" using 1:12 title "packet delay" pt 0 lt 12 axis x1y2
+
+#=========
+reset
+set title "Packet sequence ".TCP.", ".BUFF
+set key inside bottom right box
+set xlabel "Time (s)"
+#set xtic 10
+set ylabel "packet sequence #"
+set y2label "count"
+set output "sequence-".ue."-38-40.svg"
+set y2tics nomirror tc lt 2
+set y2range [0:8]
+#set yrange [0:1200]
+set xrange [38:40]
+#set x2range [x1:x2]
+#set y2tics nomirror tc lt 4
+#set log y2
+
+set terminal svg
+
+
+plot "sequence_send-".ue.".dat" using 1:2 title "send seq number" pt 1 lt 1,\
+"sequence_ack-".ue.".dat" using 1:2 title "ack seq number" pt 1 lt 2,\
+"sequence_dupack-".ue.".dat" using 1:2 title "dup-ack seq number" pt 1 lt 3,\
+"enb_dev_queue_drop.txt" using 1:(0) title "enb queue droptail" pt 2,\
+"retrans-".ue."-truth.dat" using 1:(0):($2) title "retransmissions" pt 1 lt 3
 #===========================================
 reset
 set title "LTE Congestion window \n".TCP.", ".BUFF."ue ".ue

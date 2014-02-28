@@ -59,7 +59,7 @@ set_up_enbs();
   *Attach UEs to the specified eNB
   */
 //ScheduleUoeAttach(0, CreateUes(1,0.0));	//
-uint16_t join_ue = 6;
+uint16_t join_ue = 3;
 double join_time = 50.0;
 CreateUes(3,0.0,1000);	//current UEs constantly in the cell.
 CreateUes(join_ue,join_time*1,1000);	//current UEs constantly in the cell.
@@ -691,7 +691,7 @@ void EnableLogComponents(){
   		//LogComponentEnable ("EpcHelper", logLevel);
   		//LogComponentEnable ("EpcEnbApplication", logLevel);
   		//LogComponentEnable ("EpcX2", logLevel);
-  		//LogComponentEnable ("EpcSgwPgwApplication", logLevel);
+  		LogComponentEnable ("EpcSgwPgwApplication", logLevel);
   		LogComponentEnable ("NscTcpSocketImpl",logLevel);
   		LogComponentEnable ("LteEnbNetDevice", logLevel);
   		//LogComponentEnable ("LteUeRrc", logLevel);

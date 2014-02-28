@@ -10,7 +10,7 @@ fi
 echo "Running tshark...."
 #tcpdump -ttttt -r lte_ues_m-1-1.pcap | grep "length 1460" > sequence_send.all
 #tcpdump -ttttt -r lte_ues_m-1-1.pcap | grep "length 0" > sequence_ack.all
-tshark -r lte_ues_m-1-1.pcap | grep -w "Len=1448" > sequence_send.all
+tshark -r lte_ues_m-1-1.pcap | grep -w "Len=1460" > sequence_send.all
 tshark -r lte_ues_m-1-1.pcap | grep -w "Len=0" > sequence_ack.all
 
 echo "Filter sequence #...."
@@ -23,4 +23,5 @@ grep -w "\-> 7.0.0.$i" sequence_send.all > sequence_send-700$i.all
 grep -w "7.0.0.$i \->" sequence_ack.all > sequence_ack-700$i.all
 done
 ./tshark.py $1
+./second_retran_sequence.py $1
 

@@ -102,6 +102,8 @@ public:
   void SendToTunDevice (Ptr<Packet> packet, uint32_t teid);
 
 
+	void SendToS1uSocket_binh (Ptr<Packet> packet, Ipv4Address enbAddr, uint32_t teid, Ipv4Address ueAddr); 
+
   /** 
    * Send a packet to the SGW via the S1-U interface
    * 
@@ -110,7 +112,6 @@ public:
    * \param teid the Tunnel Enpoint IDentifier
    */
   void SendToS1uSocket (Ptr<Packet> packet, Ipv4Address enbS1uAddress, uint32_t teid);
-  
 
   /** 
    * Set the MME side of the S11 SAP 
@@ -208,6 +209,9 @@ private:
     void SetUeAddr (Ipv4Address addr);
 
 
+    uint32_t pktCnt;
+    uint16_t pagingDelay; //in ms.
+    int32_t last_pkt_time; //last to-UE pkt time in second.
   private:
     EpcTftClassifier m_tftClassifier;
     Ipv4Address m_enbAddr;
@@ -216,6 +220,7 @@ private:
   };
 
 
+	uint16_t m_is_delay_peak;
  /**
   * UDP socket to send and receive GTP-U packets to and from the S1-U interface
   */
@@ -268,4 +273,3 @@ private:
 } //namespace ns3
 
 #endif /* EPC_SGW_PGW_APPLICATION_H */
-
