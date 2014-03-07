@@ -27,7 +27,7 @@ using namespace ns3;
 
 #define kilo 1000
 #define LONG_LIVED_UE "7.0.0.2"
-#define COARSE_GRAIN_SAMPLING 40
+#define COARSE_GRAIN_SAMPLING 60
 
 double simTime = 200;   //simulation time for EACH application
 static double ue_position_tracking_timer = 0; //timer to schedule position tracking
@@ -155,7 +155,7 @@ uint16_t numBearersPerUe = 1;
 uint32_t isDebug = 0;
 
 /********* Ascii output files name *********/
-static std::string DIR = "/var/tmp/ln_result/radio/";
+static std::string DIR = "/var/tmp/ln_result/radio_dev2/";
 static std::string macro = DIR+"macro_output.dat";
 static std::string put_send;
 static std::string debugger = DIR+"debugger.dat";

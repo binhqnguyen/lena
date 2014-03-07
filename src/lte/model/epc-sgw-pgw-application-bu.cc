@@ -42,11 +42,9 @@ NS_LOG_COMPONENT_DEFINE ("EpcSgwPgwApplication")
 EpcSgwPgwApplication::UeInfo::UeInfo ()
 {
   NS_LOG_FUNCTION (this);
-  pkt_cnt = 0;
+  pktCnt = 0;
 	last_pkt_time = 0;
-	pagingDelay = 1000;
-	is_radio_bearer_exist = 1;
-	is_in_paging = 0;
+	pagingDelay = 100;
 }
 
 void
@@ -160,78 +158,27 @@ EpcSgwPgwApplication::RecvFromTunDevice (Ptr<Packet> packet, const Address& sour
         {
           NS_LOG_WARN ("no matching bearer for this packet");                   
         }
-			else{
-					double last_pkt_time = it->second->last_pkt_time; 
-					if (Simulator::Now().GetMilliSeconds() > (last_pkt_time + 3000) && it->second->is_in_paging == 0 && last_pkt_time > 0){
-							it->second->is_radio_bearer_exist = 0;	//no radio bearer exist after idle for a while
-							it->second->is_in_paging = 1; //already in paging, skip this branch next time
-					}
-					
-					if (it->second->is_radio_bearer_exist  == 0){
-						//No radio bearer.
-						//0. Schedule to set the radio after "delay".
-						//1. Buffer the packet.
-						//2. Send pkts that were buffered due to no radio when radio is up.
-						Simulator::Schedule (MilliSeconds (it->second->pagingDelay), &EpcSgwPgwApplication::set_radio_bearer_on, this, ueAddr, enbAddr, teid);
-						it->second->pkt_cnt++;
-						it->second->paging_buffer.push_back(packet);
-						NS_LOG_INFO( Simulator::Now().GetSeconds() << " xxx radio = " 
-            << it->second->is_radio_bearer_exist << " buffering  " << it->second->pkt_cnt << " buffer " << it->second->paging_buffer.size() << " is in paging " << it->second->is_in_paging);
-					}
-					else{ 
-									if (it->second->paging_buffer.size() > 0){
-										//radio exists but there are buffered pkts
-										//1.push the packet to the queue.
-										//2.send the first pkt in the queue.
-										it->second->paging_buffer.push_back(packet);
-										SendToS1uSocket_binh(it->second->paging_buffer.front(), enbAddr, teid, ueAddr);
-										it->second->paging_buffer.erase(it->second->paging_buffer.begin());
-										NS_LOG_INFO( Simulator::Now().GetSeconds() << " xxx radio = " << it->second->is_radio_bearer_exist << " sending front " << " buffer " << it->second->paging_buffer.size() << " is in paging " << it->second->is_in_paging);
-									}
-									else {
-										//radio exists and no paging buffered pkts: send pkt immediately
-										SendToS1uSocket_binh(packet, enbAddr, teid, ueAddr);
-										NS_LOG_INFO( Simulator::Now().GetSeconds() << " xxx radio = " << it->second->is_radio_bearer_exist << " sending immediately, is in paging " << it->second->is_in_paging);
-									}
-					}
-				}
-	}
+      else
+        {
+          if (Simulator::Now().GetMilliSeconds() > it->second->last_pkt_time + 5000 && it->second->last_pkt_time > 0) //Last pkt is 5s before, do paging
+          {
+						NS_LOG_INFO("pktCnt " << it->second->pktCnt << " last_time " << it->second->last_pkt_time
+												<< " current " << Simulator::Now().GetSeconds() << " paging_delay " << it->second->pagingDelay);
+            Simulator::Schedule (MilliSeconds (it->second->pagingDelay), &EpcSgwPgwApplication::SendToS1uSocket,this,packet, enbAddr, teid);
+          }
+          else
+          {
+            SendToS1uSocket (packet, enbAddr, teid);
+          }
+					it->second->last_pkt_time = Simulator::Now().GetMilliSeconds();
+					it->second->pktCnt++;
+        }
+    }
   // there is no reason why we should notify the TUN
   // VirtualNetDevice that he failed to send the packet: if we receive
   // any bogus packet, it will just be silently discarded.
   const bool succeeded = true;
   return succeeded;
-}
-
-void 
-EpcSgwPgwApplication::set_radio_bearer_on (Ipv4Address ueAddr, Ipv4Address enbAddr, uint32_t teid)
-{
-  std::map<Ipv4Address, Ptr<UeInfo> >::iterator it = m_ueInfoByAddrMap.find (ueAddr);
-	if (it->second->is_radio_bearer_exist == 0){
-		NS_LOG_INFO(" xxx Radio on: " << it->second->is_radio_bearer_exist);
-		it->second->is_radio_bearer_exist = 1;
-	}
-	SendToS1uSocket_binh(it->second->paging_buffer.front(), enbAddr, teid, ueAddr);
-	it->second->paging_buffer.erase(it->second->paging_buffer.begin());
-	it->second->is_in_paging = 0;
-}
-
-void 
-EpcSgwPgwApplication::SendToS1uSocket_binh (Ptr<Packet> packet, Ipv4Address enbAddr, uint32_t teid, Ipv4Address ueAddr)
-{
-  NS_LOG_FUNCTION (this << packet << enbAddr << teid);
-	NS_LOG_INFO (" xxx s1u send");
-  GtpuHeader gtpu;
-  gtpu.SetTeid (teid);
-  // From 3GPP TS 29.281 v10.0.0 Section 5.1
-  //   // Length of the payload + the non obligatory GTP-U header
-  gtpu.SetLength (packet->GetSize () + gtpu.GetSerializedSize () - 8);  
-  packet->AddHeader (gtpu);
-  uint32_t flags = 0;
-  m_s1uSocket->SendTo (packet, flags, InetSocketAddress(enbAddr, m_gtpuUdpPort));
-  std::map<Ipv4Address, Ptr<UeInfo> >::iterator it = m_ueInfoByAddrMap.find (ueAddr);
-  it->second->last_pkt_time = Simulator::Now().GetMilliSeconds();
-  it->second->pkt_cnt++;
 }
 
 void 

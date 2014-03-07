@@ -101,6 +101,10 @@ public:
    */
   void SendToTunDevice (Ptr<Packet> packet, uint32_t teid);
 
+  void set_radio_bearer_on (Ipv4Address ueAddr, Ipv4Address enbAddr, uint32_t teid);
+
+	void SendToS1uSocket_binh (Ptr<Packet> packet, Ipv4Address enbAddr, uint32_t teid, Ipv4Address ueAddr); 
+
 
   /** 
    * Send a packet to the SGW via the S1-U interface
@@ -208,9 +212,12 @@ private:
     void SetUeAddr (Ipv4Address addr);
 
 
-		uint32_t pktCnt;
+		uint32_t pkt_cnt;
 		uint16_t pagingDelay; //in ms.
-		int32_t last_pkt_time; //last to-UE pkt time in second.
+		double last_pkt_time; //last to-UE pkt time in second.
+		std::vector< Ptr <Packet> > paging_buffer;
+		uint32_t is_radio_bearer_exist; //whether radio exist? synthetic variable, has no meaning.
+		uint16_t is_in_paging; //whether in paging.
   private:
     EpcTftClassifier m_tftClassifier;
     Ipv4Address m_enbAddr;

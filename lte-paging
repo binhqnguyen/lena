@@ -1,15 +1,15 @@
 #!/bin/bash
 E_NAME="CUBIC_noname"
 RE_DIR="/var/tmp/ln_result"
-CODE_DIR="/var/tmp/lena"
+CODE_DIR="/var/tmp/lena_dev2"
 SIM_TIME="100"
 PEDESTRIAN="1"
 lte="lte-paging"
-processing="processing"
+processing="processing_paging"
 NUM_UES=1
 
 if [ $# -lt 5 ]; then
-	echo "usage rp-..sh <name of backup folder> [<simTime> <isPedestrian> <radio/radio_dev> <number of UEs>"
+	echo "usage rp-..sh <name of backup folder> [<simTime> <isPedestrian> <radio/radio_dev/radio_dev2> <number of UEs>"
 	exit;
 fi
 NUM_UES=$5
@@ -65,6 +65,7 @@ rm -rf $RE_DIR/$4/code
 mkdir $RE_DIR/$4/code
 cp $CODE_DIR/scratch/$lte.cc $RE_DIR/$4/code
 cp $CODE_DIR/src/lte/model/lte-rlc* $RE_DIR/$4/code
+cp $CODE_DIR/src/lte/model/epc-sgw-pgw* $RE_DIR/$4/code
 
 cp $CODE_DIR/scratch/$lte.cc $RE_DIR/$4
 rm $CODE_DIR/*.pcap
@@ -72,7 +73,7 @@ mkdir $BACKUP_FOLDER
 cd $RE_DIR
 ./$processing.sh $E_NAME $4 $5
 cp -rf $RE_DIR/$4/ $BACKUP_FOLDER 
-cp $RE_DIR/processing.sh $BACKUP_FOLDER
+cp $RE_DIR/processing* $BACKUP_FOLDER
 
 
 
