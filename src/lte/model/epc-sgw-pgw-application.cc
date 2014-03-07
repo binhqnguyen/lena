@@ -44,7 +44,7 @@ EpcSgwPgwApplication::UeInfo::UeInfo ()
   NS_LOG_FUNCTION (this);
   pkt_cnt = 0;
 	last_pkt_time = 0;
-	pagingDelay = 1000;
+	pagingDelay = 319;
 	is_radio_bearer_exist = 1;
 	is_in_paging = 0;
 }

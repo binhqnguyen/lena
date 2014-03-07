@@ -111,7 +111,7 @@ uint32_t isTcp=1;
 uint32_t packetSize = 900;
 double samplingInterval = 0.005;    /*getTcp() function invoke for each x second*/
 uint16_t PUT_SAMPLING_INTERVAL = 0; /*sample a TCP throughput for each x pkts*/
-double put_sampling_timer = 0.0;    /*getTcpPut() invoked each period*/
+double put_sampling_timer = 0.010;    /*getTcpPut() invoked each period*/
 double ue_joining_timer = 0.0;
 Ptr<ns3::FlowMonitor> monitor;
 FlowMonitorHelper flowHelper;

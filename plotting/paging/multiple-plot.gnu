@@ -81,6 +81,8 @@ set xrange [x1:x2]
 
 set terminal svg
 
+set arrow from 60,0 to 60,700 nohead lt 2 lc -1 lw 2
+
 plot "cubic-".ue.".dat" using 3:($54*1000) title "Estimated RTO" with line lt 2 lc -1 lw 3,\
 "tcp_send-".ue.".dat" using 1:12 title "packet delay" with line lt 1 lc 8 lw 3
 #"retrans-".ue."-truth.dat" using 1:(0) title "Timeout" pt 1,\
