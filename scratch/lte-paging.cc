@@ -496,6 +496,8 @@ getTcpPut(){
 		//PUT_SAMPLING_INTERVAL = (t.destinationAddress == LONG_LIVED_UE)? COARSE_GRAIN_SAMPLING : 0;
 		PUT_SAMPLING_INTERVAL = COARSE_GRAIN_SAMPLING;
     /*sending/receiving rate*/
+		meanTxRate_send[t.destinationAddress] = 0;
+		meanRxRate_send[t.destinationAddress] = 0;
     if (iter->second.txPackets > last_tx_pkts[t.destinationAddress] + PUT_SAMPLING_INTERVAL && iter->second.timeLastTxPacket > last_tx_time[t.destinationAddress]){
       meanTxRate_send[t.destinationAddress] = 8*(iter->second.txBytes-last_tx_bytes[t.destinationAddress])/(iter->second.timeLastTxPacket.GetDouble()-last_tx_time[t.destinationAddress])*ONEBIL/kilo;
       meanRxRate_send[t.destinationAddress] = 8*(iter->second.rxBytes-last_rx_bytes[t.destinationAddress])/(iter->second.timeLastRxPacket.GetDouble()-last_rx_time[t.destinationAddress])*ONEBIL/kilo;
@@ -508,6 +510,7 @@ getTcpPut(){
     }
     numOfLostPackets_send[t.destinationAddress] = iter->second.lostPackets;
     /*end-to-end delay sampling*/
+		tcp_delay[t.destinationAddress] = 0;
     if (iter->second.rxPackets > last_rx_pkts[t.destinationAddress]){
       tcp_delay[t.destinationAddress] = (iter->second.delaySum.GetDouble() - last_delay_sum[t.destinationAddress]) / (iter->second.rxPackets - last_rx_pkts[t.destinationAddress])/(kilo*kilo);
       last_delay_sum[t.destinationAddress] = iter->second.delaySum.GetDouble();
