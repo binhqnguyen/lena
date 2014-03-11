@@ -42,28 +42,29 @@
 using namespace ns3;
 
 #define kilo 1000
-double simTime = 100;   //simulation time for EACH application
+#define COARSE_GRAIN_SAMPLING 60
+double simTime = 50;   //simulation time for EACH application
 static double scheduler_timer=0; //timer to schedule position tracking
 
 
 int isPedestrian = -1; //-1=no fading trace and no mobility, 0=vehicular trace, 1=pedestrian trace.
-uint16_t traceTime = 100;       //trace file period, in seconds
-std::string P_TRACE_FILE = "/home/binhn/ln/fading_traces/EPA_3kmh_100_dl.fad";
-std::string V_TRACE_FILE = "/home/binhn/ln/fading_traces/EVA_60kmh_100_dl.fad";
+uint16_t traceTime = 50;       //trace file period, in seconds
+std::string P_TRACE_FILE = "/var/tmp/ln_result/fading_traces/fading_trace_DL_EPA_50RB_band4_3kmph.fad";
+std::string V_TRACE_FILE = "/var/tmp/ln_result/fading_traces/fading_trace_DL_EPA_50RB_band4_40kmph.fad";
 std::string traceFile = P_TRACE_FILE;   //location of trace file.
 uint16_t isFading = 1;
 
 
 
 /*******Simulation******/
-uint16_t radioUlBandwidth = 25;  
-uint16_t radioDlBandwidth = 25;  //same as above, for downlink.
+uint16_t radioUlBandwidth = 50;  
+uint16_t radioDlBandwidth = 50;  //same as above, for downlink.
 std::string SACK="1";
 std::string TIME_STAMP="0";
 std::string WINDOW_SCALING="1";
 std::string TCP_VERSION="cubic"; //reno,westwood,vegas,veno,yeah,illinois,htcp,hybla
+std::string TCP_FRTO="0";
 //std::string TCP_RECEIVE_BUFFER="484484 484484 484484"; //min default max
-uint16_t isCost231 = 0;
 double moving_bound = 50000;
 
 
@@ -79,10 +80,12 @@ FlowMonitorHelper flowHelper;
 Ptr<ns3::Ipv4FlowClassifier> classifier;
 std::map <FlowId, FlowMonitor::FlowStats> stats;
 std::string dataRate = "150Mb/s";
-LogLevel logLevel = (LogLevel) (LOG_LEVEL_ALL | LOG_PREFIX_TIME | LOG_PREFIX_NODE | LOG_PREFIX_FUNC);
+LogLevel logLevel = (LogLevel) (LOG_PREFIX_TIME | LOG_PREFIX_NODE| LOG_PREFIX_FUNC | LOG_LEVEL_INFO);
 ////Handover
+double VEH_VE = 40; //40km/h for vehicular
+double PED_VE = 3; //3km/h for pedestrian
 uint32_t isAutoHo = 1;
-double speed = 10; //10m/s
+double speed = 11.3; //10m/s
 double X2_path_delay = 19; //X2 path delay in ms.
 std::string X2_path_rate = "1Gb/s" ; //X2 path data rate.
 uint8_t a2_servingcell_threshold = 34; //if current cell signal strength smaller than this, consider HO (default 30) [0-34] as in Section 9.1.7 of [TS36133]
@@ -109,9 +112,9 @@ std::map<Ipv4Address, uint64_t> numOfTxPacket_send;
 const uint32_t ONEBIL = 1000000000;
 
 uint16_t numberOfUes = 1;
-uint16_t numberOfEnbs = 5;
+uint16_t numberOfEnbs = 2;
 uint16_t numBearersPerUe = 1;
-double distanceBetweenEnbs = 300.0;
+double distanceBetweenEnbs = 750.0;
 
 
 /********* Ascii output files name *********/
@@ -256,7 +259,7 @@ main (int argc, char *argv[])
   // this scenario, but do this before processing command line
   // arguments, so that the user is allowed to override these settings 
   SetDefaultConfigs();
-  ConfigStoreInput("lte.in");
+  ConfigStoreInput("lte-handover.in");
 
 
   // Command line arguments
@@ -308,7 +311,7 @@ main (int argc, char *argv[])
   PointToPointHelper p2ph;
   p2ph.SetDeviceAttribute ("DataRate", DataRateValue (DataRate ("1Gb/s")));
   p2ph.SetDeviceAttribute ("Mtu", UintegerValue (1500));
-  p2ph.SetChannelAttribute ("Delay", TimeValue (Seconds (0.015)));
+  p2ph.SetChannelAttribute ("Delay", TimeValue (Seconds (0.020)));
   NetDeviceContainer internetDevices = p2ph.Install (pgw, remoteHost);
   Ipv4AddressHelper ipv4h;
   ipv4h.SetBase ("1.0.0.0", "255.0.0.0");
@@ -324,10 +327,12 @@ main (int argc, char *argv[])
 
   NodeContainer ueNodes;
   NodeContainer enbNodes;
+	/*
   if (isAutoHo==1){
-	numberOfEnbs = 5;
-	simTime = (numberOfEnbs-1)*distanceBetweenEnbs/speed + 10;
+		numberOfEnbs = 5;
+		simTime = (numberOfEnbs-1)*distanceBetweenEnbs/speed + 10;
   }
+	*/
   enbNodes.Create(numberOfEnbs);
   ueNodes.Create(numberOfUes);
 
@@ -461,7 +466,6 @@ main (int argc, char *argv[])
         } // end for b
     }
 
-
   // Add X2 inteface
   lteHelper->AddX2Interface (enbNodes);
 
@@ -501,7 +505,7 @@ main (int argc, char *argv[])
   Simulator::ScheduleWithContext (0 ,Seconds (0.0), &getTcpPut);
 
  
-  ConfigStoreOutput("lte.out");
+  ConfigStoreOutput("lte-handover.out");
 
   Simulator::Stop(Seconds(simTime));
   Simulator::Run();
@@ -566,6 +570,7 @@ getTcpPut(){
                 last_delay_sum[t.destinationAddress] = 0;
                 last_rx_pkts[t.destinationAddress] = 0;
         }
+    PUT_SAMPLING_INTERVAL = COARSE_GRAIN_SAMPLING;
         /*sending/receiving rate*/
       if (iter->second.txPackets > last_tx_pkts[t.destinationAddress] + PUT_SAMPLING_INTERVAL && iter->second.timeLastTxPacket > last_tx_time[t.destinationAddress]){
                 meanTxRate_send[t.destinationAddress] = 8*(iter->second.txBytes-last_tx_bytes[t.destinationAddress])/(iter->second.timeLastTxPacket.GetDouble()-last_tx_time[t.destinationAddress])*ONEBIL/kilo;
@@ -577,6 +582,10 @@ getTcpPut(){
                 last_tx_pkts[t.destinationAddress] = iter->second.txPackets;
                 last_put_sampling_time[t.destinationAddress] = Simulator::Now().GetSeconds();
         }
+    	else if (iter->second.txPackets == last_tx_pkts[t.destinationAddress] && iter->second.timeLastTxPacket > last_tx_time[t.destinationAddress] + 30000000){
+            meanTxRate_send[t.destinationAddress] = 0;
+            meanRxRate_send[t.destinationAddress] = 0;
+    	}
       numOfLostPackets_send[t.destinationAddress] = iter->second.lostPackets;
         /*end-to-end delay sampling*/
       if (iter->second.rxPackets > last_rx_pkts[t.destinationAddress]){
@@ -584,6 +593,8 @@ getTcpPut(){
                     last_delay_sum[t.destinationAddress] = iter->second.delaySum.GetDouble();
                     last_rx_pkts[t.destinationAddress] = iter->second.rxPackets;
         }
+				else
+      			tcp_delay[t.destinationAddress] = 0;
 
       numOfTxPacket_send[t.destinationAddress] = iter->second.txPackets;
   }
@@ -632,7 +643,7 @@ void ConfigStoreOutput(std::string out_f){
 }
 
 void ConfigStoreInput(std::string in_f){
-    Config::SetDefault("ns3::ConfigStore::Filename", StringValue("lte.in"));
+    Config::SetDefault("ns3::ConfigStore::Filename", StringValue(in_f));
     Config::SetDefault("ns3::ConfigStore::FileFormat", StringValue("RawText"));
     Config::SetDefault("ns3::ConfigStore::Mode", StringValue("Load"));
     ConfigStore inputConfig;
@@ -648,15 +659,15 @@ void EnableLogComponents(){
   if (isTcp==1){
 	  LogComponentEnable ("EpcEnbApplication", logLevel);
 	  LogComponentEnable ("EpcX2", logLevel);
-	  LogComponentEnable ("EpcSgwPgwApplication", logLevel);
+	  //LogComponentEnable ("EpcSgwPgwApplication", logLevel);
 
-  	LogComponentEnable ("LteRlcUm", logLevel);
-  	LogComponentEnable ("LteRlcAm", logLevel);
-  	LogComponentEnable ("NscTcpSocketImpl",LOG_LEVEL_DEBUG);
+  	//LogComponentEnable ("LteRlcUm", logLevel);
+  	//LogComponentEnable ("LteRlcAm", logLevel);
+  	LogComponentEnable ("NscTcpSocketImpl",logLevel);
 
-  	LogComponentEnable ("LteEnbRrc", logLevel);
-	LogComponentEnable ("LteEnbNetDevice", logLevel);
-	LogComponentEnable ("LteUeRrc", logLevel);
+  	//LogComponentEnable ("LteEnbRrc", logLevel);
+		//LogComponentEnable ("LteEnbNetDevice", logLevel);
+		//LogComponentEnable ("LteUeRrc", logLevel);
   }
 }
 void SetDefaultConfigs(){
@@ -672,9 +683,8 @@ void SetDefaultConfigs(){
  // *debugger_wp->GetStream ()<< "Auto Handover..., ServingCellHandoverThreshold = 30, NeighbourCellHandoverOffset = 1\n" ;
   //Config::SetDefault("ns3::A2A4RsrqHandoverAlgorithm::ServingCellThreshold",UintegerValue (a2_servingcell_threshold));
   //Config::SetDefault("ns3::A2A4RsrqHandoverAlgorithm::NeighbourCellOffset",UintegerValue (a4_neighbourcell_offset));
-
-
 }
+
 void CommandlineParameters(int argc, char* argv[]){
   CommandLine cmd;
     cmd.AddValue("numberOfUes", "Number of UeNodes", numberOfUes);
@@ -722,10 +732,30 @@ void InstallMobility(NodeContainer ueNodes, NodeContainer enbNodes){
   
   //Install Mobility model for Ues.
   MobilityHelper ueMobility;
+ *debugger_wp->GetStream() << "\n-------------\nUEs Mobility:\n------------\n";
+  Ptr<NormalRandomVariable> normal_db = CreateObject<NormalRandomVariable> ();
+  time_t seconds = time(NULL);
+	
+	if (!isPedestrian){
+    normal_db->SetAttribute("Mean", DoubleValue(VEH_VE));
+    normal_db->SetAttribute("Variance", DoubleValue(5));
+    for (int i = 0; i < seconds % 100; i++){
+      speed = normal_db->GetValue();     //vehicular mobility
+    }
+  }
+  else{
+    normal_db->SetAttribute("Mean", DoubleValue(PED_VE));
+    normal_db->SetAttribute("Variance", DoubleValue(0.5));
+    for (int i = 0; i < seconds % 100; i++){
+      speed = normal_db->GetValue();     //pedestrian mobility
+    }
+  }
+  double speed_mps = double (speed)*1000/3600; //kmph to meter per second.
   ueMobility.SetMobilityModel ("ns3::ConstantVelocityMobilityModel");
   ueMobility.Install(ueNodes);
-  ueNodes.Get (0)->GetObject<MobilityModel> ()->SetPosition (Vector (0, 100, 0));
-  ueNodes.Get (0)->GetObject<ConstantVelocityMobilityModel> ()->SetVelocity (Vector (speed, 0, 0));
+
+  ueNodes.Get (0)->GetObject<MobilityModel> ()->SetPosition (Vector (100, 100, 0));
+  ueNodes.Get (0)->GetObject<ConstantVelocityMobilityModel> ()->SetVelocity (Vector (speed_mps, 0, 0));
 }
 
 void InstallFading(Ptr<LteHelper> lteHelper){
@@ -753,12 +783,20 @@ void InstallFading(Ptr<LteHelper> lteHelper){
 }
 
 void EnablePositionTracking(NetDeviceContainer enbLteDevs, NodeContainer ueNodes){
-    NetDeviceContainer::Iterator enbLteDevIt = enbLteDevs.Begin ();
+
+  NetDeviceContainer::Iterator enbLteDevIt = enbLteDevs.Begin ();
+  uint16_t i = 0;
+  *debugger_wp->GetStream() << "\n-------------\nENBs postion:\n--------------\n";
+  for (NetDeviceContainer::Iterator enbLteDevIt = enbLteDevs.Begin(); enbLteDevIt != enbLteDevs.End(); enbLteDevIt++){
     Vector enbPosition = (*enbLteDevIt)->GetNode ()->GetObject<MobilityModel> ()->GetPosition ();
+    *debugger_wp->GetStream() << "eNB " << i << ": (x,y) = "
+        << enbPosition.x << ", " << enbPosition.y << std::endl;
+    i++;
+  }
+
     Ptr<MobilityModel> ue_mobility_model = ueNodes.Get(0)->GetObject<MobilityModel>();
     double x = ue_mobility_model->GetPosition().x;
     double y = ue_mobility_model->GetPosition().y;
-    *debugger_wp->GetStream() << "eNB(x,y)= " << enbPosition.x << ", " << enbPosition.y << std::endl;
     *debugger_wp->GetStream() << "UE (x,y)= " << x << ", " << y << " d= " << sqrt(x*x+y*y) << std::endl;
 
     ue_mobility_model->TraceConnectWithoutContext("CourseChange", MakeBoundCallback(&CourseChange, ue_positions_wp));

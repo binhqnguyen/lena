@@ -982,7 +982,7 @@ NscTcpSocketImpl::UpdateTcpVars()
   	rttvar_d = double (rttvar)/ticks_per_second;
   
 
-	NS_LOG_DEBUG("RemoteAdd= " << m_remoteAddress 
+	NS_LOG_INFO("RemoteAdd= " << m_remoteAddress 
 		      	<< " cwnd= " << cwnd 
  	      		<< " srtt= " << srtt_d
 			<< " ssthresh= " << ssthresh

@@ -1,12 +1,12 @@
 #!/bin/bash
-E_NAME="CUBIC_noname"
+E_NAME="CUBIC"
 RE_DIR="/var/tmp/ln_result"
 CODE_DIR="/var/tmp/lena"
-SIM_TIME="100"
-DISTANCE="150"
-PEDESTRIAN="1"
+SIM_TIME="50"
+DISTANCE="750"
+PEDESTRIAN="0"
 A2_THRESHOLD="34"
-lte="lena-x2-auto-handover"
+lte="lena-latest"
 processing="processing"
 
 if [ "$1" != "" ];
@@ -35,7 +35,7 @@ rm $CODE_DIR/DlRxPhyStats.txt
 rm $CODE_DIR/DlTxPhyStats.txt
 rm $CODE_DIR/UlRxPhyStats.txt
 rm $CODE_DIR/DlTxPhyStats.txt
-rm $CODE_DIR/lte.out
+rm $CODE_DIR/*.out
 
 if [ "$2" != "" ];
 	then
@@ -64,7 +64,7 @@ cp $CODE_DIR/*.out $RE_DIR/$5/
 cp $CODE_DIR/*.pcap $RE_DIR/$5/
 cp $CODE_DIR/*.txt $RE_DIR/$5/
 cp $CODE_DIR/.dat $RE_DIR/$5/
-cp $CODE_DIR/lte.* $RE_DIR/$5/
+cp $CODE_DIR/*.in $RE_DIR/$5/
 ##copy code
 rm -rf $RE_DIR/$5/code
 mkdir $RE_DIR/$5/code

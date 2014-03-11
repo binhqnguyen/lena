@@ -42,22 +42,22 @@
 using namespace ns3;
 
 #define kilo 1000
-double simTime = 100;   //simulation time for EACH application
+double simTime = 50;   //simulation time for EACH application
 static double scheduler_timer=0; //timer to schedule position tracking
 
 
 int isPedestrian = -1; //-1=no fading trace and no mobility, 0=vehicular trace, 1=pedestrian trace.
-uint16_t traceTime = 100;       //trace file period, in seconds
-std::string P_TRACE_FILE = "/home/binhn/ln/fading_traces/EPA_3kmh_100_dl.fad";
-std::string V_TRACE_FILE = "/home/binhn/ln/fading_traces/EVA_60kmh_100_dl.fad";
+uint16_t traceTime = 50;       //trace file period, in seconds
+std::string P_TRACE_FILE = "/var/tmp/ln_result/fading_traces/fading_trace_DL_EPA_50RB_band4_3kmph.fad";
+std::string V_TRACE_FILE = "/var/tmp/ln_result/fading_traces/fading_trace_DL_EPA_50RB_band4_40kmph.fad";
 std::string traceFile = P_TRACE_FILE;   //location of trace file.
 uint16_t isFading = 1;
 
 
 
 /*******Simulation******/
-uint16_t radioUlBandwidth = 25;  
-uint16_t radioDlBandwidth = 25;  //same as above, for downlink.
+uint16_t radioUlBandwidth = 50;  
+uint16_t radioDlBandwidth = 50;  //same as above, for downlink.
 std::string SACK="1";
 std::string TIME_STAMP="0";
 std::string WINDOW_SCALING="1";
@@ -67,14 +67,14 @@ double S1_u_link_delay = 15;	//S1u between SGW and eNB in ms.
 uint16_t isCost231 = 0;
 double moving_bound = 50000;
 static uint16_t is_random_allocation = 0;  //UEs fixed position allocation by default
-double moving_speed = 3; //UE moving speed in km/h (3km/h for pedestrian, 60km/h for vehicular)
+double moving_speed = 40; //UE moving speed in km/h (3km/h for pedestrian, 60km/h for vehicular)
 
 
 
 /****Application******/
 static uint32_t isTcp=1;
 uint32_t packetSize = 900;
-double samplingInterval = 0.005;    /*getTcp() function invoke for each x second*/
+double samplingInterval = 0.0;    /*getTcp() function invoke for each x second*/
 uint16_t PUT_SAMPLING_INTERVAL = 40; /*sample a TCP throughput for each x pkts*/
 double t = 0.0;
 Ptr<ns3::FlowMonitor> monitor;
@@ -85,7 +85,7 @@ std::string dataRate = "150Mb/s";
 //LogLevel logLevel = (LogLevel) (LOG_LEVEL_ALL | LOG_PREFIX_TIME | LOG_PREFIX_NODE | LOG_PREFIX_FUNC);
 LogLevel logLevel = (LogLevel) (LOG_PREFIX_TIME | LOG_PREFIX_NODE| LOG_PREFIX_FUNC | LOG_LEVEL_DEBUG);
 uint32_t isAutoHo = 0;
-double speed = 20; //20m/s
+double speed = 11.1; 
 
 std::map<Ipv4Address, double> last_tx_time;
 std::map<Ipv4Address, double> last_rx_time ;
