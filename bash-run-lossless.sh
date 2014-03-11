@@ -16,7 +16,7 @@ do
 		let bf=buffer/1000
 		folder_name=a2a4-lossless-$bf-KB-$i
 		echo "backup-folder = $folder_name" >> $log_file
-		./lte-auto-ho $folder_name 50 0 radio 1
+		./lte-auto-ho $folder_name 50 0 $radio 1
 		cp $back_up/$folder_name/$radio/TCP_LOG $total_folder/TCP_LOG-$i
 		cp $back_up/$folder_name/$radio/tcp-put.dat $total_folder/tcp-put-$i.dat
 	done

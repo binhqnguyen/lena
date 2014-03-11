@@ -270,7 +270,7 @@ main (int argc, char *argv[])
   Ptr<LteHelper> lteHelper = CreateObject<LteHelper> ();
   Ptr<PointToPointEpcHelper> epcHelper = CreateObject<PointToPointEpcHelper> ();
   lteHelper->SetEpcHelper (epcHelper);
-  lteHelper->SetSchedulerType("ns3::RrFfMacScheduler");
+  lteHelper->SetSchedulerType("ns3::PfFfMacScheduler");
   switch (ho_type){
 	case 1:
 		lteHelper->SetHandoverAlgorithmType ("ns3::A2A4RsrqHandoverAlgorithm");

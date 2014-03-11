@@ -46,3 +46,4 @@ build
 .metadata
 .hg
 .waf-1.7.13*
+.pyc
