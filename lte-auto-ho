@@ -1,7 +1,7 @@
 #!/bin/bash
 E_NAME="CUBIC_noname"
 RE_DIR="/var/tmp/ln_result"
-CODE_DIR="/var/tmp/lena"
+CODE_DIR="/var/tmp/lena_dev"
 SIM_TIME="50"
 PEDESTRIAN="0"
 lte="lena-x2-auto-handover"
@@ -57,6 +57,7 @@ echo "running $lte nsc TCP ..."
 #./waf --run "scratch/$lte" > $RE_DIR/$4/TCP_LOG 2>&1 
 
 cp $CODE_DIR/*.out $RE_DIR/$4/
+cp $CODE_DIR/*.in $RE_DIR/$4/
 cp $CODE_DIR/*.pcap $RE_DIR/$4/
 cp $CODE_DIR/*.txt $RE_DIR/$4/
 cp $CODE_DIR/.dat $RE_DIR/$4/

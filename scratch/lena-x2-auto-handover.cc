@@ -86,7 +86,7 @@ double VEH_VE = 40; //40km/h for vehicular
 double PED_VE = 3; //3km/h for pedestrian
 uint32_t isAutoHo = 1;
 double speed = 11.3; //10m/s
-double X2_path_delay = 19; //X2 path delay in ms.
+double X2_path_delay = 4.9; //X2 path delay in ms.
 std::string X2_path_rate = "1Gb/s" ; //X2 path data rate.
 uint8_t a2_servingcell_threshold = 34; //if current cell signal strength smaller than this, consider HO (default 30) [0-34] as in Section 9.1.7 of [TS36133]
 uint8_t a4_neighbourcell_offset = 1; //if neighbour cell signal strength is larger than the source cell by this amount, allow HO. (default 1).
@@ -118,7 +118,7 @@ double distanceBetweenEnbs = 750.0;
 
 
 /********* Ascii output files name *********/
-static std::string DIR = "/var/tmp/ln_result/radio/";
+static std::string DIR = "/var/tmp/ln_result/radio_dev/";
 static std::string macro = DIR+"macro_output.dat";
 static std::string put_send;
 static std::string debugger = DIR+"debugger.dat";
