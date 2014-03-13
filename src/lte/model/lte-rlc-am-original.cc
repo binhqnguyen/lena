@@ -777,19 +777,12 @@ LteRlcAm::DoNotifyTxOpportunity (uint32_t bytes, uint8_t layer, uint8_t harqId)
   NS_LOG_LOGIC ("PDU_WITHOUT_POLL = " << m_pduWithoutPoll);
   m_byteWithoutPoll += packet->GetSize ();
   NS_LOG_LOGIC ("BYTE_WITHOUT_POLL = " << m_byteWithoutPoll);
-	/*
+
   if ( (m_pduWithoutPoll >= m_pollPdu) || (m_byteWithoutPoll >= m_pollByte) ||
        ( (m_txonBuffer.empty ()) && (m_retxBufferSize == 0) ) ||
        (m_vtS >= m_vtMs)
        || m_pollRetransmitTimerJustExpired
      )
-	*/
-	//Only empty buffer or full window trigger a polling.
-	if ( ( (m_txonBuffer.empty ()) && (m_retxBufferSize == 0) ) ||
-       (m_vtS >= m_vtMs)
-       || m_pollRetransmitTimerJustExpired
-     )
-
     {
       m_pollRetransmitTimerJustExpired = false;
       rlcAmHeader.SetPollingBit (LteRlcAmHeader::STATUS_REPORT_IS_REQUESTED);

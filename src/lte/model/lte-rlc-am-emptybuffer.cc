@@ -784,9 +784,7 @@ LteRlcAm::DoNotifyTxOpportunity (uint32_t bytes, uint8_t layer, uint8_t harqId)
        || m_pollRetransmitTimerJustExpired
      )
 	*/
-	//Only empty buffer or full window trigger a polling.
-	if ( ( (m_txonBuffer.empty ()) && (m_retxBufferSize == 0) ) ||
-       (m_vtS >= m_vtMs)
+	if ( ( (m_txonBuffer.empty ()) && (m_retxBufferSize == 0) )
        || m_pollRetransmitTimerJustExpired
      )
 
