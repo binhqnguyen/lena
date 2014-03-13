@@ -534,7 +534,7 @@ getTcpPut(){
       last_tx_pkts[t.destinationAddress] = iter->second.txPackets;
       last_put_sampling_time[t.destinationAddress] = Simulator::Now().GetSeconds();
     }
-		else if (iter->second.txPackets == last_tx_pkts[t.destinationAddress] && iter->second.timeLastTxPacket > last_tx_time[t.destinationAddress] + 30000000){
+		else if (iter->second.txPackets == last_tx_pkts[t.destinationAddress]){
 						meanTxRate_send[t.destinationAddress] = 0;
 						meanRxRate_send[t.destinationAddress] = 0;
 		}
@@ -613,14 +613,14 @@ void EnableLogComponents(){
 		LogLevel logLevel = (LogLevel) (LOG_PREFIX_TIME | LOG_PREFIX_NODE| LOG_PREFIX_FUNC | LOG_LEVEL_ALL);
 			//LogComponentEnable ("LteHelper", logLevel);
   		//LogComponentEnable ("EpcHelper", logLevel);
-  		LogComponentEnable ("EpcEnbApplication", logLevel);
-  		LogComponentEnable ("EpcX2", logLevel);
+  		//LogComponentEnable ("EpcEnbApplication", logLevel);
+  		//LogComponentEnable ("EpcX2", logLevel);
   		//LogComponentEnable ("EpcSgwPgwApplication", logLevel);
   		LogComponentEnable ("NscTcpSocketImpl",logLevel);
   		//LogComponentEnable ("LteEnbNetDevice", logLevel);
   		//LogComponentEnable ("LteUeRrc", logLevel);
   		//LogComponentEnable ("LteUeNetDevice", logLevel);
-		LogComponentEnable ("OnOffApplication", logLevel);
+		//LogComponentEnable ("OnOffApplication", logLevel);
 		//LogComponentEnable ("NscTcpL4Protocol", logLevel);
 		//LogComponentEnable ("Ipv4", logLevel);
   	//LogComponentEnable ("LteUeRrc", logLevel);
@@ -628,7 +628,7 @@ void EnableLogComponents(){
   	//LogComponentEnable ("LteRlcAm", logLevel);
   	//LogComponentEnable ("LteEnbRrc", logLevel);
   	//LogComponentEnable ("LtePdcp", logLevel);
-  	LogComponentEnable ("EpcX2", logLevel);
+  	//LogComponentEnable ("EpcX2", logLevel);
  }
 }
 void SetDefaultConfigs(){

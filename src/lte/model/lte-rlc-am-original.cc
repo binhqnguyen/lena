@@ -57,7 +57,7 @@ LteRlcAm::LteRlcAm ()
 	is_fragmented = 0;
 
   // State variables: transmitting side
-  m_windowSize = 512;
+  m_windowSize = 10;
   m_vtA  = 0;
   m_vtMs = m_vtA + m_windowSize;
   m_vtS  = 0;
