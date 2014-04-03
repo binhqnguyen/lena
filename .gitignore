@@ -7,6 +7,7 @@
 *.o
 *.so
 *.dylib
+*.pyc
 
 # Packages #
 ############
@@ -41,8 +42,9 @@ Thumbs.db
 tags
 
 #folder
-bindings
-build
+bindings/*
+build/*
 .metadata
 .hg
 .waf-1.7.13*
+*.pcap
