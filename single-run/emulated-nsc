@@ -1,0 +1,83 @@
+#!/bin/bash
+E_NAME="CUBIC_noname"
+RE_DIR="/var/tmp/ln_result"
+CODE_DIR="/var/tmp/ns3"
+SIM_TIME="20"
+lte="emulated_nsc"
+processing="processing"
+
+if [ $# -lt 2 ]; then
+		echo "usage rp-..sh <name of backup folder> <simTime>"
+		exit;
+fi
+
+E_NAME=$1
+SIM_TIME=$2
+PY_DIR="$REDIR/emulated/"
+
+echo "removing old files....."
+rm $RE_DIR/emulated/*.dat
+rm $RE_DIR/emulated/*.tmp
+rm $RE_DIR/emulated/*.raw
+rm $RE_DIR/emulated/TCP_LOG
+rm $RE_DIR/emulated/UDP_LOG
+rm $RE_DIR/emulated/*.txt
+rm $RE_DIR/emulated/*.svg
+rm $RE_DIR/emulated/queue
+rm $RE_DIR/emulated/*.pcap
+
+rm $CODE_DIR/*.pcap
+rm $CODE_DIR/DlRxPhyStats.txt
+rm $CODE_DIR/DlTxPhyStats.txt
+rm $CODE_DIR/UlRxPhyStats.txt
+rm $CODE_DIR/DlTxPhyStats.txt
+rm $CODE_DIR/lte.out
+
+if [ "$2" != "" ];
+	then
+		SIM_TIME=$2
+		DISTANCE=$3
+		PEDESTRIAN=$4
+		echo "t=$SIM_TIME d=$DISTANCE p=$PEDESTRIAN radio=emulated"
+fi
+
+echo $E_NAME 
+echo $PY_DIR
+echo $RE_DIR
+
+BACKUP_FOLDER="$RE_DIR/from_cade/$E_NAME"
+echo "backup folder: $BACKUP_FOLDER"
+
+#echo "running $lte nsc UDP ..."
+#./waf --run "scratch/$lte --simTime=$SIM_TIME --isTcp=0 --distance=$DISTANCE --isFading=1 --isPedestrian=$PEDESTRIAN" > $RE_DIR/emulated/UDP_LOG 2>&1 
+#./waf --run "scratch/$lte --simTime=$SIM_TIME --isTcp=0 --distanceBetweenEnbs=$DISTANCE --isFading=1 --isPedestrian=$PEDESTRIAN" > $RE_DIR/emulated/UDP_LOG 2>&1 
+
+###store *Stats.txt 
+
+mkdir $RE_DIR/emulated/udp_stats/
+mkdir $RE_DIR/emulated/tcp_stats/
+cp $CODE_DIR/*.txt $RE_DIR/emulated/udp_stats/
+
+echo "running $lte nsc TCP ..."
+./waf --run "scratch/$lte --sim_time=$SIM_TIME --is_tcp=1" > $RE_DIR/emulated/TCP_LOG 2>&1 
+#./waf --run "scratch/$lte" > $RE_DIR/emulated/TCP_LOG 2>&1 
+
+cp $CODE_DIR/*.out $RE_DIR/emulated/
+cp $CODE_DIR/*.pcap $RE_DIR/emulated/
+cp $CODE_DIR/*.txt $RE_DIR/emulated/tcp_stats/
+cp $CODE_DIR/.dat $RE_DIR/emulated/
+cp $CODE_DIR/emulated-nsc.in $RE_DIR/emulated/
+
+##copy code
+rm -rf $RE_DIR/emulated/code
+mkdir $RE_DIR/emulated/code
+cp $CODE_DIR/scratch/$lte.cc $RE_DIR/emulated/code
+
+rm $CODE_DIR/*.pcap
+mkdir $BACKUP_FOLDER
+cd $RE_DIR
+./$processing.sh $E_NAME emulated 1
+cp -rf $RE_DIR/emulated/ $BACKUP_FOLDER 
+
+
+

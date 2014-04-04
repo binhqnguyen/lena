@@ -21,7 +21,7 @@
 //           10Mb/s, 10ms       10Mb/s, 10ms
 //       (0_0)          (1_0)  (1_1)         (2_0)
 //       n0-----------------n1-----------------n2
-//	(Ue)		  (Enb, SPGW) 	   (end-host)	
+//	(Ue)		 	 						(Enb) 	   			(end-host)	
 // 	10.1.3.1:3000	10.1.3.2/10.1.2.1    10.1.2.2:49153
 //
 // 	Device topology:
@@ -30,116 +30,12 @@
 //  Usage (e.g.): ./waf --run "scratch/emulated --<parameter1>"
 
 
-#include <ctype.h>
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <cassert>
-
-#include "ns3/core-module.h"
-#include "ns3/applications-module.h"
-#include "ns3/network-module.h"
-#include "ns3/internet-module.h"
-#include "ns3/point-to-point-module.h"
-#include "ns3/ipv4-global-routing-helper.h"
-#include "ns3/flow-monitor-module.h"
-#include "ns3/flow-monitor-helper.h"
-#include "ns3/config-store.h"
-
-using namespace ns3;
-
-NS_LOG_COMPONENT_DEFINE ("emulated_nsc");
-
-#define kilo 1000
-#define KILO 1024
-#define TCP_SAMPLING_INTERVAL 0.001 //tcp flow sampling interval in second
-#define ONEBIL kilo*kilo*kilo
-
-static double timer = 0;
-static double scheduler_timer = 0;
-static uint32_t sim_time = 100;
-static uint32_t packet_size = 900;
-static std::string sending_rate = "100Mb/s"; //sending rate.
-static std::string core_network_bandwidth = "1000Mb/s"; 	//core_network_bandwidth.
-static uint32_t core_network_delay = 30;	//core_network_delay in millisenconds.
-static uint32_t core_network_mtu = 1500; 	//core_network_mte in Bytes.
-static double init_radio_bd = 25;
-static std::string init_radio_bandwidth = "25Mb/s"; 	//radio_link_bandwidth (init).
-static uint32_t init_radio_delay = 5;	//radio_link_delay (init) in millisenconds.
-static uint32_t init_radio_mtu = 1500; 	//radio_link_mtu (init) in Bytes.
-static uint16_t is_tcp = 1;
-static Ptr<ns3::FlowMonitor> monitor;
-static FlowMonitorHelper flowHelper;
-static Ptr<ns3::Ipv4FlowClassifier> classifier;
-static std::map <FlowId, FlowMonitor::FlowStats> stats;
-static Ipv4Address ue_ip;
-static Ipv4Address endhost_ip;
-static Ipv4Address enb_radio_ip;
-static Ipv4Address enb_core_ip;
-/**sending flowS stats***/
-double meanTxRate_send;
-double meanRxRate_send;
-double meanTcpDelay_send;
-uint64_t numOfLostPackets_send;
-uint64_t numOfTxPacket_send;
-//double last_lost = 0;
-static double tcp_delay = 0;
-static double last_delay_sum = 0;
-static uint32_t last_rx_pkts = 0;
-
-/***acking flowS stats***/
-double meanTxRate_ack;
-double meanRxRate_ack;
-double meanTcpDelay_ack;
-uint64_t numOfLostPackets_ack;
-uint64_t numOfTxPacket_ack;
-static double tcp_delay_ack = 0;
-static double last_delay_sum_ack = 0;
-static uint32_t last_rx_pkts_ack = 0;
-
-static Ptr<PointToPointNetDevice> enb_radio_dev; 	//device on the radio side of the enb
-static Ptr<PointToPointNetDevice> enb_core_dev;		//device on the core side of the enb
-static Ptr<PointToPointNetDevice> ue_dev;
-static Ptr<PointToPointNetDevice> endhost_dev;
-static PointToPointHelper radio_link;	
-static double rate_slope = -0.1; //increase the radio link bandwidth by "rate_slope" Mbps per "time_step"
-static double p_rate = init_radio_bd;
-static std::string current_radio_rate = "";
-static double time_step = 0.3; //time step for each increment of link rate.
-
-static double last_tx_time = 0;
-static double last_rx_time = 0;
-static double last_tx_bytes = 0;
-static double last_rx_bytes = 0;
-
-/* Ascii output files name*/
-//Note: TCP's traces were obtained from nsc, stored in TCP_LOG file.
-static std::string DIR = "/var/tmp/ln_result/emulated/";
-static std::string queues = DIR+"queues.txt";
-static std::string put;
-static std::string debugger = DIR+"debugger.info";
-
-/********wrappers**********/
-Ptr<OutputStreamWrapper> dev_queues_wp;
-Ptr<OutputStreamWrapper> put_wp;
-Ptr<OutputStreamWrapper> debugger_wp;
-
-
-static AsciiTraceHelper asciiTraceHelper;
-/**************NSC************/
-static std::string nsc_stack="liblinux2.6.26.so";
-static std::string TCP_VERSION="hybla"; //reno,westwood,vegas,veno,yeah,illinois,htcp,hybla 
-
-static void
-getTcpPut();
-
-
+#include "emulated_nsc.h"
 /*
  * Changing the radio link bandwidth every "time_step" second.
  * The changing rate determined by "rate_slope".
  */
 static void link_change(){
-  //p_rate = init_radio_bd + Simulator::Now().GetSeconds()*rate_slope; 
   if (p_rate > 9 && p_rate < 10 && Simulator::Now().GetSeconds() < 60 )
 	p_rate = p_rate;
   else if (p_rate < 0.2 || p_rate > 24)
@@ -156,6 +52,8 @@ static void link_change(){
   }
 }
 
+//static void change_link_bandwidth(double link_bd){
+//}
 
 int main (int argc, char *argv[])
 {
@@ -178,7 +76,6 @@ int main (int argc, char *argv[])
     
 
   cmd.Parse (argc, argv);
- 	LogLevel level = (LogLevel) (LOG_LEVEL_ALL | LOG_PREFIX_TIME | LOG_PREFIX_NODE | LOG_PREFIX_FUNC);
 	if (is_tcp==1){
   // Users may find it convenient to turn on explicit debugging
   // for selected modules; the below lines suggest how to do this
@@ -190,7 +87,7 @@ int main (int argc, char *argv[])
      // LogComponentEnable("TcpReno",level);
   //LogComponentEnable("TcpTahoe",level);
   //LogComponentEnable("NscTcpL4Protocol",LOG_LEVEL_DEBUG);
-  LogComponentEnable("NscTcpSocketImpl",LOG_LEVEL_DEBUG);
+  LogComponentEnable("NscTcpSocketImpl",level_info);
   //LogComponentEnable("RttEstimator",level);
   //LogComponentEnable("TcpSocketBase",level);
   }
@@ -199,6 +96,7 @@ int main (int argc, char *argv[])
    /* create files for wrappers */
     dev_queues_wp = asciiTraceHelper.CreateFileStream(queues);
     debugger_wp = asciiTraceHelper.CreateFileStream(debugger);
+		macro_wp = asciiTraceHelper.CreateFileStream(macro);
 
 
 
@@ -240,9 +138,9 @@ int main (int argc, char *argv[])
   internet.SetTcp ("ns3::NscTcpL4Protocol", "Library", StringValue(nsc_stack));
   internet.Install (remote_host);
   internet.Install (ue);
-  Config::Set ("/NodeList/*/$ns3::Ns3NscStack<linux2.6.26>/net.ipv4.tcp_sack", StringValue ("1"));
-  Config::Set ("/NodeList/*/$ns3::Ns3NscStack<linux2.6.26>/net.ipv4.tcp_timestamps", StringValue ("0"));
-  Config::Set ("/NodeList/*/$ns3::Ns3NscStack<linux2.6.26>/net.ipv4.tcp_window_scaling", StringValue ("1"));
+  Config::Set ("/NodeList/*/$ns3::Ns3NscStack<linux2.6.26>/net.ipv4.tcp_sack", StringValue (TCP_SACK));
+  Config::Set ("/NodeList/*/$ns3::Ns3NscStack<linux2.6.26>/net.ipv4.tcp_timestamps", StringValue (TCP_TIMESTAMP));
+  Config::Set ("/NodeList/*/$ns3::Ns3NscStack<linux2.6.26>/net.ipv4.tcp_window_scaling", StringValue (TCP_WINDOWSCALING));
   Config::Set ("/NodeList/*/$ns3::Ns3NscStack<linux2.6.26>/net.ipv4.tcp_congestion_control", StringValue (TCP_VERSION));
   
   Ipv4AddressHelper ipv4;
@@ -259,30 +157,30 @@ int main (int argc, char *argv[])
 
 
   //*****************************Install and start applications on UEs and remote host****************************//
-    uint16_t ulPort = 3000;
+    uint16_t dlPort = 3000;
     ApplicationContainer clientApps;
     ApplicationContainer serverApps;
 
    if (is_tcp == 1){
-                LogComponentEnable("Queue",level);    //Only enable Queue monitoring for TCP to accelerate experiment speed.
-                put = DIR + "tcp-put.txt";
+                LogComponentEnable("Queue",level_all);    //Only enable Queue monitoring for TCP to accelerate experiment speed.
+                put = DIR + "tcp-put.dat";
                 put_wp = asciiTraceHelper.CreateFileStream(put);
         				/*********TCP Application********/
-       					PacketSinkHelper sink("ns3::TcpSocketFactory", InetSocketAddress(Ipv4Address::GetAny(), ulPort));
+       					PacketSinkHelper sink("ns3::TcpSocketFactory", InetSocketAddress(Ipv4Address::GetAny(), dlPort));
        					serverApps.Add(sink.Install(ue));
 
-        				OnOffHelper onOffHelper("ns3::TcpSocketFactory", Address ( InetSocketAddress(ue_ip, ulPort) ));
+        				OnOffHelper onOffHelper("ns3::TcpSocketFactory", Address ( InetSocketAddress(ue_ip, dlPort) ));
         				onOffHelper.SetConstantRate( DataRate(sending_rate), packet_size );
        					clientApps.Add(onOffHelper.Install(remote_host));
    }
               else{
-                put = DIR + "udp-put.txt";
+                put = DIR + "udp-put.dat";
                 put_wp = asciiTraceHelper.CreateFileStream(put);
         					/*********UDP Application********/
-        				PacketSinkHelper sink("ns3::UdpSocketFactory", InetSocketAddress(Ipv4Address::GetAny(), ulPort));
+        				PacketSinkHelper sink("ns3::UdpSocketFactory", InetSocketAddress(Ipv4Address::GetAny(), dlPort));
        					serverApps.Add(sink.Install(ue));
 
-        				OnOffHelper onOffHelper("ns3::UdpSocketFactory", Address ( InetSocketAddress( ue_ip, ulPort) ));
+        				OnOffHelper onOffHelper("ns3::UdpSocketFactory", Address ( InetSocketAddress( ue_ip, dlPort) ));
         				onOffHelper.SetConstantRate( DataRate(sending_rate), packet_size );
        					clientApps.Add(onOffHelper.Install(remote_host));
     }
@@ -300,7 +198,7 @@ int main (int argc, char *argv[])
   clientApps.Start (Seconds(0.5));
 
   Simulator::ScheduleWithContext (0 ,Seconds (0.0), &getTcpPut);
-  Simulator::Schedule(Seconds(0.1), &link_change);
+  //Simulator::Schedule(Seconds(0.1), &link_change);
   
     /****ConfigStore setting****/
     Config::SetDefault("ns3::ConfigStore::Filename", StringValue("emulated-nsc.out"));
@@ -310,9 +208,10 @@ int main (int argc, char *argv[])
     outputConfig.ConfigureDefaults();
     outputConfig.ConfigureAttributes();
 
+  Config::Set("/NodeList/1/DeviceList/0/$ns3::PointToPointNetDevice/DataRate",StringValue(init_radio_bandwidth));
 
   //core_network_link.EnablePcap("core");
-  // radio_link.EnablePcapAll("emulated");
+  radio_link.EnablePcapAll("emulated");
 
   Simulator::Stop (Seconds (sim_time));
   Simulator::Run ();
@@ -347,15 +246,22 @@ int main (int argc, char *argv[])
       numOfTxPacket_ack = iter->second.txPackets;
     }
 
-    NS_LOG_UNCOND("***Flow ID: " << iter->first << " Src Addr " << t.sourceAddress << "Port " << t.sourcePort << " Dst Addr " << t.destinationAddress << "destination port " << t.destinationPort);
-    NS_LOG_UNCOND("Tx Packets " << iter->second.txPackets);
-    NS_LOG_UNCOND("Rx Packets " << iter->second.rxPackets);
-    NS_LOG_UNCOND("Lost packets " << iter->second.lostPackets);
-    NS_LOG_UNCOND("Lost ratio " << double (iter->second.lostPackets)/(iter->second.lostPackets+iter->second.rxPackets));
+    *macro_wp->GetStream()  << "***Flow ID: " << iter->first
+          << " Src Addr " << t.sourceAddress << ":" << t.sourcePort
+          << " Dst Addr " << t.destinationAddress << ":" << t.destinationPort
+          << "\nTx Packets " << iter->second.txPackets
+          << "\nRx Packets " << iter->second.rxPackets
+          << "\nLost packets " << iter->second.lostPackets
+          << "\nLost ratio " << double (iter->second.lostPackets)/(iter->second.lostPackets+iter->second.rxPackets) << std::endl;
     if (iter->second.rxPackets > 1){
-        NS_LOG_UNCOND("Average delay received " << iter->second.delaySum/iter->second.rxPackets/1000000);
-        NS_LOG_UNCOND("Mean received bitrate " << 8*iter->second.rxBytes/(iter->second.timeLastRxPacket-iter->second.timeFirstRxPacket)*ONEBIL/(1024));
-        NS_LOG_UNCOND("Mean transmitted bitrate " << 8*iter->second.txBytes/(iter->second.timeLastTxPacket-iter->second.timeFirstTxPacket)*ONEBIL/(1024));
+      *macro_wp->GetStream()   << "Average delay received "
+          << iter->second.delaySum/iter->second.rxPackets/1000000 << std::endl
+          << "Mean received bitrate "
+          << 8*iter->second.rxBytes/(iter->second.timeLastRxPacket-iter->second.timeFirstRxPacket)*ONEBIL/(1024)
+          << std::endl
+          << "Mean transmitted bitrate "
+          << 8*iter->second.txBytes/(iter->second.timeLastTxPacket-iter->second.timeFirstTxPacket)*ONEBIL/(1024)
+          << std::endl;
     }
   }
   // NS_LOG_UNCOND ("ue ip = " << ue_ip << "endhost ip = " << endhost_ip << "enb radio/core ip = " << enb_radio_ip << "/" << enb_core_ip  );
@@ -364,11 +270,9 @@ int main (int argc, char *argv[])
 
 static void
 getTcpPut(){
-
     monitor->CheckForLostPackets();
     classifier = DynamicCast<ns3::Ipv4FlowClassifier> (flowHelper.GetClassifier());
     stats = monitor->GetFlowStats();
-   // NS_LOG_UNCOND ("QQQQ: " << Simulator::Now().GetSeconds() << " " << ue_dev->GetQueue()->GetNBytes() << " " << enb_radio_dev->GetQueue()->GetNBytes() << " " << enb_core_dev->GetQueue()->GetNBytes() << " " << endhost_dev->GetQueue()->GetNBytes()); 
     *dev_queues_wp->GetStream() << "QQQQ: " << Simulator::Now().GetSeconds() << " " << ue_dev->GetQueue()->GetNBytes() << " " << enb_radio_dev->GetQueue()->GetNBytes() << " " << enb_core_dev->GetQueue()->GetNBytes() << " " << endhost_dev->GetQueue()->GetNBytes() << std::endl;
    /*==============Get flows information============*/
    for (std::map<FlowId, FlowMonitor::FlowStats>::const_iterator iter = stats.begin(); iter != stats.end(); ++iter){
@@ -377,7 +281,7 @@ getTcpPut(){
     /*sending flows, from endhost (1.0.0.2:49153) to Ues (7.0.0.2:200x)*/
     if (t.destinationPort >= 3000 && t.destinationPort <= 4000) {
       if (iter->second.rxPackets > 1){
-        if ((last_tx_time + 200000000) < iter->second.timeLastTxPacket.GetDouble()){
+        if ((last_tx_time < iter->second.timeLastTxPacket.GetDouble())){
             meanTxRate_send = 8*(iter->second.txBytes-last_tx_bytes)/(iter->second.timeLastTxPacket.GetDouble()-last_tx_time)*ONEBIL/kilo;
             meanRxRate_send = 8*(iter->second.rxBytes-last_rx_bytes)/(iter->second.timeLastRxPacket.GetDouble()-last_rx_time)*ONEBIL/kilo;
             last_tx_time = iter->second.timeLastTxPacket.GetDouble();
@@ -393,12 +297,6 @@ getTcpPut(){
     	 }
       }
       numOfLostPackets_send = iter->second.lostPackets;
-      /*  
-      if (iter->second.lostPackets > last_lost){
-	NS_LOG_UNCOND(Simulator::Now().GetMilliSeconds() << " Tcp lost= " << iter->second.lostPackets - last_lost);
-	last_lost = iter->second.lostPackets;
-	}
-	*/
       numOfTxPacket_send = iter->second.txPackets;
     }
 
@@ -416,25 +314,8 @@ getTcpPut(){
       }
       numOfLostPackets_ack = iter->second.lostPackets; 
       numOfTxPacket_ack = iter->second.txPackets;
-      /*
-      if (iter->second.lostPackets > last_lost_ack){
-		NS_LOG_UNCOND(Simulator::Now().GetMilliSeconds() << " Tcp_ack lost= " << iter->second.lostPackets - last_lost_ack);
-		last_lost_ack = iter->second.lostPackets;
-      }
-      */
     }
    }
-    //    NS_LOG_UNCOND (Simulator::Now().GetSeconds() << "\t"
-    //               << ue_ip << "\t"
-    //               << meanRxRate_send << "\t"
-    //               << meanTcpDelay_send << "\t"
-    //               << numOfLostPackets_send << "\t"
-    //               << numOfTxPacket_send << "\t"
-    //               << "x" << "\t"
-    //               << "x" << "\t"
-    //               << "x" << "\t"
-    //               << "x" << "\t"
-		  // << meanTxRate_send << "\t" << tcp_delay << "\t" << tcp_delay_ack);
     *put_wp->GetStream() << Simulator::Now().GetSeconds() << "\t"
                   << ue_ip << "\t"
                   << meanRxRate_send << "\t"
@@ -447,7 +328,9 @@ getTcpPut(){
                   << "x" << "\t"
                   << meanTxRate_send << "\t" 
                   << tcp_delay << "\t" 
-                  << tcp_delay_ack << std::endl;
+                  << tcp_delay_ack << "\t"
+                  << last_tx_bytes << "\t" 
+                  << last_rx_bytes << std::endl; 
     while (timer < sim_time){
         timer += TCP_SAMPLING_INTERVAL;
         Simulator::Schedule(Seconds(timer),&getTcpPut);

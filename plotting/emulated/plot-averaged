@@ -1,0 +1,81 @@
+
+##======CONST=======
+BUFFSIZE=512
+x1 = 0
+x2 = 20
+SEGSIZE=1448
+PKTSIZE=1500
+#CONST_A=BUFFSIZE
+#CONST_B=BUFFSIZE-1
+#CONST_C=BUFFSIZE-2
+#CONST_D=BUFFSIZE-3
+
+CONST_A=1
+CONST_B=2
+CONST_C=3
+CONST_D=4
+
+#=============Functions=============
+cnt=0
+increment(cnt) = (cnt=cnt+1,cnt)
+
+filter(x)=((x<100||x>1000000)?1/0:x)
+filter_1st_ssth(x)=((x<1000000)?x:1/0)
+is_missing(x)=system("/var/tmp/ln_result/radio/check_missing_file.sh ".x)
+
+
+
+
+#===========================================
+reset
+set title "Congestion window \n"
+set key inside top right box
+set xlabel "Time (s)"
+set xtic 20
+set ylabel "value (packets)"
+set y2label "delay (ms)"
+set output "cwnd-detail.svg"
+#set y2tics nomirror tc lt 2
+#set y2range [0:150000]
+#set yrange [0:1200]
+set xrange [x1:x2]
+set y2tics nomirror tc lt 2
+
+set terminal svg
+
+
+plot "cubic.dat" using 3:10 title "cwnd" pt 0 lt 1,\
+"cubic.dat" using 3:18 title "cubic Wmax" pt 0 lt 9,\
+"cubic.dat" using 3:($54*1000) title "retransmission timeout" with lines lt 10 axis x1y2,\
+"cubic.dat"  using 3:(filter_1st_ssth($14)) title "ssthreshold" with lines lt 3 lc 3,\
+"tcp_send.dat" using 1:12 title "TCP delay" with lines axis x1y2
+#"retrans.dat" using 1:($2) title "retransmissions" with points pt 6 axis x1y2,\
+#"cubic.dat" using 3:(($50-$3)*1000) title "timeout" pt 0 lt 11 axis x1y2,\
+#"retrans.dat" using 1:(20):($2) title "retransmissions" with points pt 6 ps variable axis x2y2,\
+##"cubic.dat" using 1:17 title "cubic loss cwnd" pt 1,\
+##"cubic.dat" using ($19/1000):(10) title "cubic last updated time" pt 1,\
+#"cubic.dat" using 1:21 title "cubic estimated tcp_cwnd" pt 0,\
+
+#====================first join 50s======================
+reset
+set title "LTE timeout timer and RTO "
+set key inside top right box
+set xlabel "Time (s)"
+#set xtic 20
+set ylabel "value (packets)"
+set y2label "delay (ms)"
+set output "timeout-rto-12-18.svg"
+#set y2tics nomirror tc lt 2
+#set y2range [0:800]
+#set yrange [0:1200]
+set xrange [12:18]
+set y2tics nomirror tc lt 2
+
+set terminal svg
+
+plot "cubic.dat" using 3:(($50-$3)*1000) title "timeout" pt 0 lt 11 axis x1y2,\
+"cubic.dat" using 3:($54*1000) title "rto" pt 0 lt 10 axis x1y2,\
+"cubic.dat" using 3:10 title "cwnd" pt 0 lt 1,\
+"tcp_send.dat" using 1:12 title "packet delay" pt 0 lt 12 axis x1y2
+#"retrans-truth.dat" using 1:(0) title "retransmissions" pt 1 axis x1y2,\
+
