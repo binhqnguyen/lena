@@ -52,8 +52,22 @@ static void link_change(){
   }
 }
 
-//static void change_link_bandwidth(double link_bd){
-//}
+/*
+ * Schedule a radio bandwidth change at a moment of the experiment
+ */
+static void change_radio_bandwidth_at_time(std::string bandwidth, double time_of_change){
+	NS_LOG_UNCOND("Change radio");
+  Simulator::Schedule(Seconds(time_of_change), &set_radio_bandwidth, bandwidth);
+}
+
+/*
+ * Set radio bandwidth
+ */
+static void set_radio_bandwidth(std::string bandwidth){
+  Config::Set("/NodeList/1/DeviceList/0/$ns3::PointToPointNetDevice/DataRate",StringValue(bandwidth));
+  *debugger_wp->GetStream() << Simulator::Now().GetSeconds() << "s: new bandwidth = " << bandwidth << "\n";
+  NS_LOG_UNCOND(Simulator::Now().GetSeconds() << "s: new bandwidth = " << bandwidth << "\n");
+}
 
 int main (int argc, char *argv[])
 {
@@ -198,6 +212,7 @@ int main (int argc, char *argv[])
   clientApps.Start (Seconds(0.5));
 
   Simulator::ScheduleWithContext (0 ,Seconds (0.0), &getTcpPut);
+	change_radio_bandwidth_at_time("10kb/s",5); //change bandwidth at 5s.
   //Simulator::Schedule(Seconds(0.1), &link_change);
   
     /****ConfigStore setting****/

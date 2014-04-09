@@ -106,6 +106,8 @@ static std::string TCP_WINDOWSCALING = "1";
 
 static void
 getTcpPut();
+static void change_radio_bandwidth_at_time(std::string bandwidth, double time_of_change);
+static void set_radio_bandwidth(std::string bandwidth);
 
 //static void change_link_bandwidth(double link_bd);
 

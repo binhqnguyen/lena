@@ -4,7 +4,7 @@ RE_DIR="/var/tmp/ln_result"
 CODE_DIR="/var/tmp/ns3"
 SIM_TIME="20"
 lte="emulated_nsc"
-processing="processing"
+processing="processing_emulated"
 
 if [ $# -lt 2 ]; then
 		echo "usage rp-..sh <name of backup folder> <simTime>"
