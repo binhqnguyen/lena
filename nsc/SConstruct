@@ -35,6 +35,7 @@ EnsureSConsVersion(1,0)
 def get_target_architecture(context):
   import os
   def get_elf_class(filename):
+    print filename
     file = open(str(filename))
     data = file.read(5)
     file.close()
@@ -154,9 +155,9 @@ conf = Configure(env, custom_tests={
       'get_target_architecture': get_target_architecture})
 if not conf.get_target_architecture():
   Exit(1)
-if not conf.CheckLib('fl') or not exe_exists('flex'):
-  print 'Did not find libfl.a and/or flex. Please install flex and its development libraries.'
-  Exit(1)
+#if not conf.CheckLib('fl') or not exe_exists('flex'):
+#  print 'Did not find libfl.a and/or flex. Please install flex and its development libraries.'
+#  Exit(1)
 if not exe_exists('bison'):
   print 'Did not find bison. Please install the bison parser generator.'
   Exit(1)

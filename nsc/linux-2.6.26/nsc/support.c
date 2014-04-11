@@ -885,6 +885,18 @@ int nsc_get_tcp_var(void *so, const char *var, char *result, int rlen)
         	snprintf(result, rlen, "%u", tp->snd_cwnd);
         return 1;
     }
+    else if(strcmp(var,"snd_cwnd_used_")==0)
+    {
+        if (tp)
+          return snprintf(result, rlen, "%u", tp->snd_cwnd_used);
+        return 1;
+    }
+    else if(strcmp(var,"rcv_wnd_")==0)
+    {
+        if (tp)
+          return snprintf(result, rlen, "%u", tp->rcv_wnd);
+        return 1;
+    }
     else if(strcmp(var, "ssthresh_") == 0)
     {
         if (tp)

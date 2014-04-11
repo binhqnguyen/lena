@@ -1,5 +1,5 @@
 # 1 "linux-2.6.26/nsc/support.c"
-# 1 "/var/tmp/lena/nsc//"
+# 1 "/var/tmp/ns3/nsc//"
 # 1 "<built-in>"
 # 1 "<command-line>"
 # 1 "linux-2.6.26/include/linux/config.h" 1
@@ -33633,6 +33633,18 @@ int nsc_get_tcp_var(void *so, const char *var, char *result, int rlen)
          snprintf(result, rlen, "%u", tp->snd_cwnd);
         return 1;
     }
+    else if(strcmp(var,"snd_cwnd_used_")==0)
+    {
+        if (tp)
+          return snprintf(result, rlen, "%u", tp->snd_cwnd_used);
+        return 1;
+    }
+    else if(strcmp(var,"rcv_wnd_")==0)
+    {
+        if (tp)
+          return snprintf(result, rlen, "%u", tp->rcv_wnd);
+        return 1;
+    }
     else if(strcmp(var, "ssthresh_") == 0)
     {
         if (tp)
@@ -33651,7 +33663,7 @@ int nsc_get_tcp_var(void *so, const char *var, char *result, int rlen)
      return snprintf(result, rlen, "%u", tp->rcv_nxt);
         return 1;
     }
-# 915 "linux-2.6.26/nsc/support.c"
+# 927 "linux-2.6.26/nsc/support.c"
     else if(strcmp(var,"frto_highmark_")==0)
     {
      if (tp)

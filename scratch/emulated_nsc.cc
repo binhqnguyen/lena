@@ -53,12 +53,21 @@ static void link_change(){
 }
 
 /*
- * Schedule a radio bandwidth change at a moment of the experiment
+ * Schedule a radio bandwidth change (kbps) at a moment of the experiment
  */
 static void change_radio_bandwidth_at_time(std::string bandwidth, double time_of_change){
-	NS_LOG_UNCOND("Change radio");
+	NS_LOG_UNCOND("Change radio bandwidth");
   Simulator::Schedule(Seconds(time_of_change), &set_radio_bandwidth, bandwidth);
 }
+
+/*
+ * Schedule a link delay change (ms) at a moment of the experiment
+ */
+static void change_radio_delay_at_time(double delay, double time_of_change){
+	NS_LOG_UNCOND("Change radio delay");
+  Simulator::Schedule(Seconds(time_of_change), &set_radio_delay, delay);
+}
+
 
 /*
  * Set radio bandwidth
@@ -68,6 +77,20 @@ static void set_radio_bandwidth(std::string bandwidth){
   *debugger_wp->GetStream() << Simulator::Now().GetSeconds() << "s: new bandwidth = " << bandwidth << "\n";
   NS_LOG_UNCOND(Simulator::Now().GetSeconds() << "s: new bandwidth = " << bandwidth << "\n");
 }
+
+/*
+ * Set radio link delay (millisecond)
+ */
+static void set_radio_delay(double delay){
+  //Config::Set("/NodeList/1/DeviceList/0/$ns3::PointToPointNetDevice/Delay",TimeValue(MilliSeconds(delay)));
+  //Config::Set("/ChannelListPriv/ChannelList/*/$ns3::PointToPointChannel/Delay",StringValue("1000ms"));
+  //radio_link.SetChannelAttribute ("Delay", TimeValue (MilliSeconds (5000)));
+  //Config::Set("/ChannelListPriv/ChannelList/*/$ns3::PointToPointChannel/Delay",StringValue("1000ms"));
+  *debugger_wp->GetStream() << Simulator::Now().GetSeconds() << "s: new delay (ms) = " << delay << "\n";
+  NS_LOG_UNCOND(Simulator::Now().GetSeconds() << "s: new delay (ms) = " << delay << "\n");
+}
+
+
 
 int main (int argc, char *argv[])
 {
@@ -128,7 +151,6 @@ int main (int argc, char *argv[])
   // We create the channels first without any IP addressing information
   // First make and configure the helper, so that it will put the appropriate
   // attributes on the network interfaces and channels we are about to install.
-  PointToPointHelper core_network_link;
   core_network_link.SetDeviceAttribute ("DataRate", DataRateValue (DataRate (core_network_bandwidth)));
   core_network_link.SetChannelAttribute ("Delay", TimeValue (MilliSeconds (core_network_delay)));
   core_network_link.SetDeviceAttribute ("Mtu", UintegerValue(core_network_mtu));
@@ -156,6 +178,7 @@ int main (int argc, char *argv[])
   Config::Set ("/NodeList/*/$ns3::Ns3NscStack<linux2.6.26>/net.ipv4.tcp_timestamps", StringValue (TCP_TIMESTAMP));
   Config::Set ("/NodeList/*/$ns3::Ns3NscStack<linux2.6.26>/net.ipv4.tcp_window_scaling", StringValue (TCP_WINDOWSCALING));
   Config::Set ("/NodeList/*/$ns3::Ns3NscStack<linux2.6.26>/net.ipv4.tcp_congestion_control", StringValue (TCP_VERSION));
+  Config::Set ("/NodeList/*/$ns3::Ns3NscStack<linux2.6.26>/net.ipv4.tcp_frto", StringValue (TCP_FRTO));
   
   Ipv4AddressHelper ipv4;
   ipv4.SetBase ("10.1.3.0", "255.255.255.0");
@@ -197,6 +220,14 @@ int main (int argc, char *argv[])
         				OnOffHelper onOffHelper("ns3::UdpSocketFactory", Address ( InetSocketAddress( ue_ip, dlPort) ));
         				onOffHelper.SetConstantRate( DataRate(sending_rate), packet_size );
        					clientApps.Add(onOffHelper.Install(remote_host));
+
+								PacketSinkHelper sinkul("ns3::UdpSocketFactory", InetSocketAddress(Ipv4Address::GetAny(), 5000));
+       					serverApps.Add(sinkul.Install(remote_host));
+
+        				OnOffHelper onOffHelperul("ns3::UdpSocketFactory", Address ( InetSocketAddress( endhost_ip, 5000) ));
+        				onOffHelperul.SetConstantRate( DataRate(sending_rate), packet_size );
+       					clientApps.Add(onOffHelperul.Install(ue));
+
     }
 
   //===========Flow monitor==============//
@@ -212,7 +243,8 @@ int main (int argc, char *argv[])
   clientApps.Start (Seconds(0.5));
 
   Simulator::ScheduleWithContext (0 ,Seconds (0.0), &getTcpPut);
-	change_radio_bandwidth_at_time("10kb/s",5); //change bandwidth at 5s.
+	change_radio_bandwidth_at_time("30kb/s",7); //change bandwidth at 5s.
+	change_radio_delay_at_time(1000000000,300); //change radio link delay
   //Simulator::Schedule(Seconds(0.1), &link_change);
   
     /****ConfigStore setting****/

@@ -32,7 +32,7 @@ static std::string core_network_bandwidth = "1000Mb/s"; 	//core_network_bandwidt
 static uint32_t core_network_delay = 18;	//core_network_delay in millisenconds.
 static uint32_t core_network_mtu = 1500; 	//core_network_mte in Bytes.
 static double init_radio_bd = 1;
-static std::string init_radio_bandwidth = "100kb/s"; 	//radio_link_bandwidth (init).
+static std::string init_radio_bandwidth = "500kb/s"; 	//radio_link_bandwidth (init).
 static uint32_t init_radio_delay = 17;	//radio_link_delay (init) in millisenconds.
 static uint32_t init_radio_mtu = 1500; 	//radio_link_mtu (init) in Bytes.
 static uint16_t is_tcp = 1;
@@ -70,6 +70,7 @@ static Ptr<PointToPointNetDevice> enb_core_dev;		//device on the core side of th
 static Ptr<PointToPointNetDevice> ue_dev;
 static Ptr<PointToPointNetDevice> endhost_dev;
 static PointToPointHelper radio_link;	
+static PointToPointHelper core_network_link;
 static double rate_slope = -0.1; //increase the radio link bandwidth by "rate_slope" Mbps per "time_step"
 static double p_rate = init_radio_bd;
 static std::string current_radio_rate = "";
@@ -101,6 +102,7 @@ static std::string TCP_VERSION="cubic"; //reno,westwood,vegas,veno,yeah,illinois
 static std::string TCP_SACK = "1";
 static std::string TCP_TIMESTAMP = "1";
 static std::string TCP_WINDOWSCALING = "1";
+static std::string TCP_FRTO = "2";
 
 
 
@@ -108,6 +110,8 @@ static void
 getTcpPut();
 static void change_radio_bandwidth_at_time(std::string bandwidth, double time_of_change);
 static void set_radio_bandwidth(std::string bandwidth);
+static void set_radio_delay(double delay);
+static void change_radio_delay_at_time(double delay, double time_of_change);
 
 //static void change_link_bandwidth(double link_bd);
 

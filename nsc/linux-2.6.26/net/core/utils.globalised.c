@@ -1,5 +1,5 @@
 # 1 "linux-2.6.26/net/core/utils.c"
-# 1 "/home/binhn/lena/nsc//"
+# 1 "/var/tmp/ns3/nsc//"
 # 1 "<built-in>"
 # 1 "<command-line>"
 # 1 "linux-2.6.26/include/linux/config.h" 1

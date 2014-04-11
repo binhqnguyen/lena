@@ -901,6 +901,8 @@ NscTcpSocketImpl::UpdateTcpVars()
 	*/
 
 	char cwnd_t[4];
+	char snd_cwnd_used_t[4];
+	char rcv_wnd_t[4];
   char srtt_t[4];
   char ssthresh_t[4];
   char seqno_t[4];
@@ -928,6 +930,8 @@ NscTcpSocketImpl::UpdateTcpVars()
 	char pending_t[1];/*reason for resetting retransmission timer*/
 
   uint32_t cwnd = 0;
+  uint32_t snd_cwnd_used = 0;
+  uint32_t rcv_wnd = 0;
   double srtt = 0;
   uint32_t ssthresh = 0;
   uint32_t seqno = 0;
@@ -1000,10 +1004,14 @@ NscTcpSocketImpl::UpdateTcpVars()
   m_nscTcpSocket->get_var("ca_state_", ca_state_t , 1) &&
   m_nscTcpSocket->get_var("retransmits_", retransmits_t , 1) &&
   m_nscTcpSocket->get_var("pending_", pending_t , 1) &&
-  m_nscTcpSocket->get_var("backoff_", backoff_t , 1) )
+  m_nscTcpSocket->get_var("backoff_", backoff_t , 1)  &&
+  m_nscTcpSocket->get_var("snd_cwnd_used_", snd_cwnd_used_t , 4) &&
+  m_nscTcpSocket->get_var("rcv_wnd_", rcv_wnd_t , 4) )
   {
   	//Convert char* to integer.
  	cwnd = atoi(cwnd_t);
+ 	snd_cwnd_used = atoi(snd_cwnd_used_t);
+ 	rcv_wnd = atoi(rcv_wnd_t);
   	srtt = atof(srtt_t); //in ticks
   	ssthresh = atoi(ssthresh_t);
   	seqno = atoi(seqno_t);
@@ -1055,7 +1063,9 @@ NscTcpSocketImpl::UpdateTcpVars()
 			<< " congest_state = " << ca_state
 			<< " retransmits = " << retransmits
 			<< " backoff = " << backoff
-			<< " pending= " << pending);
+			<< " pending= " << pending
+			<< " snd_cwnd_used = " << snd_cwnd_used
+			<< " rcv_wnd = " << rcv_wnd);
 	return 0;
  }
 	else{
@@ -1076,7 +1086,9 @@ NscTcpSocketImpl::UpdateTcpVars()
   		m_nscTcpSocket->get_var("cubic_tcp_cwnd_", cubic_tcp_cwnd_t , 4) <<
   		m_nscTcpSocket->get_var("cubic_bic_K_", cubic_bic_K_t , 4) <<
 			m_nscTcpSocket->get_var("HZ_", HZ_t , 4) <<
-  		m_nscTcpSocket->get_var("rto_", rto_t , 32));
+  		m_nscTcpSocket->get_var("rto_", rto_t , 32) << 
+			m_nscTcpSocket->get_var("snd_cwnd_used_", snd_cwnd_used_t , 4) <<
+			m_nscTcpSocket->get_var("rcv_wnd_", rcv_wnd_t , 4));
 
   	return 1;
 	}
